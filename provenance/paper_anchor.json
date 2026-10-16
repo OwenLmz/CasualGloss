@@ -1,0 +1,29 @@
+{
+  "source_pdf": "D:\\20260923032900_403947_8500 (1).pdf",
+  "sha256": "5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a",
+  "bytes": 304012,
+  "pages": 5,
+  "page_sizes_pt": [
+    [
+      612.0,
+      792.0
+    ],
+    [
+      612.0,
+      792.0
+    ],
+    [
+      612.0,
+      792.0
+    ],
+    [
+      612.0,
+      792.0
+    ],
+    [
+      612.0,
+      792.0
+    ]
+  ],
+  "purpose": "authoritative submitted-paper anchor for code/data release; original unmodified"
+}

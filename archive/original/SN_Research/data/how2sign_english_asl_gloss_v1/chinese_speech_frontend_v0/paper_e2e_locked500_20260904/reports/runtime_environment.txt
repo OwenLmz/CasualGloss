@@ -1,0 +1,6 @@
+Fri Sep  4 02:44:02 UTC 2026
+9sjbvgef92e42-0
+index, name, memory.total [MiB], driver_version
+0, NVIDIA A800-SXM4-80GB, 81920 MiB, 570.124.06
+1, NVIDIA A800-SXM4-80GB, 81920 MiB, 570.124.06
+Python 3.10.12

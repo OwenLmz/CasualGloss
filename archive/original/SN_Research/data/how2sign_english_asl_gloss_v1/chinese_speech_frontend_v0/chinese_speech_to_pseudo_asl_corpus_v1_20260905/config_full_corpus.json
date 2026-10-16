@@ -1,0 +1,30 @@
+{
+  "corpus_name": "ChineseSpeech-ASLPseudoGloss-v1",
+  "corpus_version": "2026-09-05",
+  "seed": 20260905,
+  "expected_count": 19947,
+  "scientific_status": "synthetic_mandarin_speech_and_weak_pseudo_asl_gloss",
+  "tts": {
+    "code_repository": "https://github.com/QwenLM/Qwen3-TTS",
+    "code_revision": "022e286b98fbec7e1e916cb940cdf532cd9f488e",
+    "model_id": "Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+    "model_revision": "85e237c12c027371202489a0ec509ded67b5e4b5",
+    "language": "Chinese",
+    "speakers": ["Vivian", "Serena", "Uncle_Fu", "Dylan"],
+    "dtype": "bfloat16",
+    "attention_implementation": "sdpa",
+    "normalized_sample_rate_hz": 16000,
+    "normalized_channels": 1
+  },
+  "translation": {
+    "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+    "decoding": "greedy",
+    "max_new_tokens": 192
+  },
+  "limitations": [
+    "Mandarin speech is synthetic rather than recorded from real speakers.",
+    "ASL gloss targets are LLM-generated weak pseudo labels rather than expert gold annotations.",
+    "The corpus supports reproducible research but does not establish human ASL translation quality."
+  ]
+}

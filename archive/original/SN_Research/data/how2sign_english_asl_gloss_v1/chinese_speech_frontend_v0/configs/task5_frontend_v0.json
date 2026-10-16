@@ -1,0 +1,84 @@
+{
+  "experiment_name": "how2sign_chinese_speech_frontend_v0",
+  "created_for_task": "Chinese speech to incremental English to pseudo ASL gloss",
+  "seed": 20260726,
+  "pilot_count": 100,
+  "scientific_status": "synthetic_chinese_speech_and_weak_pseudo_asl_gloss",
+  "tts": {
+    "code_repository": "https://github.com/QwenLM/Qwen3-TTS",
+    "code_revision": "022e286b98fbec7e1e916cb940cdf532cd9f488e",
+    "model_id": "Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+    "model_revision": "85e237c12c027371202489a0ec509ded67b5e4b5",
+    "language": "Chinese",
+    "speakers": ["Vivian", "Serena", "Uncle_Fu", "Dylan"],
+    "dtype": "bfloat16",
+    "attention_implementation": "sdpa",
+    "device": "cuda:0",
+    "normalized_sample_rate_hz": 16000,
+    "normalized_channels": 1
+  },
+  "simulstreaming": {
+    "code_repository": "https://github.com/ufal/SimulStreaming",
+    "code_revision": "077ea37d5ab4ff98bc567e4507f140dc4e5d5ad6",
+    "backend": "Whisper large-v3 with AlignAtt",
+    "whisper_model_name": "large-v3",
+    "whisper_checkpoint_sha256": "e5b1a55b89c1367dacf97e3e19bfd829a01529dbfdeefa8caeb59b3f1b81dadb",
+    "source_language": "zh",
+    "task": "translate",
+    "minimum_chunk_seconds": 1.2,
+    "frame_threshold": 25,
+    "audio_max_seconds": 30.0,
+    "beam_size": 1,
+    "decoder": "greedy",
+    "device": "cuda:0",
+    "evaluation_modes": ["computationally_unaware", "computationally_aware"]
+  },
+  "cascade_streaming": {
+    "asr": "Whisper large-v3 with AlignAtt Mandarin transcription",
+    "mt_model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "mt_model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+    "mt_dtype": "bfloat16",
+    "mt_device": "cuda:1",
+    "mt_decoding": "greedy",
+    "commitment_policy": "two-update Local Agreement plus forced finalization at source end",
+    "source_language": "Chinese",
+    "target_language": "English",
+    "scientific_role": "strong cascade candidate"
+  },
+  "seamlessstreaming": {
+    "code_repository": "https://github.com/facebookresearch/seamless_communication",
+    "code_revision": "90e2b57ac4d82fa2bfaa25caeffe39ceb8b2ebec",
+    "model_id": "facebook/seamless-streaming",
+    "model_revision": "82746da73c2927b962e53ad2f723babf1ae0e0b5",
+    "parameter_count": "2.5B",
+    "task": "s2tt",
+    "target_language_code": "eng",
+    "scientific_role": "native streaming comparison candidate"
+  },
+  "finetune2": {
+    "base_model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "base_model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "adapter": "fine_tuning_v2_causal_full_seed2/adapter_best",
+    "device": "cuda:1",
+    "wait_token": "<WAIT>",
+    "end_token": "<END>"
+  },
+  "selected_frontend": {
+    "name": "Meta SeamlessStreaming 2.5B monotonic S2TT",
+    "selection_scope": "locked synthetic 100-sample Task 5 v0 pilot",
+    "english_sacrebleu": 24.045407,
+    "english_chrf": 47.475185,
+    "mean_average_lagging_ms": 2330.96715,
+    "mean_first_english_commit_seconds": 2.9648,
+    "mean_pseudo_gloss_sequence_similarity": 0.38778321,
+    "mean_pseudo_gloss_token_f1": 0.4051241,
+    "mean_first_gloss_write_seconds": 3.0352,
+    "end_completion_rate": 1.0,
+    "premature_end_rate": 0.0
+  },
+  "important_limitations": [
+    "Synthetic TTS does not measure robustness to real Mandarin speakers or noise.",
+    "Reference gloss is an LLM-generated weak pseudo label, not gold ASL.",
+    "Fine-tune 2 alignment is text-derived pseudo timing, not video-verified timing."
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "created_at_utc": "2026-08-23T11:31:59.067947+00:00",
+  "scientific_status": "pseudo_causal_action_lora_not_gold_asl",
+  "config": {
+    "experiment_name": "qwen2_5_7b_lora_wait_k3_full_v1_recovery_a6000_2gpu",
+    "dataset_version": "fixed_wait_k3_actions_v1_full",
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "initialization": "continue_training_from_finetune1_best_lora",
+    "seed": 20260821,
+    "system_prompt": "You are a simultaneous English-to-pseudo-ASL-gloss translator following a fixed wait-3 prefix-to-prefix policy. Output exactly one next action: one uppercase gloss token, <WAIT>, or <END>. Before source completion, write the next gloss only when the observed source token count is at least 3 plus the number of already committed gloss tokens; otherwise output <WAIT>. A gloss token commits output without reading new English, while <WAIT> requests exactly one more English token. After source completion, finish the translation and then output <END>. Do not explain.",
+    "wait_token": "<WAIT>",
+    "end_token": "<END>",
+    "max_length": 512,
+    "max_new_tokens": 16,
+    "epochs": 1,
+    "micro_batch_size_per_gpu": 2,
+    "evaluation_batch_size_per_gpu": 4,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 32,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "max_grad_norm": 1.0,
+    "evaluation_steps": 1000,
+    "logging_steps": 100,
+    "precision": "bfloat16",
+    "attention_implementation": "sdpa",
+    "gradient_checkpointing": true,
+    "gpu_count": 2,
+    "wait_k": 3,
+    "prompt_detokenization": "nltk.tokenize.TreebankWordDetokenizer",
+    "training_budget_policy": "one_predeclared_epoch_from_finetune1_initialization",
+    "recovery_reason": "The original H200 full-data run became non-finite before step 100. Independent SDPA and eager diagnostics on RTX A6000 remained finite beyond step 120. This recovery keeps data, seed, effective batch size, optimizer, learning rate, precision, and policy unchanged while using two A6000 GPUs.",
+    "important_warning": "Targets are Qwen pseudo glosses with fixed Wait-k pseudo timing, not gold ASL annotations or gold sign timing."
+  },
+  "source_adapter_dir": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+  "world_size": 2,
+  "gpu_names": [
+    "NVIDIA RTX A6000",
+    "NVIDIA RTX A6000"
+  ],
+  "train_action_count": 550061,
+  "validation_action_count": 12713,
+  "test_action_count_reserved": 11525,
+  "effective_batch_size": 32,
+  "evaluation_batch_size_per_gpu": 4,
+  "updates_per_epoch": 17190,
+  "total_updates": 17190,
+  "train_tokenization": {
+    "example_count": 550061,
+    "truncated_example_count": 0,
+    "max_original_token_length": 466,
+    "max_target_token_length": 15
+  },
+  "validation_tokenization": {
+    "example_count": 12713,
+    "truncated_example_count": 0,
+    "max_original_token_length": 314,
+    "max_target_token_length": 11
+  },
+  "sha256": {
+    "config": "cdf299865ede8d1a1bb1cc179c13a619e9738088eaa9beaaad78d23f41dd4c42",
+    "train": "eabb8fb92e32aadca12e9d84be9d423d981debf3b11037da2ae59d29f95e9520",
+    "validation": "a33fd4d9f3a51573965c66e2503b5e18c39dbd4c97a08b15d9c425a3c449b54f",
+    "test": "827fa41b73f23bda9494b6aa094472591ad39ef5abe97fa3dbeb58efd74b95f2"
+  },
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.0"
+  }
+}

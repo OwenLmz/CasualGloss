@@ -1,0 +1,11 @@
+# Versions recorded in the selected historical policy runs.
+# Install a hardware-compatible PyTorch wheel separately; do not blindly install
+# a CUDA-specific wheel from PyPI on an incompatible driver/device.
+transformers==4.57.6
+peft==0.18.0
+accelerate
+nltk
+simalign
+numpy>=1.26,<3
+safetensors
+# Historical torch: 2.11.0+cu128. See docs/REPRODUCTION.md for caveats.

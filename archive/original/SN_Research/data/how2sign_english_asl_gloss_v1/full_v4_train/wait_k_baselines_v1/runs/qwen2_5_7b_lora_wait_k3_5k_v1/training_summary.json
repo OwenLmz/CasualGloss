@@ -1,0 +1,29 @@
+{
+  "experiment_name": "qwen2_5_7b_lora_wait_k3_5k_v1",
+  "scientific_status": "pseudo_causal_action_lora_not_gold_asl",
+  "train_action_count": 143387,
+  "validation_action_count": 12713,
+  "test_action_count_reserved": 0,
+  "epochs": 1,
+  "global_update_steps": 4481,
+  "stopped_early": false,
+  "early_stopping": {
+    "patience_evaluations": 0,
+    "minimum_delta": 0.0,
+    "minimum_updates": 0
+  },
+  "elapsed_seconds": 16715.2636,
+  "baseline_validation": {
+    "pseudo_action_loss": 1.11041434,
+    "pseudo_action_token_accuracy_teacher_forced": 0.82013865,
+    "pseudo_action_sequence_exact_match_teacher_forced": 0.35546291,
+    "target_token_count": 59140,
+    "sequence_count": 12713
+  },
+  "best_checkpoint": {
+    "global_step": 4481,
+    "epoch_fraction": 1.0,
+    "validation_pseudo_action_loss": 0.36378455,
+    "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k3_5k_v1/adapter_best"
+  }
+}

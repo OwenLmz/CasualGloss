@@ -1,0 +1,25 @@
+{
+  "dataset_version": "semantic_causal_alignment_v2_2_confident_burst_full_v1",
+  "policy_name": "confidence_guarded_lexical_anchor_with_burst_commit",
+  "policy_selection_split": "independent_pilot_development_482_eligible_parents",
+  "lexical_mode": "gap_guarded",
+  "semantic_margin": 0.75,
+  "lexical_gap_margin": 0.25,
+  "minimum_probability": 0.01,
+  "stability_window": 1,
+  "maximum_rescue_delay": 3,
+  "rescue_gap_margin": 1.0,
+  "semantic_sufficiency_margin": 0.75,
+  "semantic_sufficiency_minimum_probability": 0.01,
+  "negation_maximum_delay_after_anchor": 1,
+  "wait_token": "<WAIT>",
+  "end_token": "<END>",
+  "retain_order_conflicts_with_flags": true,
+  "allow_multiple_writes_at_same_source_prefix": true,
+  "important_limitations": [
+    "Targets are Qwen-generated weak pseudo ASL glosses, not gold ASL annotations.",
+    "Emission timing is pseudo timing derived from lexical evidence and Fine-tune-1 prefix scores.",
+    "Development-set selection optimizes pseudo semantic sufficiency and latency, not human ASL quality.",
+    "Qualified ASL review is required for linguistic claims."
+  ]
+}

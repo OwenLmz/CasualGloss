@@ -1,0 +1,74 @@
+{
+  "created_at_utc": "2026-07-21T09:16:25.641815+00:00",
+  "scientific_status": "pseudo_causal_action_lora_not_gold_asl",
+  "config": {
+    "experiment_name": "qwen2_5_7b_lora_causal_action_full_corrected_v1",
+    "dataset_version": "causal_alignment_v1_corrected_full_v1",
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "initialization": "continue_training_from_finetune1_best_lora_same_as_5k_control",
+    "seed": 20260720,
+    "system_prompt": "You are a simultaneous English-to-pseudo-ASL-gloss translator. Given the observed English prefix and the already committed gloss, output exactly one next action: one uppercase gloss token, <WAIT>, or <END>. Output <WAIT> when more English context is required. Do not explain.",
+    "wait_token": "<WAIT>",
+    "end_token": "<END>",
+    "max_length": 512,
+    "max_new_tokens": 16,
+    "epochs": 1,
+    "micro_batch_size_per_gpu": 2,
+    "evaluation_batch_size_per_gpu": 4,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 32,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "max_grad_norm": 1.0,
+    "evaluation_steps": 1000,
+    "logging_steps": 100,
+    "precision": "bfloat16",
+    "attention_implementation": "sdpa",
+    "gradient_checkpointing": true,
+    "split_policy": "locked_5k_validation_test_and_heldout_video_quarantine",
+    "timeline_policy": "corrected_direct_end_at_unchanged_complete_state_v1",
+    "training_budget_policy": "one_predeclared_epoch_from_same_finetune1_initialization",
+    "comparison_policy": "paired_same_500_parent_test_full_minus_5k",
+    "important_warning": "All action targets and metrics are derived from pseudo gloss and pseudo alignment, not gold ASL annotations or gold sign timing."
+  },
+  "source_adapter_dir": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+  "world_size": 4,
+  "gpu_names": [
+    "NVIDIA GeForce RTX 5090",
+    "NVIDIA GeForce RTX 5090",
+    "NVIDIA GeForce RTX 5090",
+    "NVIDIA GeForce RTX 5090"
+  ],
+  "train_action_count": 397700,
+  "validation_action_count": 9209,
+  "test_action_count_reserved": 8365,
+  "effective_batch_size": 32,
+  "evaluation_batch_size_per_gpu": 4,
+  "updates_per_epoch": 12429,
+  "total_updates": 12429,
+  "train_tokenization": {
+    "example_count": 397700,
+    "truncated_example_count": 0,
+    "max_original_token_length": 410,
+    "max_target_token_length": 15
+  },
+  "validation_tokenization": {
+    "example_count": 9209,
+    "truncated_example_count": 0,
+    "max_original_token_length": 257,
+    "max_target_token_length": 11
+  },
+  "sha256": {
+    "config": "9e3fa87ce200f8b8f88dc59c67df9ada51ac0296a1051123dd0809677f948093",
+    "train": "aaee57eac3afa775ae6fbcc87319a8b587d426c4d65077ef4e49da70b6978d32",
+    "validation": "236201540bd9f9a41a9b1057990f1b4f5aa2e5fc3993abd3689ccf5ee5f7f7d2",
+    "test": "bc8d9f9dabdd60544fbaf4ddb09ef2070258746804a9f7b2d4c1714f2a6cec1c"
+  },
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.0"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "dataset_version": "causal_alignment_v1_corrected_5k",
+  "scientific_status": "llm_pseudo_gloss_and_heuristic_pseudo_timing_not_gold_asl",
+  "selection_seed": 20260720,
+  "source_split": "train",
+  "candidate_pool_size": 6200,
+  "final_parent_count": 5000,
+  "final_split_parent_counts": {
+    "train": 4000,
+    "validation": 500,
+    "test": 500
+  },
+  "candidate_selection_targets": {
+    "standard_completed": {
+      "short_le_8": 1867,
+      "medium_9_15": 1717,
+      "long_ge_16": 1416
+    },
+    "automatic_review_flagged": {
+      "short_le_8": 200,
+      "medium_9_15": 350,
+      "long_ge_16": 650
+    }
+  },
+  "maximum_selected_rows_per_video": 8,
+  "maximum_hyphen_components_per_gloss_token": 2,
+  "alignment_method": "lexical_anchor_plus_simalign_itermax_v1",
+  "alignment_model": "bert-base-multilingual-cased",
+  "alignment_device": "cuda",
+  "simalign_matching_method": "itermax",
+  "wait_token": "<WAIT>",
+  "end_token": "<END>",
+  "timeline_policy": "corrected_direct_end_at_unchanged_complete_state_v1",
+  "manual_review_size": 50,
+  "shard_count": 4,
+  "structural_filter": {
+    "exclude_high_unaligned_ratio": true,
+    "exclude_low_lexical_alignment_ratio": true,
+    "exclude_simalign_runtime_error": true,
+    "maximum_hyphen_components_per_gloss_token": 2
+  }
+}

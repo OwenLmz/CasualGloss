@@ -1,0 +1,23 @@
+{
+  "audit_date": "2026-10-16",
+  "checkpoint_role": "paper_main_selected_final_seed20260829",
+  "seed": 20260829,
+  "generation_batch_size": 32,
+  "parent_count": 500,
+  "dtype": "bfloat16",
+  "gpu": "NVIDIA GeForce RTX 4090 D",
+  "torch": "2.11.0+cu128",
+  "transformers": "4.57.6",
+  "peft": "0.18.0",
+  "nltk": "3.9.2",
+  "runtime": "/123090274/SN_Research/venvs/wlasl-cu128-env/bin/python",
+  "output_directory": "/123090274/SN_Research/release_checks/causalgloss_20261016_a/private_full_s1",
+  "adapter_sha256": "2037ff8e5f984530bc36eb36bda6755356481f62334736547eff830f88f7718c",
+  "config_sha256": "6eeea65397d3047e23392dab8e88065912f333afa15a814eb9333dc45888c33f",
+  "evaluator_sha256": "5cecab47003c9b926b112b7350574a9452de3ad11835e1f1faf93af006cf3d92",
+  "original_evaluator_unmodified": true,
+  "original_artifacts_overwritten": false,
+  "environment_modified": false,
+  "offline_model_loading": true,
+  "scope": "Full S1 checkpoint inference; no retraining; no new checkpoint selection. Version evidence from successful smoke/runtime inspection in the same environment."
+}

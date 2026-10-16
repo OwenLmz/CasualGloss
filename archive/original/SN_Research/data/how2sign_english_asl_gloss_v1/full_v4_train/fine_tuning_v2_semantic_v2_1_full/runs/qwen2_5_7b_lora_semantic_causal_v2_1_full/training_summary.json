@@ -1,0 +1,23 @@
+{
+  "experiment_name": "qwen2_5_7b_lora_semantic_causal_v2_1_full",
+  "scientific_status": "pseudo_causal_action_lora_not_gold_asl",
+  "train_action_count": 359777,
+  "validation_action_count": 8226,
+  "test_action_count_reserved": 7861,
+  "epochs": 1,
+  "global_update_steps": 11244,
+  "elapsed_seconds": 10949.9242,
+  "baseline_validation": {
+    "pseudo_action_loss": 0.87487541,
+    "pseudo_action_token_accuracy_teacher_forced": 0.83579242,
+    "pseudo_action_sequence_exact_match_teacher_forced": 0.33661561,
+    "target_token_count": 37209,
+    "sequence_count": 8226
+  },
+  "best_checkpoint": {
+    "global_step": 11244,
+    "epoch_fraction": 1.0,
+    "validation_pseudo_action_loss": 0.1367139,
+    "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_1_full/runs/qwen2_5_7b_lora_semantic_causal_v2_1_full/adapter_best"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "scientific_status": "independent_transllama_style_sequence_sft_not_gold_asl",
+  "completed_at_utc": "2026-09-19T04:41:34.560047+00:00",
+  "elapsed_seconds": 2997.287,
+  "global_update_steps": 3555,
+  "baseline_validation": {
+    "target_only_loss": 1.37557206,
+    "target_token_accuracy_teacher_forced": 0.77228916,
+    "sequence_exact_match_teacher_forced": 0.09897534,
+    "wait_token_accuracy_teacher_forced": 0.02808773,
+    "content_token_accuracy_teacher_forced": 0.8192801,
+    "eos_token_accuracy_teacher_forced": 0.932,
+    "target_tokens": 86320,
+    "correct_tokens": 66664,
+    "sequences": 8881,
+    "exact_sequences": 879,
+    "wait_tokens": 5198,
+    "correct_wait_tokens": 146,
+    "eos_tokens": 500,
+    "correct_eos_tokens": 466,
+    "content_tokens": 80622,
+    "correct_content_tokens": 66052,
+    "truncated_sequences": 0
+  },
+  "best_checkpoint": {
+    "epoch": 3,
+    "global_step": 3555,
+    "validation_target_only_loss": 0.57508922,
+    "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best"
+  }
+}

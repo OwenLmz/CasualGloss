@@ -1,0 +1,31 @@
+{
+  "scientific_status": "independent_transllama_style_sequence_sft_not_gold_asl",
+  "completed_at_utc": "2026-09-18T12:04:48.887507+00:00",
+  "elapsed_seconds": 25.229,
+  "global_update_steps": 2,
+  "baseline_validation": {
+    "target_only_loss": 1.01236124,
+    "target_token_accuracy_teacher_forced": 0.86679537,
+    "sequence_exact_match_teacher_forced": 0.15068493,
+    "wait_token_accuracy_teacher_forced": 0.0,
+    "content_token_accuracy_teacher_forced": 0.89939638,
+    "eos_token_accuracy_teacher_forced": 1.0,
+    "target_tokens": 1036,
+    "correct_tokens": 898,
+    "sequences": 73,
+    "exact_sequences": 11,
+    "wait_tokens": 38,
+    "correct_wait_tokens": 0,
+    "eos_tokens": 4,
+    "correct_eos_tokens": 4,
+    "content_tokens": 994,
+    "correct_content_tokens": 894,
+    "truncated_sequences": 0
+  },
+  "best_checkpoint": {
+    "epoch": 1,
+    "global_step": 2,
+    "validation_target_only_loss": 0.93681143,
+    "path": "runs/smoke_train_2updates/adapter_best"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "created_at_utc": "2026-09-13T11:26:16.063666+00:00",
+  "scientific_status": "pseudo_causal_action_lora_not_gold_asl",
+  "config": {
+    "experiment_name": "no_semantic_stage_b",
+    "dataset_version": "professor_feedback_no_semantic_stage_b_20260912",
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "initialization": "stage_a_best",
+    "seed": 20260829,
+    "system_prompt": "You are a simultaneous English-to-pseudo-ASL-gloss translator. Given the observed English prefix and already committed gloss, output exactly one next action: one uppercase gloss token, <WAIT>, or <END>. A gloss token commits output without reading new English; <WAIT> requests exactly one more English token. Several gloss tokens may be written at the same observed prefix. When Source status is COMPLETE, never output <WAIT>: WRITE if translation remains incomplete, otherwise output <END>. Do not explain.",
+    "wait_token": "<WAIT>",
+    "end_token": "<END>",
+    "max_length": 512,
+    "max_new_tokens": 16,
+    "epochs": 1,
+    "micro_batch_size_per_gpu": 8,
+    "evaluation_batch_size_per_gpu": 16,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 32,
+    "learning_rate": 1e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.03,
+    "max_grad_norm": 1.0,
+    "evaluation_steps": 2000,
+    "logging_steps": 100,
+    "early_stopping_patience_evaluations": 3,
+    "early_stopping_min_delta": 0.001,
+    "early_stopping_minimum_updates": 4000,
+    "precision": "bfloat16",
+    "trainable_parameters_fp32": false,
+    "attention_implementation": "sdpa",
+    "gradient_checkpointing": true,
+    "gpu_count": 1,
+    "training_budget_policy": "one_epoch_per_stage_effective_batch_32_shared_across_all_comparisons",
+    "important_warning": "Weak gloss targets and pseudo timing; confirmation and locked sets are never used for selection."
+  },
+  "source_adapter_dir": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_a/adapter_best",
+  "world_size": 1,
+  "gpu_names": [
+    "NVIDIA A800-SXM4-80GB"
+  ],
+  "train_action_count": 439251,
+  "validation_action_count": 6133,
+  "test_action_count_reserved": 6123,
+  "effective_batch_size": 32,
+  "evaluation_batch_size_per_gpu": 16,
+  "updates_per_epoch": 13727,
+  "total_updates": 13727,
+  "train_tokenization": {
+    "example_count": 439251,
+    "truncated_example_count": 0,
+    "max_original_token_length": 452,
+    "max_target_token_length": 15
+  },
+  "validation_tokenization": {
+    "example_count": 6133,
+    "truncated_example_count": 0,
+    "max_original_token_length": 268,
+    "max_target_token_length": 11
+  },
+  "sha256": {
+    "config": "021140fa825ad401cc8a3f8e4f9394fef24651ae079d1272c979c2f852e15de3",
+    "train": "2873f128d738cd4926cf8ad04133ae9a26dbe180825f6d5bf4be8eeb3cfe4efb",
+    "validation": "b333244e6fce1ffd1fe4c82f41dec1a136f3b53da681c446715b82292c97b76a",
+    "test": "a13f641482e2f15c6926806e8fe9668a7b5dc80d07914843e39b740445498fda"
+  },
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.0"
+  }
+}

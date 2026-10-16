@@ -1,0 +1,27 @@
+{
+  "dataset_version": "causal_alignment_v1_corrected_full_v1",
+  "scientific_status": "llm_pseudo_gloss_and_heuristic_pseudo_timing_not_gold_asl",
+  "selection_seed": 20260720,
+  "source_split": "train",
+  "locked_evaluation_parent_counts": {
+    "validation": 500,
+    "test": 500
+  },
+  "minimum_expected_train_parent_count": 18000,
+  "maximum_hyphen_components_per_gloss_token": 2,
+  "alignment_method": "lexical_anchor_plus_simalign_itermax_v1",
+  "alignment_model": "bert-base-multilingual-cased",
+  "alignment_device": "cuda",
+  "simalign_matching_method": "itermax",
+  "wait_token": "<WAIT>",
+  "end_token": "<END>",
+  "timeline_policy": "corrected_direct_end_at_unchanged_complete_state_v1",
+  "manual_review_size": 100,
+  "shard_count": 4,
+  "structural_filter": {
+    "exclude_high_unaligned_ratio": true,
+    "exclude_low_lexical_alignment_ratio": true,
+    "exclude_simalign_runtime_error": true,
+    "maximum_hyphen_components_per_gloss_token": 2
+  }
+}

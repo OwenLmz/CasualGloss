@@ -1,0 +1,75 @@
+{
+  "created_at_utc": "2026-07-21T03:51:25.568282+00:00",
+  "experiment_name": "qwen2_5_7b_lora_how2sign_full_v1",
+  "scientific_status": "full_pseudo_label_lora_not_gold_asl",
+  "config": {
+    "experiment_name": "qwen2_5_7b_lora_how2sign_full_v1",
+    "dataset_version": "how2sign_train_english_to_pseudo_asl_gloss_full_v4",
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "seed": 20260720,
+    "system_prompt": "Translate the English sentence into the target pseudo ASL gloss style. Output uppercase gloss tokens only, with no explanation.",
+    "max_length": 512,
+    "max_new_tokens": 160,
+    "epochs": 1,
+    "micro_batch_size_per_gpu": 1,
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.03,
+    "max_grad_norm": 1.0,
+    "evaluation_steps": 200,
+    "logging_steps": 10,
+    "lora": {
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "target_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    "precision": "bfloat16",
+    "attention_implementation": "sdpa",
+    "gradient_checkpointing": true,
+    "important_warning": "Targets and all reported task metrics are pseudo-label based, not gold ASL accuracy."
+  },
+  "effective_epochs": 1,
+  "world_size": 4,
+  "cuda_devices": [
+    "NVIDIA GeForce RTX 5090",
+    "NVIDIA GeForce RTX 5090",
+    "NVIDIA GeForce RTX 5090",
+    "NVIDIA GeForce RTX 5090"
+  ],
+  "train_count": 64,
+  "validation_count": 32,
+  "test_count_reserved_unseen_during_training": 1507,
+  "effective_batch_size": 16,
+  "updates_per_epoch": 4,
+  "total_updates": 4,
+  "distributed_sampler_padding_example_count": 0,
+  "train_dataset_tokenization": {
+    "example_count": 64,
+    "truncated_example_count": 0,
+    "max_original_token_length": 148,
+    "max_target_token_length": 49
+  },
+  "validation_dataset_tokenization": {
+    "example_count": 32,
+    "truncated_example_count": 0,
+    "max_original_token_length": 136,
+    "max_target_token_length": 51
+  },
+  "source_sha256": {
+    "config": "9822c8eb41c866962edbf85827c40d01366883156db2226705ba99ab95b6d5d8",
+    "train": "4dfe16dfd3e1c9b02692c423a25df30ab0140995c1f37d12bfdf4b647c221bdc",
+    "validation": "c8314584ada6b906c8caec68bb54666a33c51949a22ee01ca8aa2d1385fc30e7",
+    "test": "b62e988be7688c5b9447cdd0f55c81f6c08962e242a8e4109a5ae6dca92a9222"
+  },
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.0"
+  }
+}

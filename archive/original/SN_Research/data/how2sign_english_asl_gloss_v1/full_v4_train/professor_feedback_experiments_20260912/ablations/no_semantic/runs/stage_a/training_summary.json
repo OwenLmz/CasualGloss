@@ -1,0 +1,29 @@
+{
+  "experiment_name": "no_semantic_stage_a",
+  "scientific_status": "pseudo_causal_action_lora_not_gold_asl",
+  "train_action_count": 534877,
+  "validation_action_count": 6133,
+  "test_action_count_reserved": 6123,
+  "epochs": 1,
+  "global_update_steps": 16715,
+  "stopped_early": false,
+  "early_stopping": {
+    "patience_evaluations": 3,
+    "minimum_delta": 0.001,
+    "minimum_updates": 4000
+  },
+  "elapsed_seconds": 30303.4004,
+  "baseline_validation": {
+    "pseudo_action_loss": 0.61922166,
+    "pseudo_action_token_accuracy_teacher_forced": 0.86552353,
+    "pseudo_action_sequence_exact_match_teacher_forced": 0.41447905,
+    "target_token_count": 28518,
+    "sequence_count": 6133
+  },
+  "best_checkpoint": {
+    "global_step": 16715,
+    "epoch_fraction": 1.0,
+    "validation_pseudo_action_loss": 0.07427021,
+    "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_a/adapter_best"
+  }
+}

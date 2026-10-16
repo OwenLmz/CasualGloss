@@ -1,0 +1,27 @@
+{
+  "experiment_name": "qwen2_5_7b_lora_how2sign_full_v1",
+  "scientific_status": "full_pseudo_label_lora_not_gold_asl",
+  "train_count": 27079,
+  "validation_count": 1516,
+  "test_count_reserved": 1507,
+  "epochs": 1,
+  "global_update_steps": 1693,
+  "baseline_validation": {
+    "pseudo_label_loss": 0.77387002,
+    "pseudo_label_token_accuracy_teacher_forced": 0.82626483,
+    "pseudo_label_sequence_exact_match_teacher_forced": 0.0560686,
+    "target_token_count": 29332,
+    "sequence_count": 1516
+  },
+  "best_checkpoint": {
+    "global_step": 1693,
+    "epoch_fraction": 1.0,
+    "validation_pseudo_label_loss": 0.25073041,
+    "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best"
+  },
+  "important_limitations": [
+    "Targets are deterministic pseudo ASL glosses, not gold annotations.",
+    "Validation metrics measure pseudo-label agreement, not ASL correctness.",
+    "The test split was reserved and was not evaluated during training."
+  ]
+}

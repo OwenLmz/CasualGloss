@@ -1,0 +1,71 @@
+{
+  "created_at_utc": "2026-08-21T10:19:50.760282+00:00",
+  "scientific_status": "pseudo_causal_action_lora_not_gold_asl",
+  "config": {
+    "experiment_name": "qwen2_5_7b_lora_wait_k3_5k_v1",
+    "dataset_version": "fixed_wait_k3_actions_v1_5k",
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "initialization": "continue_training_from_finetune1_best_lora",
+    "seed": 20260821,
+    "system_prompt": "You are a simultaneous English-to-pseudo-ASL-gloss translator following a fixed wait-3 prefix-to-prefix policy. Output exactly one next action: one uppercase gloss token, <WAIT>, or <END>. Before source completion, write the next gloss only when the observed source token count is at least 3 plus the number of already committed gloss tokens; otherwise output <WAIT>. A gloss token commits output without reading new English, while <WAIT> requests exactly one more English token. After source completion, finish the translation and then output <END>. Do not explain.",
+    "wait_token": "<WAIT>",
+    "end_token": "<END>",
+    "max_length": 512,
+    "max_new_tokens": 16,
+    "epochs": 1,
+    "micro_batch_size_per_gpu": 2,
+    "evaluation_batch_size_per_gpu": 4,
+    "gradient_accumulation_steps": 16,
+    "effective_batch_size": 32,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "max_grad_norm": 1.0,
+    "evaluation_steps": 500,
+    "logging_steps": 100,
+    "precision": "bfloat16",
+    "attention_implementation": "sdpa",
+    "gradient_checkpointing": true,
+    "gpu_count": 1,
+    "wait_k": 3,
+    "prompt_detokenization": "nltk.tokenize.TreebankWordDetokenizer",
+    "training_budget_policy": "one_predeclared_epoch_from_finetune1_initialization",
+    "important_warning": "Targets are Qwen pseudo glosses with fixed Wait-k pseudo timing, not gold ASL annotations or gold sign timing."
+  },
+  "source_adapter_dir": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+  "world_size": 1,
+  "gpu_names": [
+    "NVIDIA GeForce RTX 4090 D"
+  ],
+  "train_action_count": 143387,
+  "validation_action_count": 12713,
+  "test_action_count_reserved": 0,
+  "effective_batch_size": 32,
+  "evaluation_batch_size_per_gpu": 4,
+  "updates_per_epoch": 4481,
+  "total_updates": 4481,
+  "train_tokenization": {
+    "example_count": 143387,
+    "truncated_example_count": 0,
+    "max_original_token_length": 410,
+    "max_target_token_length": 15
+  },
+  "validation_tokenization": {
+    "example_count": 12713,
+    "truncated_example_count": 0,
+    "max_original_token_length": 314,
+    "max_target_token_length": 11
+  },
+  "sha256": {
+    "config": "e32567a9d9ad1a8fcb7f67a1d01fdb6e30b772f0856d1926112bd142d1d4ea61",
+    "train": "7ee84ae5377692397b38cf2b1a46ac8d7415eb7a6716cd866d494ed6d5eb0e17",
+    "validation": "a33fd4d9f3a51573965c66e2503b5e18c39dbd4c97a08b15d9c425a3c449b54f",
+    "test": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.0"
+  }
+}

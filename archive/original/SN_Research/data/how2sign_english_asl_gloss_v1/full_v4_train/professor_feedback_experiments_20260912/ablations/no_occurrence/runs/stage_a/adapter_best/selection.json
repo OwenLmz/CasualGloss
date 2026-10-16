@@ -1,0 +1,12 @@
+{
+  "selected_by": "minimum_validation_pseudo_action_loss",
+  "global_step": 16715,
+  "epoch_fraction": 1.0,
+  "validation": {
+    "pseudo_action_loss": 0.098932,
+    "pseudo_action_token_accuracy_teacher_forced": 0.96626692,
+    "pseudo_action_sequence_exact_match_teacher_forced": 0.85292679,
+    "target_token_count": 28518,
+    "sequence_count": 6133
+  }
+}

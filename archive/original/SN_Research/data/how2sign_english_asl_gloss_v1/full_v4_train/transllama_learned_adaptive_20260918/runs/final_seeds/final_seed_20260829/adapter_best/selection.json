@@ -1,0 +1,24 @@
+{
+  "selected_by": "minimum_all_prefix_validation_target_only_loss",
+  "epoch": 3,
+  "global_step": 3555,
+  "validation": {
+    "target_only_loss": 0.57508922,
+    "target_token_accuracy_teacher_forced": 0.8514481,
+    "sequence_exact_match_teacher_forced": 0.25751605,
+    "wait_token_accuracy_teacher_forced": 0.55963832,
+    "content_token_accuracy_teacher_forced": 0.86950212,
+    "eos_token_accuracy_teacher_forced": 0.974,
+    "target_tokens": 86320,
+    "correct_tokens": 73497,
+    "sequences": 8881,
+    "exact_sequences": 2287,
+    "wait_tokens": 5198,
+    "correct_wait_tokens": 2909,
+    "eos_tokens": 500,
+    "correct_eos_tokens": 487,
+    "content_tokens": 80622,
+    "correct_content_tokens": 70101,
+    "truncated_sequences": 0
+  }
+}

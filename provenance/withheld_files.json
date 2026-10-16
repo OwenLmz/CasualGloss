@@ -1,0 +1,19 @@
+{
+  "scope": "original case documents preserved privately and excluded from the public source archive",
+  "file_count": 2,
+  "size_bytes": 13509,
+  "files": [
+    {
+      "archive_path": "archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/paper_experiments_20260903/cases/selected_v2_3_vs_v1_cases.md",
+      "sha256": "0b329a6a05d37d30024aefccfb1dcee1586d233d78dbdd18c20b770e41abee46",
+      "size_bytes": 4252,
+      "reason": "Contains actual dataset English sentences, references and predictions; withheld from public redistribution."
+    },
+    {
+      "archive_path": "archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_comparison_v1_v2_1_v2_2/cases/selected_case_studies.md",
+      "sha256": "defda700ec0c64a221d4303f13af9fdc2220e2456079896487ef35f894fc92d3",
+      "size_bytes": 9257,
+      "reason": "Contains actual dataset English sentences, references and predictions; withheld from public redistribution."
+    }
+  ]
+}

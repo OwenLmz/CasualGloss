@@ -1,0 +1,19 @@
+{
+  "experiment_name": "transllama_style_final_seed_20260905",
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "seed": 20260905,
+  "system_prompt": "You are a simultaneous English-to-pseudo-ASL-gloss translator. Given an English prefix, translate it accurately and concisely into uppercase pseudo-ASL gloss tokens without comments. Output glosses when the available source is sufficient; otherwise end with the null token @@.",
+  "max_length": 512,
+  "epochs": 3,
+  "micro_batch_size": 4,
+  "gradient_accumulation_steps": 4,
+  "validation_batch_size": 8,
+  "learning_rate": 6e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.03,
+  "max_grad_norm": 1.0,
+  "logging_steps": 25,
+  "attention_implementation": "sdpa",
+  "gradient_checkpointing": true
+}

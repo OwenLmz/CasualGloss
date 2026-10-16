@@ -1,0 +1,2 @@
+# Numerical result reaggregation; does not install neural inference dependencies.
+numpy>=1.26,<3

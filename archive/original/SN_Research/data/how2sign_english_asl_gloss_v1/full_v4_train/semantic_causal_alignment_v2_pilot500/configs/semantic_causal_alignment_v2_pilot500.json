@@ -1,0 +1,59 @@
+{
+  "experiment_name": "semantic_causal_alignment_v2_pilot500",
+  "dataset_version": "semantic_causal_alignment_v2_pilot500_v1",
+  "scientific_status": "model_derived_pseudo_timing_over_llm_pseudo_gloss_not_gold_asl",
+  "selection_seed": 20260803,
+  "pilot_parent_count": 500,
+  "shard_count": 2,
+  "source_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/train_pairs.jsonl",
+  "base_model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "base_model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "finetune1_adapter": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+  "system_prompt": "Translate the English sentence into the target pseudo ASL gloss style. Output uppercase gloss tokens only, with no explanation.",
+  "scoring_method": "teacher_forced_gloss_token_log_probability_by_source_prefix",
+  "condition_on_committed_gold_pseudo_gloss_prefix": true,
+  "include_empty_source_baseline": true,
+  "dtype": "bfloat16",
+  "attention_implementation": "sdpa",
+  "batch_size": 4,
+  "max_length": 512,
+  "wait_token": "<WAIT>",
+  "end_token": "<END>",
+  "primary_policy": "balanced",
+  "minimum_source_conditioning_gain_nats": 0.15,
+  "low_full_source_probability_threshold": 0.01,
+  "policies": {
+    "low_latency": {
+      "relative_logprob_margin_nats": 1.5,
+      "minimum_geometric_mean_probability": 0.005,
+      "stability_window_prefixes": 1,
+      "latency_weight": 0.55,
+      "semantic_gap_weight": 0.45,
+      "lexical_anchor_early_weight": 0.65,
+      "lexical_anchor_late_weight": 0.15
+    },
+    "balanced": {
+      "relative_logprob_margin_nats": 0.75,
+      "minimum_geometric_mean_probability": 0.01,
+      "stability_window_prefixes": 2,
+      "latency_weight": 0.35,
+      "semantic_gap_weight": 0.75,
+      "lexical_anchor_early_weight": 1.0,
+      "lexical_anchor_late_weight": 0.25
+    },
+    "high_confidence": {
+      "relative_logprob_margin_nats": 0.35,
+      "minimum_geometric_mean_probability": 0.02,
+      "stability_window_prefixes": 3,
+      "latency_weight": 0.15,
+      "semantic_gap_weight": 1.0,
+      "lexical_anchor_early_weight": 1.35,
+      "lexical_anchor_late_weight": 0.35
+    }
+  },
+  "important_limitations": [
+    "The target glosses are Qwen-generated weak pseudo ASL glosses, not gold ASL annotations.",
+    "The semantic timing signal is produced by the same Fine-tune 1 model family and is not independent linguistic ground truth.",
+    "The pilot evaluates alignment consistency and latency proxies; qualified ASL review is still required."
+  ]
+}
