@@ -1,0 +1,3 @@
+# Optional original BLEU post-processing in evaluation/analysis/.
+# Saved-prediction aggregate verification does not require SacreBLEU.
+sacrebleu

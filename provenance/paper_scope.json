@@ -1,0 +1,18 @@
+{
+  "previous_scope": "Broad research provenance archive",
+  "current_scope": "Final paper only, plus required implementation/data dependencies",
+  "source_files": 126,
+  "artifact_entries": 239,
+  "omitted_experiment_families": [
+    "5K model pilots",
+    "failed/nonfinite runs",
+    "9/12 abandoned learned baseline",
+    "local agreement",
+    "earlier v2.1 model experiments",
+    "unselected speech frontends",
+    "exploratory CLERC lexical comparison",
+    "new checkpoint rerun",
+    "unrelated pose/video extension"
+  ],
+  "preservation": "Original server files and local broad audit unchanged. Earlier Git commit remains recoverable; no force-push/history rewrite."
+}

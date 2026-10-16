@@ -1,0 +1,28 @@
+{
+  "paper_sha256": "5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a",
+  "scope": "numeric aggregate only; no source/reference/prediction text",
+  "causalgloss_seed_means": [
+    {
+      "seed": 20260829,
+      "token_f1": 0.7015860704000001,
+      "laal": 1.6653514253000001,
+      "parents": 500,
+      "input_sha256": "74854dd4e4c8a9c77cf4e737adb18091199dc3db24add65459bb55360e09cd48"
+    },
+    {
+      "seed": 20260904,
+      "token_f1": 0.71107455564,
+      "laal": 2.01680212902,
+      "parents": 500,
+      "input_sha256": "e6f059de32a01aa71f1ab2b2ee4701ed2807496bd0b116295ac2a4752a1e8ae8"
+    },
+    {
+      "seed": 20260905,
+      "token_f1": 0.70136939358,
+      "laal": 1.6647448897,
+      "parents": 500,
+      "input_sha256": "6af1538af6d7f4f3b38e4db48e8c0e6ff9c970ec74136824b1428d9bcb2a1d15"
+    }
+  ],
+  "provenance": "same per-example records independently rescored by final-paper verification; recorded metrics agree with recomputation"
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "Critical transforms in adapted orchestration files; ASTs matched original functions.",
+  "functions": [
+    {
+      "repository_path": "ablations/prepare_experiment_manifests.py",
+      "function": "variant_positions",
+      "ast_sha256": "be4bed7f5566c57553cc2753847268c8dbe9a788f24baabcec9a1806f85fb414"
+    },
+    {
+      "repository_path": "ablations/prepare_experiment_manifests.py",
+      "function": "action_rows",
+      "ast_sha256": "839be348e161301743888564624539a9cabaccb3212f7c1330856f5673502885"
+    },
+    {
+      "repository_path": "ablations/prepare_experiment_manifests.py",
+      "function": "balanced",
+      "ast_sha256": "449ee3c8d3b7790094556bdc0c752a8409a05f98ca8b547cf95acfdef4ff779b"
+    },
+    {
+      "repository_path": "ablations/prepare_experiment_manifests.py",
+      "function": "recovery_rows",
+      "ast_sha256": "0a2ab972664a6e58265ae7211435735f7a4f48a889647ab6d9d300bc9fa58313"
+    },
+    {
+      "repository_path": "ablations/prepare_experiment_manifests.py",
+      "function": "config",
+      "ast_sha256": "cc010ad5382c3b34d87a825fbfd486099506e3632a7d4e9f502f877fdbee4be2"
+    },
+    {
+      "repository_path": "data_preparation/recovery/prepare_v2_3_manifests.py",
+      "function": "stable_rank",
+      "ast_sha256": "c8ec5e47a6c55d4f9eec00159ef529258f253a5d66cf5c57eb6743d4e8d43776"
+    },
+    {
+      "repository_path": "data_preparation/recovery/prepare_v2_3_manifests.py",
+      "function": "build_recovery_rows",
+      "ast_sha256": "f2fd3b546a726c35aa0040dcec0a8fe143bddc197dbf4669a76f2e88aa954725"
+    },
+    {
+      "repository_path": "baselines/transllama/bootstrap_final_vs_causalgloss.py",
+      "function": "parent_bootstrap",
+      "ast_sha256": "a7cfb8800ac341470b663a89a6ffc3987c3f8ad8b6903a1ee14dd0afa52c5283"
+    },
+    {
+      "repository_path": "baselines/transllama/bootstrap_final_vs_causalgloss.py",
+      "function": "hierarchical_bootstrap",
+      "ast_sha256": "b80502754d49e8642d8f1c7007b4f12c7d1a1258abb9068a7630651c310673a3"
+    }
+  ]
+}

@@ -1,85 +1,153 @@
-# Reproduction: increasing levels of evidence
+# Reproducing the submitted paper
 
-Use a fresh output directory at every step. Never point new training/evaluation output at a selected historical run. Historical originals remain unchanged in `archive/original`; `scripts/paper.py` only dispatches to those implementations with explicit arguments and required first-party import paths.
+This repository targets the submitted PDF whose SHA-256 is
+`5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`.
+It is not a collection of every historical experiment. Source locations and
+original checksums are recorded in `provenance/source_manifest.json`.
 
-## 1. Source / numerical checks first
+## 1. Start without a GPU
+
+Run from the repository root:
 
 ```bash
 python scripts/check_release.py
-python -m unittest discover -s tests -p "test_*.py"
+python -m unittest discover -s tests -v
 python -m unittest discover -s tests/verification -v
-```
-
-Follow [VERIFICATION.md](VERIFICATION.md) to obtain the 91 explicitly registered verification inputs privately and independently rescore saved outputs. CPU + NumPy suffices. This reconstructs paper numbers without retraining, but is not proof that a new model run matches.
-
-## 2. Neural environment
-
-Historical selected text-policy metadata records torch `2.11.0+cu128`, transformers `4.57.6`, peft `0.18.0`, NLTK tokenization and SDPA attention. See `requirements/`. The original experiments used different GPUs; the audit server currently has four 24-GB RTX 4090 D devices. Do not label audit hardware as historical training hardware. CLERC shared comparison was run in FP16 on V100S; the generic text rollout entry uses BF16.
-
-Use the pinned backbone revision and the correct selected adapter/config. Check device capability, driver and memory before installation. The speech frontend, Qwen3-TTS and SeamlessStreaming use separate environments and external code. We have not certified a clean installation of every speech dependency.
-
-Inspect available commands without running an experiment:
-
-```bash
 python scripts/paper.py list
 python scripts/paper.py run --dry-run rollout -- --help
 ```
 
-With core dependencies installed, use `run rollout -- --help` for the archived evaluator's actual options. All arguments after `--` are passed unchanged. This dispatch does **not** remove hardcoded paths from arbitrary shell scripts or turn historical configs into portable universal defaults.
+These checks validate source integrity, syntax and dispatcher isolation. They
+do not run a language model and do not establish a training reproduction.
+`check_git_snapshot.py` additionally checks the *staged Git blobs* after files
+are staged; it is a maintainer check, not a required inference step.
 
-## 3. Small checkpoint check
+## 2. Data and checkpoints are separate from source code
+
+Obtain the exact recorded manifests and selected adapters according to
+`docs/DATA_AND_MODELS.md` and `provenance/artifact_manifest.json`. A remote
+path in an inventory does not mean its content has been uploaded to GitHub.
+Check licenses/access terms before redistributing source transcripts, CLERC
+records, audio, video or model weights. Keep raw data and checkpoints outside
+the tracked source tree.
+
+Do not regenerate splits opportunistically. The locked 500-parent test set,
+development/confirmation partition, source-video identities, reference
+normalization and checkpoint identities are part of the experiment.
+
+## 3. Read and run the real entrypoints
+
+`scripts/paper.py` forwards arguments unchanged and sets only task-specific
+first-party import paths. It does not rewrite a configuration, model prompt,
+data file, seed, decoding rule or selected checkpoint. Options before the entry
+name belong to the dispatcher; options after `--` belong to the selected file.
 
 ```bash
-python scripts/checkpoint_smoke.py \
-  --reference-rollouts /private/path/to/cg_s1.jsonl \
-  --config /path/to/original/seed20260829_config.json \
-  --adapter-dir /private/path/to/selected/adapter_final \
-  --output-dir /private/path/to/a_new_smoke_check \
-  --count 8 --device cuda:0
+python scripts/paper.py run rollout -- --help
+python scripts/paper.py run train-policy -- --help
+python scripts/paper.py run build-burst -- --help
+python scripts/paper.py run build-recovery -- --help
+python scripts/paper.py run train-learned -- --help
+python scripts/paper.py run eval-epee-action -- --help
+python scripts/paper.py run speech-cascade -- --help
 ```
 
-This uses the first eight saved parents in their original order, builds source/reference fixtures privately, calls the unmodified free-running evaluator, and compares generated tokens, WRITE positions and termination. Reference glosses are used by the original evaluation budget/metrics, **not** supplied as the model's committed history. Report hardware/batch differences even if all samples match. The small sample is fixed before evaluation and is not selected for favorable outputs.
+These underlying scripts import their ML dependencies even for `--help`.
+Use `--dry-run` to inspect a command without loading those dependencies.
 
-## 4. Full locked500 inference (explicit paths)
+Configure data/model paths for the machine where the job will run. Historical
+configuration paths identify provenance, not portable defaults. Record any
+path-only changes in a separate run configuration. Do not substitute model
+revisions or reference files silently.
 
-Below `F` is your private materialized full_v4_train artifact tree; `CODE` is the archived source tree. This is a Bash example, not a command to paste with unresolved paths.
+## 4. Main model: preserve the two-stage dependency
+
+The required model chain is:
+
+1. Upstream weak-gloss LoRA, trained on 27,079 paired examples.
+2. Stage A confidence/burst Treebank action training: 534,877 actions from
+   18,632 parents, initialized from the upstream LoRA.
+3. Stage B state-recovery training: 439,103 actions comprising 367,267 balanced
+   aligned actions and 71,836 recovery actions, initialized from the selected
+   Stage A adapter.
+
+The three final CausalGloss seeds are 20260829, 20260904 and 20260905. Their
+paper adapters are all `adapter_final`. In particular, the first seed's
+`adapter_best` was its unchanged initialization at step zero and is **not** the
+paper's selected model. Preserve selection metadata, not just a filename.
+
+Example of the *real argument interface*, with explicit external paths:
 
 ```bash
-F=/absolute/path/to/private_assets/data/how2sign_english_asl_gloss_v1/full_v4_train
-CODE=archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train
+python scripts/paper.py run --nproc 2 train-policy -- \
+  --config /work/configs/recovery_seed20260829.json \
+  --train-manifest /work/data/train_actions_full.jsonl \
+  --validation-manifest /work/data/development_actions.jsonl \
+  --test-manifest /work/data/confirmation_actions.jsonl \
+  --source-adapter-dir /work/checkpoints/stage_a/adapter_best \
+  --output-dir /work/runs/recovery_seed20260829
+
 python scripts/paper.py run rollout -- \
-  --config "$CODE/state_recovery_v2_3_full/configs/qwen2_5_7b_lora_state_recovery_v2_3_full.json" \
-  --parent-splits "$F/causal_alignment_v1_corrected_full/manifests/parent_splits_full.jsonl" \
-  --causal-pairs "$F/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl" \
-  --adapter-dir "$F/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/adapter_final" \
-  --output-dir /private/path/to/fresh_locked500_s1 \
-  --stage release_replication_s1 --split test --device cuda:0 \
-  --generation-batch-size 32
+  --config /work/configs/recovery_seed20260829.json \
+  --parent-splits /work/data/parent_splits_full.jsonl \
+  --causal-pairs /work/data/causal_aligned_pairs_full.jsonl \
+  --adapter-dir /work/checkpoints/recovery_seed20260829/adapter_final \
+  --output-dir /work/results/locked500/seed20260829 \
+  --stage causalgloss_seed20260829_locked500 \
+  --split test --device cuda:0 --generation-batch-size 32
 ```
 
-Use the other seeds' own configs/adapters. Keep the 500 test IDs and input hashes fixed, record library versions and compare complete trajectories, not merely rounded F1. A full text benchmark is not a speech-cascade replication.
+The two trainer invocations for Stage A and Stage B use the same implementation
+but different recorded configurations, action manifests and source adapters.
+Do not train Stage B directly from the upstream weak-gloss model.
 
-## 5. Training continuation and from-raw reconstruction
+## 5. Baselines, ablations and external references
 
-Training chain: weak-target generation → Fine-tune-1 → lexical/prefix-semantic alignment → confident/burst Treebank actions → stage-A policy (534,877 actions) → WAIT-balanced + recovery stage B (439,103 actions). The last stage starts from the selected stage-A adapter, **not** directly from the base Qwen checkpoint. WAIT-balanced supervision belongs to the recovery-stage construction, not the selected stage-A training input.
+- Fixed Wait-k uses schedule-specific training at k=1,3,5,7, not an
+  inference-only constraint on the CausalGloss model. The paper has one seed
+  for k=1,3 and three seeds for k=5,7. k=3 uses its recovered finite run.
+- The final learned adaptive baseline is the independently trained
+  **20260918 TransLLaMA-style SimAlign workflow**. It is not the earlier
+  professor-feedback learned-baseline attempt. Decode k=1,...,8 using each
+  selected final seed. `train-learned` is single-process; the dispatcher rejects
+  `--nproc 2` because the implementation does not implement DDP.
+- `ablations/` keeps its own trainer/common/evaluator. The dispatcher isolates
+  these same-named modules from `method/causalgloss/`. Do not combine their
+  `PYTHONPATH`s. The six Table 2 contrasts include recovery and the five
+  component removals, using the frozen diagnostic set.
+- CLERC Epee uses the pinned v0.3 revision, best-reference normalization and
+  the final FP16 evaluators in `evaluation/clerc/`. The completed-only analysis
+  is post-hoc and conditional on baseline completion, not a replacement for
+  the primary all-prompts comparison.
 
-```bash
-python scripts/paper.py run --dry-run --nproc 2 train-policy -- \
-  --config /path/to/seed_config.json \
-  --train-manifest /private/train_actions_full.jsonl \
-  --validation-manifest /private/development_actions.jsonl \
-  --test-manifest /private/confirmation_actions.jsonl \
-  --source-adapter-dir /private/selected_stage_a/adapter_best \
-  --output-dir /private/a_new_training_run
-```
+## 6. Speech cascade and complete corpus
 
-The `--test-manifest` name in the historical trainer here refers to reserved confirmation actions, not locked500 model selection. Preserve the original development-only selection and evaluate locked500 only after that selection. Before removing `--dry-run`, inspect the original full/screen gate scripts, training budget, GPU count and effective batch. Do not claim an arbitrary short smoke training reproduces the paper.
+`speech/frontend/` contains the recorded SeamlessStreaming-to-action cascade,
+not alternative unreported speech frontends. Reuse its recorded **320-ms input
+read increment** and synthetic locked500 audio. The paper's "1.2-s chunks"
+description is an unresolved reporting discrepancy, not a justified replacement
+parameter; see `docs/VERIFICATION.md`. Do not change 320 to 1200 merely to match
+that wording. Adaptive text release and an audio read increment are distinct.
+Report both raw and computation-aware latency; hardware and batching affect
+the latter. The shell wrapper requires explicit `TASK_ROOT`, `PYTHON_ENV`,
+`INPUT_TSV`, `OUTPUT_DIR` and `END_INDEX`, so it cannot silently use old pilot
+inputs or a one-item default.
 
-Fixed baselines require schedule-specific training manifests; learned baseline requires independent SimAlign alignments/LR screening and three final seeds. CLERC normalization, best-reference scoring and FP16 shared comparison must remain frozen. Speech replication needs translated/TTS manifests, correct reused waveforms, exact frontend commits, and serial computation timing. The artifact registry and [paper map](PAPER_TO_CODE.md) identify each branch.
+The speech lexical control is the historical `fine_tuning_v2_causal_full_seed2`
+adapter. It must not be conflated with other lexical controls. Evaluate all
+three selected CausalGloss seeds for the multi-seed speech summary.
 
-## Known portability boundaries
+`speech/corpus/` builds the full synthetic ChineseSpeech-ASLGloss-v1 corpus.
+The paper corpus is the **cleaned 19,924-item** version (18,924/500/500,
+36.54 hours), not the uncleaned 19,947-item intermediate version.
 
-- Original Bash launchers have absolute server paths/GPU selections. Kept for evidence, not advertised as one-click portable commands.
-- Original figure scripts may import an external Nature visual-QA helper. Numerical verification is independent of it; the helper is not vendored.
-- Historical SimulStreaming wrappers reference upstream third-party code. They are not the paper's SeamlessStreaming frontend by substitution.
-- Stochastic data generation or changed hardware may prevent byte-identical regeneration even with the same nominal seed. Frozen artifacts and honest comparison are required.
+## 7. What has actually been validated
+
+Read `docs/VERIFICATION.md` for the achieved verification level and known
+differences. Historical saved-prediction reaggregation, a checkpoint inference
+rerun and training from scratch are different claims. The release does not
+claim that full multi-seed training was rerun from scratch.
+
+Additional audit runs that are not results in the submitted paper are not
+bundled in this paper-only repository. A passed dispatcher/source check alone
+says nothing about scientific accuracy or from-scratch reproducibility.

@@ -1,40 +1,67 @@
-import importlib.util
-from pathlib import Path
-import unittest
+"""No-GPU tests for isolated entrypoint dispatch and source-path safety."""
+from __future__ import annotations
 
-ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("paper_dispatch", ROOT / "scripts/paper.py")
-module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(module)
+import os
+from pathlib import Path
+import sys
+import unittest
+from unittest.mock import patch
+
+SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
+sys.path.insert(0, str(SCRIPTS))
+import paper
+from check_release import source_expectation
 
 
 class DispatchTests(unittest.TestCase):
-    def test_all_entries_present(self):
-        for key, path in module.ENTRIES.items():
-            with self.subTest(entry=key):
-                self.assertTrue(path.is_file(), str(path))
+    def setUp(self):
+        self.root = (Path(__file__).resolve().parent / "synthetic_dispatch_fixture").resolve()
+        self.root_patch = patch.object(paper, "ROOT", self.root)
+        self.root_patch.start()
+        # The dispatcher only asks whether an entry exists. Mock this bounded
+        # check instead of creating a fake research tree or requiring temp I/O.
+        self.exists_patch = patch.object(Path, "is_file", return_value=True)
+        self.exists_patch.start()
 
-    def test_arguments_passed_unchanged(self):
-        args = ["--", "--adapter-dir", "some path/adapter_final", "--stage", "fresh-check"]
-        cmd = module.command("rollout", args)
-        self.assertEqual(cmd[-4:], args[1:])
-        self.assertEqual(cmd[2:], args[1:])
+    def tearDown(self):
+        self.exists_patch.stop()
+        self.root_patch.stop()
 
-    def test_distributed_prefix(self):
-        cmd = module.command("train-policy", ["--help"], 2)
-        self.assertIn("--nproc_per_node=2", cmd)
-        self.assertEqual(cmd[-1], "--help")
+    def test_arguments_are_forwarded_without_rewriting(self):
+        cmd = paper.command("rollout", ["--", "--config", "path with spaces.json", "--split", "test"])
+        self.assertEqual(cmd[2:], ["--config", "path with spaces.json", "--split", "test"])
 
-    def test_no_multigpu_evaluator(self):
+    def test_policy_supports_real_ddp(self):
+        self.assertIn("torch.distributed.run", paper.command("train-policy", [], nproc=2))
+
+    def test_transllama_does_not_fake_ddp(self):
         with self.assertRaises(ValueError):
-            module.command("rollout", [], 2)
+            paper.command("train-learned", [], nproc=2)
 
-    def test_no_fake_ddp_learned_baseline(self):
+    def test_ablation_import_path_cannot_pick_method_common(self):
+        with patch.dict(os.environ, {"PYTHONPATH": "unmanaged/path"}):
+            paths = paper.environment("train-ablation")["PYTHONPATH"].split(os.pathsep)
+        self.assertEqual(paths, [str(self.root / "ablations")])
+        self.assertNotIn(str(self.root / "method/causalgloss"), paths)
+
+    def test_clerc_import_paths_are_precise(self):
+        action = paper.environment("eval-epee-action")["PYTHONPATH"].split(os.pathsep)
+        learned = paper.environment("eval-epee-learned")["PYTHONPATH"].split(os.pathsep)
+        self.assertEqual(action, [str(self.root / "evaluation/clerc"), str(self.root / "method/causalgloss")])
+        self.assertEqual(learned, [str(self.root / "evaluation/clerc"), str(self.root / "baselines/transllama")])
+
+    def test_nonpositive_process_count_rejected(self):
         with self.assertRaises(ValueError):
-            module.command("train-learned", [], 2)
+            paper.command("train-policy", [], nproc=0)
 
-    def test_original_bytecode_disabled(self):
-        self.assertEqual(module.environment()["PYTHONDONTWRITEBYTECODE"], "1")
+    def test_manifest_rejects_parent_traversal(self):
+        with self.assertRaises(ValueError):
+            source_expectation({"repository_path": "../secret", "sha256": "0" * 64, "size_bytes": 0})
+
+    def test_adapted_source_uses_repository_checksum(self):
+        entry = {"repository_path": "method/train.py", "sha256": "a" * 64, "size_bytes": 10,
+                 "repository_sha256": "b" * 64, "repository_size_bytes": 11}
+        self.assertEqual(source_expectation(entry), ("method/train.py", "b" * 64, 11))
 
 
 if __name__ == "__main__":

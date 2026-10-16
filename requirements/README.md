@@ -1,5 +1,7 @@
 # Environments
 
-`analysis.txt` is for CPU result verification. `core-recorded.txt` documents the selected text-policy environment, but is not a fully solved cross-platform lockfile. Exact runtime freezes and per-run metadata are retained with the original sources. Install PyTorch separately for the actual hardware. Current audit hardware is not necessarily the original training hardware.
+`analysis.txt` is for CPU result verification. `core-recorded.txt` documents the selected text-policy environment, but is not a fully solved cross-platform lockfile. This minimal source tree does not bundle all historical environment freezes or run metadata. Install PyTorch separately for the actual hardware.
 
-Speech synthesis, SeamlessStreaming/fairseq2/SimulEval, and text-policy inference used separate environments. Do not merge their incompatible requirements into one environment. The archived speech environment freeze/config/patch files and pinned upstream revisions are the reference. A newly installed full speech environment has not been certified by this source release.
+`plots.txt` is for portable Fig.1 rendering. `metrics.txt` is optional for the original SacreBLEU post-processing script; it is not needed by the independent numerical verifier.
+
+Speech synthesis, SeamlessStreaming/fairseq2/SimulEval, and text-policy inference used separate environments. Do not merge incompatible requirements into one environment. Follow the final model identities and upstream speech runtimes; a newly installed complete speech environment has not been certified by this source release.

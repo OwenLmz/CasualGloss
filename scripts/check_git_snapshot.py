@@ -1,40 +1,49 @@
 #!/usr/bin/env python3
-"""Verify archived source hashes from the staged Git objects, not just disk."""
+"""Validate the staged Git blobs against the curated source manifest."""
 from __future__ import annotations
+
 import hashlib
 import json
 from pathlib import Path
 import subprocess
 
+from check_release import source_expectation
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main():
-    manifest = json.loads((ROOT / "provenance/source_manifest.json").read_text(encoding="utf-8"))
-    tracked = subprocess.run(["git", "ls-files", "--stage", "-z"], cwd=ROOT, check=True, capture_output=True).stdout
+def main() -> int:
+    manifest = json.loads((ROOT / "provenance/source_manifest.json").read_text(encoding="utf-8-sig"))
+    output = subprocess.run(["git", "ls-files", "--stage", "-z"], cwd=ROOT, check=True, capture_output=True).stdout
     by_path = {}
-    for item in tracked.split(b"\0"):
+    for item in output.split(b"\0"):
         if item:
-            meta, name = item.split(b"\t", 1)
-            by_path[name.decode("utf-8")] = meta.split()[1].decode("ascii")
-    entries = manifest["files"]
-    missing = [e["archive_path"] for e in entries if e["archive_path"] not in by_path]
+            metadata, name = item.split(b"\t", 1)
+            mode, sha, stage = metadata.split()
+            if stage != b"0":
+                raise ValueError("Git index contains unresolved merge stages")
+            by_path[name.decode("utf-8")] = sha.decode("ascii")
+    expected = [source_expectation(entry) for entry in manifest["files"]]
+    missing = [relative for relative, _, _ in expected if relative not in by_path]
     if missing:
-        raise ValueError(f"Original files missing from index: {missing}")
-    request = "".join(by_path[e["archive_path"]] + "\n" for e in entries).encode("ascii")
-    objects = subprocess.run(["git", "cat-file", "--batch"], cwd=ROOT, input=request, capture_output=True, check=True).stdout
+        print(json.dumps({"passed": False, "missing_from_index": missing}, indent=2))
+        return 1
+    requests = "".join(by_path[relative] + "\n" for relative, _, _ in expected).encode("ascii")
+    objects = subprocess.run(["git", "cat-file", "--batch"], cwd=ROOT, input=requests,
+                             capture_output=True, check=True).stdout
     cursor, failures = 0, []
-    for entry in entries:
+    for relative, digest, size in expected:
         end = objects.index(b"\n", cursor)
         header = objects[cursor:end].split()
         if len(header) != 3 or header[1] != b"blob":
             raise ValueError("Unexpected Git object response")
-        size = int(header[2])
-        data = objects[end+1:end+1+size]
-        cursor = end+1+size+1
-        if len(data) != entry["size_bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
-            failures.append(entry["archive_path"])
-    print(json.dumps({"git_index_originals_checked": len(entries), "byte_failures": failures, "passed": not failures}, indent=2))
+        length = int(header[2])
+        data = objects[end + 1:end + 1 + length]
+        cursor = end + length + 2
+        if length != size or hashlib.sha256(data).hexdigest() != digest:
+            failures.append(relative)
+    print(json.dumps({"git_index_sources_checked": len(expected), "byte_failures": failures,
+                      "passed": not failures}, indent=2))
     return int(bool(failures))
 
 

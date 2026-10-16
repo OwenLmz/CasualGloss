@@ -97,7 +97,8 @@ class Verifier:
         indexed = index(rows, n)
         self.inputs.append({"relative_path": ("locked500_from_local/" if locked else "") + str(relative).replace("\\", "/"),
                             "bytes": path.stat().st_size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
-                            "rows": len(rows), "unique_ids": len(indexed)})
+                            "rows": len(rows), "unique_ids": len(indexed),
+                            "input_kind": "reference_manifest" if path.name == "epee_sources_401.jsonl" else "rollout"})
         return indexed
 
     def compare(self, label, actual, expected, tolerance):
@@ -215,7 +216,7 @@ class Verifier:
                 "learned_frontier": {str(k): v for k,v in learned_sums.items()}, "learned_comparison_bootstrap": cis,
                 "raw_token_and_id_pairing": "passed for all 35 locked500 rollouts"}
 
-    def score_epee(self, raw, sources, label, historical=None):
+    def score_epee(self, raw, sources, label):
         self.pair_check(raw,sources)
         scored = {}
         for i,(key,r) in enumerate(raw.items()):
@@ -225,31 +226,20 @@ class Verifier:
                "laal":laal(r["write_source_positions"],len(src["source_tokens"]),src["median_content_reference_length"]),
                "completion":float(r["completed_after_full_source"])}
             self.compare(f"{label}:row{i}:laal",m["laal"],r["length_adaptive_average_lagging_source_tokens"],1e-7)
-            if historical is not None:
-                self.compare(f"{label}:row{i}:historical_f1",m["token_f1"],historical[key]["content_best_token_f1"],1e-12)
             scored[key]=m
         return scored
 
     def epee(self, expected):
         sources=self.load(FULL/"clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl",401)
-        historical_rows=read_jsonl(self.root/EPEE/"reports/full_analysis/per_source_scores.jsonl")
-        hp=self.root/EPEE/"reports/full_analysis/per_source_scores.jsonl"
-        self.inputs.append({"relative_path":str(EPEE/"reports/full_analysis/per_source_scores.jsonl").replace("\\","/"),"sha256":hashlib.sha256(hp.read_bytes()).hexdigest(),"bytes":hp.stat().st_size,"rows":len(historical_rows),"unique_prompt_ids":len({r["id"] for r in historical_rows})})
-        historical={}
-        for r in historical_rows:
-            group=(r["system"],str(r["seed"]),r["k"])
-            if r["id"] in historical.setdefault(group,{}): raise ValueError("Duplicate historical Epee score")
-            historical[group][r["id"]]=r
-        cg=[self.score_epee(self.load(EPEE/f"outputs/full/causalgloss_{s}/sentence_rollouts.jsonl",401),sources,f"epee_cg_{s}",historical[("causalgloss",str(s),None)]) for s in SEEDS]
-        learned={k:[self.score_epee(self.load(EPEE/f"outputs/full/transllama_{s}/k{k}/sentence_rollouts.jsonl",401),sources,f"epee_tl_{s}_{k}",historical[("transllama_style",str(s),k)]) for s in SEEDS] for k in range(1,9)}
-        lexical=self.score_epee(self.load(EPEE/"outputs/full/lexical_v1/sentence_rollouts.jsonl",401),sources,"epee_lexical")
+        cg=[self.score_epee(self.load(EPEE/f"outputs/full/causalgloss_{s}/sentence_rollouts.jsonl",401),sources,f"epee_cg_{s}") for s in SEEDS]
+        learned={k:[self.score_epee(self.load(EPEE/f"outputs/full/transllama_{s}/k{k}/sentence_rollouts.jsonl",401),sources,f"epee_tl_{s}_{k}") for s in SEEDS] for k in range(1,9)}
         fixed={}
         for k in (1,3,5,7):
             ss=(20260821,) if k in (1,3) else (20260821,20260904,20260905)
             fixed[k]=[self.score_epee(self.load(EPEE/f"fixed_waitk_extension_20260920/outputs/full/waitk{k}_seed{s}/sentence_rollouts.jsonl",401),sources,f"epee_fixed_{k}_{s}") for s in ss]
         def agg(rows):
             return aggregate([{metric: finite_mean(r[metric] for r in s.values()) for metric in ("token_f1","laal","completion")} for s in rows])
-        summaries={"causalgloss":agg(cg), "learned":{str(k):agg(v) for k,v in learned.items()}, "fixed":{str(k):agg(v) for k,v in fixed.items()}, "lexical_control":agg([lexical])}
+        summaries={"causalgloss":agg(cg), "learned":{str(k):agg(v) for k,v in learned.items()}, "fixed":{str(k):agg(v) for k,v in fixed.items()}}
         ee=expected["clerc"]
         self.compare("CLERC:causal_f1",summaries["causalgloss"]["token_f1"]["mean"],ee["causal_f1"],.000051)
         self.compare("CLERC:causal_laal",summaries["causalgloss"]["laal"]["mean"],ee["causal_laal"],.000051)
@@ -276,7 +266,6 @@ class Verifier:
         return {"systems":summaries,"confirmatory_k5_f1":all_f1,"confirmatory_k5_laal":all_laal,"completed_only":completed,"fixed_comparison_bootstrap":fixed_cis,
                 "reference_normalization":"remove QUESTION / trailing ?, strip _number variants, collapse exact periodic repetitions; best reference per prompt",
                 "reference_count":sum(len(s["references"]) for s in sources.values()),
-                "historical_per_source_f1_checks":27*401,
                 "unit":"401 English prompts; references remain nested, never treated as independent rows"}
 
     def ablations(self, expected):
@@ -330,6 +319,8 @@ class Verifier:
         ag=aggregate([sums[s] for s in ("s1","s2","s3")]); ee=expected["speech"]
         for field,metric,kind,tol in (("mean_f1","token_f1","mean",.000051),("sample_sd_f1","token_f1","sample_sd",.000051),("mean_raw_laal","laal","mean",.00051),("sample_sd_raw_laal","laal","sample_sd",.00051),("completion","completion","mean",.000051)):
             self.compare("speech:"+field,ag[metric][kind],ee[field],tol)
+        self.compare("speech:lexical_rtf",sums["lexical"]["rtf"],ee["lexical_rtf"],.00051)
+        self.compare("speech:three_seed_rtf",ag["rtf"]["mean"],ee["causal_mean_rtf"],.00051)
         differences={m:self.bootstrap([self.paired_differences(scored["s1"],scored["lexical"],m)],20260904+j,hierarchical=False,repetitions=10000) for j,m in enumerate(("token_f1","laal","compute_laal"))}
         for m,f in (("laal","s1_raw_latency_delta"),("compute_laal","s1_compute_latency_delta")):
             self.compare("speech:"+f,differences[m]["mean_difference"],ee[f],.00051)
@@ -379,6 +370,7 @@ def main():
     expected=json.loads(a.expected.read_text(encoding="utf-8"))
     v=Verifier(a.input_root,a.locked_root or a.input_root/"locked500_from_local",a.bootstrap_repetitions)
     report={"generated_utc":datetime.now(timezone.utc).isoformat(),"paper_sha256":expected["paper_sha256"],
+            "scope":"final submitted paper only; no exploratory CLERC lexical control or new checkpoint rerun",
             "verification_level":"saved per-example outputs independently rescored; no inference or training rerun",
             "locked500":v.locked500(expected),"clerc":v.epee(expected),"ablations":v.ablations(expected),"speech":v.speech(expected)}
     ci_targets={
@@ -402,10 +394,19 @@ def main():
             record=remote_by_path.get(r["relative_path"],{})
             if record.get("remote_sha256")!=r["sha256"]:
                 v.discrepancies.append({"check":"remote_input_sha256","relative_path":r["relative_path"],"matches":False})
-        report["remote_sha256_verification"]={"fetched_file_count":len(remote["files"]),"all_fetched_files_match_remote":all(r.get("remote_hash_matches",False) for r in remote["files"])}
+        used_records=[remote_by_path.get(r["relative_path"],{}) for r in v.inputs]
+        report["remote_sha256_verification"]={"paper_input_file_count":len(used_records),
+            "all_paper_input_files_match_remote":all(r.get("remote_hash_matches",False) for r in used_records),
+            "scope":"only the explicit final-paper inputs; unrelated files in the private cache are not used"}
     else:
         report["remote_sha256_verification"]={"status":"not_available; metric recomputation does not establish remote byte identity"}
-    report.update({"input_files":v.inputs,"discrepancies":v.discrepancies,"all_numeric_checks_pass":not v.discrepancies,
+    rollout_inputs=[r for r in v.inputs if r["input_kind"]=="rollout"]
+    contract={"direct_input_files":len(v.inputs),"rollout_files":len(rollout_inputs),
+              "rollout_records":sum(r["rows"] for r in rollout_inputs),
+              "reference_manifests":sum(r["input_kind"]=="reference_manifest" for r in v.inputs)}
+    for field,value in expected["input_contract"].items():
+        v.compare("paper_input_contract:"+field,contract[field],value,0)
+    report.update({"input_contract":contract,"input_files":v.inputs,"discrepancies":v.discrepancies,"all_numeric_checks_pass":not v.discrepancies,
                    "not_performed":["full model retraining","full model re-inference","independent expert ASL validation","raw audio duration remeasurement"]})
     a.output_dir.mkdir(parents=True)
     (a.output_dir/"verification_report.json").write_text(json.dumps(report,indent=2,allow_nan=False)+"\n",encoding="utf-8")

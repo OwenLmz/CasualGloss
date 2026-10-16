@@ -1,31 +1,21 @@
-# Paper → experiment → code
+# 最终论文 → 代码
 
-Below, `F` denotes `archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train`; `S` denotes its sibling `chinese_speech_frontend_v0`. Exact individual file hashes are in `provenance/source_manifest.json`.
+依据提交 PDF SHA-256 `5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`。逐文件来源、章节和修改范围见 `provenance/source_manifest.json`。
 
-| Paper component | Original directory / entry | Required evidence |
-|---|---|---|
-| Pseudo-gloss construction | `F/scripts`, `fine_tuning_v1` | Source CSV identity, deduplication, weak-target outputs, split manifests, frozen upstream adapter |
-| Lexical timing | `F/causal_alignment_v1_corrected_full/scripts` | Parent/source-video splits, alignment pairs; frozen held-out IDs |
-| Prefix semantics | `F/semantic_causal_alignment_v2_pilot500`, `v2_1_pilot500`, `v2_1_full` | Prefix likelihood matrices and thresholds; these earlier helpers remain dependencies |
-| Confidence / burst WRITE | `F/semantic_causal_alignment_v2_2_full/scripts` | Config, validated action transitions, Treebank detokenization |
-| Stage-A policy | `F/fine_tuning_v2_semantic_v2_2_full/scripts` | 534,877 Treebank action examples, selected stage-A adapter; WAIT balancing is used in the later recovery-stage construction |
-| Recovery / CausalGloss | `F/state_recovery_v2_3_full` and two `multiseed` directories | Three selection reports and **adapter_final**, seeds 20260829/20260904/20260905 |
-| Fixed Wait-k frontier | `F/wait_k_baselines_v1`, `wait_k_baselines_multiseed_20260914` | Trained k=1,3,5,7; recovered finite k=3; k=5,7 have three seeds |
-| Final learned baseline | `F/transllama_learned_adaptive_20260918` | Independent SimAlign trajectories, LR screening, three final seeds, k=1…8 rollouts |
-| Table 1 / Fig. 1 | Final locked500 rollouts + archived workspace analysis code | Same frozen 500 parents; seed means/SD, BLEU and paired/hierarchical bootstrap |
-| Table 2 | `F/professor_feedback_experiments_20260912`, recovery and guard controls | Confirmation/diagnostic 250, five two-stage retrained ablations plus recovery ablation/control |
-| Human-gloss transfer | `F/clerc_epee_external_eval_v1`, `clerc_epee_adaptive_comparison_20260920` | Pinned Epee revision, 401 sources/1,200 references, final shared FP16 protocol |
-| Completed-only F1 | Same directory, `posthoc_completed_only_epee_sensitivity_20260921.py` | Post-hoc subset based on baseline completion; not a replacement for full-401 analysis |
-| Synthetic speech cascade | `S/scripts`, `S/paper_e2e_locked500_20260904` | Same 500 inputs, shared frontend commits, lexical control and three CausalGloss runs |
-| 19,924-utterance corpus | `S/chinese_speech_to_pseudo_asl_corpus_v1_20260905` | **cleaned** corpus, 23 excluded training audio cases, 18,924/500/500 split |
+| 论文位置 | 对应实现 |
+|---|---|
+| §3.1 WAIT/WRITE/END、源前缀和自身历史 | `method/causalgloss/evaluate_free_running_rollout.py` |
+| §3.2 词法 anchors / occurrence matching | `data_preparation/lexical_alignment/`、`data_preparation/semantic_alignment/finalize_semantic_alignment_v2_1.py` |
+| §3.2 prefix semantic evidence、confidence / rescue / negation / burst | `data_preparation/semantic_alignment/score_prefix_semantics.py`、`build_confident_burst_alignment_v2_2.py` |
+| §3.3 WAIT balancing 与 recovery histories | `data_preparation/recovery/` |
+| §4 上游 weak-gloss 模型 | `data_preparation/pseudo_gloss/`、`training/upstream_gloss/` |
+| §4 主模型训练与选择 | `method/causalgloss/`、`configs/method/` |
+| §4 固定 k=1,3,5,7 | `baselines/fixed_waitk/`、`configs/fixed_waitk/`，训练复用主 trainer |
+| §4 最终 TransLLaMA-style / LR选择 / k=1…8 | `baselines/transllama/`、`configs/transllama/` |
+| §5.1 Table 1 / Fig.1 | `scripts/verification/`、`figures/`、`evaluation/analysis/evaluate_locked500_bleu.py` |
+| §5.2 CLERC / completed-only | `evaluation/clerc/`、`scripts/verification/` |
+| §5.2 语音链 / lexical-only 对照 | `speech/frontend/`、`baselines/lexical_control/` |
+| §4、Abstract 完整中文语料 | `speech/corpus/`、`configs/speech/` |
+| §5.3 Table 2 | `ablations/`、`configs/ablations/`；no-recovery / guard-only 复用主模型 evaluator 和 Stage A checkpoint |
 
-## Version traps
-
-- The final learned baseline is **not** the older `professor_feedback_experiments_20260912/learned_baseline`, nor the old inference-only wait-k adaptation.
-- Main CausalGloss seed S1's `adapter_best` has global step 0. The selected `adapter_final` is a different file.
-- Fixed k=3 uses the recovered finite run; the early nonfinite run is not a valid baseline.
-- CLERC lexical control and speech lexical control use different recorded adapters. Do not substitute one for the other.
-- Locked500 is not the same as filtered teacher-forced action rows, nor the 250-parent diagnostic set.
-- The raw Chinese corpus has 19,947 entries; the paper's cleaned corpus has 19,924. Neither count is the v2.3 training-parent count of 18,632.
-
-The three original model seeds, different fixed-baseline seeds, hardware, data hashes, and checkpoint identities must travel together. A convenient directory name is not evidence of selection.
+不在论文中的旧 learned-baseline、local-agreement、5K 模型试验和其他 speech frontends 不在当前代码树。必要预处理函数虽有旧版名称，保留理由是实际数据依赖，不是保留旧模型实验。

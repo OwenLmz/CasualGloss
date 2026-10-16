@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""Check original source bytes, syntax and release hygiene without importing ML."""
+"""Verify paper-only source provenance, syntax, and bounded release hygiene."""
 from __future__ import annotations
 
 import ast
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
-import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SECRET_PATTERNS = [
@@ -19,57 +18,88 @@ SECRET_PATTERNS = [
 ]
 
 
+def source_expectation(entry: dict) -> tuple[str, str, int]:
+    relative = entry["repository_path"]
+    posix = PurePosixPath(relative)
+    if posix.is_absolute() or ".." in posix.parts or "\\" in relative or ":" in relative:
+        raise ValueError("repository_path must be a safe repository-relative POSIX path")
+    return (
+        relative,
+        entry.get("repository_sha256", entry["sha256"]),
+        entry.get("repository_size_bytes", entry["size_bytes"]),
+    )
+
+
+def sensitive_text_keys(value):
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key in {"source_text_en", "target_pseudo_asl_gloss", "predicted_pseudo_asl_gloss", "text_en"} and isinstance(item, (str, list)):
+                yield key
+            yield from sensitive_text_keys(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from sensitive_text_keys(item)
+
+
 def main() -> int:
-    failures: list[str] = []
-    record = json.loads((ROOT / "provenance/source_manifest.json").read_text(encoding="utf-8"))
+    failures = []
+    manifest_path = ROOT / "provenance/source_manifest.json"
+    try:
+        record = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as exc:
+        print(json.dumps({"passed": False, "failures": [f"source manifest: {type(exc).__name__}"]}))
+        return 1
+    seen = set()
     for entry in record["files"]:
-        rel = entry["archive_path"]
-        path = ROOT / rel
+        try:
+            relative, digest, size = source_expectation(entry)
+        except (KeyError, ValueError) as exc:
+            failures.append(f"invalid source manifest entry: {type(exc).__name__}")
+            continue
+        if relative in seen:
+            failures.append(f"duplicate source destination: {relative}")
+        seen.add(relative)
+        path = ROOT / relative
         if not path.is_file():
-            failures.append(f"missing original: {rel}")
+            failures.append(f"missing source: {relative}")
             continue
         data = path.read_bytes()
-        if len(data) != entry["size_bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
-            failures.append(f"original bytes changed: {rel}")
-    parsed = 0
-    scanned = 0
+        if len(data) != size or hashlib.sha256(data).hexdigest() != digest:
+            failures.append(f"source integrity mismatch: {relative}")
+        if digest != entry["sha256"] and not entry.get("modifications"):
+            failures.append(f"adapted source lacks modification record: {relative}")
+    parsed = scanned = 0
     for path in sorted(ROOT.rglob("*")):
-        if not path.is_file() or ".git" in path.parts or "__pycache__" in path.parts:
+        if not path.is_file() or {".git", "__pycache__"} & set(path.parts):
             continue
-        rel = path.relative_to(ROOT).as_posix()
+        relative = path.relative_to(ROOT).as_posix()
         if path.suffix.lower() in {".safetensors", ".wav", ".mp4", ".pem", ".key", ".jsonl", ".parquet"} or path.name.startswith(".env"):
-            failures.append(f"forbidden release asset: {rel}")
+            failures.append(f"data/credential asset requires separate review: {relative}")
         if path.stat().st_size > 20_000_000:
-            failures.append(f"large file requires external-artifact review: {rel}")
+            failures.append(f"large asset requires separate review: {relative}")
         data = path.read_bytes()
         scanned += 1
         if any(pattern.search(data) for pattern in SECRET_PATTERNS):
-            # Never print credential contents.
-            failures.append(f"credential-like pattern, inspect privately: {rel}")
+            failures.append(f"credential-like pattern; inspect privately: {relative}")
         if path.suffix == ".json":
             try:
                 obj = json.loads(data.decode("utf-8-sig"))
-                def text_keys(value):
-                    if isinstance(value, dict):
-                        for key, item in value.items():
-                            if key in {"source_text_en", "target_pseudo_asl_gloss", "predicted_pseudo_asl_gloss", "text_en"} and isinstance(item, (str, list)):
-                                yield key
-                            yield from text_keys(item)
-                    elif isinstance(value, list):
-                        for item in value:
-                            yield from text_keys(item)
-                keys = sorted(set(text_keys(obj)))
+                keys = sorted(set(sensitive_text_keys(obj)))
                 if keys:
-                    failures.append(f"source-text keys require private-data review: {rel}: {','.join(keys)}")
-            except (UnicodeError, json.JSONDecodeError):
-                failures.append(f"invalid JSON: {rel}")
+                    failures.append(f"sample-text keys require review: {relative}: {','.join(keys)}")
+            except (UnicodeError, ValueError):
+                failures.append(f"invalid JSON: {relative}")
         if path.suffix == ".py":
             try:
-                ast.parse(data.decode("utf-8-sig"), filename=rel)
+                ast.parse(data.decode("utf-8-sig"), filename=relative)
                 parsed += 1
-            except (SyntaxError, UnicodeError) as exc:
-                failures.append(f"Python syntax: {rel}: {type(exc).__name__}")
-    print(json.dumps({"original_count": len(record["files"]), "python_ast_count": parsed,
+            except (SyntaxError, UnicodeError):
+                failures.append(f"Python syntax failure: {relative}")
+    from paper import ENTRIES
+    missing_entries = [name for name, entry in ENTRIES.items() if not (ROOT / entry.path).is_file()]
+    if missing_entries:
+        failures.append("missing dispatcher entries: " + ", ".join(missing_entries))
+    print(json.dumps({"source_count": len(record["files"]), "python_ast_count": parsed,
                       "scanned_files": scanned, "failures": failures, "passed": not failures}, indent=2))
     return int(bool(failures))
 

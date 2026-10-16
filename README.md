@@ -1,51 +1,55 @@
-# CausalGloss — paper code and reproducibility archive
+# CausalGloss — final-paper code
 
 **CausalGloss: Multi-Evidence Action Control for a Simultaneous Mandarin Speech-to-ASL Gloss Cascade**
-Mingze Li and Satoshi Nakamura · ICASSP 2027 submission
 
-The GitHub repository name is **CasualGloss**; the method and paper name are **CausalGloss**. This archive concerns the submitted gloss-generation research only. It does **not** include the later G2P-DDM / gloss-to-pose / video extension, and does not claim conference acceptance.
+Mingze Li · Satoshi Nakamura · ICASSP 2027 submission
 
-## Start here
+本仓库只保留最终提交论文的方法、必要的数据处理、正式基线、消融和评测，**不是全部实验历史归档**。仓库名 `CasualGloss` 沿用原名，方法名为 `CausalGloss`；不包含后续 gloss→pose/video 扩展。
 
-- Learning the implementation: [中文学习路线](docs/LEARNING_GUIDE_ZH.md)
-- Finding the code behind each paper claim: [paper-to-code map](docs/PAPER_TO_CODE.md)
-- Running code without changing the archived algorithms: [reproduction guide](docs/REPRODUCTION.md)
-- Finding datasets, frozen splits, model adapters, and access conditions: [data and model guide](docs/DATA_AND_MODELS.md)
-- What was actually checked, and what remains unverified: [verification report](docs/VERIFICATION.md), [release status](docs/RELEASE_STATUS.md)
+## 代码直接从这里看
 
-## Repository organization
+| 模块 | 位置 | 论文对应 |
+|---|---|---|
+| **主方法：数据加载、训练、自由推理** | [method/causalgloss](method/causalgloss) | §3、§4 |
+| 上游 weak-gloss 模型训练 | [training/upstream_gloss](training/upstream_gloss) | §4 |
+| 弱标签、词法/语义对齐、recovery 数据 | [data_preparation](data_preparation) | §3.2–3.3、§4 |
+| 固定 Wait-k、最终 TransLLaMA-style、语音 lexical control | [baselines](baselines) | §4、§5.1–5.2 |
+| 五个组件消融 | [ablations](ablations) | §5.3、Table 2 |
+| CLERC 与论文统计复核 | [evaluation/clerc](evaluation/clerc)、[scripts/verification](scripts/verification) | §5、Tables 1–2 |
+| 最终语音链与完整合成语料构建 | [speech](speech) | §4、§5.2 |
+| 最终实验配置、图 1、已复核数值 | [configs](configs)、[figures](figures)、[results](results) | Fig. 1、Tables 1–2 |
 
-```text
-archive/original/SN_Research/    Original server scripts/configs/protocols; original hierarchy
-archive/original/workspace/      Original local analysis/plot/corpus-building code
-scripts/                        New navigation, dispatch and verification utilities
-provenance/                     Byte-level source identities and external-artifact inventories
-results/                        Recomputed aggregate results; no source transcripts or media
-docs/                           Scientific, learning and reproduction documentation
-tests/                          Checks on the release tooling and numeric verification
-requirements/                   Separate analysis/core/speech environment guidance
-```
+**建议第一遍只看三个文件：**
 
-The historical directory names are preserved deliberately: a recovery launcher imports the preceding policy trainer, and later data builders reuse earlier semantic-scoring helpers. Flattening these directories would lose dependencies and experiment identity. New wrappers are separate from the byte-identical originals.
+1. [evaluate_free_running_rollout.py](method/causalgloss/evaluate_free_running_rollout.py)：怎样 WAIT、WRITE、END。
+2. [causal_action_common.py](method/causalgloss/causal_action_common.py)：训练样本和 batch。
+3. [train_qwen_lora_causal_ddp.py](method/causalgloss/train_qwen_lora_causal_ddp.py)：模型、loss、训练和保存。
 
-## Lightweight checks
+进一步阅读：[中文学习路线](docs/LEARNING_GUIDE_ZH.md) · [论文—代码映射](docs/PAPER_TO_CODE.md) · [运行说明](docs/REPRODUCTION.md) · [保留/剔除标准](docs/SCOPE.md)。
 
-Python 3.10+ is recommended. Source inspection itself requires only the standard library:
+## 最轻量的检查
 
 ```bash
 python scripts/paper.py list
 python scripts/check_release.py
-python -m unittest discover -s tests -p "test_*.py"
+python -m unittest discover -s tests -v
 ```
 
-Do not run historical shell launchers blindly: they contain original absolute paths, device selections and expensive training commands. Use [the reproduction guide](docs/REPRODUCTION.md) and explicit input/output paths instead. Training or neural inference additionally needs the pinned model, selected adapters, lawful data access, and a compatible GPU environment. This is not a claim that cloning the source alone reproduces the paper.
+数值复核需 NumPy；训练/推理需相应 ML 依赖、冻结数据和正确 checkpoint：
 
-## Scientific boundaries
+```bash
+python -m unittest discover -s tests/verification -v
+python scripts/paper.py run --dry-run rollout -- --help
+```
 
-The How2Sign-derived targets are **weak, model-generated pseudo-glosses**, not expert ASL gold labels. CLERC Epee provides a separate human-gloss evaluation. Automatic overlap/latency improvements do not establish expert ASL comprehension or non-manual correctness. The synthetic-speech cascade still over-generates; this negative result is preserved. See [results and limitations](docs/RESULTS_AND_LIMITATIONS.md).
+本版从 82 份论文对应 rollout、35,535 条记录独立复算论文数值及相关 bootstrap，详见[验证说明](docs/VERIFICATION.md)。这不等于从头重新训练。
 
-The authoritative submitted PDF is identified by SHA-256 in [the paper anchor](provenance/paper_anchor.json). The PDF itself is not redistributed here. No submitted manuscript was edited during this release preparation.
+## 数据、模型和边界
 
-## Access and licensing
+大型数据、音视频、Qwen 基座和 LoRA 权重不直接存入 Git。[数据与模型说明](docs/DATA_AND_MODELS.md)和[资产索引](provenance/artifact_manifest.json)记录最终论文需要的资产及获取/核验方式；路径索引不等于已上传文件。
 
-Code, underlying datasets, generated assets, and model weights are distinct assets with distinct rights. See [THIRD_PARTY.md](THIRD_PARTY.md). Large manifests, audio/video, model backbones and LoRA binaries are not embedded in Git. Their locations and identities are recorded where verified; a manifest entry is not a public download URL. No new blanket open-source license has been chosen on the authors' behalf.
+弱 pseudo-gloss 不是专家 ASL 金标准；语音过度生成仍未解决；没有声称视频生成或专家可理解性验证。数据、模型和作者代码许可分开处理，见 [THIRD_PARTY.md](THIRD_PARTY.md)。
+
+整理时发现的既有报告差异（语音块描述、native no-recovery 完成率范围）已明确记录在[验证说明](docs/VERIFICATION.md)，未通过改动参数或结果来掩盖。
+
+原始服务器代码、模型、数据及提交 PDF 未修改。必要路径适配和删除未报告输出分支均记录在 [source_manifest.json](provenance/source_manifest.json)，保留原始和当前校验和。旧实验已经从当前代码树移出，但之前 Git 提交仍可恢复；没有改写提交历史。

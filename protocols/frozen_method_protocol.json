@@ -1,0 +1,10 @@
+{
+  "frozen_before_training": true,
+  "seed": 20260829,
+  "checkpoint_selection": "eligible checkpoint with highest development token F1; tie-break by sequence similarity then lower LAAL",
+  "no_tuning_sets": [
+    "v2_3_confirmation_250",
+    "locked_500",
+    "CLERC_Epee_401"
+  ]
+}

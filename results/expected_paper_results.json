@@ -1,6 +1,7 @@
 {
   "paper_sha256": "5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a",
   "source": "Submitted PDF, 20260923032900_403947_8500 (1).pdf; rounded display values, not raw floating-point targets",
+  "input_contract": {"direct_input_files": 83, "rollout_files": 82, "rollout_records": 35535, "reference_manifests": 1},
   "table1": {
     "fixed_k7": {"token_f1": [0.6457, 0.0010], "sequence_similarity": [0.6383, 0.0008], "bleu4": [33.90, 0.19], "laal": [4.3099, 0.0528]},
     "transllama_k5": {"token_f1": [0.7067, 0.0056], "sequence_similarity": [0.6955, 0.0051], "bleu4": [28.35, 0.33], "laal": [3.9061, 0.0458]},
@@ -9,7 +10,7 @@
   "clerc": {"causal_f1": 0.6490, "causal_laal": 1.5388, "causal_minus_learned_k5_f1": 0.1001, "learned_k5_completion": 0.870, "fixed_k7_f1_delta": 0.0404},
   "completed_only": {"causal_f1": 0.6196, "learned_f1": 0.5839, "delta": 0.0357, "ci95": [0.021, 0.051], "n_by_seed": [349, 344, 353]},
   "table2": {"full_f1": 0.7131, "full_laal": 1.5146, "no_semantic": [0.008, -0.960], "no_rescue": [0.062, -0.326], "no_negation": [0.072, -0.267], "no_occurrence": [0.073, -0.252], "no_burst": [0.003, -1.624], "no_recovery": [0.075, -0.306], "guard_only_f1_delta": 0.038},
-  "speech": {"mean_f1": 0.3944, "sample_sd_f1": 0.0003, "mean_raw_laal": 2.415, "sample_sd_raw_laal": 0.042, "completion": 0.998, "s1_raw_latency_delta": -0.152, "s1_compute_latency_delta": -0.123},
+  "speech": {"mean_f1": 0.3944, "sample_sd_f1": 0.0003, "mean_raw_laal": 2.415, "sample_sd_raw_laal": 0.042, "completion": 0.998, "s1_raw_latency_delta": -0.152, "s1_compute_latency_delta": -0.123, "lexical_rtf": 0.388, "causal_mean_rtf": 0.380},
   "confidence_intervals": {
     "locked_fixed_k7_f1": [0.039, 0.079], "locked_fixed_k7_laal": [-2.830, -2.197],
     "locked_learned_k5_f1": [-0.0139, 0.0102], "locked_learned_k5_laal": [-2.3010, -1.9237],
