@@ -170,8 +170,12 @@ class TrainingPlanTests(unittest.TestCase):
         self.assertIn("ablation_no_burst_stage_a",str(fresh))
 
     def test_default_dry_run_cannot_start_training_or_write(self):
-        argv = ["run_training_plan.py","--id","upstream_finetune1","--data-root","D:/private/bundle",
-                "--models-root","D:/private/models","--output-root","D:/new/training"]
+        # Absolute paths on BOTH Windows and POSIX. Literal "D:/..." is a
+        # source-relative child on Linux and must correctly fail the guard.
+        # These paths need not exist: dry-run must not materialize anything.
+        outside = Path(ROOT.anchor) / "causalgloss_readonly_dry_run_test"
+        argv = ["run_training_plan.py","--id","upstream_finetune1","--data-root",str(outside/"bundle"),
+                "--models-root",str(outside/"models"),"--output-root",str(outside/"training")]
         with (mock.patch.object(sys,"argv",argv), mock.patch.object(training.subprocess,"run") as execute,
               mock.patch.object(Path,"mkdir") as mkdir, contextlib.redirect_stdout(io.StringIO()) as output):
             self.assertEqual(0,training.main())
