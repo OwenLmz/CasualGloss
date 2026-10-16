@@ -1,0 +1,18 @@
+{
+  "qwen_v4_full_request_022590": {
+    "translation": "一张A算一分，它需要一张Q，而Q算十二分。",
+    "reason": "The translation model returned an English paraphrase instead of Mandarin."
+  },
+  "qwen_v4_full_request_028135": {
+    "translation": "要么是太阳穴姿势，要么是代表胜利的V字姿势。",
+    "reason": "The translation model returned an English paraphrase instead of Mandarin."
+  },
+  "qwen_v4_full_request_003499": {
+    "translation": "一、二、三、四、五、六、七。",
+    "reason": "A numeric-only valid translation was conservatively flagged for containing no CJK ideograph."
+  },
+  "qwen_v4_full_request_023468": {
+    "translation": "七、八。",
+    "reason": "A numeric-only valid translation was conservatively flagged for containing no CJK ideograph."
+  }
+}

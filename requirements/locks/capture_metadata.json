@@ -1,0 +1,43 @@
+{
+  "environments": [
+    {
+      "environment": "policy",
+      "python": "/123090274/SN_Research/venvs/wlasl-cu128-env/bin/python",
+      "python_version": "Python 3.10.12",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "environment": "tts",
+      "python": "/123090274/SN_Research/envs/task5-qwen3-tts-cu128/bin/python",
+      "python_version": "Python 3.10.12",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "environment": "seamless",
+      "python": "/123090274/SN_Research/envs/task5-seamlessstreaming-cu121/bin/python",
+      "python_version": "Python 3.10.12",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ],
+  "mbert_cache": [
+    {
+      "cache_root": "/123090274/SN_Research/huggingface_cache/hub/models--bert-base-multilingual-cased",
+      "refs_main": "3f076fdb1ab68d5b2880cb87a0886f315b8146f8",
+      "snapshots": [
+        {
+          "revision": "3f076fdb1ab68d5b2880cb87a0886f315b8146f8",
+          "config_exists": true,
+          "weight_files": [
+            "model.safetensors"
+          ]
+        }
+      ],
+      "revision_status": "CURRENT_RESOLVED_CACHE_SNAPSHOT_NOT_A_PROVEN_HISTORICAL_PIN"
+    }
+  ],
+  "captured_utc": "2026-10-16T13:06:16.738037+00:00",
+  "meaning": "Read-only recording of currently installed environments; not a tested clean install and not necessarily the exact historical run stack."
+}

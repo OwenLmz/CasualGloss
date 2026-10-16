@@ -46,6 +46,76 @@
       "repository_path": "baselines/transllama/bootstrap_final_vs_causalgloss.py",
       "function": "hierarchical_bootstrap",
       "ast_sha256": "3694b603247b5400674acbed1d7a356762426fb57ddf8ebd4935c55a2346bd91"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "parse_named_path",
+      "ast_sha256": "57a348ac96416947a677da00a575847fee2fa0571c07385905b92ff809649360"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "collapse_exact_period",
+      "ast_sha256": "a2f05c493169532f90ae155828c7928d6aaed10dc699faec28bb1d79eb7d360c"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "normalize_prediction",
+      "ast_sha256": "d1c124af00ebb8270a5602b286db6e9a8dedbbba2e0d74cc85eb6ebe1ceb8cdd"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "token_overlap",
+      "ast_sha256": "27cdcf8d2111376b54364bd5d2e95db9905005994536fbc41b9277c9f3393a73"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "edit_distance",
+      "ast_sha256": "ac53f44d2f59d832f18cb9c7f7fc8be7fc5046874f6b67f4ea44f7c930d6e195"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "score_references",
+      "ast_sha256": "910abd4e30ec1d5c21774389f66cffc814d6590f4e0946f2568c8643bafbc7e1"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "load_exact_rollout",
+      "ast_sha256": "0680764e95f62541a939fd706b97620928b3298b54883a622190030db097af71"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "score_rollout",
+      "ast_sha256": "73312e58a9121300ed78d0122ee64a2d55e44db42ebf9f0b84f638d43d569b74"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "percentile_interval",
+      "ast_sha256": "f19a1bdfa35709820dfbc9bc7b843534916ead103be11db2e5d3053167a73900"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "hierarchical_bootstrap",
+      "ast_sha256": "9ca5ae41f29233eae65451ad078be3baacefbb54caca55a011a28b5c8b9f78c2"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "paired_source_bootstrap",
+      "ast_sha256": "ea93ee98029645cfe226aeae463987961fa6a1863aa9bd1e41b4989290e7c243"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "summarize_seeded",
+      "ast_sha256": "e4a8b438750f7fb35c516691df596a518d260bdd29cf40962bf7b4dc54b63dc6"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "summarize_single",
+      "ast_sha256": "a23b0d95e9789b2e4ae72513d60577f92a3c10db3ba5f8eae235ac2488da751a"
+    },
+    {
+      "repository_path": "evaluation/clerc/compare_epee_adaptive.py",
+      "function": "paired_seed_differences",
+      "ast_sha256": "ca95b1a2dc544c576e3eba3dfe55834cb405fac2b5a6b149a64dc2dc9bff50e9"
     }
   ]
 }

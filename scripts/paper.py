@@ -73,7 +73,9 @@ def command(entry: str, forwarded: list[str], nproc: int = 1) -> list[str]:
     if forwarded and forwarded[0] == "--":
         forwarded = forwarded[1:]
     prefix = [sys.executable]
-    if nproc > 1:
+    # These historical trainers initialize a process group unconditionally,
+    # including one-GPU runs. torchrun supplies their rank environment.
+    if spec.distributed:
         prefix += ["-m", "torch.distributed.run", "--standalone", f"--nproc_per_node={nproc}"]
     return prefix + [str(path)] + forwarded
 

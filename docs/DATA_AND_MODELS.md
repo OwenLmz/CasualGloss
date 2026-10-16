@@ -1,6 +1,6 @@
 # Final-paper data and models
 
-`provenance/artifact_manifest.json` contains **239** final-paper assets and necessary production inputs, including **27** selected LoRA groups. It excludes unreported comparator weights, general training histories and unrelated pilot data. It is an access/integrity index, **not** an upload of the artifacts or permission to redistribute them.
+`provenance/artifact_manifest.json` contains **242** final-paper assets and necessary production inputs, including **27** selected LoRA groups. It excludes unreported comparator weights, general training histories and unrelated pilot data. Three restored corpus inputs are the raw audio-QC report, the four actual translation repairs and their application report. An index is **not** the payload or permission to redistribute it.
 
 - Main CausalGloss seeds: 20260829/20260904/20260905, all selected `adapter_final`.
 - Backbone: `Qwen/Qwen2.5-7B-Instruct`, revision `a09a35458c702b33eeacc393d103063234e8bc28`.
@@ -27,6 +27,28 @@ Frozen targets, splits, alignments and prefix scores are reproducibility inputs.
 
 ## Access
 
+The private repository's `paper-reproduction-20261016` Release holds frozen author-experiment data, selected adapters and required synthetic audio in checksummed archive parts. `provenance/release_assets.json` identifies the real parts and the checksum of an external per-file manifest; only those files may be installed. Ordinary `git clone` downloads source and the catalog, not the large assets. Repository read access is required for the Release as well.
+
+```bash
+python scripts/reproduction/release_assets.py list
+python scripts/reproduction/release_assets.py install \
+  --destination /private/paper_assets --accept-data-terms
+python scripts/reproduction/release_assets.py verify --destination /private/paper_assets
+```
+
+For a predownloaded attachment folder add `--asset-dir /private/release_downloads`. Optional `--groups data,adapters` skips audio for text-policy experiments, but does not install the full corpus. Full installation uses all three groups. Existing matching files can be verified/resumed; mismatching files and link/path escapes are rejected, never overwritten.
+
+The installed root corresponds to the old `SN_Research` root, not its `data/` child. Original JSONL bytes, including historical path strings, remain unchanged. Pass the new root to the matrix/QC runners; do not rewrite transcripts, glosses or timestamps to change machines. The 500 locked utterances reuse another audio directory, which the complete archive includes.
+
+Official base models are separate dependencies in `provenance/pretrained_models.json`. To acquire/verify the main policy model without floating revisions:
+
+```bash
+python scripts/reproduction/download_policy_model.py \
+  --models-root /private/hf_home --accept-upstream-terms
+```
+
+This uses the official [Hugging Face snapshot download API](https://huggingface.co/docs/huggingface_hub/en/guides/download) and checks all model shards. Upstream access and conditions remain separate from access to this private experiment bundle.
+
 Official sources: [How2Sign](https://how2sign.github.io/), [CLERC Epee](https://huggingface.co/datasets/CLERC-DATA/epee). Review upstream licenses separately from the author's code license; see [THIRD_PARTY.md](../THIRD_PARTY.md).
 
 For assets already on the authorized research server:
@@ -38,4 +60,4 @@ python scripts/artifacts.py list --category corpus_manifests
 
 Inspect the list first, then use the bounded `fetch` mode with your own SSH connection and a private destination outside the repository. The utility never displays key contents or overwrites a mismatching existing file. Raw verification inputs have a separate explicit 83-file allowlist in `scripts/verification/fetch_verification_inputs.py`.
 
-Paths and available hashes are recorded per asset; null SHA values explicitly mean not content-hashed in the inventory. Audio directories are counted, not per-waveform verified. Corpus test audio reuses the locked500 assets, so copying one corpus directory is not necessarily a standalone waveform backup. No public artifact download URL or completed independent full backup is claimed.
+All registered non-directory assets now have measured SHA-256. The private attachment file manifest additionally covers each included waveform. Archive integrity does not prove acoustic correctness: original waveform QC, metadata cleaning, inference and retraining have separate validation statuses. The private Release is not a public data release and grants no new public redistribution license.

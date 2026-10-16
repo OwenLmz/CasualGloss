@@ -1,0 +1,19 @@
+{
+  "status": "VALIDATION_IN_PROGRESS_NOT_A_COMPLETION_CLAIM",
+  "scope": "Final submitted paper only; original PDF, splits, labels, caps, checkpoints and historical results unchanged",
+  "saved_prediction_reaggregation": {
+    "status": "passed_on_2026_10_16",
+    "input_files": 83,
+    "rollout_records": 35535,
+    "checked_numeric_discrepancies": 0,
+    "does_not_establish_fresh_inference_or_training": true
+  },
+  "private_frozen_asset_release": {"status": "being_packaged_not_yet_validated_from_GitHub"},
+  "clean_clone_linux_unit_tests": {"status": "pending"},
+  "original_waveform_qc_and_finalizer": {"status": "pending"},
+  "selected_checkpoint_suite": {"status": "pending", "planned_rollouts": 82},
+  "full_audio_frontend_regeneration": {"status": "not_performed"},
+  "full_from_scratch_training": {"status": "not_performed", "recorded_training_runs": 30},
+  "clean_environment_installation": {"status": "not_performed; existing environment versions recorded"},
+  "reporting_limits": "Read docs/VERIFICATION.md before interpreting any passed status."
+}

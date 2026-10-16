@@ -1,0 +1,44 @@
+{
+  "scope": "Official pretrained dependencies, acquired separately from the private author experiment bundles",
+  "models": [
+    {
+      "role": "policy_and_base_weak_target_generator",
+      "repository": "Qwen/Qwen2.5-7B-Instruct",
+      "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "source": "Final training and evaluation configurations",
+      "verification": "Check all four shards named by model.safetensors.index.json and the matching tokenizer/config; never load an adapter with an unpinned default base revision."
+    },
+    {
+      "role": "mandarin_source_translation",
+      "repository": "Qwen/Qwen3-4B-Instruct-2507",
+      "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source": "Recorded final full-corpus and locked500 source translation configurations"
+    },
+    {
+      "role": "synthetic_mandarin_audio",
+      "repository": "Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+      "revision": "85e237c12c027371202489a0ec509ded67b5e4b5",
+      "code_repository": "https://github.com/QwenLM/Qwen3-TTS",
+      "code_revision": "022e286b98fbec7e1e916cb940cdf532cd9f488e"
+    },
+    {
+      "role": "selected_incremental_speech_frontend",
+      "repository": "facebook/seamless-streaming",
+      "revision": "82746da73c2927b962e53ad2f723babf1ae0e0b5",
+      "code_repository": "https://github.com/facebookresearch/seamless_communication",
+      "code_revision": "90e2b57ac4d82fa2bfaa25caeffe39ceb8b2ebec",
+      "source_segment_size_ms": 320,
+      "notes": "Use the selected fairseq2 model card/cache and tokenizer; this is not the abandoned Whisper/AlignAtt frontend."
+    },
+    {
+      "role": "simalign_alignment_backend",
+      "repository": "google-bert/bert-base-multilingual-cased",
+      "resolved_cache_name": "bert-base-multilingual-cased",
+      "current_observed_revision": "3f076fdb1ab68d5b2880cb87a0886f315b8146f8",
+      "revision_status": "Current read-only cache observation, NOT a proven historical experiment pin",
+      "notes": "The frozen alignment outputs in the private data release are authoritative for the submitted experiment; regenerating alignment with another backend is a new run."
+    }
+  ],
+  "not_a_new_licence": true,
+  "download_policy": "Use each official repository and pinned revision; do not automatically redistribute base-model caches in the author-data release."
+}

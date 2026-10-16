@@ -34,6 +34,20 @@ class DispatchTests(unittest.TestCase):
     def test_policy_supports_real_ddp(self):
         self.assertIn("torch.distributed.run", paper.command("train-policy", [], nproc=2))
 
+    def test_distributed_trainers_use_torchrun_for_one_gpu(self):
+        for entry, spec in paper.ENTRIES.items():
+            if spec.distributed:
+                with self.subTest(entry=entry):
+                    cmd = paper.command(entry, ["--", "--config", "unchanged.json"])
+                    self.assertEqual(cmd[:5], [sys.executable, "-m", "torch.distributed.run", "--standalone", "--nproc_per_node=1"])
+                    self.assertEqual(cmd[5:], [str(self.root / spec.path), "--config", "unchanged.json"])
+
+    def test_non_distributed_entries_remain_direct(self):
+        for entry, spec in paper.ENTRIES.items():
+            if not spec.distributed:
+                with self.subTest(entry=entry):
+                    self.assertEqual(paper.command(entry, []), [sys.executable, str(self.root / spec.path)])
+
     def test_transllama_does_not_fake_ddp(self):
         with self.assertRaises(ValueError):
             paper.command("train-learned", [], nproc=2)

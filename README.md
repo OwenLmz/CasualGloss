@@ -42,14 +42,14 @@ python -m unittest discover -s tests/verification -v
 python scripts/paper.py run --dry-run rollout -- --help
 ```
 
-本版从 82 份论文对应 rollout、35,535 条记录独立复算论文数值及相关 bootstrap，详见[验证说明](docs/VERIFICATION.md)。这不等于从头重新训练。
+本版从 82 份论文对应 rollout、35,535 条记录独立复算论文数值及相关 bootstrap，详见[验证说明](docs/VERIFICATION.md)。这不等于从头重新训练。82 项已选权重推理和 30 项训练计划分别记录在 `configs/reproduction/`，实际执行状态以最终验证报告为准。
 
 ## 数据、模型和边界
 
-大型数据、音视频、Qwen 基座和 LoRA 权重不直接存入 Git。[数据与模型说明](docs/DATA_AND_MODELS.md)和[资产索引](provenance/artifact_manifest.json)记录最终论文需要的资产及获取/核验方式；路径索引不等于已上传文件。
+冻结数据、逐样本结果、选定 LoRA 和必要合成音频放在同一私有仓库的 [Releases](https://github.com/OwenLmz/CasualGloss/releases)，不塞入 Git 历史。`provenance/release_assets.json` 记录每个实际附件的 SHA/大小；安装器逐文件校验并保留原数据。官方 Qwen 等基座按固定版本另行获取。见[数据与模型说明](docs/DATA_AND_MODELS.md)及[运行说明](docs/REPRODUCTION.md)。未有附件清单或未通过下载校验时，不应认为“数据已经包含”。
 
 弱 pseudo-gloss 不是专家 ASL 金标准；语音过度生成仍未解决；没有声称视频生成或专家可理解性验证。数据、模型和作者代码许可分开处理，见 [THIRD_PARTY.md](THIRD_PARTY.md)。
 
-整理时发现的既有报告差异（语音块描述、native no-recovery 完成率范围）已明确记录在[验证说明](docs/VERIFICATION.md)，未通过改动参数或结果来掩盖。
+数据血缘和既有报告边界已明确记录在[验证说明](docs/VERIFICATION.md)：上游已见 locked500 样本、弱目标实际生成器、参考长度参与预算、语音块描述及 native no-recovery 完成率范围。没有修改原目标、划分、预算或结果来掩盖这些事实。
 
 原始服务器代码、模型、数据及提交 PDF 未修改。必要路径适配和删除未报告输出分支均记录在 [source_manifest.json](provenance/source_manifest.json)，保留原始和当前校验和。旧实验已经从当前代码树移出，但之前 Git 提交仍可恢复；没有改写提交历史。

@@ -1,0 +1,2147 @@
+{
+  "schema_version": 1,
+  "scope": "Thirty final-paper training invocations and necessary validation-only model selection. No abandoned experiment runs.",
+  "data_root_semantics": "Root corresponding to /123090274/SN_Research",
+  "source_evidence_commit": "95f41d6bb75a216c672c3fb362715209e063a808",
+  "execution_default": "dry_run_only; training requires explicit --execute",
+  "runs": [
+    {
+      "id": "upstream_finetune1",
+      "family": "upstream",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/upstream_gloss/qwen2_5_7b_lora_full_v1.json",
+      "config_sha256": "9822c8eb41c866962edbf85827c40d01366883156db2226705ba99ab95b6d5d8",
+      "script": "training/upstream_gloss/train_qwen_lora_full_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 4,
+      "seed": 20260720,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 1,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 16,
+        "learning_rate": 0.0001,
+        "evaluation_steps": 200,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/manifests/train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/manifests/validation.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/manifests/test.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "4dfe16dfd3e1c9b02692c423a25df30ab0140995c1f37d12bfdf4b647c221bdc",
+        "validation_manifest": "c8314584ada6b906c8caec68bb54666a33c51949a22ee01ca8aa2d1385fc30e7",
+        "test_manifest": "b62e988be7688c5b9447cdd0f55c81f6c08962e242a8e4109a5ae6dca92a9222"
+      },
+      "initialization": {
+        "archived_adapter_relative": null,
+        "new_training_dependency": null,
+        "new_dependency_checkpoint": null,
+        "base_only": true
+      },
+      "dependencies": [],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_label_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/scripts/run_full_finetuning_4gpu.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_count": 27079,
+        "epochs": 1,
+        "global_update_steps": 1693,
+        "best_checkpoint": {
+          "global_step": 1693,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_label_loss": 0.25073041,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "causalgloss_stage_a",
+      "family": "policy",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/method/qwen2_5_7b_lora_semantic_causal_v2_2_1_full.json",
+      "config_sha256": "58adbbd4f2964d98b328eca85fcfcfff38f3f16f5a7e979859ab0d43c992bbbf",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260817,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/semantic_causal_alignment_v2_2_full/manifests_treebank_v2_2_1/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/semantic_causal_alignment_v2_2_full/manifests_treebank_v2_2_1/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/semantic_causal_alignment_v2_2_full/manifests_treebank_v2_2_1/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "49a2a0fe2d4c17f5b16a8dde4933c180dc511516e9719da16f65c0c06ec9ad45",
+        "validation_manifest": "05ff0e50f0a615896d776a9292ddbee993fb88fe348a5255b335ccf0a0868f0e",
+        "test_manifest": "9423854994bd02484facd9c82e93d0b3dc540d3478a244ef255711eb89adb40a"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/scripts/run_finetune2_semantic_v2_2_1_full.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 534877,
+        "validation_action_count": 12256,
+        "epochs": 1,
+        "global_update_steps": 16715,
+        "best_checkpoint": {
+          "global_step": 16715,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_action_loss": 0.08513548,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "causalgloss_stage_b_20260829",
+      "family": "policy",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_full.json",
+      "config_sha256": "6eeea65397d3047e23392dab8e88065912f333afa15a814eb9333dc45888c33f",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 2,
+      "seed": 20260829,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 2,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/train_actions_full.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "28202e81ec2409d3e173e6e04f5b11f0afe3f4e32d23153557d0af585fc1868b",
+        "validation_manifest": "efa5d4eea242fe6357077de15e06fb1bc6d2469eb3c68d8334692b245fe213dc",
+        "test_manifest": "608c03f487e3d3fa0ffe1837e87284f735ab1f0a3c11792a6bf45459dc863fe8"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full/adapter_best",
+        "new_training_dependency": "causalgloss_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "causalgloss_stage_a"
+      ],
+      "selection": {
+        "kind": "development_best_vs_final",
+        "rule": "Frozen development eligibility; maximize F1, then sequence similarity, then lower LAAL, among best/final. Never use confirmation/locked/CLERC.",
+        "historical_selected_checkpoint": "adapter_final",
+        "inputs": {
+          "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/development_pairs.jsonl",
+          "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+        },
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439103,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 6000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.0854243,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "causalgloss_stage_b_20260904",
+      "family": "policy",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904.json",
+      "config_sha256": "6d7d8ddbbf0c9715acc3469abc51e30bcba59199029cddeadaff26a06aff6d5f",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 2,
+      "seed": 20260904,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 2,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/train_actions_full.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "28202e81ec2409d3e173e6e04f5b11f0afe3f4e32d23153557d0af585fc1868b",
+        "validation_manifest": "efa5d4eea242fe6357077de15e06fb1bc6d2469eb3c68d8334692b245fe213dc",
+        "test_manifest": "608c03f487e3d3fa0ffe1837e87284f735ab1f0a3c11792a6bf45459dc863fe8"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full/adapter_best",
+        "new_training_dependency": "causalgloss_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "causalgloss_stage_a"
+      ],
+      "selection": {
+        "kind": "development_best_vs_final",
+        "rule": "Frozen development eligibility; maximize F1, then sequence similarity, then lower LAAL, among best/final. Never use confirmation/locked/CLERC.",
+        "historical_selected_checkpoint": "adapter_final",
+        "inputs": {
+          "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/development_pairs.jsonl",
+          "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+        },
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/scripts/run_v2_3_seed20260904.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439103,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 6000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.0854243,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "causalgloss_stage_b_20260905",
+      "family": "policy",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905.json",
+      "config_sha256": "9aa8115500c49dcd97521be37ba884e1568f54cd1c1d9cd2b69f25e89e1d669b",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 2,
+      "seed": 20260905,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 2,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/train_actions_full.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "28202e81ec2409d3e173e6e04f5b11f0afe3f4e32d23153557d0af585fc1868b",
+        "validation_manifest": "efa5d4eea242fe6357077de15e06fb1bc6d2469eb3c68d8334692b245fe213dc",
+        "test_manifest": "608c03f487e3d3fa0ffe1837e87284f735ab1f0a3c11792a6bf45459dc863fe8"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full/adapter_best",
+        "new_training_dependency": "causalgloss_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "causalgloss_stage_a"
+      ],
+      "selection": {
+        "kind": "development_best_vs_final",
+        "rule": "Frozen development eligibility; maximize F1, then sequence similarity, then lower LAAL, among best/final. Never use confirmation/locked/CLERC.",
+        "historical_selected_checkpoint": "adapter_final",
+        "inputs": {
+          "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/development_pairs.jsonl",
+          "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+        },
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/scripts/run_v2_3_seed20260905_full_eval.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439103,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 6000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.0852782,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k1_seed20260821",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k1_full.json",
+      "config_sha256": "b3a85cd47b952626572e10639ea13541b37d61a614a528eb6674aa47e270f29e",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260821,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 16,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k1/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k1/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k1/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "0f4fd8dc941bf5790afff20f8b8915eac20e001801df1cb4094dc77558d37f20",
+        "validation_manifest": "e5d043f22122cf08a708f6b92e6ba3b42640dac3914edbc80e351b911d2dd852",
+        "test_manifest": "37a3e640e561f9813a09f25f06e1dd3d81215645197b4de439d55cfaea14f206"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k1_full_v1",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k_full_one.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k1_full_v1/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 17000,
+          "epoch_fraction": 0.98897942,
+          "validation_pseudo_action_loss": 0.39470222,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k1_full_v1/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k3_seed20260821",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k3_full_recovery_a6000_2gpu.json",
+      "config_sha256": "cdf299865ede8d1a1bb1cc179c13a619e9738088eaa9beaaad78d23f41dd4c42",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 2,
+      "seed": 20260821,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 8,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k3/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k3/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k3/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "eabb8fb92e32aadca12e9d84be9d423d981debf3b11037da2ae59d29f95e9520",
+        "validation_manifest": "a33fd4d9f3a51573965c66e2503b5e18c39dbd4c97a08b15d9c425a3c449b54f",
+        "test_manifest": "827fa41b73f23bda9494b6aa094472591ad39ef5abe97fa3dbeb58efd74b95f2"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k3_full_v1_recovery_a6000_2gpu",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k3_full_recovery_a6000_2gpu.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k3_full_v1_recovery_a6000_2gpu/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 17000,
+          "epoch_fraction": 0.98897583,
+          "validation_pseudo_action_loss": 0.31234448,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k3_full_v1_recovery_a6000_2gpu/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k5_seed20260821",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full.json",
+      "config_sha256": "df24a26e5c828a55ef98ce780fdc37d674068977dd2f8dc48c321fa07ccd94f4",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260821,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 16,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "3a2c54157057fd537d02bcbd6acaf547d830448f6d3381b3808295361a8a8ef8",
+        "validation_manifest": "28d82e514dc1a8e8a85ad5ff31d790ef4f2cb362bcccbe875cafb6f17bde4437",
+        "test_manifest": "44d56f6722f4b020c8e3af91d989aa1d1bb68ae612b5125cb3c2574c7697b293"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k5_full_v1",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k_full_one.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k5_full_v1/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 17190,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_action_loss": 0.24180621,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k5_full_v1/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k5_seed20260904",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full_seed20260904.json",
+      "config_sha256": "f2c76a52cfb1eae6bdb1f80d2b3e82606d1830065e48ef9ee11d960a6118675f",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260904,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 16,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "3a2c54157057fd537d02bcbd6acaf547d830448f6d3381b3808295361a8a8ef8",
+        "validation_manifest": "28d82e514dc1a8e8a85ad5ff31d790ef4f2cb362bcccbe875cafb6f17bde4437",
+        "test_manifest": "44d56f6722f4b020c8e3af91d989aa1d1bb68ae612b5125cb3c2574c7697b293"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260904",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260904/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 16000,
+          "epoch_fraction": 0.93080416,
+          "validation_pseudo_action_loss": 0.24115331,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260904/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k5_seed20260905",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full_seed20260905.json",
+      "config_sha256": "5c007ab853b70f321b5bdcfa05f2609f9837b102de469ceb1374bc4ea1c6b0c1",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260905,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 16,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k5/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "3a2c54157057fd537d02bcbd6acaf547d830448f6d3381b3808295361a8a8ef8",
+        "validation_manifest": "28d82e514dc1a8e8a85ad5ff31d790ef4f2cb362bcccbe875cafb6f17bde4437",
+        "test_manifest": "44d56f6722f4b020c8e3af91d989aa1d1bb68ae612b5125cb3c2574c7697b293"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260905",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260905/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 17000,
+          "epoch_fraction": 0.98897942,
+          "validation_pseudo_action_loss": 0.24196876,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260905/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k7_seed20260821",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full.json",
+      "config_sha256": "0dc6c756c716d6863883e2a10e3ac0d05c74738b1bd9ac4358ea7c493115bcfc",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260821,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 16,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "107f23486a6191ddba9f9dc1b7ad63aa30b40754971a94ec7fe75a8aeb0f2c90",
+        "validation_manifest": "33ca70e41629e2efa509548e8a490b1b5b377c255fdee78a34930d06292172e3",
+        "test_manifest": "523d8d52f2e8cce8c738b0985339bc62d23a3e92015b9805a200d2005101d3d9"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k7_full_v1",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k_full_one.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k7_full_v1/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 17000,
+          "epoch_fraction": 0.98897942,
+          "validation_pseudo_action_loss": 0.19478735,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k7_full_v1/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k7_seed20260904",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full_seed20260904.json",
+      "config_sha256": "99fd4dac97d2357f8ca0cdd32168f991fe70d548f8fb56609efe4d57da8b1f14",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260904,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 16,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "107f23486a6191ddba9f9dc1b7ad63aa30b40754971a94ec7fe75a8aeb0f2c90",
+        "validation_manifest": "33ca70e41629e2efa509548e8a490b1b5b377c255fdee78a34930d06292172e3",
+        "test_manifest": "523d8d52f2e8cce8c738b0985339bc62d23a3e92015b9805a200d2005101d3d9"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260904",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260904/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 17000,
+          "epoch_fraction": 0.98897942,
+          "validation_pseudo_action_loss": 0.19317856,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260904/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "fixed_k7_seed20260905",
+      "family": "fixed_waitk",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full_seed20260905.json",
+      "config_sha256": "16cad76f8ebcd31752a9c743fb86bce80eb156963bf68388fca80f9a74cf79d8",
+      "script": "method/causalgloss/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260905,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 16,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/manifests/k7/full/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "107f23486a6191ddba9f9dc1b7ad63aa30b40754971a94ec7fe75a8aeb0f2c90",
+        "validation_manifest": "33ca70e41629e2efa509548e8a490b1b5b377c255fdee78a34930d06292172e3",
+        "test_manifest": "523d8d52f2e8cce8c738b0985339bc62d23a3e92015b9805a200d2005101d3d9"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260905",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260905/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 550061,
+        "validation_action_count": 12713,
+        "epochs": 1,
+        "global_update_steps": 17190,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 0,
+          "minimum_delta": 0.0,
+          "minimum_updates": 0
+        },
+        "best_checkpoint": {
+          "global_step": 17000,
+          "epoch_fraction": 0.98897942,
+          "validation_pseudo_action_loss": 0.19646612,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260905/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "transllama_screen_lr_1e-5",
+      "family": "transllama",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/transllama/screen_lr_1e-5.json",
+      "config_sha256": "7f073d79a8363d3aa4ddf11a2ff9cf82e10832ecdb06bf95550a7bfa61077d7e",
+      "script": "baselines/transllama/train_transllama.py",
+      "launcher": "python",
+      "world_size": 1,
+      "seed": 20260918,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 3,
+        "micro_batch_per_device": 4,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 16,
+        "learning_rate": 1e-05,
+        "evaluation_steps": null,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/train.aligned.jsonl",
+        "validation_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/validation.aligned.jsonl"
+      },
+      "input_sha256": {
+        "train_alignments": "8334dc3f21f507a63cc41249c11468ca49930a761a7ce45aecdef6fa478ecfda",
+        "validation_alignments": "ebbe7c4c09ad0f38ad545da93e3ee2bb1d4f62ffd3adaa090cf1c13b619bdb7f"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "learned_lr_screen",
+        "rule": "Minimum all-prefix target-only validation loss; evaluate fixed validation k1..8 sanity gate for learning-rate selection.",
+        "historical_selected_checkpoint": "adapter_best",
+        "validation_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/validation_pairs.jsonl",
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_1e-5",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_lr_screen.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_1e-5/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "global_update_steps": 3555,
+        "best_checkpoint": {
+          "epoch": 3,
+          "global_step": 3555,
+          "validation_target_only_loss": 0.62765701,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_1e-5/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "transllama_screen_lr_3e-5",
+      "family": "transllama",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/transllama/screen_lr_3e-5.json",
+      "config_sha256": "6332de3f6bca8d2e7712d04c5ab8879acfdc927dda89c02bc6ea07afe569dd8c",
+      "script": "baselines/transllama/train_transllama.py",
+      "launcher": "python",
+      "world_size": 1,
+      "seed": 20260918,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 3,
+        "micro_batch_per_device": 4,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 16,
+        "learning_rate": 3e-05,
+        "evaluation_steps": null,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/train.aligned.jsonl",
+        "validation_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/validation.aligned.jsonl"
+      },
+      "input_sha256": {
+        "train_alignments": "8334dc3f21f507a63cc41249c11468ca49930a761a7ce45aecdef6fa478ecfda",
+        "validation_alignments": "ebbe7c4c09ad0f38ad545da93e3ee2bb1d4f62ffd3adaa090cf1c13b619bdb7f"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "learned_lr_screen",
+        "rule": "Minimum all-prefix target-only validation loss; evaluate fixed validation k1..8 sanity gate for learning-rate selection.",
+        "historical_selected_checkpoint": "adapter_best",
+        "validation_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/validation_pairs.jsonl",
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_3e-5",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_lr_screen.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_3e-5/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "global_update_steps": 3555,
+        "best_checkpoint": {
+          "epoch": 3,
+          "global_step": 3555,
+          "validation_target_only_loss": 0.58934513,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_3e-5/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "transllama_screen_lr_6e-5",
+      "family": "transllama",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/transllama/screen_lr_6e-5.json",
+      "config_sha256": "a2873fb7eebff51fa1683794260f74781dfb3e16d08a656c53971b6d8d46d279",
+      "script": "baselines/transllama/train_transllama.py",
+      "launcher": "python",
+      "world_size": 1,
+      "seed": 20260918,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 3,
+        "micro_batch_per_device": 4,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 16,
+        "learning_rate": 6e-05,
+        "evaluation_steps": null,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/train.aligned.jsonl",
+        "validation_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/validation.aligned.jsonl"
+      },
+      "input_sha256": {
+        "train_alignments": "8334dc3f21f507a63cc41249c11468ca49930a761a7ce45aecdef6fa478ecfda",
+        "validation_alignments": "ebbe7c4c09ad0f38ad545da93e3ee2bb1d4f62ffd3adaa090cf1c13b619bdb7f"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "learned_lr_screen",
+        "rule": "Minimum all-prefix target-only validation loss; evaluate fixed validation k1..8 sanity gate for learning-rate selection.",
+        "historical_selected_checkpoint": "adapter_best",
+        "validation_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/validation_pairs.jsonl",
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_6e-5",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_lr_screen.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_6e-5/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "global_update_steps": 3555,
+        "best_checkpoint": {
+          "epoch": 3,
+          "global_step": 3555,
+          "validation_target_only_loss": 0.57627026,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/lr_screen/screen_lr_6e-5/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "transllama_final_seed_20260829",
+      "family": "transllama",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/transllama/final_seed_20260829.json",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "script": "baselines/transllama/train_transllama.py",
+      "launcher": "python",
+      "world_size": 1,
+      "seed": 20260829,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 3,
+        "micro_batch_per_device": 4,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 16,
+        "learning_rate": 6e-05,
+        "evaluation_steps": null,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/train.aligned.jsonl",
+        "validation_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/validation.aligned.jsonl"
+      },
+      "input_sha256": {
+        "train_alignments": "8334dc3f21f507a63cc41249c11468ca49930a761a7ce45aecdef6fa478ecfda",
+        "validation_alignments": "ebbe7c4c09ad0f38ad545da93e3ee2bb1d4f62ffd3adaa090cf1c13b619bdb7f"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1",
+        "transllama_screen_lr_1e-5",
+        "transllama_screen_lr_3e-5",
+        "transllama_screen_lr_6e-5"
+      ],
+      "selection": {
+        "kind": "learned_final_after_screen",
+        "rule": "Fixed published learning rate 6e-5, selected by validation-only screen sanity gate and minimum all-prefix target-only loss; adapter_best by validation loss.",
+        "historical_selected_checkpoint": "adapter_best",
+        "validation_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/validation_pairs.jsonl",
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_training.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "global_update_steps": 3555,
+        "best_checkpoint": {
+          "epoch": 3,
+          "global_step": 3555,
+          "validation_target_only_loss": 0.57508922,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "transllama_final_seed_20260904",
+      "family": "transllama",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/transllama/final_seed_20260904.json",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "script": "baselines/transllama/train_transllama.py",
+      "launcher": "python",
+      "world_size": 1,
+      "seed": 20260904,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 3,
+        "micro_batch_per_device": 4,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 16,
+        "learning_rate": 6e-05,
+        "evaluation_steps": null,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/train.aligned.jsonl",
+        "validation_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/validation.aligned.jsonl"
+      },
+      "input_sha256": {
+        "train_alignments": "8334dc3f21f507a63cc41249c11468ca49930a761a7ce45aecdef6fa478ecfda",
+        "validation_alignments": "ebbe7c4c09ad0f38ad545da93e3ee2bb1d4f62ffd3adaa090cf1c13b619bdb7f"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1",
+        "transllama_screen_lr_1e-5",
+        "transllama_screen_lr_3e-5",
+        "transllama_screen_lr_6e-5"
+      ],
+      "selection": {
+        "kind": "learned_final_after_screen",
+        "rule": "Fixed published learning rate 6e-5, selected by validation-only screen sanity gate and minimum all-prefix target-only loss; adapter_best by validation loss.",
+        "historical_selected_checkpoint": "adapter_best",
+        "validation_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/validation_pairs.jsonl",
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_training.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "global_update_steps": 3555,
+        "best_checkpoint": {
+          "epoch": 3,
+          "global_step": 3555,
+          "validation_target_only_loss": 0.57817033,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "transllama_final_seed_20260905",
+      "family": "transllama",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/transllama/final_seed_20260905.json",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "script": "baselines/transllama/train_transllama.py",
+      "launcher": "python",
+      "world_size": 1,
+      "seed": 20260905,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 3,
+        "micro_batch_per_device": 4,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 16,
+        "learning_rate": 6e-05,
+        "evaluation_steps": null,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/train.aligned.jsonl",
+        "validation_alignments": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/alignments/validation.aligned.jsonl"
+      },
+      "input_sha256": {
+        "train_alignments": "8334dc3f21f507a63cc41249c11468ca49930a761a7ce45aecdef6fa478ecfda",
+        "validation_alignments": "ebbe7c4c09ad0f38ad545da93e3ee2bb1d4f62ffd3adaa090cf1c13b619bdb7f"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1",
+        "transllama_screen_lr_1e-5",
+        "transllama_screen_lr_3e-5",
+        "transllama_screen_lr_6e-5"
+      ],
+      "selection": {
+        "kind": "learned_final_after_screen",
+        "rule": "Fixed published learning rate 6e-5, selected by validation-only screen sanity gate and minimum all-prefix target-only loss; adapter_best by validation loss.",
+        "historical_selected_checkpoint": "adapter_best",
+        "validation_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/validation_pairs.jsonl",
+        "generation_batch_size": 32
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_training.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "global_update_steps": 3555,
+        "best_checkpoint": {
+          "epoch": 3,
+          "global_step": 3555,
+          "validation_target_only_loss": 0.57681131,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_semantic_stage_a",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_semantic/stage_a.json",
+      "config_sha256": "e505f40d52b80b925396adecaceeda7d7630ef7db19d1cd304df9477ed01a6af",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260817,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/manifests/stage_a_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "476419cdcfcfa226790020e3c529c316aeda6954712f9dd706fd6f2b2e7cade6",
+        "validation_manifest": "b333244e6fce1ffd1fe4c82f41dec1a136f3b53da681c446715b82292c97b76a",
+        "test_manifest": "a13f641482e2f15c6926806e8fe9668a7b5dc80d07914843e39b740445498fda"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_a",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_a/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 534877,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 16715,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 16715,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_action_loss": 0.07427021,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_a/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_semantic_stage_b",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_semantic/stage_b.json",
+      "config_sha256": "021140fa825ad401cc8a3f8e4f9394fef24651ae079d1272c979c2f852e15de3",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260829,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/manifests/stage_b_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "2873f128d738cd4926cf8ad04133ae9a26dbe180825f6d5bf4be8eeb3cfe4efb",
+        "validation_manifest": "b333244e6fce1ffd1fe4c82f41dec1a136f3b53da681c446715b82292c97b76a",
+        "test_manifest": "a13f641482e2f15c6926806e8fe9668a7b5dc80d07914843e39b740445498fda"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_a/adapter_best",
+        "new_training_dependency": "ablation_no_semantic_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "ablation_no_semantic_stage_a"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_b",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_b/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439251,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 8000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.07427021,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_b/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_rescue_stage_a",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_rescue/stage_a.json",
+      "config_sha256": "ed528ca1da4b84a8704bbd2150f68b74960fadec11bbc5981ef57323a38e3598",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260817,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/manifests/stage_a_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "439430c092b42da2561c32e8af6f1d6a6d1af39318f4a274c1b4079f14a093ac",
+        "validation_manifest": "ac69a468c90ba0fbe424db4356c1a77537da11ad01e6d1ae4b655c50e14cedc9",
+        "test_manifest": "cc0062472d1ea53ab36cedac9683784e5f3f1f37c5688d0517840432401733bd"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_a",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_a/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 534877,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 16715,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 16715,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_action_loss": 0.08432944,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_a/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_rescue_stage_b",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_rescue/stage_b.json",
+      "config_sha256": "f3d4e0631d71e69a936f5139ab921f8b90c6c31c090c8d4ea2dd64882411f702",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260829,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/manifests/stage_b_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "f3cc7e939952db3dcdbf4662b79588cf99ae167c05931066773b5466760016b7",
+        "validation_manifest": "ac69a468c90ba0fbe424db4356c1a77537da11ad01e6d1ae4b655c50e14cedc9",
+        "test_manifest": "cc0062472d1ea53ab36cedac9683784e5f3f1f37c5688d0517840432401733bd"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_a/adapter_best",
+        "new_training_dependency": "ablation_no_rescue_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "ablation_no_rescue_stage_a"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_b",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_b/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439585,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 8000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.08432944,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_b/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_negation_stage_a",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_negation/stage_a.json",
+      "config_sha256": "7931d28809e7f769286176e49e09898601952bfa0f0b41ee779f89b04419399a",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260817,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/manifests/stage_a_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "6e37324a9a8d4a95a70a120b37005b308759d1d806deb9d0f41b5eff0ea1740c",
+        "validation_manifest": "d254651360a2a353251528e4ad97975554ea61a17d03d83afaabf8553d603a3d",
+        "test_manifest": "97000876acfd7576f1a36967d636acac503f3b2534c34e7b81378a3171cdb2ac"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_a",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_a/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 534877,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 16715,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 16715,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_action_loss": 0.08483925,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_a/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_negation_stage_b",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_negation/stage_b.json",
+      "config_sha256": "1225fdd494fb34db98b2de5663fd4cf428431d09ee1625d617b11d1076e71fe7",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260829,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/manifests/stage_b_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "2e792f39ad69d8321a2137f3ca95ff51701e93f0decfc61c934324a199581b6f",
+        "validation_manifest": "d254651360a2a353251528e4ad97975554ea61a17d03d83afaabf8553d603a3d",
+        "test_manifest": "97000876acfd7576f1a36967d636acac503f3b2534c34e7b81378a3171cdb2ac"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_a/adapter_best",
+        "new_training_dependency": "ablation_no_negation_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "ablation_no_negation_stage_a"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_b",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_b/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439593,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 8000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.08483925,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_b/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_occurrence_stage_a",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_occurrence/stage_a.json",
+      "config_sha256": "fe867eba342dccded1e32e85c71dbf6053631c9a646b36d69e1e6b3f756631e4",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260817,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/manifests/stage_a_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "6a7ad2eaa5c022041496cf8548a5f33e2a1c37f2853254399c47799a25c61d64",
+        "validation_manifest": "59e2670900c138241c091de676878f0d619715107fc3c0ed2503ed32253475a9",
+        "test_manifest": "977591d2b7941ae1448ccc11a4b9b4e51f977a1c412658626fba90b2db8a7132"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_a",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_a/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 534877,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 16715,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 16715,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_action_loss": 0.098932,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_a/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_occurrence_stage_b",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_occurrence/stage_b.json",
+      "config_sha256": "963945bdfe3b2c4fb3554c1fe8c4d10bf8469732cd8bd74df81d480657f5171c",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260829,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/manifests/stage_b_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "f4b0f8a8219c9c97fb9b03d91b173a6ca1f41ea3e887dffda939a0076df29348",
+        "validation_manifest": "59e2670900c138241c091de676878f0d619715107fc3c0ed2503ed32253475a9",
+        "test_manifest": "977591d2b7941ae1448ccc11a4b9b4e51f977a1c412658626fba90b2db8a7132"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_a/adapter_best",
+        "new_training_dependency": "ablation_no_occurrence_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "ablation_no_occurrence_stage_a"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_b",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_b/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439598,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 8000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.098932,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_b/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_burst_stage_a",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_burst/stage_a.json",
+      "config_sha256": "6cc8f943a3f749f36a2645b33c25b49fd8a4f3cee12d90ab6b4798e6d4f1e86b",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260817,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/manifests/stage_a_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "2aab6177d97856913ea08cb900554d979e5486d71486584902f38dbb349b0012",
+        "validation_manifest": "ef02904a17063f9e9634ae6144b25c8b8ee16bb78959918f8ef1b282965dfa9d",
+        "test_manifest": "eed0ef986866bd693bbcf5ff4f0a6fe6feaae778e495cfe18880e894c2464631"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_a",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_a/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 534877,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 16715,
+        "stopped_early": false,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 16715,
+          "epoch_fraction": 1.0,
+          "validation_pseudo_action_loss": 0.09824574,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_a/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "ablation_no_burst_stage_b",
+      "family": "ablation",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/ablations/no_burst/stage_b.json",
+      "config_sha256": "d68eac6c3d796785cc52e49ed7f84ad9855c8ebd113e9854bb53102bcb1116bc",
+      "script": "ablations/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 1,
+      "seed": 20260829,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 8,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 1e-05,
+        "evaluation_steps": 2000,
+        "early_stopping": {
+          "early_stopping_patience_evaluations": 3,
+          "early_stopping_min_delta": 0.001,
+          "early_stopping_minimum_updates": 4000
+        },
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/manifests/stage_b_train.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/manifests/development_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/manifests/confirmation_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "d3a9d32d8702ce73118e58e524480709e02883bddffb8dc381373940cf4bed47",
+        "validation_manifest": "ef02904a17063f9e9634ae6144b25c8b8ee16bb78959918f8ef1b282965dfa9d",
+        "test_manifest": "eed0ef986866bd693bbcf5ff4f0a6fe6feaae778e495cfe18880e894c2464631"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_a/adapter_best",
+        "new_training_dependency": "ablation_no_burst_stage_a",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "ablation_no_burst_stage_a"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_b",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_b/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 439425,
+        "validation_action_count": 6133,
+        "epochs": 1,
+        "global_update_steps": 8000,
+        "stopped_early": true,
+        "early_stopping": {
+          "patience_evaluations": 3,
+          "minimum_delta": 0.001,
+          "minimum_updates": 4000
+        },
+        "best_checkpoint": {
+          "global_step": 0,
+          "epoch_fraction": 0.0,
+          "validation_pseudo_action_loss": 0.09824574,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_b/adapter_best"
+        }
+      }
+    },
+    {
+      "id": "lexical_internal_seed2",
+      "family": "lexical_control",
+      "status": "resolved",
+      "unresolved": [],
+      "config": "configs/lexical_control/qwen2_5_7b_lora_causal_action_full_seed2_v1.json",
+      "config_sha256": "43a657216191f19eaaac1d3bfa8a77668b85b8b34be993ad60c0a12c727bdbff",
+      "script": "baselines/lexical_control/train_qwen_lora_causal_ddp.py",
+      "launcher": "torchrun",
+      "world_size": 4,
+      "seed": 20260721,
+      "precision": "bfloat16",
+      "training_budget": {
+        "epochs": 1,
+        "micro_batch_per_device": 2,
+        "gradient_accumulation_steps": 4,
+        "effective_batch_size": 32,
+        "learning_rate": 3e-05,
+        "evaluation_steps": 1000,
+        "early_stopping": {},
+        "observed_update_steps_are_evidence_not_a_forced_training_limit": true
+      },
+      "inputs": {
+        "train_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/train_actions.jsonl",
+        "validation_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/validation_actions.jsonl",
+        "test_manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_actions.jsonl"
+      },
+      "input_sha256": {
+        "train_manifest": "aaee57eac3afa775ae6fbcc87319a8b587d426c4d65077ef4e49da70b6978d32",
+        "validation_manifest": "236201540bd9f9a41a9b1057990f1b4f5aa2e5fc3993abd3689ccf5ee5f7f7d2",
+        "test_manifest": "bc8d9f9dabdd60544fbaf4ddb09ef2070258746804a9f7b2d4c1714f2a6cec1c"
+      },
+      "initialization": {
+        "archived_adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v1/runs/qwen2_5_7b_lora_how2sign_full_v1/adapter_best",
+        "new_training_dependency": "upstream_finetune1",
+        "new_dependency_checkpoint": "adapter_best",
+        "base_only": false
+      },
+      "dependencies": [
+        "upstream_finetune1"
+      ],
+      "selection": {
+        "kind": "internal_best",
+        "rule": "minimum_validation_pseudo_action_loss",
+        "historical_selected_checkpoint": "adapter_best"
+      },
+      "historical_run_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_causal_full_seed2/runs/qwen2_5_7b_lora_causal_action_full_seed2_v1",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_causal_full_seed2/scripts/run_finetune2_full_seed2.sh",
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_causal_full_seed2/runs/qwen2_5_7b_lora_causal_action_full_seed2_v1/training_summary.json"
+      ],
+      "historical_summary_evidence_available": true,
+      "observed_training": {
+        "train_action_count": 397700,
+        "validation_action_count": 9209,
+        "epochs": 1,
+        "global_update_steps": 12429,
+        "best_checkpoint": {
+          "global_step": 12000,
+          "epoch_fraction": 0.96554221,
+          "validation_pseudo_action_loss": 0.11218558,
+          "path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_causal_full_seed2/runs/qwen2_5_7b_lora_causal_action_full_seed2_v1/adapter_best"
+        }
+      }
+    }
+  ],
+  "limits": [
+    "No from-scratch training has been executed as part of repository curation.",
+    "Observed historical update counts are evidence, not new max-update overrides; retain original early-stopping rules.",
+    "New training can diverge numerically. Use fresh validation to select checkpoints; do not silently reuse the historical final choice.",
+    "Archived initialization mode retrains individual stages only; new-initialization mode follows upstream dependency checkpoints.",
+    "The original upstream Fine-tune1 includes locked500 samples; reproducing that protocol does not establish contamination-free evaluation."
+  ]
+}

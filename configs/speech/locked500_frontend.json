@@ -1,0 +1,44 @@
+{
+  "experiment_name": "paper_e2e_locked500_20260904",
+  "seed": 20260726,
+  "scientific_status": "synthetic_chinese_speech_and_weak_pseudo_asl_gloss",
+  "tts": {
+    "code_repository": "https://github.com/QwenLM/Qwen3-TTS",
+    "code_revision": "022e286b98fbec7e1e916cb940cdf532cd9f488e",
+    "model_id": "Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+    "model_revision": "85e237c12c027371202489a0ec509ded67b5e4b5",
+    "language": "Chinese",
+    "speakers": ["Vivian", "Serena", "Uncle_Fu", "Dylan"],
+    "dtype": "bfloat16",
+    "attention_implementation": "sdpa",
+    "device": "cuda:0",
+    "normalized_sample_rate_hz": 16000,
+    "normalized_channels": 1
+  },
+  "translation": {
+    "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+    "decoding": "greedy",
+    "max_new_tokens": 192
+  },
+  "seamlessstreaming": {
+    "code_repository": "https://github.com/facebookresearch/seamless_communication",
+    "code_revision": "90e2b57ac4d82fa2bfaa25caeffe39ceb8b2ebec",
+    "model_id": "facebook/seamless-streaming",
+    "model_revision": "82746da73c2927b962e53ad2f723babf1ae0e0b5",
+    "parameter_count": "2.5B",
+    "task": "s2tt",
+    "target_language_code": "eng",
+    "source_segment_size_ms": 320,
+    "strip_silence": false,
+    "dtype": "fp16"
+  },
+  "provenance": {
+    "scope": "Final locked500 speech generation and selected SeamlessStreaming frontend only; no Whisper, pilot scores, old policy adapter, or abandoned cascade.",
+    "original_config": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/configs/task5_frontend_v0.json",
+    "original_config_sha256": "f65cdaaf7034cf0ddaff63fd5f385cc3cbf281fe29e6488f06f099595e5c683c",
+    "translation_parameters": "speech/frontend/translate_locked_manifest_en_zh.py",
+    "streaming_parameters": "speech/frontend/run_seamlessstreaming_eval.sh",
+    "note": "320 ms is the recorded audio-read increment, not a newly introduced 1.2 s setting. Full-corpus seed 20260905 must not replace this locked500 seed."
+  }
+}

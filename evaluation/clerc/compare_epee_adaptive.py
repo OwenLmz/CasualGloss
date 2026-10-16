@@ -283,7 +283,6 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--causal", action="append", type=parse_named_path, required=True)
     parser.add_argument("--learned", action="append", type=parse_named_path, required=True)
-    parser.add_argument("--lexical", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--expected-count", type=int, default=401)
     parser.add_argument("--k-values", default="1,2,3,4,5,6,7,8")
@@ -309,7 +308,6 @@ def main() -> None:
     raw_causal = {
         seed: load_exact_rollout(path, ids) for seed, path in causal_paths.items()
     }
-    raw_lexical = load_exact_rollout(args.lexical, ids)
     raw_learned = {
         seed: {
             k: load_exact_rollout(directory / f"k{k}" / "sentence_rollouts.jsonl", ids)
@@ -321,9 +319,6 @@ def main() -> None:
     causal = {
         seed: {row_id: score_rollout(source_by_id[row_id], rows[row_id]) for row_id in ids}
         for seed, rows in raw_causal.items()
-    }
-    lexical = {
-        row_id: score_rollout(source_by_id[row_id], raw_lexical[row_id]) for row_id in ids
     }
     learned = {
         seed: {
@@ -345,8 +340,6 @@ def main() -> None:
         for k in k_values:
             for row_id in ids:
                 long_rows.append({"system": "transllama_style", "seed": seed, "k": k, **learned[seed][k][row_id]})
-    for row_id in ids:
-        long_rows.append({"system": "lexical", "seed": "single_checkpoint", "k": None, **lexical[row_id]})
     write_jsonl(args.output_dir / "per_source_scores.jsonl", long_rows)
 
     learned_by_k = {
@@ -370,7 +363,6 @@ def main() -> None:
                 seed: {"path": str(path), "sha256": file_sha256(path)}
                 for seed, path in causal_paths.items()
             },
-            "lexical": {"path": str(args.lexical), "sha256": file_sha256(args.lexical)},
             "learned": {
                 seed: {
                     str(k): {
@@ -384,20 +376,17 @@ def main() -> None:
         },
         "systems": {
             "causalgloss": summarize_seeded(causal, ids),
-            "lexical_single_checkpoint": summarize_single(lexical, ids),
             "transllama_style": {
                 str(k): summarize_seeded(learned_by_k[k], ids) for k in k_values
             },
         },
         "confirmatory": {},
         "descriptive_k_sweep": {},
-        "lexical_comparisons": {},
         "limitations": [
             "This is automatic zero-shot evaluation against human annotations, not expert human preference evaluation.",
             "Epee is external and out of domain relative to How2Sign pseudo-gloss training.",
             "Best-reference quality accepts signer variation; mean-reference metrics expose convention sensitivity.",
             "English source-token latency is reported, not speech-time latency.",
-            "The lexical policy is one checkpoint, so its interval resamples phrases only and does not estimate training-seed variance.",
         ],
     }
 
@@ -457,46 +446,6 @@ def main() -> None:
             ),
             "confirmatory": k == args.confirmatory_k,
         }
-
-    causal_seed_mean: dict[str, dict[str, float | None]] = {}
-    for row_id in ids:
-        causal_seed_mean[row_id] = {}
-        for metric in (
-            "content_best_token_f1",
-            "laal",
-            "failure_penalized_laal",
-            "completed",
-        ):
-            values = [causal[seed][row_id][metric] for seed in causal]
-            causal_seed_mean[row_id][metric] = (
-                mean(float(value) for value in values)
-                if all(value is not None for value in values)
-                else None
-            )
-    for offset, metric in enumerate(("content_best_token_f1", "failure_penalized_laal", "completed")):
-        differences = np.asarray(
-            [causal_seed_mean[row_id][metric] - float(lexical[row_id][metric]) for row_id in ids],
-            dtype=np.float64,
-        )
-        report["lexical_comparisons"][f"causal_seed_mean_minus_lexical_{metric}"] = paired_source_bootstrap(
-            differences, args.bootstrap_repetitions, args.bootstrap_seed + 500 + offset
-        )
-    finite_ids = [
-        row_id
-        for row_id in ids
-        if causal_seed_mean[row_id]["laal"] is not None and lexical[row_id]["laal"] is not None
-    ]
-    report["lexical_comparisons"]["causal_seed_mean_minus_lexical_laal"] = paired_source_bootstrap(
-        np.asarray(
-            [
-                float(causal_seed_mean[row_id]["laal"]) - float(lexical[row_id]["laal"])
-                for row_id in finite_ids
-            ],
-            dtype=np.float64,
-        ),
-        args.bootstrap_repetitions,
-        args.bootstrap_seed + 504,
-    )
 
     write_json(args.output_dir / "comparison_report.json", report)
     print(json.dumps(report["confirmatory"], ensure_ascii=False, indent=2))

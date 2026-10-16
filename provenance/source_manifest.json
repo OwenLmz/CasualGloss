@@ -529,7 +529,11 @@
       "size_bytes": 21403,
       "source_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/compare_epee_adaptive.py",
       "origin": "authorized_remote_readonly_ssh",
-      "modifications": []
+      "modifications": [
+        "Remove only the unreported CLERC lexical comparator CLI/input/output branches; 14 shared scoring/statistical function ASTs and all retained reports on identical synthetic inputs verified unchanged. Reference-length runtime budget is preserved."
+      ],
+      "repository_sha256": "ed01448be41405a9146872eb1d52507ed168ef94d49753f51e8918d51c76eb4d",
+      "repository_size_bytes": 19108
     },
     {
       "original_repository_path": "archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/compare_fixed_waitk_epee.py",
@@ -887,22 +891,6 @@
       "reason": "Shared final causal trainer, masked action dataset/loss, rollout evaluator, prerecovery initialization config and final WAIT-balanced action-manifest builder. Keep only v2.2.1 prerecovery config, not older v2.2/v2.2.2 calibration branches.",
       "size_bytes": 21476,
       "source_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/scripts/train_qwen_lora_causal_ddp.py",
-      "origin": "authorized_remote_readonly_ssh",
-      "modifications": []
-    },
-    {
-      "original_repository_path": "archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/locked500_bleu_metric_v1_20260911/evaluate_locked500_bleu.py",
-      "original_relative_path": "data/how2sign_english_asl_gloss_v1/full_v4_train/locked500_bleu_metric_v1_20260911/evaluate_locked500_bleu.py",
-      "repository_path": "evaluation/analysis/evaluate_locked500_bleu.py",
-      "sha256": "083626e3a74eba349c860090cbeebdc3b27723ffa167b9e5d36eaeaca5669725",
-      "paper_sections": [
-        "4/Metrics and statistics",
-        "Table1"
-      ],
-      "role": "implementation",
-      "reason": "Final post-hoc unsmoothed untokenized BLEU-4 computation.",
-      "size_bytes": 13066,
-      "source_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/locked500_bleu_metric_v1_20260911/evaluate_locked500_bleu.py",
       "origin": "authorized_remote_readonly_ssh",
       "modifications": []
     },
@@ -2159,8 +2147,43 @@
       ],
       "repository_sha256": "1a8db0ad384d0e446b9badc5a25f9da5e0cdcb679a4a07ed3a1f19711cab6fcd",
       "repository_size_bytes": 14667
+    },
+    {
+      "repository_path": "configs/speech/locked500_frontend.json",
+      "source_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/configs/task5_frontend_v0.json",
+      "original_relative_path": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/configs/task5_frontend_v0.json",
+      "sha256": "f65cdaaf7034cf0ddaff63fd5f385cc3cbf281fe29e6488f06f099595e5c683c",
+      "size_bytes": 3457,
+      "paper_sections": [
+        "4/ChineseSpeech-ASLGloss-v1",
+        "5.2/speech"
+      ],
+      "role": "configuration",
+      "reason": "Required final-paper speech configuration or actual curated repair input, not an additional model experiment.",
+      "origin": "authorized_remote_readonly_ssh",
+      "modifications": [
+        "Extract original seed and unchanged TTS/Seamless identities; take the recorded translation CLI defaults and actual 320ms/fp16/no-strip-silence streaming arguments from preserved final pipeline; remove all unused candidate/pilot/Whisper/old-policy branches. No scientific parameter altered."
+      ],
+      "original_repository_path": "archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/configs/task5_frontend_v0.json",
+      "repository_sha256": "36cbe52e2d5cba97eefea4850b11f69857d3b1d83c6c4e0be5ae4ab19d5844aa",
+      "repository_size_bytes": 2039
+    },
+    {
+      "repository_path": "configs/speech/translation_repairs.json",
+      "source_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/scripts/translation_repairs_v1.json",
+      "original_relative_path": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/scripts/translation_repairs_v1.json",
+      "sha256": "62098538ef445b480b42449c53eca21455dc09d92891eff3fffc0ea92107a2f8",
+      "size_bytes": 828,
+      "paper_sections": [
+        "4/ChineseSpeech-ASLGloss-v1",
+        "5.2/speech"
+      ],
+      "role": "frozen_curated_repair_specification",
+      "reason": "Required final-paper speech configuration or actual curated repair input, not an additional model experiment.",
+      "origin": "authorized_remote_readonly_ssh",
+      "modifications": []
     }
   ],
-  "file_count": 126,
-  "adapted_file_count": 17
+  "file_count": 127,
+  "adapted_file_count": 19
 }

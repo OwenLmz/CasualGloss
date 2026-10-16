@@ -1,8 +1,8 @@
 {
   "previous_scope": "Broad research provenance archive",
   "current_scope": "Final paper only, plus required implementation/data dependencies",
-  "source_files": 126,
-  "artifact_entries": 239,
+  "source_files": 127,
+  "artifact_entries": 242,
   "omitted_experiment_families": [
     "5K model pilots",
     "failed/nonfinite runs",
@@ -14,5 +14,6 @@
     "new checkpoint rerun",
     "unrelated pose/video extension"
   ],
-  "preservation": "Original server files and local broad audit unchanged. Earlier Git commit remains recoverable; no force-push/history rewrite."
+  "preservation": "Original server files and local broad audit unchanged. Earlier Git commit remains recoverable; no force-push/history rewrite.",
+  "audit_correction": "The waveform QC source was already retained in speech/frontend; the earlier missing-source claim was incorrect. The actual missing raw report/repair specification and locked500 config are now supplied."
 }

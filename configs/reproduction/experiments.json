@@ -1,0 +1,3191 @@
+{
+  "schema_version": 1,
+  "scope": "Exactly 82 final-paper historical checkpoint evaluations, not training or exploratory experiments.",
+  "data_root_semantics": "Root corresponding to /123090274/SN_Research; bundle keeps relative_to_remote_root paths.",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "source_evidence_commit": "95f41d6bb75a216c672c3fb362715209e063a808",
+  "notes": [
+    "Generation batch sizes are historical per-invocation values, not a global convenience default.",
+    "CLERC uses the later common FP16 protocol; locked500 policy runs use BF16.",
+    "seed records the evaluation config RNG seed. Native no-recovery uses 20260817; guard-only uses the 20260829 evaluation prompt/config with the same pre-recovery adapter.",
+    "Do not reorder stored source_tokens, parent rows, or frontend events.",
+    "Running each TransLLaMA k separately preserves per-k evaluation batch construction; model loading time is not paper latency.",
+    "Speech checkpoint entries use recorded frontend events; full audio/frontend regeneration is a separate pipeline.",
+    "Historical environment recordings are not proof of clean installation or bitwise numerical reproducibility."
+  ],
+  "experiments": [
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/final_evaluation_v2_3/locked500/v2_3/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/cg_s1.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_causalgloss_20260829",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/adapter_final",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/parent_splits_full.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "v2_3_final_locked500",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_final_evaluation.sh",
+        "Selected final checkpoint and stage cross-checked against original rollout_metrics.json."
+      ],
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260829",
+      "config_sha256": "6eeea65397d3047e23392dab8e88065912f333afa15a814eb9333dc45888c33f",
+      "input_sha256": {
+        "parent_splits": "92930fad4d66cc8d3f4ab46fe3f1744e20d370cba88a5fb8b9ab12967cfbfab0",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "2037ff8e5f984530bc36eb36bda6755356481f62334736547eff830f88f7718c"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/final_evaluation_seed20260904/locked500/v2_3/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/cg_s2.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_causalgloss_20260904",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904/adapter_final",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/parent_splits_full.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "v2_3_seed20260904_final_locked500",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/scripts/run_v2_3_seed20260904.sh",
+        "Selected final checkpoint and stage cross-checked against original rollout_metrics.json."
+      ],
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260904",
+      "config_sha256": "6d7d8ddbbf0c9715acc3469abc51e30bcba59199029cddeadaff26a06aff6d5f",
+      "input_sha256": {
+        "parent_splits": "92930fad4d66cc8d3f4ab46fe3f1744e20d370cba88a5fb8b9ab12967cfbfab0",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "f2e2dba69ab39d7a295d938940917bd62ba67031d1af7992ec993ef67093da07"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/final_evaluation_seed20260905/locked500/v2_3/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/cg_s3.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_causalgloss_20260905",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905/adapter_final",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/parent_splits_full.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "v2_3_seed20260905_final_locked500",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/scripts/run_v2_3_seed20260905_full_eval.sh",
+        "Selected final checkpoint and stage cross-checked against original rollout_metrics.json."
+      ],
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260905",
+      "config_sha256": "9aa8115500c49dcd97521be37ba884e1568f54cd1c1d9cd2b69f25e89e1d669b",
+      "input_sha256": {
+        "parent_splits": "92930fad4d66cc8d3f4ab46fe3f1744e20d370cba88a5fb8b9ab12967cfbfab0",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "65e020c048aca6a058000a1121e74f5ec8915464c0346f8b6ff8ba5bfedd179c"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k1_full_v1/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk1.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260821_k1",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260821,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k1_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k1_full_v1/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k1_full_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k_full_one.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k1_seed20260821",
+      "config_sha256": "b3a85cd47b952626572e10639ea13541b37d61a614a528eb6674aa47e270f29e",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "8461a85cb6284269a2cdb65fe194fca3228b8e506ab34fa835e78c4b0cfd5e07"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k3_full_v1_recovery_a6000_2gpu/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk3.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260821_k3",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260821,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k3_full_recovery_a6000_2gpu.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k3_full_v1_recovery_a6000_2gpu/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k3_full_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k3_full_recovery_a6000_2gpu.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k3_seed20260821",
+      "config_sha256": "cdf299865ede8d1a1bb1cc179c13a619e9738088eaa9beaaad78d23f41dd4c42",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "37117df833bab82b21e71777c35747ef68d222b3c9cdd82f6ea9612866d265ed"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k5_full_v1/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk5.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260821_k5",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260821,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k5_full_v1/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k5_full_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k_full_one.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k5_seed20260821",
+      "config_sha256": "df24a26e5c828a55ef98ce780fdc37d674068977dd2f8dc48c321fa07ccd94f4",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "2b90320242a2d6fe055857d7714fb71dea48e525a3e342a00b0abd101d34a60f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k7_full_v1/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk7.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260821_k7",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260821,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k7_full_v1/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k7_full_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/scripts/run_wait_k_full_one.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k7_seed20260821",
+      "config_sha256": "0dc6c756c716d6863883e2a10e3ac0d05c74738b1bd9ac4358ea7c493115bcfc",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "cd5f60179649218fa786658be538f889254d3b901a221be081bd89e2a4a8d83f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260904/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk5_seed20260904.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260904_k5",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260904,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full_seed20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260904/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k5_seed20260904_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k5_seed20260904",
+      "config_sha256": "f2c76a52cfb1eae6bdb1f80d2b3e82606d1830065e48ef9ee11d960a6118675f",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "d15ee17952309ea327af9145f5d7d0afe7a6d488a5029fb33beecd21e5dc58a6"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260904/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk7_seed20260904.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260904_k7",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260904,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full_seed20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260904/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k7_seed20260904_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k7_seed20260904",
+      "config_sha256": "99fd4dac97d2357f8ca0cdd32168f991fe70d548f8fb56609efe4d57da8b1f14",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "bd15ef7cfc7753bca24a52256f1c69510522b727c99d651b86b21888064e6fc6"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260905/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk5_seed20260905.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260905_k5",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260905,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full_seed20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260905/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k5_seed20260905_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k5_seed20260905",
+      "config_sha256": "5c007ab853b70f321b5bdcfa05f2609f9837b102de469ceb1374bc4ea1c6b0c1",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "18d5588bc6a73266dedc1dcdb5a100b3d5da7f7626ce54fe4ba54c5169e684eb"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260905/rollout_locked500/sentence_rollouts.jsonl",
+      "verification_local_relative": "locked500_from_local/waitk7_seed20260905.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_fixed_20260905_k7",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "seed": 20260905,
+      "generation_batch_size": 16,
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full_seed20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260905/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "split": "test",
+      "stage": "wait_k7_seed20260905_locked500_rollout",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/run_waitk_seed_20260914.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k7_seed20260905",
+      "config_sha256": "16cad76f8ebcd31752a9c743fb86bce80eb156963bf68388fca80f9a74cf79d8",
+      "input_sha256": {
+        "parent_splits": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "09a9b3cc62130715cd091479e695f35030a7279d7b7e6331b59dc2db16a30c33"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k1/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k1/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k1",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k2/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k2/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 2,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k2",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k3/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k3/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k3",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k4/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k4/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 4,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k4",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k5/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k5/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k5",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k6/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k6/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 6,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k6",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k7/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k7/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k7",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k8/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260829/k8/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 8,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260829_k8",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260829,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260829-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k1/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k1/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k1",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k2/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k2/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 2,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k2",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k3/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k3/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k3",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k4/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k4/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 4,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k4",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k5/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k5/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k5",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k6/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k6/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 6,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k6",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k7/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k7/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k7",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k8/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260904/k8/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 8,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260904_k8",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260904,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260904-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k1/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k1/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k1",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k2/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k2/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 2,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k2",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k3/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k3/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k3",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k4/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k4/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 4,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k4",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k5/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k5/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k5",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k6/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k6/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 6,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k6",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k7/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k7/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k7",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k8/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/transllama_learned_adaptive_20260918/runs/final_test/final_seed_20260905/k8/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": 8,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "locked_transllama_20260905_k8",
+      "family": "locked500",
+      "expected_count": 500,
+      "kind": "learned",
+      "entrypoint": "eval-learned",
+      "seed": 20260905,
+      "generation_batch_size": 32,
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "inputs": {
+        "pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/manifests/test_pairs.jsonl"
+      },
+      "split": "test",
+      "stage": "final_seed_20260905-test",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/scripts/run_final_seed_test_eval.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "pairs": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/causalgloss_20260829/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/causalgloss_20260829/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_causalgloss_20260829",
+      "seed": 20260829,
+      "kind": "epee_action",
+      "entrypoint": "eval-epee-action",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/adapter_final",
+      "stage": "causalgloss_20260829",
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260829",
+      "config_sha256": "6eeea65397d3047e23392dab8e88065912f333afa15a814eb9333dc45888c33f",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "2037ff8e5f984530bc36eb36bda6755356481f62334736547eff830f88f7718c"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/causalgloss_20260904/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/causalgloss_20260904/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_causalgloss_20260904",
+      "seed": 20260904,
+      "kind": "epee_action",
+      "entrypoint": "eval-epee-action",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904/adapter_final",
+      "stage": "causalgloss_20260904",
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260904",
+      "config_sha256": "6d7d8ddbbf0c9715acc3469abc51e30bcba59199029cddeadaff26a06aff6d5f",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "f2e2dba69ab39d7a295d938940917bd62ba67031d1af7992ec993ef67093da07"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/causalgloss_20260905/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/causalgloss_20260905/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_causalgloss_20260905",
+      "seed": 20260905,
+      "kind": "epee_action",
+      "entrypoint": "eval-epee-action",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905/adapter_final",
+      "stage": "causalgloss_20260905",
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260905",
+      "config_sha256": "9aa8115500c49dcd97521be37ba884e1568f54cd1c1d9cd2b69f25e89e1d669b",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "65e020c048aca6a058000a1121e74f5ec8915464c0346f8b6ff8ba5bfedd179c"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk1_seed20260821/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk1_seed20260821/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260821_k1",
+      "seed": 20260821,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k1_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k1_full_v1/adapter_best",
+      "stage": "waitk1_seed20260821",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k1_seed20260821",
+      "config_sha256": "b3a85cd47b952626572e10639ea13541b37d61a614a528eb6674aa47e270f29e",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "8461a85cb6284269a2cdb65fe194fca3228b8e506ab34fa835e78c4b0cfd5e07"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk3_seed20260821/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk3_seed20260821/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260821_k3",
+      "seed": 20260821,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k3_full_recovery_a6000_2gpu.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k3_full_v1_recovery_a6000_2gpu/adapter_best",
+      "stage": "waitk3_seed20260821",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k3_seed20260821",
+      "config_sha256": "cdf299865ede8d1a1bb1cc179c13a619e9738088eaa9beaaad78d23f41dd4c42",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "37117df833bab82b21e71777c35747ef68d222b3c9cdd82f6ea9612866d265ed"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk5_seed20260821/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk5_seed20260821/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260821_k5",
+      "seed": 20260821,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k5_full_v1/adapter_best",
+      "stage": "waitk5_seed20260821",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k5_seed20260821",
+      "config_sha256": "df24a26e5c828a55ef98ce780fdc37d674068977dd2f8dc48c321fa07ccd94f4",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "2b90320242a2d6fe055857d7714fb71dea48e525a3e342a00b0abd101d34a60f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk7_seed20260821/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk7_seed20260821/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260821_k7",
+      "seed": 20260821,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_v1/runs/qwen2_5_7b_lora_wait_k7_full_v1/adapter_best",
+      "stage": "waitk7_seed20260821",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k7_seed20260821",
+      "config_sha256": "0dc6c756c716d6863883e2a10e3ac0d05c74738b1bd9ac4358ea7c493115bcfc",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "cd5f60179649218fa786658be538f889254d3b901a221be081bd89e2a4a8d83f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk5_seed20260904/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk5_seed20260904/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260904_k5",
+      "seed": 20260904,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full_seed20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260904/adapter_best",
+      "stage": "waitk5_seed20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k5_seed20260904",
+      "config_sha256": "f2c76a52cfb1eae6bdb1f80d2b3e82606d1830065e48ef9ee11d960a6118675f",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "d15ee17952309ea327af9145f5d7d0afe7a6d488a5029fb33beecd21e5dc58a6"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk7_seed20260904/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk7_seed20260904/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260904_k7",
+      "seed": 20260904,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full_seed20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260904/adapter_best",
+      "stage": "waitk7_seed20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k7_seed20260904",
+      "config_sha256": "99fd4dac97d2357f8ca0cdd32168f991fe70d548f8fb56609efe4d57da8b1f14",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "bd15ef7cfc7753bca24a52256f1c69510522b727c99d651b86b21888064e6fc6"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk5_seed20260905/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk5_seed20260905/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260905_k5",
+      "seed": 20260905,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k5_full_seed20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k5_full_seed20260905/adapter_best",
+      "stage": "waitk5_seed20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k5_seed20260905",
+      "config_sha256": "5c007ab853b70f321b5bdcfa05f2609f9837b102de469ceb1374bc4ea1c6b0c1",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "18d5588bc6a73266dedc1dcdb5a100b3d5da7f7626ce54fe4ba54c5169e684eb"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk7_seed20260905/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/outputs/full/waitk7_seed20260905/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/fixed_waitk_extension_20260920/PROTOCOL_AMENDMENT_FIXED_WAITK.md",
+        "Historical fixed_waitk_extension FP16 evaluator default generation-batch-size=16, confirmed full output protocol."
+      ],
+      "id": "clerc_fixed_20260905_k7",
+      "seed": 20260905,
+      "kind": "epee_fixed",
+      "entrypoint": "eval-epee-fixed",
+      "config": "configs/fixed_waitk/qwen2_5_7b_wait_k7_full_seed20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/wait_k_baselines_multiseed_20260914/runs/qwen2_5_7b_lora_wait_k7_full_seed20260905/adapter_best",
+      "stage": "waitk7_seed20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "fixed_k7_seed20260905",
+      "config_sha256": "16cad76f8ebcd31752a9c743fb86bce80eb156963bf68388fca80f9a74cf79d8",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "09a9b3cc62130715cd091479e695f35030a7279d7b7e6331b59dc2db16a30c33"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k1/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k1/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k1",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k2/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k2/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 2,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k2",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k3/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k3/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k3",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k4/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k4/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 4,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k4",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k5/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k5/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k5",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k6/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k6/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 6,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k6",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k7/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k7/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k7",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k8/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260829/k8/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 8,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260829_k8",
+      "seed": 20260829,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260829.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260829/adapter_best",
+      "stage": "transllama_20260829",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260829",
+      "config_sha256": "15d7b28a25b4c9a0ab8a4ab7a61eb9142ee59f0ecefa1dcb353e53b9fd9cc675",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k1/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k1/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k1",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k2/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k2/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 2,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k2",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k3/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k3/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k3",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k4/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k4/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 4,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k4",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k5/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k5/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k5",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k6/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k6/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 6,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k6",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k7/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k7/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k7",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k8/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260904/k8/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 8,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260904_k8",
+      "seed": 20260904,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260904/adapter_best",
+      "stage": "transllama_20260904",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260904",
+      "config_sha256": "b1938b57cd4266b6a73c27a4b11b13e465463dbc7c543d947ce5c108efb5f7d0",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k1/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k1/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 1,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k1",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k2/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k2/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 2,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k2",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k3/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k3/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 3,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k3",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k4/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k4/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 4,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k4",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k5/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k5/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 5,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k5",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k6/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k6/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 6,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k6",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k7/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k7/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 7,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k7",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k8/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/clerc_epee_adaptive_comparison_20260920/outputs/full/transllama_20260905/k8/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "float16",
+      "k": 8,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "family": "clerc401",
+      "expected_count": 401,
+      "generation_batch_size": 16,
+      "inputs": {
+        "manifest": "data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_external_eval_v1/manifests/epee_sources_401.jsonl"
+      },
+      "split": "external",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
+      ],
+      "id": "clerc_transllama_20260905_k8",
+      "seed": 20260905,
+      "kind": "epee_learned",
+      "entrypoint": "eval-epee-learned",
+      "config": "configs/transllama/final_seed_20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/transllama_learned_adaptive_20260918/runs/final_seeds/final_seed_20260905/adapter_best",
+      "stage": "transllama_20260905",
+      "checkpoint": "adapter_best",
+      "training_run_id": "transllama_final_seed_20260905",
+      "config_sha256": "fdf1b96661ff54c338d4076110caf76dd7b860f075c1345b1a2433635f627ac5",
+      "input_sha256": {
+        "manifest": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/rollout_confirmation_selected/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/rollout_confirmation_selected/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_full",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "generation_batch_size": 32,
+      "seed": 20260829,
+      "split": "v2_3_confirmation",
+      "stage": "v2_3_full_final_confirmation",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/adapter_final",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh"
+      ],
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260829",
+      "config_sha256": "6eeea65397d3047e23392dab8e88065912f333afa15a814eb9333dc45888c33f",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "2037ff8e5f984530bc36eb36bda6755356481f62334736547eff830f88f7718c"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/baselines/v2_2_prompt_guard_confirmation/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/state_recovery_v2_3_full/baselines/v2_2_prompt_guard_confirmation/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_guard",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "generation_batch_size": 32,
+      "seed": 20260829,
+      "split": "v2_3_confirmation",
+      "stage": "v2_2_prompt_guard_v2_3_confirmation",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "causalgloss_stage_a",
+      "config_sha256": "6eeea65397d3047e23392dab8e88065912f333afa15a814eb9333dc45888c33f",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "d28178990ca34666eace3de53aebcc1d38a879ddec182329e84a62d1524f270b"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/baselines/v2_2_native_confirmation/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/state_recovery_v2_3_full/baselines/v2_2_native_confirmation/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_native",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "action",
+      "entrypoint": "rollout",
+      "generation_batch_size": 32,
+      "seed": 20260817,
+      "split": "v2_3_confirmation",
+      "stage": "v2_2_native_v2_3_confirmation",
+      "config": "configs/method/qwen2_5_7b_lora_semantic_causal_v2_2_1_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_semantic_v2_2_full/runs/qwen2_5_7b_lora_semantic_causal_v2_2_1_treebank_full/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "causalgloss_stage_a",
+      "config_sha256": "58adbbd4f2964d98b328eca85fcfcfff38f3f16f5a7e979859ab0d43c992bbbf",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "d28178990ca34666eace3de53aebcc1d38a879ddec182329e84a62d1524f270b"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/evaluation/confirmation/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/evaluation/confirmation/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_no_burst",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "ablation",
+      "entrypoint": "eval-ablation",
+      "generation_batch_size": 16,
+      "seed": 20260829,
+      "stage": "component_ablation_no_burst_confirmation250",
+      "split": "v2_3_confirmation",
+      "config": "configs/ablations/no_burst/stage_b.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_burst/runs/stage_b/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "ablation_no_burst_stage_b",
+      "config_sha256": "d68eac6c3d796785cc52e49ed7f84ad9855c8ebd113e9854bb53102bcb1116bc",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "6d5aa5322a1e1b27e23300228178ee9b056680a8ef62c1e95ed6ec89c936c48f"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/evaluation/confirmation/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/evaluation/confirmation/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_no_negation",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "ablation",
+      "entrypoint": "eval-ablation",
+      "generation_batch_size": 16,
+      "seed": 20260829,
+      "stage": "component_ablation_no_negation_confirmation250",
+      "split": "v2_3_confirmation",
+      "config": "configs/ablations/no_negation/stage_b.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_negation/runs/stage_b/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "ablation_no_negation_stage_b",
+      "config_sha256": "1225fdd494fb34db98b2de5663fd4cf428431d09ee1625d617b11d1076e71fe7",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "d3c3541c5d2d454f73f1dbe99dcbd63b0faf28eb435cb9cb6cf0129363e73120"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/evaluation/confirmation/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/evaluation/confirmation/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_no_occurrence",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "ablation",
+      "entrypoint": "eval-ablation",
+      "generation_batch_size": 16,
+      "seed": 20260829,
+      "stage": "component_ablation_no_occurrence_confirmation250",
+      "split": "v2_3_confirmation",
+      "config": "configs/ablations/no_occurrence/stage_b.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_occurrence/runs/stage_b/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "ablation_no_occurrence_stage_b",
+      "config_sha256": "963945bdfe3b2c4fb3554c1fe8c4d10bf8469732cd8bd74df81d480657f5171c",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "ca9eb11eff357fa93472a787b8b2d3553805f009dcd818249dfffb9288946a99"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/evaluation/confirmation/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/evaluation/confirmation/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_no_rescue",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "ablation",
+      "entrypoint": "eval-ablation",
+      "generation_batch_size": 16,
+      "seed": 20260829,
+      "stage": "component_ablation_no_rescue_confirmation250",
+      "split": "v2_3_confirmation",
+      "config": "configs/ablations/no_rescue/stage_b.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_rescue/runs/stage_b/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "ablation_no_rescue_stage_b",
+      "config_sha256": "f3d4e0631d71e69a936f5139ab921f8b90c6c31c090c8d4ea2dd64882411f702",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "11c8239a99038c15ea40851d6e7bc273e813ad7c425399ec28e7980a66c99e64"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/evaluation/confirmation/sentence_rollouts.jsonl",
+      "verification_local_relative": "full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/evaluation/confirmation/sentence_rollouts.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Preserve input JSONL row order and stored source_tokens; do not re-tokenize or sort parents.",
+      "id": "diagnostic_no_semantic",
+      "family": "diagnostic250",
+      "expected_count": 250,
+      "kind": "ablation",
+      "entrypoint": "eval-ablation",
+      "generation_batch_size": 16,
+      "seed": 20260829,
+      "stage": "component_ablation_no_semantic_confirmation250",
+      "split": "v2_3_confirmation",
+      "config": "configs/ablations/no_semantic/stage_b.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/ablations/no_semantic/runs/stage_b/adapter_best",
+      "inputs": {
+        "parent_splits": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/manifests/confirmation_pairs.jsonl",
+        "causal_pairs": "data/how2sign_english_asl_gloss_v1/full_v4_train/causal_alignment_v1_corrected_full/outputs/causal_aligned_pairs_full.jsonl"
+      },
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
+      ],
+      "checkpoint": "adapter_best",
+      "training_run_id": "ablation_no_semantic_stage_b",
+      "config_sha256": "021140fa825ad401cc8a3f8e4f9394fef24651ae079d1272c979c2f852e15de3",
+      "input_sha256": {
+        "parent_splits": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
+        "causal_pairs": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "983d649f076993054b64e74415ae9bc8090f51df797271a08c5ad7a4485fe384"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/v2_3.jsonl",
+      "verification_local_relative": "chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/v2_3.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Recorded shared frontend JSONL row order; process one sentence and commit-event sequence at a time; no generation batching.",
+      "id": "speech_causalgloss_20260829",
+      "family": "speech500",
+      "expected_count": 500,
+      "kind": "speech",
+      "entrypoint": "speech-cascade",
+      "generation_batch_size": 1,
+      "seed": 20260829,
+      "stage": "speech_cascade",
+      "inputs": {
+        "frontend": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/locked500.seamlessstreaming.jsonl"
+      },
+      "split": "test",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_full.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/runs/qwen2_5_7b_lora_state_recovery_v2_3_full/adapter_final",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/scripts/run_locked500_speech_e2e_pipeline.sh"
+      ],
+      "max_post_source_actions": 64,
+      "boundary": "Policy rerun on archived shared Seamless frontend. Does not claim regenerating identical TTS/frontend runtimes.",
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260829",
+      "config_sha256": "6eeea65397d3047e23392dab8e88065912f333afa15a814eb9333dc45888c33f",
+      "input_sha256": {
+        "frontend": "7b0e99fd52f132d1d3ced302cf7f76c17c30113e9ef1387b731f2afb512c8b35"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "2037ff8e5f984530bc36eb36bda6755356481f62334736547eff830f88f7718c"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/multiseed/seed20260904/outputs/v2_3_seed20260904.jsonl",
+      "verification_local_relative": "chinese_speech_frontend_v0/paper_e2e_locked500_20260904/multiseed/seed20260904/outputs/v2_3_seed20260904.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Recorded shared frontend JSONL row order; process one sentence and commit-event sequence at a time; no generation batching.",
+      "id": "speech_causalgloss_20260904",
+      "family": "speech500",
+      "expected_count": 500,
+      "kind": "speech",
+      "entrypoint": "speech-cascade",
+      "generation_batch_size": 1,
+      "seed": 20260904,
+      "stage": "speech_cascade",
+      "inputs": {
+        "frontend": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/locked500.seamlessstreaming.jsonl"
+      },
+      "split": "test",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260904/adapter_final",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/scripts/run_locked500_speech_e2e_pipeline.sh"
+      ],
+      "max_post_source_actions": 64,
+      "boundary": "Policy rerun on archived shared Seamless frontend. Does not claim regenerating identical TTS/frontend runtimes.",
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260904",
+      "config_sha256": "6d7d8ddbbf0c9715acc3469abc51e30bcba59199029cddeadaff26a06aff6d5f",
+      "input_sha256": {
+        "frontend": "7b0e99fd52f132d1d3ced302cf7f76c17c30113e9ef1387b731f2afb512c8b35"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "f2e2dba69ab39d7a295d938940917bd62ba67031d1af7992ec993ef67093da07"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/multiseed/seed20260905/outputs/v2_3_seed20260905.jsonl",
+      "verification_local_relative": "chinese_speech_frontend_v0/paper_e2e_locked500_20260904/multiseed/seed20260905/outputs/v2_3_seed20260905.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Recorded shared frontend JSONL row order; process one sentence and commit-event sequence at a time; no generation batching.",
+      "id": "speech_causalgloss_20260905",
+      "family": "speech500",
+      "expected_count": 500,
+      "kind": "speech",
+      "entrypoint": "speech-cascade",
+      "generation_batch_size": 1,
+      "seed": 20260905,
+      "stage": "speech_cascade",
+      "inputs": {
+        "frontend": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/locked500.seamlessstreaming.jsonl"
+      },
+      "split": "test",
+      "config": "configs/method/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/runs/qwen2_5_7b_lora_state_recovery_v2_3_seed20260905/adapter_final",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/scripts/run_locked500_speech_e2e_pipeline.sh"
+      ],
+      "max_post_source_actions": 64,
+      "boundary": "Policy rerun on archived shared Seamless frontend. Does not claim regenerating identical TTS/frontend runtimes.",
+      "checkpoint": "adapter_final",
+      "training_run_id": "causalgloss_stage_b_20260905",
+      "config_sha256": "9aa8115500c49dcd97521be37ba884e1568f54cd1c1d9cd2b69f25e89e1d669b",
+      "input_sha256": {
+        "frontend": "7b0e99fd52f132d1d3ced302cf7f76c17c30113e9ef1387b731f2afb512c8b35"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
+        "adapter_model.safetensors": "65e020c048aca6a058000a1121e74f5ec8915464c0346f8b6ff8ba5bfedd179c"
+      }
+    },
+    {
+      "historical_output_relative": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/v1.jsonl",
+      "verification_local_relative": "chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/v1.jsonl",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "precision": "bfloat16",
+      "k": null,
+      "inference_world_size": 1,
+      "generation_policy": "Greedy decoding: do_sample=False; retain evaluator-specific suppression, max actions and END/WAIT rules.",
+      "source_order": "Recorded shared frontend JSONL row order; process one sentence and commit-event sequence at a time; no generation batching.",
+      "id": "speech_lexical_internal",
+      "family": "speech500",
+      "expected_count": 500,
+      "kind": "speech",
+      "entrypoint": "speech-cascade",
+      "generation_batch_size": 1,
+      "seed": 20260721,
+      "stage": "speech_cascade",
+      "inputs": {
+        "frontend": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/paper_e2e_locked500_20260904/outputs/locked500.seamlessstreaming.jsonl"
+      },
+      "split": "test",
+      "config": "configs/lexical_control/qwen2_5_7b_lora_causal_action_full_seed2_v1.json",
+      "adapter_relative": "data/how2sign_english_asl_gloss_v1/full_v4_train/fine_tuning_v2_causal_full_seed2/runs/qwen2_5_7b_lora_causal_action_full_seed2_v1/adapter_best",
+      "invocation_evidence": [
+        "95f41d6:archive/original/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/scripts/run_locked500_speech_e2e_pipeline.sh"
+      ],
+      "max_post_source_actions": 64,
+      "boundary": "Policy rerun on archived shared Seamless frontend. Does not claim regenerating identical TTS/frontend runtimes.",
+      "checkpoint": "adapter_best",
+      "training_run_id": "lexical_internal_seed2",
+      "config_sha256": "43a657216191f19eaaac1d3bfa8a77668b85b8b34be993ad60c0a12c727bdbff",
+      "input_sha256": {
+        "frontend": "7b0e99fd52f132d1d3ced302cf7f76c17c30113e9ef1387b731f2afb512c8b35"
+      },
+      "adapter_sha256": {
+        "adapter_config.json": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
+        "adapter_model.safetensors": "6f530bc9bb2d8878415ebdde99cf18b7d2956143a10a6bb87cd5188d3ae072e9"
+      }
+    }
+  ]
+}

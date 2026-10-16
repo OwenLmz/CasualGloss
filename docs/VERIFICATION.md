@@ -27,7 +27,7 @@ CLERC lexical control、LocalAgreement、旧 learned baseline、筛选后未选�
 - 独立重新计分历史逐样本输出，而非复制历史 `metrics.json`。
 - 根据原始数据顺序和 RNG 复算论文报告的关键 bootstrap CI。locked learned 和 CLERC 默认 20,000 次；fixed locked500、Table 2 及 speech 原方法 10,000 次。
 - 已保存输入 SHA-256 和与远端原件的匹配状态；只检查实际使用的 83 项，即使本地私有缓存另有历史文件，也不将其纳入。
-- 19 项单元测试检查指标、重复 ID 拒绝、sample SD、纯论文 allowlist、连接参数、私有下载目录和逐文件符号链接约束；安全测试不发起网络连接。
+- `tests/verification` 的 19 项单元测试检查指标、重复 ID 拒绝、sample SD、纯论文 allowlist、连接参数、私有下载目录和逐文件符号链接约束；安全测试不发起网络连接。根 `tests` 另覆盖 Release 安装、单卡 torchrun、去除未报告分支、语料清洗、83项物化及82项推理矩阵。通过单元测试不代表模型执行通过。
 - **没有从头重训，没有在本验证中重新推理，没有新增 ASL 专家可理解性验证。** “历史输出重新计分一致”不能称为完整训练复现。
 
 完整安全聚合结果见 [recomputed_paper_results.json](../results/recomputed_paper_results.json)，PDF 显示值及输入数量约束见 [expected_paper_results.json](../results/expected_paper_results.json)。显示值按论文实际小数位比较，不要求四位小数等于完整双精度数值。
@@ -49,6 +49,17 @@ CLERC lexical control、LocalAgreement、旧 learned baseline、筛选后未选�
 6. 最终 CausalGloss 三种子使用 `adapter_final`；S1 的 `adapter_best` 实为初始化。最终 learned baseline 来自 2026-09-18 的独立训练版本，不能替换为早期 baseline 或 inference-only 改写。
 7. Table 2 的新配对 bootstrap 保留固定 RNG，验证点估计，但不声称其 CI 与历史 CI 逐位相同。Speech 同时给出新的 NumPy CI 与保留 14 个 metric 顺序、共享 Python RNG 流的历史方法 CI；论文 CI 比较采用后者。
 8. **语音分块描述存在既有差异。** 选定 SeamlessStreaming launcher 使用 `--source-segment-size 320`，单位为毫秒。500 条原始日志中 1,397 个非末尾唯一提交时刻全部落在 320-ms 网格，其中 1,316 个不在 1.2-s 网格；转换后事件也支持该结论。未找到独立的固定 1.2-s 模型块，不能把读取步长、自适应输出间隔或编码器启动等待混为一谈。旧 1.2-s 设置属于未选中的 Whisper/AlignAtt 分支，而最终前端报告沿用了该分支的默认描述，可能是文字遗留，但其写作过程未经证明。当前仓库保留真实 320-ms 参数，只更正今后新生成报告的默认标签；原 PDF、原日志和原结果不改。保存预测的数值复核通过，不等于此处论文文字也已核实一致。
+9. **上游训练暴露。** 全量 ID 核对确认，locked500 的 500/500 样本、132/132 源视频均出现在 Fine-tune1 的 27,079 条训练记录中；下游 action train/validation/test 的 ID 和视频两两交集仍为零。因此本实验的下游 policy 划分互斥，但不能据此宣称整条训练链从未见过测试样本。不改划分、不重建参考来隐藏此事实。
+10. **冻结弱目标的真实血缘。** 30,102 个 v4 目标由 pinned base Qwen 生成，无 adapter。上游训练和最终 action/semantic pair 中目标字符串按 request ID 全量与该 v4 一致。Fine-tune1 用于初始化和 prefix scoring，不是这些冻结目标的重新生成器；这与论文相应生成顺序文字存在差异。
+11. **参考长度影响生成预算。** CLERC 不把人类 gloss 内容放入生成历史，但其最长参考长度用于共同 action cap；k=5 三种子有 52/55/46 条因 cap 终止，得到 completed-only 的 349/344/353。locked500 和 speech 也使用目标长度确定上限。精确复现必须保留原 cap，不能将其称为“参考只参与评分”；改成 source-only cap 属于另一个实验。
+
+## 修复后的验证层级
+
+`scripts/reproduction/materialize_verification_inputs.py` 从已安装的冻结附件产生严格 83 项本地输入别名，不重新序列化 JSONL、不伪造当前远端校验清单。
+
+`scripts/reproduction/run_checkpoint_suite.py` 按 82 项矩阵重新生成输出，只允许全新输出目录。它保留历史批大小、精度和预算；TransLLaMA 默认按原 k-sweep 批处理，不应用 `--separate-k` 冒充精确历史运行。speech 项仅重新运行 policy，使用已录制共同前端；重新合成音频/运行 Seamless 不是这四项所证明的结果。
+
+原始波形 QC、corpus finalizer、保存预测重新计分、选定权重推理、从头训练，是五项不同证据。最终状态由 `results/reproduction_status.json` 中逐项实际记录决定；缺少、未执行、近似匹配和精确匹配不得合并写为“全部复现”。
 
 ## 自己运行
 

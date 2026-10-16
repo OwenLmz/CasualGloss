@@ -18,7 +18,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/reports/full_development_selection.json"
       ],
       "sha256": "2037ff8e5f984530bc36eb36bda6755356481f62334736547eff830f88f7718c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -48,7 +48,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/reports/full_development_selection.json"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -69,7 +69,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "4f8f1787bd9c755937438ab35f3ffa45b712341fb1571d9680b7208214ee1e80",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -93,7 +93,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/reports/development_selection_seed20260904.json"
       ],
       "sha256": "f2e2dba69ab39d7a295d938940917bd62ba67031d1af7992ec993ef67093da07",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -123,7 +123,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260904/reports/development_selection_seed20260904.json"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -144,7 +144,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "dcc766c491c35bca7ca4e8d6c475ccce74e1a2cc3674dbe879dbcd1c3179bfe4",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -168,7 +168,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/reports/development_selection_seed20260905.json"
       ],
       "sha256": "65e020c048aca6a058000a1121e74f5ec8915464c0346f8b6ff8ba5bfedd179c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -198,7 +198,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_multiseed_20260905/reports/development_selection_seed20260905.json"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -219,7 +219,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "2f2690016c782fb4e91ac306ef2fa040e2079723a9388107e80f8fdeeb637a37",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -242,7 +242,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh"
       ],
       "sha256": "f7583e11fe450a3c1676a119625ffc7f6e7884c6d349884fc544c73904a32064",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -271,7 +271,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -294,7 +294,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh"
       ],
       "sha256": "d28178990ca34666eace3de53aebcc1d38a879ddec182329e84a62d1524f270b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -323,7 +323,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/state_recovery_v2_3_full/scripts/run_v2_3_full.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -346,7 +346,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/scripts/run_locked500_speech_e2e_pipeline.sh"
       ],
       "sha256": "6f530bc9bb2d8878415ebdde99cf18b7d2956143a10a6bb87cd5188d3ae072e9",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -369,7 +369,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/scripts/run_locked500_speech_e2e_pipeline.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -392,7 +392,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "8461a85cb6284269a2cdb65fe194fca3228b8e506ab34fa835e78c4b0cfd5e07",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -415,7 +415,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -438,7 +438,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "37117df833bab82b21e71777c35747ef68d222b3c9cdd82f6ea9612866d265ed",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -461,7 +461,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -484,7 +484,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "2b90320242a2d6fe055857d7714fb71dea48e525a3e342a00b0abd101d34a60f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -507,7 +507,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -530,7 +530,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "cd5f60179649218fa786658be538f889254d3b901a221be081bd89e2a4a8d83f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -553,7 +553,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -576,7 +576,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "d15ee17952309ea327af9145f5d7d0afe7a6d488a5029fb33beecd21e5dc58a6",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -599,7 +599,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -622,7 +622,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "18d5588bc6a73266dedc1dcdb5a100b3d5da7f7626ce54fe4ba54c5169e684eb",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -645,7 +645,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -668,7 +668,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "bd15ef7cfc7753bca24a52256f1c69510522b727c99d651b86b21888064e6fc6",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -691,7 +691,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -714,7 +714,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "09a9b3cc62130715cd091479e695f35030a7279d7b7e6331b59dc2db16a30c33",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -737,7 +737,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_fixed_waitk_epee.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -760,7 +760,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
       ],
       "sha256": "e0bff3d29c555a5e80e6f53c868919eb2395709a5d39eb8633c0203159edde1f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -789,7 +789,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -812,7 +812,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
       ],
       "sha256": "90a12fcd64adb178fa7ef6200663cf26013e711810c00c137f180b8a7c703e49",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -841,7 +841,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -864,7 +864,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
       ],
       "sha256": "0ec14b8fe6fcb9383236b9850349b92c7b8525a8f3388c0169753b2703da6233",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -893,7 +893,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/clerc_epee_adaptive_comparison_20260920/scripts/run_full.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -916,7 +916,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "983d649f076993054b64e74415ae9bc8090f51df797271a08c5ad7a4485fe384",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -939,7 +939,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -962,7 +962,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "983d649f076993054b64e74415ae9bc8090f51df797271a08c5ad7a4485fe384",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -985,7 +985,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1008,7 +1008,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "11c8239a99038c15ea40851d6e7bc273e813ad7c425399ec28e7980a66c99e64",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1031,7 +1031,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1054,7 +1054,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "11c8239a99038c15ea40851d6e7bc273e813ad7c425399ec28e7980a66c99e64",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1077,7 +1077,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1100,7 +1100,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d3c3541c5d2d454f73f1dbe99dcbd63b0faf28eb435cb9cb6cf0129363e73120",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1123,7 +1123,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1146,7 +1146,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d3c3541c5d2d454f73f1dbe99dcbd63b0faf28eb435cb9cb6cf0129363e73120",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1169,7 +1169,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1192,7 +1192,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "ca9eb11eff357fa93472a787b8b2d3553805f009dcd818249dfffb9288946a99",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1215,7 +1215,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "d585037e6bd3057d325a06f7ad6058279233b3fa94d80e27f8ab71b7b70a6131",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1238,7 +1238,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "ca9eb11eff357fa93472a787b8b2d3553805f009dcd818249dfffb9288946a99",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1261,7 +1261,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1284,7 +1284,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "6d5aa5322a1e1b27e23300228178ee9b056680a8ef62c1e95ed6ec89c936c48f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1307,7 +1307,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1330,7 +1330,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "6d5aa5322a1e1b27e23300228178ee9b056680a8ef62c1e95ed6ec89c936c48f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1353,7 +1353,7 @@
         "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/full_v4_train/professor_feedback_experiments_20260912/scripts/run_ablation.sh"
       ],
       "sha256": "588836bb9461f9268d633c4173e0ce2efc4efdec41a8f3e250c6b64112f014a8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1374,7 +1374,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ca440be414a13e14c8f5a16a8fdadeae743a75ae43c12f805ecf6f4e1c0c0dfe",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1395,7 +1395,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "305c2c94544f185699c7f835620e9fd543b255dca100b3c320a65f904227674a",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1416,7 +1416,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "5ff8d3022da5fc4d6824b61dfbc6ffd1bcb25f98b2ec45b805ec86eaecd29ae3",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1437,7 +1437,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "fa83d5f88bc19337e9e939086dbe103036d40e9e96e27af13d9cdabbae804bc7",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1458,7 +1458,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "57fc78b6c5cc7fc01bc3cf9b5203dcdc4ccf6f56e8b15127744e19f0405d41f3",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1479,7 +1479,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "53d4f5bd2d6d46ed643f859e35fa09b0e10cbc2a8887cf2a689d498e9ec62c9b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1500,7 +1500,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "e83c3f84b8f5b8b979c034ae47d11719392366b19ffac5e134df13c4f2e4af35",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1521,7 +1521,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "fe14d623c8d6b2e4f96af6c9c8b7c5efc932e55ce1743c36faa0d27b2227d573",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1542,7 +1542,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ce4d0508f84d8c5b861ba05dbedbd08052841136dce75effbd8a1b22fc8f2c6b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1563,7 +1563,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ed57ccdb92d3f067857656e75bcd77ad91885788db004726a20d5da53bf633ee",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1584,7 +1584,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b165d7bed3b3e2a47d1f3ebdca70d8d120f690a1769fd18ecb4bd4835d1e305c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1605,7 +1605,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "599e0ad4e7d2d8b41c594dc64d2fa553bb8a976ed917f03573522dd9b3e16331",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1626,7 +1626,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "9b1b1514c539274824ed948a3ff227b71783561cbe3db2792819b391064a207f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1646,8 +1646,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "7bc275e1b4e9010d269e9a7dea39ebc6c0fb01dcb86700b9b52035221d772ff0",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1668,7 +1668,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "8d0f9779305d49c262fbc8a65ce2e3ae9a9c8423e34700d8b2d3ac79ccb19523",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1689,7 +1689,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b62e988be7688c5b9447cdd0f55c81f6c08962e242a8e4109a5ae6dca92a9222",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1709,8 +1709,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "4dfe16dfd3e1c9b02692c423a25df30ab0140995c1f37d12bfdf4b647c221bdc",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1731,7 +1731,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "c8314584ada6b906c8caec68bb54666a33c51949a22ee01ca8aa2d1385fc30e7",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1752,7 +1752,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "7645b927a9fb9c7798bca835b8ff20b01b2851d9116352bd5fb0ec5bf3dff056",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1772,8 +1772,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "1cc359ceb132977d5cd8816e776bfa598801022847744cb138783ada0457ee23",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1794,7 +1794,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "92930fad4d66cc8d3f4ab46fe3f1744e20d370cba88a5fb8b9ab12967cfbfab0",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1821,7 +1821,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "bc8d9f9dabdd60544fbaf4ddb09ef2070258746804a9f7b2d4c1714f2a6cec1c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1842,7 +1842,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "bf6b55f506fa16a2dc5136c745c62d449d66ed02336c000eef0c5490cb8ad0b5",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1862,8 +1862,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "aaee57eac3afa775ae6fbcc87319a8b587d426c4d65077ef4e49da70b6978d32",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1883,8 +1883,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "f93791c9a554a3024dba7bcf7134ea3eece4d5b6686bd9493346f83aeac61051",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1905,7 +1905,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "236201540bd9f9a41a9b1057990f1b4f5aa2e5fc3993abd3689ccf5ee5f7f7d2",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1926,7 +1926,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "bdc0ae8e53bdd967506521cff87323a839857bfb2331bbf2b66c42a6e6a6028e",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1946,8 +1946,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "492f44b6ca88197d9d903f0331ce16a852b326fa8c312fa5e437de5eba02c58c",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1967,8 +1967,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "0994ef28b4d99d2d04601bee8f901cd5bb475bcafa6a9dc48ceb5bc2b39205b9",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -1989,7 +1989,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "8afc0ed9fe2187ec12d7d93f140938f679696449eb8cdfd7ce8882c19eb35f75",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2009,8 +2009,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "f46ba9e46b13ae0dda5c5326936570fde302e0f9512157616c7f1feda2532b02",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2031,7 +2031,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "9dc3d041827f542565bad84c6dd2f85955ac3e219ef0930eb9a0b97beae286e1",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2052,7 +2052,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "6030e1300a2b89c7b2521c518661b7ddb7fc55fef60aabd460001415fc31c398",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2072,8 +2072,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "ed617f9c5831e7154fc572d6ee300fdfe4611ccbdc048b321a1bd6700e65a92c",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2093,8 +2093,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "70fab771c844eed22f7a9c4e7e036dc18022d3752836865ff0bfcf8921dcc570",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2115,7 +2115,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "d14237e7a8947b8628f2014880c565d8642da5c4aafaa2198682556ba0784a98",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2136,7 +2136,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "7eec42fda86fb24df2026b7a94ea0cbdaddb0bdda7b6bbe17005fa8c9d296300",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2157,7 +2157,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "9423854994bd02484facd9c82e93d0b3dc540d3478a244ef255711eb89adb40a",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2178,7 +2178,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "49a2a0fe2d4c17f5b16a8dde4933c180dc511516e9719da16f65c0c06ec9ad45",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2199,7 +2199,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "05ff0e50f0a615896d776a9292ddbee993fb88fe348a5255b335ccf0a0868f0e",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2220,7 +2220,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "e98a51c01fd63c2a29869f38ddfd8af19024152d6dc0c6f0cccc8c88ee96ca25",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2241,7 +2241,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "608c03f487e3d3fa0ffe1837e87284f735ab1f0a3c11792a6bf45459dc863fe8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2262,7 +2262,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "c56351af3735a4811125ae6c7e647e95f5450b2ac7295dc4f575cd5930b04a5c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2283,7 +2283,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "efa5d4eea242fe6357077de15e06fb1bc6d2469eb3c68d8334692b245fe213dc",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2304,7 +2304,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "8ed7608e526960c5905724f2f545e3386465e5af7e46b796406529db5078d477",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2325,7 +2325,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "28202e81ec2409d3e173e6e04f5b11f0afe3f4e32d23153557d0af585fc1868b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2346,7 +2346,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "8334dc3f21f507a63cc41249c11468ca49930a761a7ce45aecdef6fa478ecfda",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2367,7 +2367,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ebbe7c4c09ad0f38ad545da93e3ee2bb1d4f62ffd3adaa090cf1c13b619bdb7f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2388,7 +2388,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "2aff4c02cb5c6a0541970b7ab8b0d2a1c0655cc44da4cc701fa49b464d7e5443",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2409,7 +2409,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2430,7 +2430,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "37a3e640e561f9813a09f25f06e1dd3d81215645197b4de439d55cfaea14f206",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2450,8 +2450,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "0f4fd8dc941bf5790afff20f8b8915eac20e001801df1cb4094dc77558d37f20",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2472,7 +2472,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "e5d043f22122cf08a708f6b92e6ba3b42640dac3914edbc80e351b911d2dd852",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2493,7 +2493,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "827fa41b73f23bda9494b6aa094472591ad39ef5abe97fa3dbeb58efd74b95f2",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2513,8 +2513,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "eabb8fb92e32aadca12e9d84be9d423d981debf3b11037da2ae59d29f95e9520",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2535,7 +2535,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "a33fd4d9f3a51573965c66e2503b5e18c39dbd4c97a08b15d9c425a3c449b54f",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2556,7 +2556,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "44d56f6722f4b020c8e3af91d989aa1d1bb68ae612b5125cb3c2574c7697b293",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2576,8 +2576,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "3a2c54157057fd537d02bcbd6acaf547d830448f6d3381b3808295361a8a8ef8",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2598,7 +2598,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "28d82e514dc1a8e8a85ad5ff31d790ef4f2cb362bcccbe875cafb6f17bde4437",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2619,7 +2619,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "523d8d52f2e8cce8c738b0985339bc62d23a3e92015b9805a200d2005101d3d9",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2639,8 +2639,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "107f23486a6191ddba9f9dc1b7ad63aa30b40754971a94ec7fe75a8aeb0f2c90",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2661,7 +2661,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "33ca70e41629e2efa509548e8a490b1b5b377c255fdee78a34930d06292172e3",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2682,7 +2682,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "a13f641482e2f15c6926806e8fe9668a7b5dc80d07914843e39b740445498fda",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2703,7 +2703,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b333244e6fce1ffd1fe4c82f41dec1a136f3b53da681c446715b82292c97b76a",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2723,8 +2723,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "476419cdcfcfa226790020e3c529c316aeda6954712f9dd706fd6f2b2e7cade6",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2744,8 +2744,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "2873f128d738cd4926cf8ad04133ae9a26dbe180825f6d5bf4be8eeb3cfe4efb",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2766,7 +2766,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "cc0062472d1ea53ab36cedac9683784e5f3f1f37c5688d0517840432401733bd",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2787,7 +2787,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ac69a468c90ba0fbe424db4356c1a77537da11ad01e6d1ae4b655c50e14cedc9",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2807,8 +2807,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "439430c092b42da2561c32e8af6f1d6a6d1af39318f4a274c1b4079f14a093ac",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2828,8 +2828,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "f3cc7e939952db3dcdbf4662b79588cf99ae167c05931066773b5466760016b7",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2850,7 +2850,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "97000876acfd7576f1a36967d636acac503f3b2534c34e7b81378a3171cdb2ac",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2871,7 +2871,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "d254651360a2a353251528e4ad97975554ea61a17d03d83afaabf8553d603a3d",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2891,8 +2891,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "6e37324a9a8d4a95a70a120b37005b308759d1d806deb9d0f41b5eff0ea1740c",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2912,8 +2912,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "2e792f39ad69d8321a2137f3ca95ff51701e93f0decfc61c934324a199581b6f",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2934,7 +2934,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "977591d2b7941ae1448ccc11a4b9b4e51f977a1c412658626fba90b2db8a7132",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2955,7 +2955,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "59e2670900c138241c091de676878f0d619715107fc3c0ed2503ed32253475a9",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2975,8 +2975,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "6a7ad2eaa5c022041496cf8548a5f33e2a1c37f2853254399c47799a25c61d64",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -2996,8 +2996,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "f4b0f8a8219c9c97fb9b03d91b173a6ca1f41ea3e887dffda939a0076df29348",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3018,7 +3018,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "eed0ef986866bd693bbcf5ff4f0a6fe6feaae778e495cfe18880e894c2464631",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3039,7 +3039,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ef02904a17063f9e9634ae6144b25c8b8ee16bb78959918f8ef1b282965dfa9d",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3059,8 +3059,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "2aab6177d97856913ea08cb900554d979e5486d71486584902f38dbb349b0012",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3080,8 +3080,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "d3a9d32d8702ce73118e58e524480709e02883bddffb8dc381373940cf4bed47",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3102,7 +3102,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "3b53077d2993ecc4d39a2a6c3b3d4d89a9e7021bc0a0ef52d94cd84db69bb1d3",
-      "hash_verification": "reused_prior_verified_audit_live_path_size_mtime_rechecked_no_rehash",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3128,7 +3128,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b125dac6041bde4684d757e0188eb860a800a24eb55a7ca73e9558733e012108",
-      "hash_verification": "reused_prior_verified_audit_live_path_size_mtime_rechecked_no_rehash",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3153,8 +3153,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "6cef90ba4a11255f6dbd76965018dedbc0a82655c428a2b207be251730336f44",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3175,7 +3175,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b1c9030f5b73e8b324e76ffc856613eedca7f81b63783ee92b36c55d424fb939",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3195,8 +3195,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "c62fd659bec4a5c366dcb6a8392f48ee95abc8909141a490fb2435fca62adf39",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3217,7 +3217,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "5c17fb090f1c15a6a6fe20d982c1413d0566d172934f2b019e1f77f930a0c910",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3238,7 +3238,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "9149d7bd29be1ef8d57d7b292938fdad1ea608458150849f438b5d20957c7453",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3259,7 +3259,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "a1682fe2e7130580d967346018b747ba3eda936ddac423fc81a730c4dc792e0e",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3280,7 +3280,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "2b657df3af42fcc7b6ac43726b0a3f90f0c8d05414a143d776ddf887fb0de6f8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3301,7 +3301,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "7fa959f19be0cb1d8526b4127b6f591ec295b3f7883de30af57d08a41f91df46",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3322,7 +3322,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "f65bfc185e7483cabe8dbe7c1ecf8474f01daf59a40bf63600b4a3e8965c876a",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3342,8 +3342,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "d3cec46c624922af0bc74c8fa9de879999383ed8dec0227fe51bda7f994d9123",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3363,8 +3363,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "386f2ed54bde2881b22a5df690d879ac3f6d1c2a518184f871b173e0c6dbeae6",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3385,7 +3385,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "743ae104aef43d3e84a117ed113be2707704b988b759496bf789cffc29481f85",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3412,7 +3412,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "2e7016bbd0e29339cdf142fc980b8ab3908bfc40864c483ecabb9c61a6e52370",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3433,7 +3433,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "20d4e001b141406b0b3da178c0d0b90016b24be043a1e1fc4a661bcfc29f1f0a",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3454,7 +3454,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "d6ef613ae4f2f81cc4c1c4ca7c94a0f8987bf54ad4bc2baa67aba64dac15c12f",
-      "hash_verification": "reused_prior_verified_audit_live_path_size_mtime_rechecked_no_rehash",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3480,7 +3480,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "07623388b8d01a1c36e58a99746efd087c169f92ef5ae446e95aab51b0e26a4a",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3500,8 +3500,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "f117d020294e68e92ffb51999b023e53de21fe150c2eda3d839962dce0881fa9",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3521,8 +3521,8 @@
       "exists_checked_live": true,
       "selected": false,
       "selection_evidence": [],
-      "sha256": null,
-      "hash_verification": "not_hashed_live_size_budget_or_large_data",
+      "sha256": "8dc3c9b1c8ff4c4139a950208ddb5d077d52c13a8e061afd2baea0427659266f",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3543,7 +3543,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ee74e72d3c703da26a0d2514e6fdb9aff91cb3fc4d1f995d10032ed4e1d4efc6",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3564,7 +3564,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "af07a9ca1442fde03d03468a2e3e241ca7b989d94747ac759d4578c896e7c3e5",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3585,7 +3585,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "1290905488bd881cc2250a49002904a78d352557964bd2354e4d71179742794b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3606,7 +3606,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "d73020babf56fabefafcc60fa4c8f77ee8335b4a691179bd9699dd3077168779",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3627,7 +3627,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "36e2d717379ba23bd00ca2ab124a3ab7c3cbf5d10b6354e37f79285ceb3cdeb4",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3648,7 +3648,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "555c7e8e60b2d04f2a017787ee3b4ba16be3c6ec027c4f2abe56276db776a2bb",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3669,7 +3669,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "af7291a2d69b53840d81915419b22db50c05f4824865e068802d9a96d28d2557",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3690,7 +3690,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "74507fc18ce2acfefa96e9799a608bff22a461002bd2186973eaf900dbf56413",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3711,7 +3711,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "74854dd4e4c8a9c77cf4e737adb18091199dc3db24add65459bb55360e09cd48",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3732,7 +3732,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "437bcd86993bb467155c184f3ea93c9e3f99c2a30b7c4d76be970feb3f2bcc2e",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3753,7 +3753,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "298ed88d7a8c141cafd32fe7d30aa5ce1c3224c6a668e696d30b322cfcde139e",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3774,7 +3774,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "3eb9e11b85589ecd4f6947adc0b34d47cd69e0be510a0bd375f553d1c4736696",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3795,7 +3795,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "e52cacb007e73a9256498e61f842d5eccecc6c132840057129814d6cfd74d853",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3816,7 +3816,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "7ed6d6d8c9be9d4a903aae2f6f2fabb27c7fe2ccd14434394faa4a1f7e92ee88",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3837,7 +3837,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "169c9eb1f9374bbe0b250c1df6964dc7791c5b35ed1441760a279dc4888aeb77",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3858,7 +3858,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "c803ec4a823d2458da8232ef50c0a6aabaada5d4a42213842c893e3c9e170a24",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3879,7 +3879,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "dc66db7c575730932b5d42efe70d81f8ca47bcf1a0f3dba761fefba7f26e1cf1",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3900,7 +3900,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b85d6c92969dcd680522e8294bdd118528893d2e9717ec8b2d5aeb83e4b8b1c6",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3921,7 +3921,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "1186b848afc4bd5b0a286a4a8ed96b54ec19172d1456f034ac5f251b26e257e9",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3942,7 +3942,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "9bf6b03d3c2a7f75529b502b6606b042bf7aa733425410f14adc9b850386e10b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3963,7 +3963,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "73b8d0ab194d8f3b0a7a6d7f4a4a29ccc8d75a95b78e5467983d54e870db98be",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -3984,7 +3984,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "4995309441f1f1f55f20c066f97abe3607b42803be41803c6291e7ec65d33210",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4005,7 +4005,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "f837f3473dc818b7958a66c09936231e2cc681b338d6b75aeea719680d3d5a8c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4026,7 +4026,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "de243437c9646a8cba6624ce29a58854ce33eeb4e086dd19b8824ce8b992110c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4047,7 +4047,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "08fd94f4a5820e1fbe5f53fe20d35b663004da90cdf9b8f29c136e6744321f0e",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4068,7 +4068,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "2e9bb04e51401ddf8e2733c9cd1c02e151c3fc01b3399f2b04ac2090e962644b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4089,7 +4089,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "e6f059de32a01aa71f1ab2b2ee4701ed2807496bd0b116295ac2a4752a1e8ae8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4110,7 +4110,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "8ae3ebdf3e943903e07a0820ce222ef213c96a00682deed57d26b3c37efc6df5",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4131,7 +4131,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "eac4113b70c0b0c3a5540565a2d69c3563e6f87b56a7c36c95c46bf868f788dd",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4152,7 +4152,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "7acc687997a1c47fee885193244d7aa96b99086e8030f824f98c3b2473b26dac",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4173,7 +4173,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "3bf481645cf249b8e9225221caa89a38da7b0da80fbd1510eaa8457098a5025d",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4194,7 +4194,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "83df66b3588f2853dca3ae22f8074f2b415e1e275a65d37e67eb56900bc67ba8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4215,7 +4215,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "c339864c8a599b98f1e1ac623bc30a40f678391d71565210f2e55578ad4000c4",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4236,7 +4236,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "121ad52dce848bcb107d5bc0210b3d18d7e4d9c21c1878eaa8c86ec8af76c349",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4257,7 +4257,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "d3df989d2b7e4a9a3d75bae53248b4c33c9e95c13de6995241b1229114905743",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4278,7 +4278,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b0db509e3ceba49718a7a6bd5aa1d8c2354e19017cf8903f6fb7bfecc0e92c55",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4299,7 +4299,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "411ddb5e6e930a01151f47eb75214cbbac85afca796712e7b4e622460a7310b4",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4320,7 +4320,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "44c4dda88dca2e695d9234aa5517ce92e9a5ecc80a8965b45ff38170f0a19c93",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4341,7 +4341,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "3f1ab597de2172cecc039e4f1c41f720eb127119cef441b0615554d6400c0b4d",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4362,7 +4362,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "cf4002decaedfbc9998d2a6e3afdd3d6cfaf0617cea60d93c0e4fa1a37c07ab8",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4383,7 +4383,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "a055a91785a8da24c0593ab0b4a6010af31891a0b724b8dade24ca154cfe7b2b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4404,7 +4404,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "09c6251efef29b88e22665496f5f69b90b38b937128375f82a9b33961d0230b2",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4425,7 +4425,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "217b2c9caf3c2918a2df5348aff4b0ed7c4a1fcb7ccffe5306a5d9d1e40199ab",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4446,7 +4446,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "2730109e1e982660a2848b8781cec4e5ddcdb11901b519514253948b84709509",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4467,7 +4467,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "6af1538af6d7f4f3b38e4db48e8c0e6ff9c970ec74136824b1428d9bcb2a1d15",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4488,7 +4488,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "332156bd97f09a63773edc79d1d1d6765a4f974fb2cc67cb7a82a2ce26364065",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4509,7 +4509,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ef5f98e3b485000d4f7c65f17a6da314ce8e89c0515f2405cdee6f3942543758",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4530,7 +4530,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "87efe5f6f29285398c34c9bb6ae5fe2a51558a8fe2b6b601c2f0fbd22cefb9dd",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4551,7 +4551,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "b488356959fe3a9e28ec1605d2a29aa864b2c2cab83cd1267987c18cb213b4de",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4572,7 +4572,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ae5797b2816c5eda0aa26817e4d7cb53d38cfc960f0bbaec7903883de9369b98",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4593,7 +4593,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "a8a0bccf991b482129e620fd4ca083b87e808fba20e425d1870eabbefb85b600",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4614,7 +4614,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "50ed7161462d012a14bc93cfdd8eb63da4ca4b70a7eea7911f8e935138518ccf",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4635,7 +4635,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "cc13a5bb75826f81dced9780e28b23e9108697199f5849bb4cc5f35df706a3d7",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4656,7 +4656,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "6add6eacab90d640f685ec114c5e19984130cf67137b6c7feb42cdfed1d5ce5d",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4677,7 +4677,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "a138adccc9e7753b699c717148cd4779ce78418f6950a8987c302cfe1c4f8139",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4698,7 +4698,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "31ae08dfab09c5cf43c082942121e75683b129dcf201984c995e4ced904ed94d",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4719,7 +4719,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "a2c2057042b2359ae9f51c878b258491bdb4acecb3094b24aed4ac904185bd1b",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4740,7 +4740,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "078304418b9ab9638ad6efaf94d3a437605f1d37cdefd4e4bc96c1436ff1da7c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4761,7 +4761,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "7fde5ca27e81cff3d617cfb30735fefea1f890d70c748ad6aaf97de89b5b17eb",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4782,7 +4782,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "0c99ec6fbc776441daf6395a90378892a49a45f6261f815813b342f851231eee",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4803,7 +4803,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "77c881e2628287b01814add517ba5778ac67839bd9c7bf20547e578a17ed12b3",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4824,7 +4824,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ea157f32ef0737d1133def4fc26d88e5453bc04037acc61bf2e71b925d3fed94",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4845,7 +4845,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "6fa0a247695f573bc09ad7be5128474bfcbe8ef1cb68b34f3a401d39e1e63dd2",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4866,7 +4866,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "1821071183299e34f7d781f68eed1d6f2176d553dca2363dee4be31bd86a0f1c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4887,7 +4887,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "9cb00c916117a90f2872061dfb5e6a84be5cdc38caa645e176541a3d2e584578",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4908,7 +4908,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "83790175e32a9388184999c06ed01cd29019604dc8429b4b9ac44ef460c281f7",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4929,7 +4929,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "5f25471331adf802a810713be3a82b5eca93eb2c94af0d6cb97bc20511f36676",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4950,7 +4950,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "c41d80d6ffdf18546ab9aa56e33bdcff8331774cd4eead65fa0353a32389f870",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4971,7 +4971,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "e41696a4ee565da319373f720cc0e8f752dd07b077b3b4c9c736dbe0ec5e34c5",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -4992,7 +4992,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "501247cc542e8ec96600508fedd022e9ba2a4ea2eeffc5fc18b21af36f80ab05",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -5013,7 +5013,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "7b0e99fd52f132d1d3ced302cf7f76c17c30113e9ef1387b731f2afb512c8b35",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -5040,7 +5040,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "c7f447855b34c74e9e15199264f6594fe1402a4e4c2b64e45ccedd7837e7ed31",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -5061,7 +5061,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "69592a4f5505e2d0b13cd43b1985dbe4f5dbcf08f5bb83c9092b1dbe61035134",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -5082,7 +5082,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "ddf1520f0d30b60938c73879af9ed42f0c7fabcdef5c7a9f8ee8a47f4be5db8e",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -5103,7 +5103,7 @@
       "selected": false,
       "selection_evidence": [],
       "sha256": "110c92ad7cb3becaae47c47ab3a1acd81390293d0ddfefe7b628dbb368c53b8c",
-      "hash_verification": "sha256_computed_live_remote_20261016",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "additional_roles": [],
       "acquisition": {
         "method": "authenticated_ssh_sftp_read_only",
@@ -5188,7 +5188,7 @@
       "role": "explicit_final_paper_verification_input",
       "size_bytes": 2138025,
       "sha256": "3af247aa8269aa09411a290c87ecc0e76919bca7aeb768e19088acaa061e7da4",
-      "hash_verification": "local_copy_matches_remote_sha256_in_prior_20261016_verification",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "acquisition": {
         "method": "authorized_ssh_read_only",
         "redistribution_permission": "review_upstream_terms"
@@ -5202,7 +5202,7 @@
       "role": "explicit_final_paper_verification_input",
       "size_bytes": 1816674,
       "sha256": "bfb9cac6988b56ad24c9fb0fc2e3737b9c10ca00fd24405f33b71be5a7328ef9",
-      "hash_verification": "local_copy_matches_remote_sha256_in_prior_20261016_verification",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "acquisition": {
         "method": "authorized_ssh_read_only",
         "redistribution_permission": "review_upstream_terms"
@@ -5216,14 +5216,56 @@
       "role": "explicit_final_paper_verification_input",
       "size_bytes": 1885769,
       "sha256": "c38735fd920ab560c0c870d8a9c63c30cfb1ee75bf5b6694b70386f77909a124",
-      "hash_verification": "local_copy_matches_remote_sha256_in_prior_20261016_verification",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
       "acquisition": {
         "method": "authorized_ssh_read_only",
         "redistribution_permission": "review_upstream_terms"
       }
+    },
+    {
+      "remote_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/reports/audio_validation.json",
+      "relative_to_remote_root": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/reports/audio_validation.json",
+      "type": "file",
+      "category": "corpus_quality_metadata",
+      "role": "corpus_raw_audio_quality_input",
+      "size_bytes": 2905,
+      "sha256": "f0e49ed7a7bf788bb96c19733e95a36a9c96f6bf277a809701324a8860caea3e",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
+      "acquisition": {
+        "method": "private_github_release_or_authorized_readonly_ssh",
+        "redistribution_permission": "original upstream conditions apply; private repository does not grant a new public licence"
+      }
+    },
+    {
+      "remote_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/scripts/translation_repairs_v1.json",
+      "relative_to_remote_root": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/scripts/translation_repairs_v1.json",
+      "type": "file",
+      "category": "corpus_quality_metadata",
+      "role": "corpus_frozen_curated_translation_repair_specification",
+      "size_bytes": 828,
+      "sha256": "62098538ef445b480b42449c53eca21455dc09d92891eff3fffc0ea92107a2f8",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
+      "acquisition": {
+        "method": "private_github_release_or_authorized_readonly_ssh",
+        "redistribution_permission": "original upstream conditions apply; private repository does not grant a new public licence"
+      }
+    },
+    {
+      "remote_path": "/123090274/SN_Research/data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/reports/translation_repairs_v1.json",
+      "relative_to_remote_root": "data/how2sign_english_asl_gloss_v1/chinese_speech_frontend_v0/chinese_speech_to_pseudo_asl_corpus_v1_20260905/reports/translation_repairs_v1.json",
+      "type": "file",
+      "category": "corpus_quality_metadata",
+      "role": "corpus_historical_curated_translation_repair_application_report",
+      "size_bytes": 2224,
+      "sha256": "374fe7c83969e3447ba50409204abd030c5e60380437eec49ecb36847427b39e",
+      "hash_verification": "sha256_computed_live_readonly_20261016",
+      "acquisition": {
+        "method": "private_github_release_or_authorized_readonly_ssh",
+        "redistribution_permission": "original upstream conditions apply; private repository does not grant a new public licence"
+      }
     }
   ],
-  "entry_count": 239,
+  "entry_count": 242,
   "category_counts": {
     "selected_lora": 54,
     "checkpoint_selection_evidence": 3,
@@ -5237,7 +5279,7 @@
     "semantic_alignment_outputs": 2,
     "corpus_manifests": 7,
     "corpus_configuration": 3,
-    "corpus_quality_metadata": 5,
+    "corpus_quality_metadata": 8,
     "audio_directory": 2
   },
   "selected_model_groups": [
@@ -5502,8 +5544,8 @@
     "per_audio_manifest_existence_not_revalidated_in_this_metadata_only_audit": true
   },
   "limitations": [
-    "This is an access/integrity index, not uploaded data or redistribution permission.",
-    "Null SHA means metadata-only audit; audio inventories are not per-waveform content verification.",
-    "Historical metadata and unrelated experiments remain outside the current source tree."
+    "Artifact metadata is not the payload; use the checksummed private release catalog.",
+    "Official pretrained models are acquired separately at pinned revisions.",
+    "Original absolute strings in frozen JSONL are not rewritten; runners supply a separate installed data root."
   ]
 }
