@@ -1,50 +1,51 @@
 {
   "scope": "Critical transforms in adapted orchestration files; ASTs matched original functions.",
+  "hash_format": "canonical AST JSON, sorted keys, empty/None fields omitted; independent of Python ast.dump version defaults",
   "functions": [
     {
       "repository_path": "ablations/prepare_experiment_manifests.py",
       "function": "variant_positions",
-      "ast_sha256": "be4bed7f5566c57553cc2753847268c8dbe9a788f24baabcec9a1806f85fb414"
+      "ast_sha256": "1ae03ee7e11fb3f5d5f5272c4dd8f9f762cb859bc1fa938b8ea85aebf743e4d0"
     },
     {
       "repository_path": "ablations/prepare_experiment_manifests.py",
       "function": "action_rows",
-      "ast_sha256": "839be348e161301743888564624539a9cabaccb3212f7c1330856f5673502885"
+      "ast_sha256": "c01fd0163abf364457bbac0c1c96ba5ba408ea3d7cf6a864563636ee5da9a6ce"
     },
     {
       "repository_path": "ablations/prepare_experiment_manifests.py",
       "function": "balanced",
-      "ast_sha256": "449ee3c8d3b7790094556bdc0c752a8409a05f98ca8b547cf95acfdef4ff779b"
+      "ast_sha256": "6a19fe323b70ac25e7460a82ae0726133394d940364229ab396c9d6a206e8fd1"
     },
     {
       "repository_path": "ablations/prepare_experiment_manifests.py",
       "function": "recovery_rows",
-      "ast_sha256": "0a2ab972664a6e58265ae7211435735f7a4f48a889647ab6d9d300bc9fa58313"
+      "ast_sha256": "0635eb691653574d78842e56609a8ec670872b30144beee4ee74ed4b3a1492a6"
     },
     {
       "repository_path": "ablations/prepare_experiment_manifests.py",
       "function": "config",
-      "ast_sha256": "cc010ad5382c3b34d87a825fbfd486099506e3632a7d4e9f502f877fdbee4be2"
+      "ast_sha256": "ba85546779b1fc6a92834e94c4836265b93d6530ad9db5411d4b4db682da8f16"
     },
     {
       "repository_path": "data_preparation/recovery/prepare_v2_3_manifests.py",
       "function": "stable_rank",
-      "ast_sha256": "c8ec5e47a6c55d4f9eec00159ef529258f253a5d66cf5c57eb6743d4e8d43776"
+      "ast_sha256": "3df7e407a77e6eabc44633b9495fe02d06e1e3ae6122e167b890d768d9cb8cfa"
     },
     {
       "repository_path": "data_preparation/recovery/prepare_v2_3_manifests.py",
       "function": "build_recovery_rows",
-      "ast_sha256": "f2fd3b546a726c35aa0040dcec0a8fe143bddc197dbf4669a76f2e88aa954725"
+      "ast_sha256": "5fdc35952e19269f8aa81c7d0b283eb19ad020af605f2a2729b09ae870431f5d"
     },
     {
       "repository_path": "baselines/transllama/bootstrap_final_vs_causalgloss.py",
       "function": "parent_bootstrap",
-      "ast_sha256": "a7cfb8800ac341470b663a89a6ffc3987c3f8ad8b6903a1ee14dd0afa52c5283"
+      "ast_sha256": "bf2eca9b7d85b273d39faed563364cbd51b24e5f20da50fbe24a9a81ff5ede4c"
     },
     {
       "repository_path": "baselines/transllama/bootstrap_final_vs_causalgloss.py",
       "function": "hierarchical_bootstrap",
-      "ast_sha256": "b80502754d49e8642d8f1c7007b4f12c7d1a1258abb9068a7630651c310673a3"
+      "ast_sha256": "3694b603247b5400674acbed1d7a356762426fb57ddf8ebd4935c55a2346bd91"
     }
   ]
 }

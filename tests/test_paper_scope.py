@@ -3,8 +3,11 @@ import hashlib
 import json
 from pathlib import Path
 import unittest
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from check_release import canonical_ast_digest
 
 
 class PaperScopeTests(unittest.TestCase):
@@ -37,7 +40,7 @@ class PaperScopeTests(unittest.TestCase):
             with self.subTest(function=item['function'], file=item['repository_path']):
                 tree = ast.parse((ROOT / item['repository_path']).read_text(encoding='utf-8-sig'))
                 fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == item['function'])
-                value = hashlib.sha256(ast.dump(fn, include_attributes=False).encode()).hexdigest()
+                value = canonical_ast_digest(fn)
                 self.assertEqual(value, item['ast_sha256'])
 
     def test_no_unreported_clerc_lexical_model(self):

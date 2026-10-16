@@ -18,6 +18,26 @@ SECRET_PATTERNS = [
 ]
 
 
+def canonical_ast_digest(node: ast.AST) -> str:
+    """Hash meaningful syntax, independent of empty-field ast.dump defaults.
+
+    Python 3.13+ changed the rendering of empty AST fields. Ignore empty/None
+    fields (including version-added empty type_params), not executable syntax.
+    File-byte hashes remain the primary full-source integrity check.
+    """
+    def normalize(value):
+        if isinstance(value, ast.AST):
+            return {"node": type(value).__name__, "fields": {
+                key: normalize(item) for key, item in ast.iter_fields(value)
+                if item is not None and item != []
+            }}
+        if isinstance(value, list):
+            return [normalize(item) for item in value]
+        return value
+    body = json.dumps(normalize(node), sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(body.encode("utf-8")).hexdigest()
+
+
 def source_expectation(entry: dict) -> tuple[str, str, int]:
     relative = entry["repository_path"]
     posix = PurePosixPath(relative)
