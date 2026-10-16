@@ -93,7 +93,9 @@ def nltk_report(resource_root: Path | None) -> dict:
         import nltk
         if resource_root:
             nltk.data.path.insert(0, str(resource_root.resolve()))
-        for name in ("corpora/wordnet", "corpora/omw-1.4"):
+        # The retained runtime uses nltk.word_tokenize (Punkt), not WordNet.
+        # PorterStemmer/Treebank tokenizers require no downloaded corpora.
+        for name in ("tokenizers/punkt_tab/english/",):
             found = None
             for candidate in (name, name + ".zip"):
                 try:
@@ -103,6 +105,10 @@ def nltk_report(resource_root: Path | None) -> dict:
             resources[name] = found
             if found is None:
                 errors.append(f"Missing NLTK resource {name}; provision separately, do not alter tokenization")
+        if not errors:
+            actual = nltk.word_tokenize("A short tokenizer check.")
+            if actual != ["A", "short", "tokenizer", "check", "."]:
+                errors.append("Recorded English word_tokenize behavior differs")
     except Exception as error:
         errors.append(f"Cannot inspect NLTK resources: {type(error).__name__}: {error}")
     return {"resources": resources, "errors": errors}
