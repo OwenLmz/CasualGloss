@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "repository": "OwenLmz/CasualGloss",
+  "tag": "paper-reproduction-20261016",
+  "private": true,
+  "manifest": {
+    "name": "bundle_file_manifest.json",
+    "size_bytes": 12557756,
+    "sha256": "f1014986ac72af4f5dae99de3fd491de926f121c1d89b6a51dd2e11569c68c3b"
+  },
+  "parts": [
+    {
+      "name": "paper-data.tar.gz",
+      "group": "data",
+      "size_bytes": 1012464590,
+      "sha256": "19da2e5fe49efdce284c289741fcc1d7d46ec2649ea9623dca9fae27642cdae1",
+      "member_count": 186
+    },
+    {
+      "name": "paper-adapters.tar.gz",
+      "group": "adapters",
+      "size_bytes": 505850050,
+      "sha256": "13b0977a43829d93f4fa4e5f9b6a0e7631a65ee8a6c171f520b71b78ad1d2c4f",
+      "member_count": 54
+    },
+    {
+      "name": "paper-audio-001.tar.gz",
+      "group": "audio",
+      "size_bytes": 750249069,
+      "sha256": "eeebc00dbeb60345b0b23b1313e0b32543bcda2626cd89b8d2f8d546eb2f2922",
+      "member_count": 4681
+    },
+    {
+      "name": "paper-audio-002.tar.gz",
+      "group": "audio",
+      "size_bytes": 762365180,
+      "sha256": "b210adb8ee2b28f8ed9ee98235ed9f85874b7fefb2266ac6b97a68808e9346da",
+      "member_count": 4656
+    },
+    {
+      "name": "paper-audio-003.tar.gz",
+      "group": "audio",
+      "size_bytes": 763272744,
+      "sha256": "fcb6fed77d55807622f5fa5c0dd3274439a36aa51359e009bf24233ed47fefeb",
+      "member_count": 4655
+    },
+    {
+      "name": "paper-audio-004.tar.gz",
+      "group": "audio",
+      "size_bytes": 762806763,
+      "sha256": "a05560dd993a803318f002be518843e795f21f93d6a1fca1f9bfc8033de4ff99",
+      "member_count": 4739
+    },
+    {
+      "name": "paper-audio-005.tar.gz",
+      "group": "audio",
+      "size_bytes": 706748826,
+      "sha256": "c263c1360cebefdc2b42ce1e6b28e3ed33a0d7e552e84fb26e4ae362b0ff43f3",
+      "member_count": 3631
+    },
+    {
+      "name": "paper-audio-006.tar.gz",
+      "group": "audio",
+      "size_bytes": 678810110,
+      "sha256": "634354026280e4ee3bd6d6e3367b7aa99f077c79c56feb0b24f0708f523c78d1",
+      "member_count": 3157
+    },
+    {
+      "name": "paper-audio-007.tar.gz",
+      "group": "audio",
+      "size_bytes": 679812095,
+      "sha256": "d6801c54a448388636a66a38f45c6ae62dd384a5e3571413cad25f07ce704d10",
+      "member_count": 3076
+    },
+    {
+      "name": "paper-audio-008.tar.gz",
+      "group": "audio",
+      "size_bytes": 679611653,
+      "sha256": "9495196e8e96ed32a5544653fb27b7e453ab8db1efc0a1f001316fa08e008639",
+      "member_count": 3122
+    },
+    {
+      "name": "paper-audio-009.tar.gz",
+      "group": "audio",
+      "size_bytes": 679904422,
+      "sha256": "96f8b161c7250cdbb3f897f0703174ed3ec7ae45261cbc4e4a3dd6f3cb408ada",
+      "member_count": 3128
+    },
+    {
+      "name": "paper-audio-010.tar.gz",
+      "group": "audio",
+      "size_bytes": 679037363,
+      "sha256": "a0388471e91ff409d78c04732058c858a5d426117c9601d7ac46405c3cdaa267",
+      "member_count": 3146
+    },
+    {
+      "name": "paper-audio-011.tar.gz",
+      "group": "audio",
+      "size_bytes": 421358389,
+      "sha256": "139b56658b4a4b43abdf4b06c677d3f0450d81b0a5c4b5f5a7c3ef7e8f35f0c7",
+      "member_count": 1903
+    }
+  ],
+  "logical_root": "SN_Research; original absolute paths are never extraction destinations",
+  "file_count": 40134,
+  "uncompressed_bytes": 25487764612,
+  "base_models": "Official pinned pretrained models are obtained separately, not redistributed in these author-owned experiment bundles."
+}
