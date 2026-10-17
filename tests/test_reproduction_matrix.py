@@ -60,9 +60,16 @@ class ReproductionMatrixTests(unittest.TestCase):
 
     def test_no_source_data_overwrite(self):
         data_root, models_root = Path("D:/private/bundle"), Path("D:/private/models")
-        for output in (ROOT, data_root / "data/new_results", models_root / "new_results", data_root.parent):
+        for output in (ROOT, data_root, data_root / "data/new_results",
+                       data_root / "new_outputs", data_root / "adapters/new_outputs",
+                       models_root / "new_results", data_root.parent):
             with self.assertRaises(ValueError):
                 matrix.protected_output(output, data_root, models_root)
+
+    def test_output_sibling_of_installed_data_is_allowed(self):
+        data_root, models_root = Path("D:/private/bundle"), Path("D:/private/models")
+        output = Path("D:/private/fresh_outputs")
+        self.assertEqual(output.resolve(), matrix.protected_output(output, data_root, models_root))
 
     def test_path_traversal_rejected(self):
         for value in ("../anything", "/absolute/file", "safe/../../escape", "safe//double", "safe\\windows"):

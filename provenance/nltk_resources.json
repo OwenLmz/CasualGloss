@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "resource": "punkt_tab",
+  "language": "english",
+  "recorded_runtime_nltk_version": "3.9.2",
+  "version_note": "The resource has no separate semantic version. Its official archive and four English model files are identified by SHA-256, not by the mutable download URL alone.",
+  "official_index": "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/index.xml",
+  "url": "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/tokenizers/punkt_tab.zip",
+  "archive_relative_path": "tokenizers/punkt_tab.zip",
+  "size_bytes": 4319076,
+  "sha256": "e57f64187974277726a3417ca6f181ec5403676c717672eef6a748a7b20e0106",
+  "max_uncompressed_bytes": 10885330,
+  "files": [
+    {"member": "punkt_tab/english/abbrev_types.txt", "size_bytes": 619, "sha256": "92a3e070f43d9b4c5534758ca40ad7343b04e7e29bfe0c2eb658a39445a4f779"},
+    {"member": "punkt_tab/english/collocations.tab", "size_bytes": 594, "sha256": "8e2da1225e4dd2cc9dba261ee231ccb134859e21b46006e7f472c5ee269af0cf"},
+    {"member": "punkt_tab/english/ortho_context.tab", "size_bytes": 236303, "sha256": "4bbcca25ed3d3f06c02402abf8419b9f033b8adc06e7b482eca4e45f81a5dc4c"},
+    {"member": "punkt_tab/english/sent_starters.txt", "size_bytes": 241, "sha256": "f3f8535483e1dba487241b764945168123bca3209a9645e59acd1225dc76edac"}
+  ],
+  "provenance": "Archive identity matches the official NLTK package index and the read-only reproduction-server archive; all four English files match the original extracted runtime resources. Only those four English files are extracted. The unchanged complete official ZIP retains its upstream README and other packaged content; legacy punkt is not required or acquired."
+}

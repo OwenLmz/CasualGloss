@@ -134,7 +134,7 @@ def protected_output(output_root: Path, data_root: Path, models_root: Path) -> P
     output = output_root.resolve()
     if output == Path(output.anchor) or len(output.parts) < 3:
         raise ValueError("Choose an explicit, sufficiently narrow new output directory")
-    for protected in (ROOT.resolve(), (data_root / "data").resolve(), models_root.resolve()):
+    for protected in (ROOT.resolve(), data_root.resolve(), models_root.resolve()):
         if output == protected or protected in output.parents or output in protected.parents:
             raise ValueError(f"Output overlaps a protected source/data/model location: {protected}")
     return output

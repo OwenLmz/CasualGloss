@@ -9,9 +9,9 @@
     "does_not_establish_fresh_inference_or_training": true
   },
   "private_frozen_asset_release": {"status": "being_packaged_not_yet_validated_from_GitHub"},
-  "clean_clone_linux_unit_tests": {"status": "pending"},
-  "original_waveform_qc_and_finalizer": {"status": "pending"},
-  "selected_checkpoint_suite": {"status": "pending", "planned_rollouts": 82},
+  "clean_clone_linux_unit_tests": {"status": "passed_at_dfaf3a1; final_updated_clone_pending", "root_tests": 79, "metric_tests": 19},
+  "original_waveform_qc_and_finalizer": {"status": "passed; source_and_original_inputs_read_only", "raw_wavs_revalidated": 19947, "identical_exclusions": 23, "cleaned_records": 19924, "recovery_outputs_byte_identical": 6},
+  "selected_checkpoint_suite": {"status": "completed_with_numerical_differences_not_identical", "completed_invocations": 40, "completed_rollouts": 82, "records": 35535, "integrity_errors": 0, "paper_number_reproduction_pass": false, "report": "results/checkpoint_reinference_20261017.json"},
   "full_audio_frontend_regeneration": {"status": "not_performed"},
   "full_from_scratch_training": {"status": "not_performed", "recorded_training_runs": 30},
   "clean_environment_installation": {"status": "not_performed; existing environment versions recorded"},

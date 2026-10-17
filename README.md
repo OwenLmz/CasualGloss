@@ -44,6 +44,8 @@ python scripts/paper.py run --dry-run rollout -- --help
 
 本版从 82 份论文对应 rollout、35,535 条记录独立复算论文数值及相关 bootstrap，详见[验证说明](docs/VERIFICATION.md)。这不等于从头重新训练。82 项已选权重推理和 30 项训练计划分别记录在 `configs/reproduction/`，实际执行状态以最终验证报告为准。
 
+**实际重推理验收（2026-10-17）：** 82/82 项已运行并通过输入、输出及指标完整性检查，但不是所有纸面数字的精确复现。例如 Locked500 F1 为 0.7039（论文 0.7047），CLERC F1 为 0.6487（论文约 0.649）；completed-only 样本数也有变化，严格纸面检查未通过。保留[完整差异报告](results/checkpoint_reinference_20261017.json)，不修改原结果或 expected 来制造一致。从头新训练及完整 TTS/Seamless 重新生成尚未执行。
+
 ## 数据、模型和边界
 
 冻结数据、逐样本结果、选定 LoRA 和必要合成音频放在同一私有仓库的 [Releases](https://github.com/OwenLmz/CasualGloss/releases)，不塞入 Git 历史。`provenance/release_assets.json` 记录每个实际附件的 SHA/大小；安装器逐文件校验并保留原数据。官方 Qwen 等基座按固定版本另行获取。见[数据与模型说明](docs/DATA_AND_MODELS.md)及[运行说明](docs/REPRODUCTION.md)。未有附件清单或未通过下载校验时，不应认为“数据已经包含”。

@@ -109,16 +109,18 @@ class MaterializeVerificationTests(unittest.TestCase):
             self.run_materialize()
         self.assertFalse(self.output.exists())
 
-    def test_explicit_hardlink_keeps_bytes_and_warns(self):
-        try:
-            receipt = self.run_materialize(mode="hardlink")
-        except PermissionError:
-            self.skipTest("Platform sandbox does not permit hardlinks; default copy tested separately")
-        self.assertEqual(receipt["mode"], "hardlink")
-        self.assertIsNotNone(receipt["hardlink_warning"])
+    def test_hardlinks_are_rejected_without_altering_source(self):
+        with self.assertRaises(ValueError):
+            self.run_materialize(mode="hardlink")
+        self.assertFalse(self.output.exists())
+
+    def test_copies_do_not_change_installed_bundle_link_counts(self):
         source, alias = self.targets[0]
-        self.assertEqual((self.source / MODULE.DATA_PREFIX / source).stat().st_ino,
-                         (self.output / alias).stat().st_ino)
+        original = self.source / MODULE.DATA_PREFIX / source
+        original_links = original.stat().st_nlink
+        self.run_materialize()
+        self.assertEqual(original_links, original.stat().st_nlink)
+        self.assertNotEqual(original.stat().st_ino, (self.output / alias).stat().st_ino)
 
 
 if __name__ == "__main__":

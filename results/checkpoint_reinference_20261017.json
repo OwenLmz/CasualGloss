@@ -1,0 +1,3744 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-17T01:40:41.540838+00:00",
+  "status": "COMPLETE_WITH_NUMERICAL_DIFFERENCES_NOT_IDENTICAL",
+  "scope": "Final submitted paper only. Checkpoint re-inference, not new training.",
+  "source_commit": "dfaf3a1212c3f3a65c4f156e56b0db9d8317f0e5",
+  "source_core_sha256": "55932cb8c976f5460f25df3de58ff9a2c33c47f74d0e970a08bfc81d34123c80",
+  "comparison_helper_sha256": "6a61d42608929a1c5863e5bcd540763e9a12dc78fa06ed928937173ae656a48e",
+  "coverage": {
+    "completed_invocations": 40,
+    "expected_invocations": 40,
+    "verified_rollouts": 82,
+    "expected_rollouts": 82,
+    "verified_records": 35535
+  },
+  "integrity": {
+    "errors": [],
+    "registered_readonly_file_hashes_verified": 130,
+    "clean_source_core_file_hashes_verified": 161,
+    "receipt_command_runtime_config_and_output_index_verified": true,
+    "ordered_ids_source_and_reference_contracts_verified": true,
+    "stored_metrics_recomputed_from_predictions_pass": true,
+    "external_human_reference_manifest_sha256": "6ca225b1c9a4c1f30cf3068d53827738a891b746dd3e1e7bef25260eb1f65f85"
+  },
+  "deterministic_equality": {
+    "exact_rollouts": 1,
+    "different_rollouts": 81,
+    "exact_prediction_rows": 32912,
+    "exact_prediction_fraction": 0.9261854509638384,
+    "exact_joint_prediction_schedule_decisions_events_rows": 22447,
+    "exact_joint_fraction": 0.6316870690868158,
+    "exact_rollout_id": "clerc_causalgloss_20260904"
+  },
+  "paper_display_validation": {
+    "unchanged_standalone_verifier_exit_code": 1,
+    "unchanged_standalone_verifier_failure": "ValueError: Completed subset counts differ",
+    "historical_completed_counts": [
+      349,
+      344,
+      353
+    ],
+    "fresh_completed_counts": [
+      349,
+      343,
+      352
+    ],
+    "original_section_point_or_sd_difference_checks": 48,
+    "displayed_ci_endpoint_checks": 18,
+    "displayed_ci_endpoint_mismatches": 16,
+    "full_paper_number_reproduction_pass": false
+  },
+  "table1": {
+    "paper_rounded": {
+      "fixed_k7": {
+        "token_f1": [
+          0.6457,
+          0.001
+        ],
+        "sequence_similarity": [
+          0.6383,
+          0.0008
+        ],
+        "bleu4": [
+          33.9,
+          0.19
+        ],
+        "laal": [
+          4.3099,
+          0.0528
+        ]
+      },
+      "transllama_k5": {
+        "token_f1": [
+          0.7067,
+          0.0056
+        ],
+        "sequence_similarity": [
+          0.6955,
+          0.0051
+        ],
+        "bleu4": [
+          28.35,
+          0.33
+        ],
+        "laal": [
+          3.9061,
+          0.0458
+        ]
+      },
+      "causalgloss": {
+        "token_f1": [
+          0.7047,
+          0.0055
+        ],
+        "sequence_similarity": [
+          0.6957,
+          0.006
+        ],
+        "bleu4": [
+          37.31,
+          2.88
+        ],
+        "laal": [
+          1.7823,
+          0.2031
+        ]
+      }
+    },
+    "fresh_recomputed": {
+      "causalgloss": {
+        "token_f1": {
+          "mean": 0.7038667231266666,
+          "sample_sd": 0.005831000303333294
+        },
+        "sequence_similarity": {
+          "mean": 0.6947728346866667,
+          "sample_sd": 0.006319808742917501
+        },
+        "laal": {
+          "mean": 1.7791938580933333,
+          "sample_sd": 0.21089488720023902
+        },
+        "completion": {
+          "mean": 1.0,
+          "sample_sd": 0.0
+        },
+        "bleu4": {
+          "mean": 36.88166873910963,
+          "sample_sd": 2.454310182309176
+        }
+      },
+      "fixed_k7": {
+        "token_f1": {
+          "mean": 0.6487696830333333,
+          "sample_sd": 0.001285739428677343
+        },
+        "sequence_similarity": {
+          "mean": 0.6409532607466667,
+          "sample_sd": 0.0011922395929366322
+        },
+        "laal": {
+          "mean": 4.30246194306,
+          "sample_sd": 0.04726174942948096
+        },
+        "completion": {
+          "mean": 1.0,
+          "sample_sd": 0.0
+        },
+        "bleu4": {
+          "mean": 33.818240545357405,
+          "sample_sd": 0.5793311023579785
+        }
+      },
+      "transllama_k5": {
+        "token_f1": {
+          "mean": 0.70666190682,
+          "sample_sd": 0.003187087195155304
+        },
+        "sequence_similarity": {
+          "mean": 0.6954537935466667,
+          "sample_sd": 0.0022253678964859473
+        },
+        "laal": {
+          "mean": 3.9091399714544024,
+          "sample_sd": 0.0169368527014524
+        },
+        "completion": {
+          "mean": 0.988,
+          "sample_sd": 0.005291502622129186
+        },
+        "bleu4": {
+          "mean": 28.813432007458644,
+          "sample_sd": 0.31703179037070295
+        }
+      }
+    }
+  },
+  "clerc_completed_only": {
+    "paper_rounded": {
+      "causal_f1": 0.6196,
+      "learned_f1": 0.5839,
+      "delta": 0.0357,
+      "ci95": [
+        0.021,
+        0.051
+      ],
+      "n_by_seed": [
+        349,
+        344,
+        353
+      ]
+    },
+    "fresh": {
+      "counts": [
+        349,
+        343,
+        352
+      ],
+      "expected_counts": [
+        349,
+        344,
+        353
+      ],
+      "count_guard_passes": false,
+      "completed_only": {
+        "mean_difference": 0.034719555534136956,
+        "ci95": [
+          0.021532134503267547,
+          0.048334364033302275
+        ],
+        "repetitions": 20000,
+        "random_seed": 20260921,
+        "paired_counts": [
+          349,
+          343,
+          352
+        ],
+        "design": "matched-seed then paired-parent"
+      },
+      "causal_f1": 0.6199926662724752,
+      "learned_f1": 0.5852731107383381,
+      "all_prompt_k5_f1": {
+        "mean_difference": 0.099457223694818,
+        "ci95": [
+          0.08113189075636645,
+          0.11806510042084599
+        ],
+        "repetitions": 20000,
+        "random_seed": 20260920,
+        "paired_counts": [
+          401,
+          401,
+          401
+        ],
+        "design": "matched-seed then paired-parent"
+      },
+      "all_prompt_k5_laal": {
+        "mean_difference": -2.1489709467620304,
+        "ci95": [
+          -2.3514930006493744,
+          -1.9836365084732663
+        ],
+        "repetitions": 20000,
+        "random_seed": 20260921,
+        "paired_counts": [
+          399,
+          399,
+          400
+        ],
+        "design": "matched-seed then paired-parent"
+      },
+      "fixed5": {
+        "token_f1": {
+          "mean_difference": 0.032149028474391494,
+          "ci95": [
+            0.0076850258508245365,
+            0.056900119918493176
+          ],
+          "repetitions": 20000,
+          "random_seed": 20260941,
+          "paired_parent_count": 401,
+          "left_seed_count": 3,
+          "right_seed_count": 3,
+          "design": "independent system seeds, shared paired-parent draw"
+        },
+        "laal": {
+          "mean_difference": -2.3629231470612932,
+          "ci95": [
+            -2.5781696802222926,
+            -2.159747823303946
+          ],
+          "repetitions": 20000,
+          "random_seed": 20260942,
+          "paired_parent_count": 397,
+          "left_seed_count": 3,
+          "right_seed_count": 3,
+          "design": "independent system seeds, shared paired-parent draw"
+        }
+      },
+      "fixed7": {
+        "token_f1": {
+          "mean_difference": 0.04006739162966233,
+          "ci95": [
+            0.015936071884802998,
+            0.06535154739533482
+          ],
+          "repetitions": 20000,
+          "random_seed": 20260951,
+          "paired_parent_count": 401,
+          "left_seed_count": 3,
+          "right_seed_count": 3,
+          "design": "independent system seeds, shared paired-parent draw"
+        },
+        "laal": {
+          "mean_difference": -3.610340456962775,
+          "ci95": [
+            -3.8690002437999156,
+            -3.3549039659109567
+          ],
+          "repetitions": 20000,
+          "random_seed": 20260952,
+          "paired_parent_count": 394,
+          "left_seed_count": 3,
+          "right_seed_count": 3,
+          "design": "independent system seeds, shared paired-parent draw"
+        }
+      }
+    }
+  },
+  "table2": {
+    "paper_rounded": {
+      "full_f1": 0.7131,
+      "full_laal": 1.5146,
+      "no_semantic": [
+        0.008,
+        -0.96
+      ],
+      "no_rescue": [
+        0.062,
+        -0.326
+      ],
+      "no_negation": [
+        0.072,
+        -0.267
+      ],
+      "no_occurrence": [
+        0.073,
+        -0.252
+      ],
+      "no_burst": [
+        0.003,
+        -1.624
+      ],
+      "no_recovery": [
+        0.075,
+        -0.306
+      ],
+      "guard_only_f1_delta": 0.038
+    },
+    "fresh_summaries": {
+      "full": {
+        "token_f1": 0.7167258812799999,
+        "sequence_similarity": 0.70285752644,
+        "laal": 1.5126329329600001,
+        "completion": 1.0
+      },
+      "no_recovery": {
+        "token_f1": 0.6443367275599999,
+        "sequence_similarity": 0.6354288461600001,
+        "laal": 1.9077250993145163,
+        "completion": 1.0
+      },
+      "guard_only": {
+        "token_f1": 0.679068982,
+        "sequence_similarity": 0.66878761824,
+        "laal": 1.7677841235341365,
+        "completion": 1.0
+      },
+      "no_semantic": {
+        "token_f1": 0.71108748712,
+        "sequence_similarity": 0.69977280116,
+        "laal": 2.39467484208,
+        "completion": 1.0
+      },
+      "no_rescue": {
+        "token_f1": 0.64988718488,
+        "sequence_similarity": 0.64016709352,
+        "laal": 1.877303107983871,
+        "completion": 1.0
+      },
+      "no_negation": {
+        "token_f1": 0.6389469281200001,
+        "sequence_similarity": 0.6296370379999999,
+        "laal": 1.7513707319354839,
+        "completion": 1.0
+      },
+      "no_occurrence": {
+        "token_f1": 0.62840596012,
+        "sequence_similarity": 0.6175131126400001,
+        "laal": 1.75889550875,
+        "completion": 1.0
+      },
+      "no_burst": {
+        "token_f1": 0.71582343512,
+        "sequence_similarity": 0.70626455424,
+        "laal": 3.19582167876,
+        "completion": 1.0
+      }
+    },
+    "fresh_full_minus_ablated": {
+      "no_recovery": {
+        "token_f1": {
+          "mean_difference": 0.07238915372,
+          "ci95": [
+            0.04482174063,
+            0.100119432782
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260839,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        },
+        "laal": {
+          "mean_difference": -0.4007266549596774,
+          "ci95": [
+            -0.6653679696441533,
+            -0.13456143432258066
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260840,
+          "paired_counts": [
+            248
+          ],
+          "design": "paired-parent"
+        }
+      },
+      "guard_only": {
+        "token_f1": {
+          "mean_difference": 0.03765689928,
+          "ci95": [
+            0.014360258949000003,
+            0.06184677276
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260849,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        },
+        "laal": {
+          "mean_difference": -0.2624871455020081,
+          "ci95": [
+            -0.5100892149738956,
+            -0.0106242363534138
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260850,
+          "paired_counts": [
+            249
+          ],
+          "design": "paired-parent"
+        }
+      },
+      "no_semantic": {
+        "token_f1": {
+          "mean_difference": 0.005638394159999999,
+          "ci95": [
+            -0.011434449250000001,
+            0.023402358306999972
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260859,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        },
+        "laal": {
+          "mean_difference": -0.88204190912,
+          "ci95": [
+            -1.1929020301439999,
+            -0.6053592724589999
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260860,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        }
+      },
+      "no_rescue": {
+        "token_f1": {
+          "mean_difference": 0.06683869640000001,
+          "ci95": [
+            0.040824992523,
+            0.09511921858499998
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260869,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        },
+        "laal": {
+          "mean_difference": -0.37030466362903225,
+          "ci95": [
+            -0.6343950835524194,
+            -0.10577331193044359
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260870,
+          "paired_counts": [
+            248
+          ],
+          "design": "paired-parent"
+        }
+      },
+      "no_negation": {
+        "token_f1": {
+          "mean_difference": 0.07777895316,
+          "ci95": [
+            0.05015273894600001,
+            0.10632473539799998
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260879,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        },
+        "laal": {
+          "mean_difference": -0.24437228758064516,
+          "ci95": [
+            -0.484116569217742,
+            0.008716979456653241
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260880,
+          "paired_counts": [
+            248
+          ],
+          "design": "paired-parent"
+        }
+      },
+      "no_occurrence": {
+        "token_f1": {
+          "mean_difference": 0.08831992116000001,
+          "ci95": [
+            0.061792665844000005,
+            0.11608533778199999
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260889,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        },
+        "laal": {
+          "mean_difference": -0.2518970643951613,
+          "ci95": [
+            -0.5276615823931453,
+            0.03550070743548388
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260890,
+          "paired_counts": [
+            248
+          ],
+          "design": "paired-parent"
+        }
+      },
+      "no_burst": {
+        "token_f1": {
+          "mean_difference": 0.0009024461600000007,
+          "ci95": [
+            -0.018720416553,
+            0.020565251035999998
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260899,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        },
+        "laal": {
+          "mean_difference": -1.6831887458,
+          "ci95": [
+            -2.0706496849290006,
+            -1.317154418384
+          ],
+          "repetitions": 10000,
+          "random_seed": 20260900,
+          "paired_counts": [
+            250
+          ],
+          "design": "paired-parent"
+        }
+      }
+    }
+  },
+  "speech": {
+    "paper_rounded": {
+      "mean_f1": 0.3944,
+      "sample_sd_f1": 0.0003,
+      "mean_raw_laal": 2.415,
+      "sample_sd_raw_laal": 0.042,
+      "completion": 0.998,
+      "s1_raw_latency_delta": -0.152,
+      "s1_compute_latency_delta": -0.123,
+      "lexical_rtf": 0.388,
+      "causal_mean_rtf": 0.38
+    },
+    "fresh_three_seed": {
+      "token_f1": {
+        "mean": 0.39248430998666667,
+        "sample_sd": 0.0024920598320384664
+      },
+      "laal": {
+        "mean": 2.40770426684,
+        "sample_sd": 0.011655818602971357
+      },
+      "compute_laal": {
+        "mean": 2.87317306822,
+        "sample_sd": 0.018063783681694662
+      },
+      "completion": {
+        "mean": 0.9979999999999999,
+        "sample_sd": 0.0
+      },
+      "rtf": {
+        "mean": 0.44369886589333335,
+        "sample_sd": 0.0026342136144945627
+      },
+      "relative_length_error": {
+        "mean": 0.5083528288684214,
+        "sample_sd": 0.030956914200020162
+      }
+    },
+    "fresh_s1_minus_lexical": {
+      "token_f1": {
+        "mean_difference": 0.0006941311399999996,
+        "ci95": [
+          -0.007946043562000002,
+          0.009041381869999999
+        ],
+        "repetitions": 10000,
+        "random_seed": 20260904,
+        "paired_counts": [
+          500
+        ],
+        "design": "paired-parent"
+      },
+      "laal": {
+        "mean_difference": -0.15632685028,
+        "ci95": [
+          -0.2250264017365,
+          -0.097187074198
+        ],
+        "repetitions": 10000,
+        "random_seed": 20260905,
+        "paired_counts": [
+          500
+        ],
+        "design": "paired-parent"
+      },
+      "compute_laal": {
+        "mean_difference": -0.13675773612,
+        "ci95": [
+          -0.20628302018650002,
+          -0.07635508348350005
+        ],
+        "repetitions": 10000,
+        "random_seed": 20260906,
+        "paired_counts": [
+          500
+        ],
+        "design": "paired-parent"
+      }
+    }
+  },
+  "all_fresh_vs_historical_rollouts": [
+    {
+      "id": "speech_causalgloss_20260829",
+      "kind": "speech",
+      "family": "speech500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 455,
+        "schedule": 452,
+        "decisions": 460,
+        "events": 443,
+        "joint": 443
+      },
+      "historical_metrics": {
+        "token_f1": 0.39457516476,
+        "sequence_similarity": 0.37402492504,
+        "laal": 2.39087999918,
+        "compute_laal": 2.82771491794,
+        "completion": 0.998,
+        "rtf": 0.4126989405,
+        "relative_length_error": 0.5420532123858719
+      },
+      "fresh_metrics": {
+        "token_f1": 0.39251460296,
+        "sequence_similarity": 0.3720402504,
+        "laal": 2.39726883344,
+        "compute_laal": 2.86141742052,
+        "completion": 0.998,
+        "rtf": 0.44171353906,
+        "relative_length_error": 0.5376524954944433
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0020605617999999715,
+        "sequence_similarity": -0.001984674640000017,
+        "laal": 0.006388834260000031,
+        "compute_laal": 0.03370250258000018,
+        "completion": 0.0,
+        "rtf": 0.029014598559999993,
+        "relative_length_error": -0.004400716891428624
+      },
+      "fresh_sha256": "4d330508812c7c29c4c0480dafb5e37159ac45d9ec5206531098e583b318588f",
+      "historical_sha256": "69592a4f5505e2d0b13cd43b1985dbe4f5dbcf08f5bb83c9092b1dbe61035134",
+      "receipt_sha256": "42170d7614abf9d592293e54f9a0204294a6aadf8347c782b46047df0136b4dc"
+    },
+    {
+      "id": "speech_causalgloss_20260904",
+      "kind": "speech",
+      "family": "speech500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 421,
+        "schedule": 424,
+        "decisions": 429,
+        "events": 408,
+        "joint": 408
+      },
+      "historical_metrics": {
+        "token_f1": 0.39458812572,
+        "sequence_similarity": 0.37603758206,
+        "laal": 2.4631103954599998,
+        "compute_laal": 2.8344158124,
+        "completion": 0.998,
+        "rtf": 0.33040708125999996,
+        "relative_length_error": 0.45999312251211816
+      },
+      "fresh_metrics": {
+        "token_f1": 0.39496108524,
+        "sequence_similarity": 0.37580588696,
+        "laal": 2.4202829892200004,
+        "compute_laal": 2.89397248184,
+        "completion": 0.998,
+        "rtf": 0.4466872596,
+        "relative_length_error": 0.4759694767706234
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00037295951999999355,
+        "sequence_similarity": -0.0002316950999999845,
+        "laal": -0.042827406239999366,
+        "compute_laal": 0.05955666944000004,
+        "completion": 0.0,
+        "rtf": 0.11628017834000004,
+        "relative_length_error": 0.015976354258505243
+      },
+      "fresh_sha256": "8066fdcee020e5d406c27e1dedefc0b0e0f47217d80ad38a774ad14990c9c971",
+      "historical_sha256": "ddf1520f0d30b60938c73879af9ed42f0c7fabcdef5c7a9f8ee8a47f4be5db8e",
+      "receipt_sha256": "a9a61cecfeeffa82008bdf2757510f789b8a67dd3509824b90fd2d09765107ce"
+    },
+    {
+      "id": "speech_causalgloss_20260905",
+      "kind": "speech",
+      "family": "speech500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 451,
+        "schedule": 456,
+        "decisions": 461,
+        "events": 442,
+        "joint": 442
+      },
+      "historical_metrics": {
+        "token_f1": 0.3941238447,
+        "sequence_similarity": 0.37500946993999995,
+        "laal": 2.3905839118600003,
+        "compute_laal": 2.81004838326,
+        "completion": 0.998,
+        "rtf": 0.39734086179999994,
+        "relative_length_error": 0.5089512932175619
+      },
+      "fresh_metrics": {
+        "token_f1": 0.38997724176000004,
+        "sequence_similarity": 0.37102674194,
+        "laal": 2.40556097786,
+        "compute_laal": 2.8641293023,
+        "completion": 0.998,
+        "rtf": 0.44269579902,
+        "relative_length_error": 0.5114365143401973
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.004146602939999966,
+        "sequence_similarity": -0.003982727999999935,
+        "laal": 0.014977065999999706,
+        "compute_laal": 0.05408091904000001,
+        "completion": 0.0,
+        "rtf": 0.04535493722000006,
+        "relative_length_error": 0.0024852211226353838
+      },
+      "fresh_sha256": "021c3537c84eebcf137aa08455dabd9fac45997b93ff0ccedc7c0918368088bb",
+      "historical_sha256": "110c92ad7cb3becaae47c47ab3a1acd81390293d0ddfefe7b628dbb368c53b8c",
+      "receipt_sha256": "9a0656ed9e761dc86bd01b09dbec0e2e21a277cdeff39ff35c2e1730539f56ed"
+    },
+    {
+      "id": "speech_lexical_internal",
+      "kind": "speech",
+      "family": "speech500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 445,
+        "schedule": 454,
+        "decisions": 457,
+        "events": 442,
+        "joint": 442
+      },
+      "historical_metrics": {
+        "token_f1": 0.39414876424,
+        "sequence_similarity": 0.37387916268,
+        "laal": 2.5428512811,
+        "compute_laal": 2.9506363676,
+        "completion": 0.998,
+        "rtf": 0.38766424105999997,
+        "relative_length_error": 0.4257636826482025
+      },
+      "fresh_metrics": {
+        "token_f1": 0.39182047182,
+        "sequence_similarity": 0.37212992738,
+        "laal": 2.5535956837200002,
+        "compute_laal": 2.99817515664,
+        "completion": 0.998,
+        "rtf": 0.43013648854000003,
+        "relative_length_error": 0.4364340631732876
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.002328292419999989,
+        "sequence_similarity": -0.001749235299999985,
+        "laal": 0.010744402620000315,
+        "compute_laal": 0.04753878903999986,
+        "completion": 0.0,
+        "rtf": 0.04247224748000006,
+        "relative_length_error": 0.010670380525085066
+      },
+      "fresh_sha256": "bfa71691a7f8c7949d223667334b04045dc29d4fcd20302a824b6a16963b6a54",
+      "historical_sha256": "c7f447855b34c74e9e15199264f6594fe1402a4e4c2b64e45ccedd7837e7ed31",
+      "receipt_sha256": "c1c93d48548eb6f288afc901183f535d4539d12448e3033d6819eaf77f13bf53"
+    },
+    {
+      "id": "clerc_transllama_20260829_k1",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 394,
+        "schedule": 394,
+        "decisions": 397,
+        "events": 288,
+        "joint": 288
+      },
+      "historical_metrics": {
+        "token_f1": 0.5620700505495098,
+        "laal": 2.558261010274314,
+        "completion": 0.8653366583541147
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5635812298661754,
+        "laal": 2.556657875286783,
+        "completion": 0.8628428927680798
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0015111793166656673,
+        "laal": -0.001603134987531174,
+        "completion": -0.0024937655860348684
+      },
+      "fresh_sha256": "7aa1c7f73d3219ed73c320b69192486ef0160f0c432604dc63d3b1c755fb02bf",
+      "historical_sha256": "298ed88d7a8c141cafd32fe7d30aa5ce1c3224c6a668e696d30b322cfcde139e",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260829_k2",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 394,
+        "schedule": 392,
+        "decisions": 396,
+        "events": 277,
+        "joint": 277
+      },
+      "historical_metrics": {
+        "token_f1": 0.5628478770670227,
+        "laal": 2.5647873927680798,
+        "completion": 0.8653366583541147
+      },
+      "fresh_metrics": {
+        "token_f1": 0.564734574464942,
+        "laal": 2.5586004791022443,
+        "completion": 0.8628428927680798
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0018866973979193569,
+        "laal": -0.006186913665835458,
+        "completion": -0.0024937655860348684
+      },
+      "fresh_sha256": "c315e4668d1b4b3e8f417d40eb4685f854670ef45ccbc9161649c7a57efc565b",
+      "historical_sha256": "e52cacb007e73a9256498e61f842d5eccecc6c132840057129814d6cfd74d853",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260829_k3",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 395,
+        "schedule": 398,
+        "decisions": 398,
+        "events": 290,
+        "joint": 290
+      },
+      "historical_metrics": {
+        "token_f1": 0.5519251965249573,
+        "laal": 3.0111481020947632,
+        "completion": 0.8678304239401496
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5533572086801615,
+        "laal": 3.011415291271821,
+        "completion": 0.8653366583541147
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0014320121552041654,
+        "laal": 0.0002671891770575918,
+        "completion": -0.0024937655860349794
+      },
+      "fresh_sha256": "5b5bc3263dfc0a33adf137a2f5895c7f24ecdb3d6828cc195efd97053bf6f55a",
+      "historical_sha256": "169c9eb1f9374bbe0b250c1df6964dc7791c5b35ed1441760a279dc4888aeb77",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260829_k4",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 395,
+        "schedule": 395,
+        "decisions": 398,
+        "events": 318,
+        "joint": 318
+      },
+      "historical_metrics": {
+        "token_f1": 0.5511738099907479,
+        "laal": 3.2914284492518706,
+        "completion": 0.8678304239401496
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5528012349348811,
+        "laal": 3.2839174648129674,
+        "completion": 0.8653366583541147
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.001627424944133149,
+        "laal": -0.00751098443890319,
+        "completion": -0.0024937655860349794
+      },
+      "fresh_sha256": "a9914a52c92278b324f869956d9938cdc154df7be8327ece835ca59165ff851d",
+      "historical_sha256": "dc66db7c575730932b5d42efe70d81f8ca47bcf1a0f3dba761fefba7f26e1cf1",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260829_k5",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 398,
+        "schedule": 397,
+        "decisions": 399,
+        "events": 324,
+        "joint": 324
+      },
+      "historical_metrics": {
+        "token_f1": 0.5578712814416995,
+        "laal": 3.6686740937157105,
+        "completion": 0.8703241895261845
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5576100298088769,
+        "laal": 3.664943836034913,
+        "completion": 0.8703241895261845
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0002612516328226455,
+        "laal": -0.0037302576807975996,
+        "completion": 0.0
+      },
+      "fresh_sha256": "c238e0e2da50fe1c8bcaf67a1a1d99e719cb10aa2b3e832153ae2ce158e4c97d",
+      "historical_sha256": "1186b848afc4bd5b0a286a4a8ed96b54ec19172d1456f034ac5f251b26e257e9",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260829_k6",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 399,
+        "schedule": 400,
+        "decisions": 400,
+        "events": 352,
+        "joint": 352
+      },
+      "historical_metrics": {
+        "token_f1": 0.5464097672032294,
+        "laal": 4.191611744314215,
+        "completion": 0.8703241895261845
+      },
+      "fresh_metrics": {
+        "token_f1": 0.54700352091419,
+        "laal": 4.188286723541148,
+        "completion": 0.8703241895261845
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0005937537109605984,
+        "laal": -0.0033250207730670667,
+        "completion": 0.0
+      },
+      "fresh_sha256": "d10402811f773ab5525b6dfb1ab6c9514ebb4078fd9af1147bcda0cca97850dd",
+      "historical_sha256": "73b8d0ab194d8f3b0a7a6d7f4a4a29ccc8d75a95b78e5467983d54e870db98be",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260829_k7",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 398,
+        "schedule": 398,
+        "decisions": 399,
+        "events": 354,
+        "joint": 354
+      },
+      "historical_metrics": {
+        "token_f1": 0.5474071903951663,
+        "laal": 4.728252285685786,
+        "completion": 0.8678304239401496
+      },
+      "fresh_metrics": {
+        "token_f1": 0.547140001225234,
+        "laal": 4.728875727082294,
+        "completion": 0.8703241895261845
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.00026718916993229147,
+        "laal": 0.0006234413965087171,
+        "completion": 0.0024937655860348684
+      },
+      "fresh_sha256": "ecc1f4ec105f77c56c72c890ea9646e6c71bcafdb28c70664f7181b2f7e21c8b",
+      "historical_sha256": "f837f3473dc818b7958a66c09936231e2cc681b338d6b75aeea719680d3d5a8c",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260829_k8",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 399,
+        "schedule": 399,
+        "decisions": 399,
+        "events": 371,
+        "joint": 371
+      },
+      "historical_metrics": {
+        "token_f1": 0.550588450808347,
+        "laal": 5.297394905610972,
+        "completion": 0.8703241895261845
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5508556399782792,
+        "laal": 5.297394905610972,
+        "completion": 0.8678304239401496
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00026718916993229147,
+        "laal": 0.0,
+        "completion": -0.0024937655860348684
+      },
+      "fresh_sha256": "1f3630c7dd84bb11c5c25128c2a48307dd0066b12574eb0e3e7e03cef90f9fb6",
+      "historical_sha256": "08fd94f4a5820e1fbe5f53fe20d35b663004da90cdf9b8f29c136e6744321f0e",
+      "receipt_sha256": "8ddde5f95c8e4c1146f37312e2d45e06a66c3548c4eab19deb780d0197e9618f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k1",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 396,
+        "schedule": 393,
+        "decisions": 398,
+        "events": 344,
+        "joint": 344
+      },
+      "historical_metrics": {
+        "token_f1": 0.5493741847957013,
+        "laal": 2.9032660056109725,
+        "completion": 0.85785536159601
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5486949779728166,
+        "laal": 2.9113750433665833,
+        "completion": 0.85785536159601
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0006792068228846926,
+        "laal": 0.008109037755610782,
+        "completion": 0.0
+      },
+      "fresh_sha256": "63ed3423f377a4e810348a0560e30a841dc3053a3d9b7f161b3212e5ff707df3",
+      "historical_sha256": "eac4113b70c0b0c3a5540565a2d69c3563e6f87b56a7c36c95c46bf868f788dd",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k2",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 396,
+        "schedule": 390,
+        "decisions": 398,
+        "events": 344,
+        "joint": 344
+      },
+      "historical_metrics": {
+        "token_f1": 0.5507936775752299,
+        "laal": 2.925131647955112,
+        "completion": 0.85785536159601
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5519324993096216,
+        "laal": 2.922044128628429,
+        "completion": 0.85785536159601
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0011388217343917262,
+        "laal": -0.0030875193266832746,
+        "completion": 0.0
+      },
+      "fresh_sha256": "31c1a2ccb3f13b9b657e8162ccfe8a8ec7517300b9028be48eb68bb7ef5c653e",
+      "historical_sha256": "3bf481645cf249b8e9225221caa89a38da7b0da80fbd1510eaa8457098a5025d",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k3",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 399,
+        "schedule": 396,
+        "decisions": 399,
+        "events": 336,
+        "joint": 336
+      },
+      "historical_metrics": {
+        "token_f1": 0.5487140145231525,
+        "laal": 3.0392936525187033,
+        "completion": 0.85785536159601
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5486683496698673,
+        "laal": 3.037423328329177,
+        "completion": 0.85785536159601
+      },
+      "fresh_minus_historical": {
+        "token_f1": -4.566485328516556e-05,
+        "laal": -0.0018703241895261513,
+        "completion": 0.0
+      },
+      "fresh_sha256": "9d278e737211ad5cb899ec1da40bb90e10dce9aecc8b3a3b66c1b435e110e97a",
+      "historical_sha256": "c339864c8a599b98f1e1ac623bc30a40f678391d71565210f2e55578ad4000c4",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k4",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 398,
+        "schedule": 397,
+        "decisions": 399,
+        "events": 357,
+        "joint": 357
+      },
+      "historical_metrics": {
+        "token_f1": 0.5430830955950207,
+        "laal": 3.3158630720698254,
+        "completion": 0.8553615960099751
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5432726266549563,
+        "laal": 3.3158630720698254,
+        "completion": 0.8553615960099751
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00018953105993568808,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "8eb2463a5d2b33fc042f158b606b690697a318a5cc29bb0aa57ef01c84f1b343",
+      "historical_sha256": "d3df989d2b7e4a9a3d75bae53248b4c33c9e95c13de6995241b1229114905743",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k5",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 397,
+        "schedule": 396,
+        "decisions": 398,
+        "events": 331,
+        "joint": 331
+      },
+      "historical_metrics": {
+        "token_f1": 0.5401474397973217,
+        "laal": 3.6965716119201995,
+        "completion": 0.85785536159601
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5399918405448252,
+        "laal": 3.6903371979551123,
+        "completion": 0.8553615960099751
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.00015559925249652995,
+        "laal": -0.006234413965087171,
+        "completion": -0.0024937655860348684
+      },
+      "fresh_sha256": "91ebb5b19292fb88d8e1a41294be4e4e007ec1e299b3c58842061f161653210c",
+      "historical_sha256": "411ddb5e6e930a01151f47eb75214cbbac85afca796712e7b4e622460a7310b4",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k6",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 397,
+        "schedule": 398,
+        "decisions": 399,
+        "events": 371,
+        "joint": 371
+      },
+      "historical_metrics": {
+        "token_f1": 0.5377397488170831,
+        "laal": 4.166421743067332,
+        "completion": 0.85785536159601
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5373473271533615,
+        "laal": 4.1670451844638405,
+        "completion": 0.85785536159601
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.00039242166372155385,
+        "laal": 0.0006234413965087171,
+        "completion": 0.0
+      },
+      "fresh_sha256": "b7e1fde3d9d407de37a83ca811ddc125f4c21cb45c8a146bfb164504f2f0774f",
+      "historical_sha256": "3f1ab597de2172cecc039e4f1c41f720eb127119cef441b0615554d6400c0b4d",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k7",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 398,
+        "schedule": 398,
+        "decisions": 398,
+        "events": 353,
+        "joint": 353
+      },
+      "historical_metrics": {
+        "token_f1": 0.5371707975724018,
+        "laal": 4.741761667057356,
+        "completion": 0.85785536159601
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5374194906194595,
+        "laal": 4.741761667057356,
+        "completion": 0.8603491271820449
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0002486930470576576,
+        "laal": 0.0,
+        "completion": 0.0024937655860349794
+      },
+      "fresh_sha256": "5a25f33254a7888940c5e9eb168726977e2c5cff510c2e2d54d729a38ed7fa30",
+      "historical_sha256": "a055a91785a8da24c0593ab0b4a6010af31891a0b724b8dade24ca154cfe7b2b",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260904_k8",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 396,
+        "schedule": 396,
+        "decisions": 396,
+        "events": 310,
+        "joint": 310
+      },
+      "historical_metrics": {
+        "token_f1": 0.5388533069131848,
+        "laal": 5.288625163291771,
+        "completion": 0.8553615960099751
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5377430517909009,
+        "laal": 5.288625163291771,
+        "completion": 0.85785536159601
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0011102551222839097,
+        "laal": 0.0,
+        "completion": 0.0024937655860348684
+      },
+      "fresh_sha256": "ccfb7344d0c040998187d68f74417bafa9bf4a16f8bcd6d16f210899e2837ed9",
+      "historical_sha256": "217b2c9caf3c2918a2df5348aff4b0ed7c4a1fcb7ccffe5306a5d9d1e40199ab",
+      "receipt_sha256": "0151ed2b44552aba372b93f357365049b3a14844779fd82393a83e70212a1c9f"
+    },
+    {
+      "id": "clerc_transllama_20260905_k1",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 395,
+        "schedule": 394,
+        "decisions": 397,
+        "events": 334,
+        "joint": 334
+      },
+      "historical_metrics": {
+        "token_f1": 0.552893207174006,
+        "laal": 2.889291335361596,
+        "completion": 0.8802992518703242
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5513704987934422,
+        "laal": 2.8969566957605983,
+        "completion": 0.8802992518703242
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0015227083805637864,
+        "laal": 0.007665360399002452,
+        "completion": 0.0
+      },
+      "fresh_sha256": "5756af7c6af1a21d8783963e8b9a8f52970db677447ca262c7b5da5c77a13ecd",
+      "historical_sha256": "ef5f98e3b485000d4f7c65f17a6da314ce8e89c0515f2405cdee6f3942543758",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "clerc_transllama_20260905_k2",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 394,
+        "schedule": 396,
+        "decisions": 398,
+        "events": 323,
+        "joint": 323
+      },
+      "historical_metrics": {
+        "token_f1": 0.5557516346106937,
+        "laal": 2.902373116009975,
+        "completion": 0.8827930174563591
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5547175538922032,
+        "laal": 2.902349365860349,
+        "completion": 0.8827930174563591
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0010340807184904266,
+        "laal": -2.3750149625634265e-05,
+        "completion": 0.0
+      },
+      "fresh_sha256": "f0cb9e224fc0e96368ee5c5bb52105437ca879f2a901307d092e53260e5c7830",
+      "historical_sha256": "b488356959fe3a9e28ec1605d2a29aa864b2c2cab83cd1267987c18cb213b4de",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "clerc_transllama_20260905_k3",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 394,
+        "schedule": 394,
+        "decisions": 397,
+        "events": 296,
+        "joint": 296
+      },
+      "historical_metrics": {
+        "token_f1": 0.5596110962587334,
+        "laal": 3.0420494976807984,
+        "completion": 0.8827930174563591
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5561180040169247,
+        "laal": 3.0400960479800503,
+        "completion": 0.8753117206982544
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.003493092241808715,
+        "laal": -0.0019534497007480667,
+        "completion": -0.007481296758104716
+      },
+      "fresh_sha256": "2128f82f360a3a64e1d1525d730e8bde869f69b8ea55a3fd929179a221fe19a3",
+      "historical_sha256": "a8a0bccf991b482129e620fd4ca083b87e808fba20e425d1870eabbefb85b600",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "clerc_transllama_20260905_k4",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 396,
+        "schedule": 394,
+        "decisions": 397,
+        "events": 326,
+        "joint": 326
+      },
+      "historical_metrics": {
+        "token_f1": 0.5537067130664527,
+        "laal": 3.3252384910972568,
+        "completion": 0.8802992518703242
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5528264440843794,
+        "laal": 3.331223528528678,
+        "completion": 0.8778054862842892
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0008802689820732734,
+        "laal": 0.005985037431421425,
+        "completion": -0.0024937655860349794
+      },
+      "fresh_sha256": "20d4b65110705c5d271078170ab8521fbae8c1f78cf135cb8472e03826656c14",
+      "historical_sha256": "cc13a5bb75826f81dced9780e28b23e9108697199f5849bb4cc5f35df706a3d7",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "clerc_transllama_20260905_k5",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 396,
+        "schedule": 396,
+        "decisions": 397,
+        "events": 301,
+        "joint": 301
+      },
+      "historical_metrics": {
+        "token_f1": 0.5485393096538355,
+        "laal": 3.689335238503741,
+        "completion": 0.8802992518703242
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5501805147643086,
+        "laal": 3.6870077239401495,
+        "completion": 0.8778054862842892
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.001641205110473165,
+        "laal": -0.002327514563591482,
+        "completion": -0.0024937655860349794
+      },
+      "fresh_sha256": "dac6094b72a90cd82d6be78bbe6453ed27dbd5de79329e190de25a0493f94e38",
+      "historical_sha256": "a138adccc9e7753b699c717148cd4779ce78418f6950a8987c302cfe1c4f8139",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "clerc_transllama_20260905_k6",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 396,
+        "schedule": 398,
+        "decisions": 398,
+        "events": 302,
+        "joint": 302
+      },
+      "historical_metrics": {
+        "token_f1": 0.5403732624375449,
+        "laal": 4.174481949750624,
+        "completion": 0.8827930174563591
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5429427025161533,
+        "laal": 4.174481949750624,
+        "completion": 0.8802992518703242
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.002569440078608376,
+        "laal": 0.0,
+        "completion": -0.0024937655860348684
+      },
+      "fresh_sha256": "f69fcbde4d793b37c202f489b4ca2d567791e12ea3b47d6904daf80e34f40bad",
+      "historical_sha256": "a2c2057042b2359ae9f51c878b258491bdb4acecb3094b24aed4ac904185bd1b",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "clerc_transllama_20260905_k7",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 395,
+        "schedule": 398,
+        "decisions": 398,
+        "events": 284,
+        "joint": 284
+      },
+      "historical_metrics": {
+        "token_f1": 0.5421025088565375,
+        "laal": 4.720785832817955,
+        "completion": 0.8802992518703242
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5422316211830974,
+        "laal": 4.721409274214464,
+        "completion": 0.8778054862842892
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00012911232655987703,
+        "laal": 0.0006234413965087171,
+        "completion": -0.0024937655860349794
+      },
+      "fresh_sha256": "29d7b9e2d7da5d4729ebb65a3df61759573e82f187d00d4961754e6c5ee97b8a",
+      "historical_sha256": "7fde5ca27e81cff3d617cfb30735fefea1f890d70c748ad6aaf97de89b5b17eb",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "clerc_transllama_20260905_k8",
+      "kind": "epee_learned",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 397,
+        "schedule": 399,
+        "decisions": 399,
+        "events": 279,
+        "joint": 279
+      },
+      "historical_metrics": {
+        "token_f1": 0.5411455363064889,
+        "laal": 5.300718441970075,
+        "completion": 0.8778054862842892
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5416997064367189,
+        "laal": 5.300718441970075,
+        "completion": 0.8778054862842892
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0005541701302300694,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "8541a1b2ccd4a10d096f19e5a1702d984b9d35e0e6a273936424e1b8fcacd6e0",
+      "historical_sha256": "77c881e2628287b01814add517ba5778ac67839bd9c7bf20547e578a17ed12b3",
+      "receipt_sha256": "c83fe18afe702e23d4d4268fd4a73e1bfa21da1eac01cfca0795f942a0ccd373"
+    },
+    {
+      "id": "locked_transllama_20260829_k1",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 440,
+        "schedule": 385,
+        "decisions": 448,
+        "events": 58,
+        "joint": 58
+      },
+      "historical_metrics": {
+        "token_f1": 0.6656924857400001,
+        "sequence_similarity": 0.65756743256,
+        "laal": 3.1758264021,
+        "completion": 0.982,
+        "bleu4": 23.834216737891
+      },
+      "fresh_metrics": {
+        "token_f1": 0.67160508962,
+        "sequence_similarity": 0.66296188542,
+        "laal": 3.2053570590600002,
+        "completion": 0.986,
+        "bleu4": 25.023306427078612
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0059126038799999225,
+        "sequence_similarity": 0.005394452859999954,
+        "laal": 0.029530656960000456,
+        "completion": 0.0040000000000000036,
+        "bleu4": 1.189089689187611
+      },
+      "fresh_sha256": "e6a2adaa3a6e93a1a976cf6a333b39a7deaa45528afe9cb28dadd7a4199c6538",
+      "historical_sha256": "437bcd86993bb467155c184f3ea93c9e3f99c2a30b7c4d76be970feb3f2bcc2e",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260829_k2",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 430,
+        "schedule": 373,
+        "decisions": 440,
+        "events": 53,
+        "joint": 53
+      },
+      "historical_metrics": {
+        "token_f1": 0.66891506438,
+        "sequence_similarity": 0.66030244,
+        "laal": 3.19520362732,
+        "completion": 0.994,
+        "bleu4": 23.556243633239724
+      },
+      "fresh_metrics": {
+        "token_f1": 0.67026416776,
+        "sequence_similarity": 0.6616409376200001,
+        "laal": 3.2189457778199997,
+        "completion": 0.99,
+        "bleu4": 24.13193920579958
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0013491033799999386,
+        "sequence_similarity": 0.0013384976200000454,
+        "laal": 0.023742150499999504,
+        "completion": -0.0040000000000000036,
+        "bleu4": 0.5756955725598552
+      },
+      "fresh_sha256": "fbfc59f6c1d1cd36d476d8277bc9f081302ddf1660bd898d84ff501ed6d2b517",
+      "historical_sha256": "3eb9e11b85589ecd4f6947adc0b34d47cd69e0be510a0bd375f553d1c4736696",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260829_k3",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 429,
+        "schedule": 381,
+        "decisions": 439,
+        "events": 62,
+        "joint": 62
+      },
+      "historical_metrics": {
+        "token_f1": 0.68024794576,
+        "sequence_similarity": 0.67082717918,
+        "laal": 3.3543950208599997,
+        "completion": 0.986,
+        "bleu4": 25.350697019882173
+      },
+      "fresh_metrics": {
+        "token_f1": 0.68581557752,
+        "sequence_similarity": 0.67563785506,
+        "laal": 3.3888198567,
+        "completion": 0.99,
+        "bleu4": 26.13757352073933
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.005567631759999969,
+        "sequence_similarity": 0.004810675879999948,
+        "laal": 0.034424835840000334,
+        "completion": 0.0040000000000000036,
+        "bleu4": 0.7868765008571579
+      },
+      "fresh_sha256": "3f820280e7e390d88c1a1df770165fa10e111c7dc7bb07961d81680195c875ee",
+      "historical_sha256": "7ed6d6d8c9be9d4a903aae2f6f2fabb27c7fe2ccd14434394faa4a1f7e92ee88",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260829_k4",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 450,
+        "schedule": 398,
+        "decisions": 453,
+        "events": 75,
+        "joint": 75
+      },
+      "historical_metrics": {
+        "token_f1": 0.69583937504,
+        "sequence_similarity": 0.68575322204,
+        "laal": 3.5661305653200004,
+        "completion": 0.986,
+        "bleu4": 27.756613929416922
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6973878638800001,
+        "sequence_similarity": 0.6873877415199999,
+        "laal": 3.61417708968,
+        "completion": 0.988,
+        "bleu4": 27.984962592947376
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0015484888400000285,
+        "sequence_similarity": 0.0016345194799999296,
+        "laal": 0.048046524359999676,
+        "completion": 0.0020000000000000018,
+        "bleu4": 0.22834866353045413
+      },
+      "fresh_sha256": "02ccf72a1ec2bd7a4d1db8c1b75174fc99a68296b0c5e113618573a171144e67",
+      "historical_sha256": "c803ec4a823d2458da8232ef50c0a6aabaada5d4a42213842c893e3c9e170a24",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260829_k5",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 435,
+        "schedule": 392,
+        "decisions": 445,
+        "events": 70,
+        "joint": 70
+      },
+      "historical_metrics": {
+        "token_f1": 0.7051397025999999,
+        "sequence_similarity": 0.69461231966,
+        "laal": 3.86893745624,
+        "completion": 0.99,
+        "bleu4": 28.200846491112642
+      },
+      "fresh_metrics": {
+        "token_f1": 0.7070419258199999,
+        "sequence_similarity": 0.69613060378,
+        "laal": 3.8900893633,
+        "completion": 0.984,
+        "bleu4": 28.447749915126014
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0019022232199999989,
+        "sequence_similarity": 0.0015182841199999908,
+        "laal": 0.02115190706000014,
+        "completion": -0.006000000000000005,
+        "bleu4": 0.24690342401337162
+      },
+      "fresh_sha256": "a66b68f4263f10c10d04cb0e8a526ae4f584539ea0069b01f97ce43ef9f27c28",
+      "historical_sha256": "b85d6c92969dcd680522e8294bdd118528893d2e9717ec8b2d5aeb83e4b8b1c6",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260829_k6",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 448,
+        "schedule": 407,
+        "decisions": 456,
+        "events": 95,
+        "joint": 95
+      },
+      "historical_metrics": {
+        "token_f1": 0.71830403946,
+        "sequence_similarity": 0.70705504098,
+        "laal": 4.3608785483800006,
+        "completion": 0.99,
+        "bleu4": 30.239332915517526
+      },
+      "fresh_metrics": {
+        "token_f1": 0.72173088004,
+        "sequence_similarity": 0.71052649458,
+        "laal": 4.3320410229999995,
+        "completion": 0.992,
+        "bleu4": 29.94834473400735
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.003426840579999979,
+        "sequence_similarity": 0.0034714535999998963,
+        "laal": -0.02883752538000106,
+        "completion": 0.0020000000000000018,
+        "bleu4": -0.29098818151017625
+      },
+      "fresh_sha256": "0b7c25c122cacf5e2724cd4e954aa7769a04303f4af8d1ef315adac3b44ea002",
+      "historical_sha256": "9bf6b03d3c2a7f75529b502b6606b042bf7aa733425410f14adc9b850386e10b",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260829_k7",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 431,
+        "schedule": 394,
+        "decisions": 442,
+        "events": 101,
+        "joint": 101
+      },
+      "historical_metrics": {
+        "token_f1": 0.7252533091400001,
+        "sequence_similarity": 0.71477456506,
+        "laal": 4.80396142072,
+        "completion": 0.984,
+        "bleu4": 30.023646628834577
+      },
+      "fresh_metrics": {
+        "token_f1": 0.72530140818,
+        "sequence_similarity": 0.71553782228,
+        "laal": 4.8001019851,
+        "completion": 0.986,
+        "bleu4": 30.96675959947188
+      },
+      "fresh_minus_historical": {
+        "token_f1": 4.809903999991594e-05,
+        "sequence_similarity": 0.0007632572199999244,
+        "laal": -0.003859435619999907,
+        "completion": 0.0020000000000000018,
+        "bleu4": 0.9431129706373049
+      },
+      "fresh_sha256": "fd8925217ef3b44557a92a44dcf0f6163b0cc0ea7b84187f87dc38937e160b9f",
+      "historical_sha256": "4995309441f1f1f55f20c066f97abe3607b42803be41803c6291e7ec65d33210",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260829_k8",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 447,
+        "schedule": 412,
+        "decisions": 455,
+        "events": 101,
+        "joint": 101
+      },
+      "historical_metrics": {
+        "token_f1": 0.73425022918,
+        "sequence_similarity": 0.7248372417000001,
+        "laal": 5.2906701085200005,
+        "completion": 0.992,
+        "bleu4": 32.48015854910403
+      },
+      "fresh_metrics": {
+        "token_f1": 0.73783181772,
+        "sequence_similarity": 0.7277492006999999,
+        "laal": 5.27223314346,
+        "completion": 0.99,
+        "bleu4": 31.74373422131963
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0035815885399999026,
+        "sequence_similarity": 0.002911958999999853,
+        "laal": -0.018436965060000254,
+        "completion": -0.0020000000000000018,
+        "bleu4": -0.7364243277844018
+      },
+      "fresh_sha256": "8f0a415864ec5907939acec226ae9617b68dab8707e98ad016bb988ef2432ed7",
+      "historical_sha256": "de243437c9646a8cba6624ce29a58854ce33eeb4e086dd19b8824ce8b992110c",
+      "receipt_sha256": "6ffe20a9d1c181c4cf07f715b4095684a31cddc2c6eb7fa73d8687294955ab4e"
+    },
+    {
+      "id": "locked_transllama_20260904_k1",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 432,
+        "schedule": 382,
+        "decisions": 445,
+        "events": 60,
+        "joint": 60
+      },
+      "historical_metrics": {
+        "token_f1": 0.67708408902,
+        "sequence_similarity": 0.6667515757800001,
+        "laal": 3.206299460561122,
+        "completion": 0.988,
+        "bleu4": 23.792073916158646
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6768735448800001,
+        "sequence_similarity": 0.66603150224,
+        "laal": 3.1674594295791585,
+        "completion": 0.984,
+        "bleu4": 23.79322930922462
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.00021054413999987975,
+        "sequence_similarity": -0.0007200735400001435,
+        "laal": -0.03884003098196365,
+        "completion": -0.0040000000000000036,
+        "bleu4": 0.0011553930659751188
+      },
+      "fresh_sha256": "a3d8c866ccda72b6816c898fa2c157857690ef8573d1038700f8ceeca679af7a",
+      "historical_sha256": "8ae3ebdf3e943903e07a0820ce222ef213c96a00682deed57d26b3c37efc6df5",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260904_k2",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 436,
+        "schedule": 389,
+        "decisions": 443,
+        "events": 70,
+        "joint": 70
+      },
+      "historical_metrics": {
+        "token_f1": 0.67301440254,
+        "sequence_similarity": 0.66307761896,
+        "laal": 3.2397184363527054,
+        "completion": 0.986,
+        "bleu4": 23.944127376562758
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6764406004600001,
+        "sequence_similarity": 0.66580833588,
+        "laal": 3.1551529420240483,
+        "completion": 0.984,
+        "bleu4": 23.983203972845637
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.003426197920000096,
+        "sequence_similarity": 0.0027307169200000425,
+        "laal": -0.08456549432865712,
+        "completion": -0.0020000000000000018,
+        "bleu4": 0.03907659628287874
+      },
+      "fresh_sha256": "20c5b7642d8caf6a98899aa58dc0d2650fc3ec51ca89bd50c248b25d35a276c7",
+      "historical_sha256": "7acc687997a1c47fee885193244d7aa96b99086e8030f824f98c3b2473b26dac",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260904_k3",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 441,
+        "schedule": 397,
+        "decisions": 452,
+        "events": 87,
+        "joint": 87
+      },
+      "historical_metrics": {
+        "token_f1": 0.68809013858,
+        "sequence_similarity": 0.67743268684,
+        "laal": 3.4105442805811625,
+        "completion": 0.988,
+        "bleu4": 25.400981630759745
+      },
+      "fresh_metrics": {
+        "token_f1": 0.69073719158,
+        "sequence_similarity": 0.6792378866200001,
+        "laal": 3.3220657085771546,
+        "completion": 0.994,
+        "bleu4": 26.102739013986803
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0026470530000000103,
+        "sequence_similarity": 0.001805199780000044,
+        "laal": -0.088478572004008,
+        "completion": 0.006000000000000005,
+        "bleu4": 0.7017573832270578
+      },
+      "fresh_sha256": "90aeb22a642084c8d7b9b3321e80c4fd5a0f55700e3ce3f52f78dd2a4b2fbfe7",
+      "historical_sha256": "83df66b3588f2853dca3ae22f8074f2b415e1e275a65d37e67eb56900bc67ba8",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260904_k4",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 447,
+        "schedule": 396,
+        "decisions": 455,
+        "events": 78,
+        "joint": 78
+      },
+      "historical_metrics": {
+        "token_f1": 0.6963901689199999,
+        "sequence_similarity": 0.6849374882,
+        "laal": 3.610657200340681,
+        "completion": 0.992,
+        "bleu4": 27.281016239679317
+      },
+      "fresh_metrics": {
+        "token_f1": 0.7006693441,
+        "sequence_similarity": 0.68856690658,
+        "laal": 3.6044474774749498,
+        "completion": 0.992,
+        "bleu4": 27.60877157985771
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.004279175180000094,
+        "sequence_similarity": 0.0036294183799999713,
+        "laal": -0.006209722865731404,
+        "completion": 0.0,
+        "bleu4": 0.3277553401783919
+      },
+      "fresh_sha256": "7f84b3a6f2a163bc892c9154a183904983701a128f6359e9497e67f5227e1c24",
+      "historical_sha256": "121ad52dce848bcb107d5bc0210b3d18d7e4d9c21c1878eaa8c86ec8af76c349",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260904_k5",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 443,
+        "schedule": 396,
+        "decisions": 455,
+        "events": 69,
+        "joint": 69
+      },
+      "historical_metrics": {
+        "token_f1": 0.71284412384,
+        "sequence_similarity": 0.70091797996,
+        "laal": 3.9572469901002005,
+        "completion": 0.988,
+        "bleu4": 28.730635184682292
+      },
+      "fresh_metrics": {
+        "token_f1": 0.70964194684,
+        "sequence_similarity": 0.69726217864,
+        "laal": 3.914836081603206,
+        "completion": 0.994,
+        "bleu4": 28.981555322275447
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0032021769999999172,
+        "sequence_similarity": -0.003655801320000096,
+        "laal": -0.04241090849699436,
+        "completion": 0.006000000000000005,
+        "bleu4": 0.25092013759315535
+      },
+      "fresh_sha256": "f11c741044c9174d57805b0d5a25f5ba9a7b12f53e02c14f37601c7203e7686a",
+      "historical_sha256": "b0db509e3ceba49718a7a6bd5aa1d8c2354e19017cf8903f6fb7bfecc0e92c55",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260904_k6",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 449,
+        "schedule": 403,
+        "decisions": 457,
+        "events": 43,
+        "joint": 43
+      },
+      "historical_metrics": {
+        "token_f1": 0.7258175836,
+        "sequence_similarity": 0.71360642954,
+        "laal": 4.315695546252505,
+        "completion": 0.986,
+        "bleu4": 30.99388424697346
+      },
+      "fresh_metrics": {
+        "token_f1": 0.72816953332,
+        "sequence_similarity": 0.7150485544199999,
+        "laal": 4.35555062753507,
+        "completion": 0.988,
+        "bleu4": 31.384829665108384
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0023519497199999684,
+        "sequence_similarity": 0.0014421248799999509,
+        "laal": 0.039855081282564875,
+        "completion": 0.0020000000000000018,
+        "bleu4": 0.39094541813492256
+      },
+      "fresh_sha256": "e0ad08a638be735bf2b5d6dff0128d8d98b43c7a7906f3cfe4c891101e428074",
+      "historical_sha256": "44c4dda88dca2e695d9234aa5517ce92e9a5ecc80a8965b45ff38170f0a19c93",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260904_k7",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 441,
+        "schedule": 406,
+        "decisions": 456,
+        "events": 82,
+        "joint": 82
+      },
+      "historical_metrics": {
+        "token_f1": 0.7322232506999999,
+        "sequence_similarity": 0.72212826282,
+        "laal": 4.774652806272544,
+        "completion": 0.988,
+        "bleu4": 31.992058923972206
+      },
+      "fresh_metrics": {
+        "token_f1": 0.7357350926399999,
+        "sequence_similarity": 0.72414334664,
+        "laal": 4.787909093366733,
+        "completion": 0.992,
+        "bleu4": 33.119113099935156
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0035118419399999823,
+        "sequence_similarity": 0.002015083820000041,
+        "laal": 0.013256287094188579,
+        "completion": 0.0040000000000000036,
+        "bleu4": 1.1270541759629502
+      },
+      "fresh_sha256": "c6dc8adfbb9acef10fc15cf367543b1e177d34feb46bc910eb2ce487b1f2af9e",
+      "historical_sha256": "cf4002decaedfbc9998d2a6e3afdd3d6cfaf0617cea60d93c0e4fa1a37c07ab8",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260904_k8",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 436,
+        "schedule": 411,
+        "decisions": 453,
+        "events": 157,
+        "joint": 157
+      },
+      "historical_metrics": {
+        "token_f1": 0.74521710188,
+        "sequence_similarity": 0.73425068948,
+        "laal": 5.196662989018035,
+        "completion": 0.986,
+        "bleu4": 32.78649713946226
+      },
+      "fresh_metrics": {
+        "token_f1": 0.74717321206,
+        "sequence_similarity": 0.73550429976,
+        "laal": 5.242767750140281,
+        "completion": 0.988,
+        "bleu4": 33.653171748641384
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0019561101799999703,
+        "sequence_similarity": 0.0012536102799999282,
+        "laal": 0.04610476112224582,
+        "completion": 0.0020000000000000018,
+        "bleu4": 0.8666746091791211
+      },
+      "fresh_sha256": "0494426d0d200d89195b905a91ee59b31cdf5ecaa474ff72052b186815489b6d",
+      "historical_sha256": "09c6251efef29b88e22665496f5f69b90b38b937128375f82a9b33961d0230b2",
+      "receipt_sha256": "72c49a9ab302d04d380d446753b202f50866780b92c560f6cbf147f569fe7e17"
+    },
+    {
+      "id": "locked_transllama_20260905_k1",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 426,
+        "schedule": 373,
+        "decisions": 439,
+        "events": 50,
+        "joint": 50
+      },
+      "historical_metrics": {
+        "token_f1": 0.66773511986,
+        "sequence_similarity": 0.6591489360199999,
+        "laal": 3.18923866306,
+        "completion": 0.99,
+        "bleu4": 23.322495924068612
+      },
+      "fresh_metrics": {
+        "token_f1": 0.66296381084,
+        "sequence_similarity": 0.65432398202,
+        "laal": 3.23772244524,
+        "completion": 0.974,
+        "bleu4": 22.79676053873064
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.004771309020000003,
+        "sequence_similarity": -0.004824953999999937,
+        "laal": 0.04848378218000038,
+        "completion": -0.016000000000000014,
+        "bleu4": -0.5257353853379705
+      },
+      "fresh_sha256": "5347ce4fbc9400d86ba2078de4207765553a2a2800018ce4ccd8df26fbc48978",
+      "historical_sha256": "332156bd97f09a63773edc79d1d1d6765a4f974fb2cc67cb7a82a2ce26364065",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "locked_transllama_20260905_k2",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 431,
+        "schedule": 378,
+        "decisions": 439,
+        "events": 57,
+        "joint": 57
+      },
+      "historical_metrics": {
+        "token_f1": 0.6658145574400001,
+        "sequence_similarity": 0.65700597082,
+        "laal": 3.238307033,
+        "completion": 0.986,
+        "bleu4": 23.413474768591215
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6707300272400001,
+        "sequence_similarity": 0.6616753146,
+        "laal": 3.18701261686,
+        "completion": 0.976,
+        "bleu4": 23.671470547197412
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.004915469800000016,
+        "sequence_similarity": 0.004669343779999946,
+        "laal": -0.05129441613999974,
+        "completion": -0.010000000000000009,
+        "bleu4": 0.2579957786061975
+      },
+      "fresh_sha256": "6cb69db77dfe50de0b336b57f09762b854b92903f3f2ef63374ae9d977977750",
+      "historical_sha256": "87efe5f6f29285398c34c9bb6ae5fe2a51558a8fe2b6b601c2f0fbd22cefb9dd",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "locked_transllama_20260905_k3",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 436,
+        "schedule": 395,
+        "decisions": 446,
+        "events": 75,
+        "joint": 75
+      },
+      "historical_metrics": {
+        "token_f1": 0.6827511418400001,
+        "sequence_similarity": 0.6725196507000001,
+        "laal": 3.36660902588,
+        "completion": 0.99,
+        "bleu4": 24.860426099938127
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6788994975,
+        "sequence_similarity": 0.66868499812,
+        "laal": 3.34490742868,
+        "completion": 0.982,
+        "bleu4": 25.043592502069878
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.003851644340000071,
+        "sequence_similarity": -0.003834652580000042,
+        "laal": -0.021701597199999867,
+        "completion": -0.008000000000000007,
+        "bleu4": 0.18316640213175006
+      },
+      "fresh_sha256": "778252392b53f08c5f4e73879a87ff0838207f23a09b47b05df80f8f7bb78b5b",
+      "historical_sha256": "ae5797b2816c5eda0aa26817e4d7cb53d38cfc960f0bbaec7903883de9369b98",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "locked_transllama_20260905_k4",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 434,
+        "schedule": 386,
+        "decisions": 445,
+        "events": 77,
+        "joint": 77
+      },
+      "historical_metrics": {
+        "token_f1": 0.6923685471200001,
+        "sequence_similarity": 0.6824340276399999,
+        "laal": 3.6218959842,
+        "completion": 0.988,
+        "bleu4": 26.668951370854526
+      },
+      "fresh_metrics": {
+        "token_f1": 0.69226414356,
+        "sequence_similarity": 0.68210763838,
+        "laal": 3.6464358521799998,
+        "completion": 0.982,
+        "bleu4": 27.30941664928743
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.000104403560000077,
+        "sequence_similarity": -0.0003263892599999485,
+        "laal": 0.02453986797999974,
+        "completion": -0.006000000000000005,
+        "bleu4": 0.6404652784329059
+      },
+      "fresh_sha256": "ddacecd9f91b703dd1960a48534c16e9eae55129035ac731c77a06c7eac50da0",
+      "historical_sha256": "50ed7161462d012a14bc93cfdd8eb63da4ca4b70a7eea7911f8e935138518ccf",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "locked_transllama_20260905_k5",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 444,
+        "schedule": 403,
+        "decisions": 450,
+        "events": 76,
+        "joint": 76
+      },
+      "historical_metrics": {
+        "token_f1": 0.7019691414,
+        "sequence_similarity": 0.6908497866200001,
+        "laal": 3.8920447355800003,
+        "completion": 0.986,
+        "bleu4": 28.114566186657942
+      },
+      "fresh_metrics": {
+        "token_f1": 0.7033018478,
+        "sequence_similarity": 0.69296859822,
+        "laal": 3.9224944694599997,
+        "completion": 0.986,
+        "bleu4": 29.010990784974467
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00133270640000005,
+        "sequence_similarity": 0.002118811599999937,
+        "laal": 0.030449733879999386,
+        "completion": 0.0,
+        "bleu4": 0.8964245983165249
+      },
+      "fresh_sha256": "5d711ee5a750491212a514760108a5666d9b151c34de4edce08c29b485e44191",
+      "historical_sha256": "6add6eacab90d640f685ec114c5e19984130cf67137b6c7feb42cdfed1d5ce5d",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "locked_transllama_20260905_k6",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 446,
+        "schedule": 402,
+        "decisions": 453,
+        "events": 109,
+        "joint": 109
+      },
+      "historical_metrics": {
+        "token_f1": 0.71500598854,
+        "sequence_similarity": 0.70463795264,
+        "laal": 4.34669246422,
+        "completion": 0.986,
+        "bleu4": 29.592371724390524
+      },
+      "fresh_metrics": {
+        "token_f1": 0.7146495793000001,
+        "sequence_similarity": 0.7045125930399999,
+        "laal": 4.39034842056,
+        "completion": 0.982,
+        "bleu4": 29.05560020016787
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0003564092399999108,
+        "sequence_similarity": -0.0001253596000000412,
+        "laal": 0.04365595633999941,
+        "completion": -0.0040000000000000036,
+        "bleu4": -0.5367715242226545
+      },
+      "fresh_sha256": "65cc9d4835422c8f639119fd26d36fe1650d70b8d2063b4fec525a861ef3a270",
+      "historical_sha256": "31ae08dfab09c5cf43c082942121e75683b129dcf201984c995e4ced904ed94d",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "locked_transllama_20260905_k7",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 446,
+        "schedule": 405,
+        "decisions": 453,
+        "events": 145,
+        "joint": 145
+      },
+      "historical_metrics": {
+        "token_f1": 0.71861039414,
+        "sequence_similarity": 0.70962589096,
+        "laal": 4.86954702448,
+        "completion": 0.982,
+        "bleu4": 29.35313213690446
+      },
+      "fresh_metrics": {
+        "token_f1": 0.71806353356,
+        "sequence_similarity": 0.70871008424,
+        "laal": 4.88537926514,
+        "completion": 0.988,
+        "bleu4": 29.898604128418647
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0005468605800000859,
+        "sequence_similarity": -0.000915806719999912,
+        "laal": 0.015832240659999997,
+        "completion": 0.006000000000000005,
+        "bleu4": 0.5454719915141872
+      },
+      "fresh_sha256": "2a50f8a86bb64c64f2af432902b0786dd199df0fc5d6ad75d56d85bebac4acc7",
+      "historical_sha256": "078304418b9ab9638ad6efaf94d3a437605f1d37cdefd4e4bc96c1436ff1da7c",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "locked_transllama_20260905_k8",
+      "kind": "learned",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 456,
+        "schedule": 415,
+        "decisions": 464,
+        "events": 141,
+        "joint": 141
+      },
+      "historical_metrics": {
+        "token_f1": 0.73285936314,
+        "sequence_similarity": 0.72406442752,
+        "laal": 5.263259773120001,
+        "completion": 0.986,
+        "bleu4": 32.87077591073699
+      },
+      "fresh_metrics": {
+        "token_f1": 0.734383631,
+        "sequence_similarity": 0.72565704806,
+        "laal": 5.290159253140001,
+        "completion": 0.99,
+        "bleu4": 32.790616101633645
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0015242678600000392,
+        "sequence_similarity": 0.0015926205399999782,
+        "laal": 0.026899480019999977,
+        "completion": 0.0040000000000000036,
+        "bleu4": -0.08015980910334264
+      },
+      "fresh_sha256": "2580911823f517d207d7fc409370b3f3ca324efc0e122fe196ff01c00df587bc",
+      "historical_sha256": "0c99ec6fbc776441daf6395a90378892a49a45f6261f815813b342f851231eee",
+      "receipt_sha256": "936a6eb89a7a3965fe280c195cd8dc69073614225e6922007b1a5d23bb64254e"
+    },
+    {
+      "id": "clerc_causalgloss_20260829",
+      "kind": "epee_action",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 398,
+        "schedule": 399,
+        "decisions": 399,
+        "events": 398,
+        "joint": 398
+      },
+      "historical_metrics": {
+        "token_f1": 0.6485242659806252,
+        "laal": 1.5977861321553886,
+        "completion": 1.0
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6473328002006306,
+        "laal": 1.5994569759398498,
+        "completion": 1.0
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.001191465779994627,
+        "laal": 0.0016708437844612511,
+        "completion": 0.0
+      },
+      "fresh_sha256": "fe5e12f0b68cd027311881fc8ad708d7d1186223eda63140e81c47bd47751ff4",
+      "historical_sha256": "2e9bb04e51401ddf8e2733c9cd1c02e151c3fc01b3399f2b04ac2090e962644b",
+      "receipt_sha256": "81e68fade4d2410edaeed6d37f77e2d355dcd7dd24509b0fa8168f9774716cbd"
+    },
+    {
+      "id": "clerc_causalgloss_20260904",
+      "kind": "epee_action",
+      "family": "clerc401",
+      "status": "EXACT_DETERMINISTIC_OUTPUTS",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 401,
+        "schedule": 401,
+        "decisions": 401,
+        "events": 401,
+        "joint": 401
+      },
+      "historical_metrics": {
+        "token_f1": 0.6459189548084956,
+        "laal": 1.6865283249122809,
+        "completion": 1.0
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6459189548084956,
+        "laal": 1.6865283249122809,
+        "completion": 1.0
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "2730109e1e982660a2848b8781cec4e5ddcdb11901b519514253948b84709509",
+      "historical_sha256": "2730109e1e982660a2848b8781cec4e5ddcdb11901b519514253948b84709509",
+      "receipt_sha256": "72df0898ca32280c40ebe4ac1f4d173ca7cd1579d95ceb7b0e95ac5bea1bfb76"
+    },
+    {
+      "id": "clerc_causalgloss_20260905",
+      "kind": "epee_action",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 399,
+        "schedule": 399,
+        "decisions": 399,
+        "events": 399,
+        "joint": 399
+      },
+      "historical_metrics": {
+        "token_f1": 0.6524866735956658,
+        "laal": 1.332076885,
+        "completion": 1.0
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6529023011933384,
+        "laal": 1.3304265874,
+        "completion": 1.0
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0004156275976725521,
+        "laal": -0.0016502975999999059,
+        "completion": 0.0
+      },
+      "fresh_sha256": "2a1c57636a8ebaf2d82da9b9ecadcbd6b3cf6d5f318f21f8005dd1eaf52a29ba",
+      "historical_sha256": "ea157f32ef0737d1133def4fc26d88e5453bc04037acc61bf2e71b925d3fed94",
+      "receipt_sha256": "35d3a033a445377469731f35544fef0ecbf0361c0aa682fba5d5808daeb1fd7b"
+    },
+    {
+      "id": "diagnostic_full",
+      "kind": "action",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 222,
+        "schedule": 214,
+        "decisions": 226,
+        "events": 213,
+        "joint": 213
+      },
+      "historical_metrics": {
+        "token_f1": 0.71308180144,
+        "sequence_similarity": 0.6993672086,
+        "laal": 1.5145522443600001,
+        "completion": 1.0,
+        "bleu4": 35.54827808081814
+      },
+      "fresh_metrics": {
+        "token_f1": 0.7167258812799999,
+        "sequence_similarity": 0.70285752644,
+        "laal": 1.5126329329600001,
+        "completion": 1.0,
+        "bleu4": 36.638254241639395
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0036440798399999252,
+        "sequence_similarity": 0.003490317839999979,
+        "laal": -0.0019193114000000122,
+        "completion": 0.0,
+        "bleu4": 1.0899761608212515
+      },
+      "fresh_sha256": "572c7ea0f8d02f88631ed64c79679b76d86e239e28488f67fb2e047a0cdde446",
+      "historical_sha256": "3af247aa8269aa09411a290c87ecc0e76919bca7aeb768e19088acaa061e7da4",
+      "receipt_sha256": "b4352968ae28b0d8461393f6756a23b84ee1613e1503c5c163f412776bbebc99"
+    },
+    {
+      "id": "diagnostic_guard",
+      "kind": "action",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 222,
+        "schedule": 226,
+        "decisions": 231,
+        "events": 219,
+        "joint": 219
+      },
+      "historical_metrics": {
+        "token_f1": 0.67488241912,
+        "sequence_similarity": 0.66367841296,
+        "laal": 1.707294766385542,
+        "completion": 1.0,
+        "bleu4": 35.554211433127136
+      },
+      "fresh_metrics": {
+        "token_f1": 0.679068982,
+        "sequence_similarity": 0.66878761824,
+        "laal": 1.7677841235341365,
+        "completion": 1.0,
+        "bleu4": 36.647265489388246
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.004186562879999967,
+        "sequence_similarity": 0.005109205280000029,
+        "laal": 0.06048935714859449,
+        "completion": 0.0,
+        "bleu4": 1.09305405626111
+      },
+      "fresh_sha256": "47a4de741669ce9e4d4df9049daf86971eea16fa27f61bfab68b2edd52c8adbb",
+      "historical_sha256": "c38735fd920ab560c0c870d8a9c63c30cfb1ee75bf5b6694b70386f77909a124",
+      "receipt_sha256": "d3622112a54cf3e6f8c9b930611b8ab8ad34d0c2f6bb96e8b1636f92e6a0a985"
+    },
+    {
+      "id": "diagnostic_native",
+      "kind": "action",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 229,
+        "schedule": 227,
+        "decisions": 236,
+        "events": 223,
+        "joint": 223
+      },
+      "historical_metrics": {
+        "token_f1": 0.63783398868,
+        "sequence_similarity": 0.62848400204,
+        "laal": 1.8154319869758067,
+        "completion": 0.996,
+        "bleu4": 32.29228536151051
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6443367275599999,
+        "sequence_similarity": 0.6354288461600001,
+        "laal": 1.9077250993145163,
+        "completion": 1.0,
+        "bleu4": 33.37939660589783
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00650273887999997,
+        "sequence_similarity": 0.006944844120000071,
+        "laal": 0.09229311233870963,
+        "completion": 0.0040000000000000036,
+        "bleu4": 1.087111244387323
+      },
+      "fresh_sha256": "3da82064e08ffd54248311115a93ff303a5165b4e9155588c63834cb26fd4f90",
+      "historical_sha256": "bfb9cac6988b56ad24c9fb0fc2e3737b9c10ca00fd24405f33b71be5a7328ef9",
+      "receipt_sha256": "5f5d2f93595bf8f342112e9a0c6e45ca05baa6024a136da8256faf98a8c08ed6"
+    },
+    {
+      "id": "locked_causalgloss_20260829",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 465,
+        "schedule": 459,
+        "decisions": 472,
+        "events": 453,
+        "joint": 453
+      },
+      "historical_metrics": {
+        "token_f1": 0.7015860704000001,
+        "sequence_similarity": 0.69245129086,
+        "laal": 1.6653514253000001,
+        "completion": 1.0,
+        "bleu4": 35.050044141801656
+      },
+      "fresh_metrics": {
+        "token_f1": 0.70405124692,
+        "sequence_similarity": 0.69491201786,
+        "laal": 1.6595897471999999,
+        "completion": 1.0,
+        "bleu4": 35.43218211627706
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00246517651999989,
+        "sequence_similarity": 0.002460726999999996,
+        "laal": -0.005761678100000278,
+        "completion": 0.0,
+        "bleu4": 0.38213797447540543
+      },
+      "fresh_sha256": "dd443e2d54f1f976583405c3343bb78d04b453081aba661666acf87a462cc2ba",
+      "historical_sha256": "74854dd4e4c8a9c77cf4e737adb18091199dc3db24add65459bb55360e09cd48",
+      "receipt_sha256": "bba82bc89ccf8470384cd88da5d66a6cb3e2664c62b9844bf94bfe60f93fabdf"
+    },
+    {
+      "id": "locked_causalgloss_20260904",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 454,
+        "schedule": 449,
+        "decisions": 460,
+        "events": 446,
+        "joint": 446
+      },
+      "historical_metrics": {
+        "token_f1": 0.71107455564,
+        "sequence_similarity": 0.7025637534,
+        "laal": 2.01680212902,
+        "completion": 1.0,
+        "bleu4": 40.548015033175574
+      },
+      "fresh_metrics": {
+        "token_f1": 0.70960327138,
+        "sequence_similarity": 0.70102190226,
+        "laal": 2.02270164546,
+        "completion": 1.0,
+        "bleu4": 39.715411782308394
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0014712842599999831,
+        "sequence_similarity": -0.001541851139999939,
+        "laal": 0.0058995164400004185,
+        "completion": 0.0,
+        "bleu4": -0.8326032508671801
+      },
+      "fresh_sha256": "d9bd37d48551e9718c6fc33a64c9ac11c6e2815a12886a5fe004396af11c8a63",
+      "historical_sha256": "e6f059de32a01aa71f1ab2b2ee4701ed2807496bd0b116295ac2a4752a1e8ae8",
+      "receipt_sha256": "b0e7ccdd6157fabb2ea29715c720e5326a5fa6ca7691315280625d1e5c197362"
+    },
+    {
+      "id": "locked_causalgloss_20260905",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 456,
+        "schedule": 449,
+        "decisions": 465,
+        "events": 444,
+        "joint": 444
+      },
+      "historical_metrics": {
+        "token_f1": 0.70136939358,
+        "sequence_similarity": 0.6920536594200001,
+        "laal": 1.6647448897,
+        "completion": 1.0,
+        "bleu4": 36.325379906405246
+      },
+      "fresh_metrics": {
+        "token_f1": 0.69794565108,
+        "sequence_similarity": 0.68838458394,
+        "laal": 1.65529018162,
+        "completion": 1.0,
+        "bleu4": 35.49741231874343
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0034237424999999932,
+        "sequence_similarity": -0.0036690754800000613,
+        "laal": -0.009454708079999818,
+        "completion": 0.0,
+        "bleu4": -0.8279675876618171
+      },
+      "fresh_sha256": "4589144a2dcc6233c7fde660e7a28c3f9c77e3cf821c66b883575379daaf0720",
+      "historical_sha256": "6af1538af6d7f4f3b38e4db48e8c0e6ff9c970ec74136824b1428d9bcb2a1d15",
+      "receipt_sha256": "1d0e5f294d5ee4a5c149e44d3b949034cccf9c01da0e5b806d67e3f8e1efef0c"
+    },
+    {
+      "id": "locked_fixed_20260821_k1",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 395,
+        "schedule": 436,
+        "decisions": 436,
+        "events": 395,
+        "joint": 395
+      },
+      "historical_metrics": {
+        "token_f1": 0.31111490338,
+        "sequence_similarity": 0.30605583268,
+        "laal": -1.0659616893400001,
+        "completion": 1.0,
+        "bleu4": 8.609322453800946
+      },
+      "fresh_metrics": {
+        "token_f1": 0.31337179162,
+        "sequence_similarity": 0.30754679436,
+        "laal": -1.07185344718,
+        "completion": 1.0,
+        "bleu4": 8.855251439241293
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0022568882400000323,
+        "sequence_similarity": 0.0014909616800000136,
+        "laal": -0.005891757839999956,
+        "completion": 0.0,
+        "bleu4": 0.24592898544034725
+      },
+      "fresh_sha256": "fb19713adab63603cfef5be463c83ca7456e477235ca6a34171ccf19a38be078",
+      "historical_sha256": "ca440be414a13e14c8f5a16a8fdadeae743a75ae43c12f805ecf6f4e1c0c0dfe",
+      "receipt_sha256": "025bbecec12a1f7c1244588c4df927bee37297feeae80b5954ff46fca103585d"
+    },
+    {
+      "id": "locked_fixed_20260821_k3",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 449,
+        "schedule": 463,
+        "decisions": 467,
+        "events": 445,
+        "joint": 445
+      },
+      "historical_metrics": {
+        "token_f1": 0.5041284059,
+        "sequence_similarity": 0.49508799182,
+        "laal": 0.7461710212,
+        "completion": 0.998,
+        "bleu4": 20.095968003803165
+      },
+      "fresh_metrics": {
+        "token_f1": 0.50168814578,
+        "sequence_similarity": 0.49291706277999997,
+        "laal": 0.7316989446400001,
+        "completion": 0.998,
+        "bleu4": 19.85646166977199
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.002440260119999982,
+        "sequence_similarity": -0.002170929040000047,
+        "laal": -0.014472076559999936,
+        "completion": 0.0,
+        "bleu4": -0.2395063340311765
+      },
+      "fresh_sha256": "dfb72b44e428271b29ac95d5ab9ed38031cfe3dbb1613f9ac49890d36c87c743",
+      "historical_sha256": "305c2c94544f185699c7f835620e9fd543b255dca100b3c320a65f904227674a",
+      "receipt_sha256": "c40745c6cb60c358cb94e298bbbbfb8d88c091c382bc9eadb7a7353eba4f4374"
+    },
+    {
+      "id": "locked_fixed_20260821_k5",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 446,
+        "schedule": 459,
+        "decisions": 461,
+        "events": 443,
+        "joint": 443
+      },
+      "historical_metrics": {
+        "token_f1": 0.59872772584,
+        "sequence_similarity": 0.5905037915,
+        "laal": 2.45600868478,
+        "completion": 1.0,
+        "bleu4": 26.46818347316656
+      },
+      "fresh_metrics": {
+        "token_f1": 0.59817856892,
+        "sequence_similarity": 0.58965768826,
+        "laal": 2.4455816779400004,
+        "completion": 1.0,
+        "bleu4": 27.097723673648748
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0005491569200000157,
+        "sequence_similarity": -0.0008461032400000068,
+        "laal": -0.010427006839999642,
+        "completion": 0.0,
+        "bleu4": 0.629540200482186
+      },
+      "fresh_sha256": "434509e4048f127117536bcffb0016da6182dd3c122cf048c50c22d843d3cd7c",
+      "historical_sha256": "5ff8d3022da5fc4d6824b61dfbc6ffd1bcb25f98b2ec45b805ec86eaecd29ae3",
+      "receipt_sha256": "f517453823dc9ce635b220f2e09c40fdd805fd14b943a1879e12edb074f7783a"
+    },
+    {
+      "id": "locked_fixed_20260821_k7",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 442,
+        "schedule": 452,
+        "decisions": 459,
+        "events": 436,
+        "joint": 436
+      },
+      "historical_metrics": {
+        "token_f1": 0.64458194126,
+        "sequence_similarity": 0.637475896,
+        "laal": 4.2638516025,
+        "completion": 0.998,
+        "bleu4": 34.06146529901523
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6501831519,
+        "sequence_similarity": 0.64197650832,
+        "laal": 4.27594347526,
+        "completion": 1.0,
+        "bleu4": 33.9894102026384
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.005601210639999965,
+        "sequence_similarity": 0.004500612319999986,
+        "laal": 0.012091872760000122,
+        "completion": 0.0020000000000000018,
+        "bleu4": -0.07205509637682894
+      },
+      "fresh_sha256": "2e2252fb6b605c1fe87695b30d0c0c5fc79f1392a0372c19484a3ea35ce45b27",
+      "historical_sha256": "fa83d5f88bc19337e9e939086dbe103036d40e9e96e27af13d9cdabbae804bc7",
+      "receipt_sha256": "79759afe825933fc0d771a95277716b92e048be615709b8428cd612f3c11a07f"
+    },
+    {
+      "id": "locked_fixed_20260904_k5",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 447,
+        "schedule": 459,
+        "decisions": 470,
+        "events": 439,
+        "joint": 439
+      },
+      "historical_metrics": {
+        "token_f1": 0.6038505947999999,
+        "sequence_similarity": 0.5956202059,
+        "laal": 2.56717739174,
+        "completion": 1.0,
+        "bleu4": 28.369856698138996
+      },
+      "fresh_metrics": {
+        "token_f1": 0.605665889,
+        "sequence_similarity": 0.59687780778,
+        "laal": 2.5674998392,
+        "completion": 1.0,
+        "bleu4": 28.01834313041565
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0018152942000000394,
+        "sequence_similarity": 0.0012576018800000144,
+        "laal": 0.000322447459999875,
+        "completion": 0.0,
+        "bleu4": -0.3515135677233445
+      },
+      "fresh_sha256": "caa6d87d31969e114663f2b4813c81cd38dadc18153d0bffe8e72320ffdcbeee",
+      "historical_sha256": "57fc78b6c5cc7fc01bc3cf9b5203dcdc4ccf6f56e8b15127744e19f0405d41f3",
+      "receipt_sha256": "4c3772f315225ac579ce662b08437af1d640bf1c07f9249ea907895f6a19ad00"
+    },
+    {
+      "id": "locked_fixed_20260904_k7",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 443,
+        "schedule": 450,
+        "decisions": 458,
+        "events": 436,
+        "joint": 436
+      },
+      "historical_metrics": {
+        "token_f1": 0.6459764287399999,
+        "sequence_similarity": 0.6384413236,
+        "laal": 4.36749440416,
+        "completion": 1.0,
+        "bleu4": 33.69642368242902
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6476696227800001,
+        "sequence_similarity": 0.6396440414800001,
+        "laal": 4.35702796948,
+        "completion": 1.0,
+        "bleu4": 33.17261086362116
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0016931940400001233,
+        "sequence_similarity": 0.001202717880000037,
+        "laal": -0.010466434680000525,
+        "completion": 0.0,
+        "bleu4": -0.5238128188078619
+      },
+      "fresh_sha256": "cb355134ecccdb7059e8f5415a5976b8fcd2702716e56e4723f758c71a840f90",
+      "historical_sha256": "e83c3f84b8f5b8b979c034ae47d11719392366b19ffac5e134df13c4f2e4af35",
+      "receipt_sha256": "f3eae446dd20e2a8d112fa87f59ea9e1ad4f735b61536901fae72ba153f0505d"
+    },
+    {
+      "id": "locked_fixed_20260905_k5",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 449,
+        "schedule": 459,
+        "decisions": 463,
+        "events": 445,
+        "joint": 445
+      },
+      "historical_metrics": {
+        "token_f1": 0.60062310938,
+        "sequence_similarity": 0.5914871858999999,
+        "laal": 2.52614392734,
+        "completion": 1.0,
+        "bleu4": 27.96214931493709
+      },
+      "fresh_metrics": {
+        "token_f1": 0.60012909374,
+        "sequence_similarity": 0.59106890616,
+        "laal": 2.50906760728,
+        "completion": 1.0,
+        "bleu4": 28.096961617021847
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0004940156399999562,
+        "sequence_similarity": -0.0004182797399999716,
+        "laal": -0.01707632006000015,
+        "completion": 0.0,
+        "bleu4": 0.13481230208475736
+      },
+      "fresh_sha256": "4932a45efa84bb0988cedd0bc5093143c9f06be38c662d389f7aa4b0e1bb9d09",
+      "historical_sha256": "53d4f5bd2d6d46ed643f859e35fa09b0e10cbc2a8887cf2a689d498e9ec62c9b",
+      "receipt_sha256": "f068110918b68fc9ce03567d5f2e9714859d6cfa1753da6387e4e3b6f4b7c4f9"
+    },
+    {
+      "id": "locked_fixed_20260905_k7",
+      "kind": "action",
+      "family": "locked500",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 500,
+      "exact_counts": {
+        "prediction": 441,
+        "schedule": 451,
+        "decisions": 459,
+        "events": 432,
+        "joint": 432
+      },
+      "historical_metrics": {
+        "token_f1": 0.64655971968,
+        "sequence_similarity": 0.6390944935799999,
+        "laal": 4.298351476380001,
+        "completion": 1.0,
+        "bleu4": 33.93505032097535
+      },
+      "fresh_metrics": {
+        "token_f1": 0.64845627442,
+        "sequence_similarity": 0.64123923244,
+        "laal": 4.27441438444,
+        "completion": 1.0,
+        "bleu4": 34.29270056981266
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.001896554739999945,
+        "sequence_similarity": 0.002144738860000106,
+        "laal": -0.0239370919400006,
+        "completion": 0.0,
+        "bleu4": 0.35765024883730945
+      },
+      "fresh_sha256": "be9e3cef29be5385baac40493898b2bb6d2bf035e2d48f05113bfa6625eddb63",
+      "historical_sha256": "fe14d623c8d6b2e4f96af6c9c8b7c5efc932e55ce1743c36faa0d27b2227d573",
+      "receipt_sha256": "edb5d79c8c0c4a0647510dc5292e2fee7e269b1cccc6f990bb9173c803178bc0"
+    },
+    {
+      "id": "clerc_fixed_20260821_k1",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 398,
+        "schedule": 400,
+        "decisions": 400,
+        "events": 398,
+        "joint": 398
+      },
+      "historical_metrics": {
+        "token_f1": 0.5474257247324579,
+        "laal": 0.6168730356390978,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5473148907064119,
+        "laal": 0.6161211559398496,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.00011083402604594728,
+        "laal": -0.0007518796992481702,
+        "completion": 0.0
+      },
+      "fresh_sha256": "de589511573c59c7057a4bda4245ae59785aaeb60fe5661d39889f62e2d964ba",
+      "historical_sha256": "6fa0a247695f573bc09ad7be5128474bfcbe8ef1cb68b34f3a401d39e1e63dd2",
+      "receipt_sha256": "721671bcb840835092ed53a0e60a87ad50658f1761b35ffbbc331613b5e262d1"
+    },
+    {
+      "id": "clerc_fixed_20260821_k3",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 400,
+        "schedule": 401,
+        "decisions": 401,
+        "events": 400,
+        "joint": 400
+      },
+      "historical_metrics": {
+        "token_f1": 0.5986244982504334,
+        "laal": 2.3043017454613466,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.5986244982504334,
+        "laal": 2.3043017454613466,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "fd96c19912781ca1d6755d4b0b342715d08c77aae3ad63254fc208e958737d7e",
+      "historical_sha256": "1821071183299e34f7d781f68eed1d6f2176d553dca2363dee4be31bd86a0f1c",
+      "receipt_sha256": "4dc2f5d7e1b2ac8b9748a10b1cc04182e63e713c2e8734279ddca7842f6721f7"
+    },
+    {
+      "id": "clerc_fixed_20260821_k5",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 400,
+        "schedule": 400,
+        "decisions": 400,
+        "events": 400,
+        "joint": 400
+      },
+      "historical_metrics": {
+        "token_f1": 0.6109735512478655,
+        "laal": 3.88053869055,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6084797856618306,
+        "laal": 3.88053869055,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0024937655860348684,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "2ef965517828a390bbe154895b89edf65bdcd22b453337325e2d15d6a7c013d8",
+      "historical_sha256": "9cb00c916117a90f2872061dfb5e6a84be5cdc38caa645e176541a3d2e584578",
+      "receipt_sha256": "819fe9e5255641300b9614fb3f1aa2dc6a88ab9bca9059e7201900fe30ef0d49"
+    },
+    {
+      "id": "clerc_fixed_20260821_k7",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 400,
+        "schedule": 400,
+        "decisions": 400,
+        "events": 400,
+        "joint": 400
+      },
+      "historical_metrics": {
+        "token_f1": 0.6139580148308328,
+        "laal": 5.110406969498746,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6140033560233061,
+        "laal": 5.109869912581454,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": 4.5341192473347114e-05,
+        "laal": -0.0005370569172926665,
+        "completion": 0.0
+      },
+      "fresh_sha256": "366dd6e1f43fbbd539a51c40e2636ad418b11d2d95b781cb6812d88dc0996ddd",
+      "historical_sha256": "83790175e32a9388184999c06ed01cd29019604dc8429b4b9ac44ef460c281f7",
+      "receipt_sha256": "7894a9529aef21d5a2f924480853d4b25e2dad5c34544c6e3e7d92a07ea8249a"
+    },
+    {
+      "id": "clerc_fixed_20260904_k5",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 399,
+        "schedule": 399,
+        "decisions": 399,
+        "events": 399,
+        "joint": 399
+      },
+      "historical_metrics": {
+        "token_f1": 0.6148399812988342,
+        "laal": 3.88331250005,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6155362924689608,
+        "laal": 3.88277678575,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0006963111701265845,
+        "laal": -0.0005357143000002118,
+        "completion": 0.0
+      },
+      "fresh_sha256": "391906a26d7585b67a2abc7ed1f37098a1807a2cc6e5d8a68d5fe9a1e53a347d",
+      "historical_sha256": "5f25471331adf802a810713be3a82b5eca93eb2c94af0d6cb97bc20511f36676",
+      "receipt_sha256": "8530d71107f4343fcafa7cb524458972cfd39acaf8a47cf5b3fbdb0a4e0dd268"
+    },
+    {
+      "id": "clerc_fixed_20260904_k7",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 399,
+        "schedule": 400,
+        "decisions": 400,
+        "events": 399,
+        "joint": 399
+      },
+      "historical_metrics": {
+        "token_f1": 0.6120612139315381,
+        "laal": 5.140465641670886,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6118949628924691,
+        "laal": 5.140465641670886,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.00016625103906897643,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "a15ad8074860ba39b8049d124fa9bb213ad759f00c97b091c5cdfceb6289e2d6",
+      "historical_sha256": "e41696a4ee565da319373f720cc0e8f752dd07b077b3b4c9c736dbe0ec5e34c5",
+      "receipt_sha256": "9822af24e1158989726abfb0fe237d0692b928bdd9e789060fc14ee9cfe784ee"
+    },
+    {
+      "id": "clerc_fixed_20260905_k5",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 400,
+        "schedule": 400,
+        "decisions": 400,
+        "events": 400,
+        "joint": 400
+      },
+      "historical_metrics": {
+        "token_f1": 0.6244440098554812,
+        "laal": 3.885824680776942,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6256908926484986,
+        "laal": 3.885824680776942,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.0012468827930174342,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "fd075adb5c99c8937a94d9d20c5b123607211254d239720a7ef7236728722d5b",
+      "historical_sha256": "c41d80d6ffdf18546ab9aa56e33bdcff8331774cd4eead65fa0353a32389f870",
+      "receipt_sha256": "1cd3c3e0225b7e6133b55ebda91d73bfdc5963deee544453c5f49fbd951d0000"
+    },
+    {
+      "id": "clerc_fixed_20260905_k7",
+      "kind": "epee_fixed",
+      "family": "clerc401",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 401,
+      "exact_counts": {
+        "prediction": 398,
+        "schedule": 398,
+        "decisions": 398,
+        "events": 398,
+        "joint": 398
+      },
+      "historical_metrics": {
+        "token_f1": 0.5995612865937056,
+        "laal": 5.104072916375,
+        "completion": 0.9975062344139651
+      },
+      "fresh_metrics": {
+        "token_f1": 0.600053562397702,
+        "laal": 5.104072916375,
+        "completion": 0.9975062344139651
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.000492275803996467,
+        "laal": 0.0,
+        "completion": 0.0
+      },
+      "fresh_sha256": "7281f53b64be3f8f7bcc2509d0b37d9eaf2b65ea179e3743d85c52ce01e9ee86",
+      "historical_sha256": "501247cc542e8ec96600508fedd022e9ba2a4ea2eeffc5fc18b21af36f80ab05",
+      "receipt_sha256": "606cbe98f24de28584334e223e50973f49702d5c16e33c14eb6d3917b045f5c7"
+    },
+    {
+      "id": "diagnostic_no_burst",
+      "kind": "ablation",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 224,
+        "schedule": 222,
+        "decisions": 231,
+        "events": 217,
+        "joint": 217
+      },
+      "historical_metrics": {
+        "token_f1": 0.71001837656,
+        "sequence_similarity": 0.7002415469200001,
+        "laal": 3.1385028642000004,
+        "completion": 1.0,
+        "bleu4": 43.48700631584674
+      },
+      "fresh_metrics": {
+        "token_f1": 0.71582343512,
+        "sequence_similarity": 0.70626455424,
+        "laal": 3.19582167876,
+        "completion": 1.0,
+        "bleu4": 43.169277132689004
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.00580505856000002,
+        "sequence_similarity": 0.00602300731999994,
+        "laal": 0.05731881455999943,
+        "completion": 0.0,
+        "bleu4": -0.3177291831577378
+      },
+      "fresh_sha256": "58addd79611d8d784239de49c834a2a03a720bffb75652ef6f5eeb776f21dd4e",
+      "historical_sha256": "9b1b1514c539274824ed948a3ff227b71783561cbe3db2792819b391064a207f",
+      "receipt_sha256": "3371e85c60106d0e12d5fb551754e36778d904d3f66f123b55180aaf838944ba"
+    },
+    {
+      "id": "diagnostic_no_negation",
+      "kind": "ablation",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 220,
+        "schedule": 215,
+        "decisions": 224,
+        "events": 214,
+        "joint": 214
+      },
+      "historical_metrics": {
+        "token_f1": 0.64121980432,
+        "sequence_similarity": 0.6313008825199999,
+        "laal": 1.7756870271774194,
+        "completion": 1.0,
+        "bleu4": 33.39208735710333
+      },
+      "fresh_metrics": {
+        "token_f1": 0.6389469281200001,
+        "sequence_similarity": 0.6296370379999999,
+        "laal": 1.7513707319354839,
+        "completion": 1.0,
+        "bleu4": 32.13168703222479
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.0022728761999999403,
+        "sequence_similarity": -0.001663844520000013,
+        "laal": -0.02431629524193557,
+        "completion": 0.0,
+        "bleu4": -1.260400324878539
+      },
+      "fresh_sha256": "485db9af02db6f6c932ccd00f739f616c8f288d727a3233a454173d0d61a48fb",
+      "historical_sha256": "b165d7bed3b3e2a47d1f3ebdca70d8d120f690a1769fd18ecb4bd4835d1e305c",
+      "receipt_sha256": "978be2138ab2cbabfeab10149346bcf4198ca6d4a12a58ecd76286488adc61ba"
+    },
+    {
+      "id": "diagnostic_no_occurrence",
+      "kind": "ablation",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 228,
+        "schedule": 224,
+        "decisions": 232,
+        "events": 222,
+        "joint": 222
+      },
+      "historical_metrics": {
+        "token_f1": 0.6399005796799999,
+        "sequence_similarity": 0.62927529072,
+        "laal": 1.7605070468951614,
+        "completion": 1.0,
+        "bleu4": 31.36912006426783
+      },
+      "fresh_metrics": {
+        "token_f1": 0.62840596012,
+        "sequence_similarity": 0.6175131126400001,
+        "laal": 1.75889550875,
+        "completion": 1.0,
+        "bleu4": 30.274256143069724
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.011494619559999864,
+        "sequence_similarity": -0.011762178079999908,
+        "laal": -0.0016115381451613509,
+        "completion": 0.0,
+        "bleu4": -1.0948639211981046
+      },
+      "fresh_sha256": "6faa180f9397375fed920cc153eda037fe42b10c3d9ab992e49338740a7b806e",
+      "historical_sha256": "599e0ad4e7d2d8b41c594dc64d2fa553bb8a976ed917f03573522dd9b3e16331",
+      "receipt_sha256": "0fb645686eea41d9b552641db07ba97b5683c044c2bc5d5d6cc662de43952853"
+    },
+    {
+      "id": "diagnostic_no_rescue",
+      "kind": "ablation",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 227,
+        "schedule": 222,
+        "decisions": 228,
+        "events": 221,
+        "joint": 221
+      },
+      "historical_metrics": {
+        "token_f1": 0.65081253708,
+        "sequence_similarity": 0.64002577904,
+        "laal": 1.8349168877419355,
+        "completion": 1.0,
+        "bleu4": 34.012701095645596
+      },
+      "fresh_metrics": {
+        "token_f1": 0.64988718488,
+        "sequence_similarity": 0.64016709352,
+        "laal": 1.877303107983871,
+        "completion": 1.0,
+        "bleu4": 33.57984969158231
+      },
+      "fresh_minus_historical": {
+        "token_f1": -0.000925352200000007,
+        "sequence_similarity": 0.0001413144799999877,
+        "laal": 0.04238622024193539,
+        "completion": 0.0,
+        "bleu4": -0.43285140406328537
+      },
+      "fresh_sha256": "3aad365b1d600c9a90048e9901c44cb32de3d53822203b9f5dc1d157e4d4ac50",
+      "historical_sha256": "ed57ccdb92d3f067857656e75bcd77ad91885788db004726a20d5da53bf633ee",
+      "receipt_sha256": "f082344b7889dac255492ca0f2271c629ba972d24badb1f8f4fe11b28ce1bfc9"
+    },
+    {
+      "id": "diagnostic_no_semantic",
+      "kind": "ablation",
+      "family": "diagnostic250",
+      "status": "NUMERICAL_DIFFERENCES_NO_EQUIVALENCE_CLAIM",
+      "records": 250,
+      "exact_counts": {
+        "prediction": 223,
+        "schedule": 222,
+        "decisions": 227,
+        "events": 221,
+        "joint": 221
+      },
+      "historical_metrics": {
+        "token_f1": 0.70532883648,
+        "sequence_similarity": 0.6938948542000001,
+        "laal": 2.47478912072,
+        "completion": 1.0,
+        "bleu4": 38.34577310193734
+      },
+      "fresh_metrics": {
+        "token_f1": 0.71108748712,
+        "sequence_similarity": 0.69977280116,
+        "laal": 2.39467484208,
+        "completion": 1.0,
+        "bleu4": 39.09297712448454
+      },
+      "fresh_minus_historical": {
+        "token_f1": 0.005758650640000029,
+        "sequence_similarity": 0.00587794695999988,
+        "laal": -0.08011427863999998,
+        "completion": 0.0,
+        "bleu4": 0.7472040225472014
+      },
+      "fresh_sha256": "850efc41921bd6190e9bddc0ee22127d31120b0607cc6b4952cf4ba616039b4e",
+      "historical_sha256": "ce4d0508f84d8c5b861ba05dbedbd08052841136dce75effbd8a1b22fc8f2c6b",
+      "receipt_sha256": "123329554c86f1be04741d783f6fd7dac45a961a309c6cce9b44aca0d170a1d8"
+    }
+  ],
+  "displayed_ci_checks": [
+    {
+      "check": "locked_fixed_k7_f1:0",
+      "actual": 0.03525133992483324,
+      "expected": 0.039,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "locked_fixed_k7_f1:1",
+      "actual": 0.07481409381399987,
+      "expected": 0.079,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "locked_fixed_k7_laal:0",
+      "actual": -2.831794671441499,
+      "expected": -2.83,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "locked_fixed_k7_laal:1",
+      "actual": -2.177969335211,
+      "expected": -2.197,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "locked_learned_k5_f1:0",
+      "actual": -0.014958555130666672,
+      "expected": -0.0139,
+      "original_rounding_tolerance": 5.1e-05,
+      "matches_display": false
+    },
+    {
+      "check": "locked_learned_k5_f1:1",
+      "actual": 0.009543582568166658,
+      "expected": 0.0102,
+      "original_rounding_tolerance": 5.1e-05,
+      "matches_display": false
+    },
+    {
+      "check": "locked_learned_k5_laal:0",
+      "actual": -2.3335925673355002,
+      "expected": -2.301,
+      "original_rounding_tolerance": 5.1e-05,
+      "matches_display": false
+    },
+    {
+      "check": "locked_learned_k5_laal:1",
+      "actual": -1.8880317258047965,
+      "expected": -1.9237,
+      "original_rounding_tolerance": 5.1e-05,
+      "matches_display": false
+    },
+    {
+      "check": "clerc_learned_k5_f1:0",
+      "actual": 0.08113189075636645,
+      "expected": 0.082,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "clerc_learned_k5_f1:1",
+      "actual": 0.11806510042084599,
+      "expected": 0.118,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": true
+    },
+    {
+      "check": "clerc_fixed_k7_f1:0",
+      "actual": 0.015936071884802998,
+      "expected": 0.016,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": true
+    },
+    {
+      "check": "clerc_fixed_k7_f1:1",
+      "actual": 0.06535154739533482,
+      "expected": 0.066,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "speech_s1_f1:0",
+      "actual": -0.00752059,
+      "expected": -0.0084,
+      "original_rounding_tolerance": 5.1e-05,
+      "matches_display": false
+    },
+    {
+      "check": "speech_s1_f1:1",
+      "actual": 0.00938313,
+      "expected": 0.0095,
+      "original_rounding_tolerance": 5.1e-05,
+      "matches_display": false
+    },
+    {
+      "check": "speech_s1_raw_laal:0",
+      "actual": -0.22360662,
+      "expected": -0.22,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "speech_s1_raw_laal:1",
+      "actual": -0.09705798,
+      "expected": -0.092,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "speech_s1_compute_laal:0",
+      "actual": -0.20586373,
+      "expected": -0.193,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    },
+    {
+      "check": "speech_s1_compute_laal:1",
+      "actual": -0.07674403,
+      "expected": -0.063,
+      "original_rounding_tolerance": 0.00051,
+      "matches_display": false
+    }
+  ],
+  "tolerance_policy": "No engineering near-reproduction pass threshold. Exact equality of deterministic outputs is tested. Stored-metric consistency uses original verifier 1e-7 rounding rule only. Paper display rounding uses the unchanged original verifier.",
+  "prompt_boundary": "Exact recorded config, system prompt and runner invocation checked. Tokenizer chat-template/prompt byte strings were not logged. Action-state prefixes are compared until trajectories diverge; later prompts legitimately differ.",
+  "evidence_sha256": {
+    "fresh_comparison_report_v2_20261017.json": "685c4057a7981f5c494a0dae7149136ee2395bb57934d027aaec47c69f39237f",
+    "fresh_paper_sections_report_20261017.json": "74be4e8ab918092e72d8f0a27f3e92455ea8cd50f117ad486392309dc23367d8"
+  },
+  "interpretation": "The complete checkpoint workflow ran successfully and all collected contracts/metrics verified, but regenerated predictions and displayed paper numbers were not identical. Do not advertise full exact re-inference or from-scratch replication.",
+  "limitations": [
+    "Existing environment, current hardware; no fresh training or environment installation.",
+    "Speech policy was rerun on frozen frontend, not TTS/Seamless regeneration.",
+    "Wall-clock/compute-aware timing is measured separately and is not expected identical.",
+    "Full scientific-protocol caveats remain in docs/VERIFICATION.md.",
+    "The cause of numeric drift has not been isolated; a hardware/precision/environment difference is a plausible explanation, not proven causation.",
+    "No manuscript or original experimental result was changed."
+  ]
+}

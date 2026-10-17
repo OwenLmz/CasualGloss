@@ -12,7 +12,6 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
-import os
 from pathlib import Path
 import re
 import shutil
@@ -78,8 +77,8 @@ def plan(data_root: Path, manifest_path: Path):
 def materialize(data_root: Path, output_dir: Path, manifest_path: Path, mode="copy"):
     data_root = data_root.resolve()
     output_dir = output_dir.resolve()
-    if mode not in {"copy", "hardlink"}:
-        raise ValueError("Only copy or explicitly requested hardlink is supported")
+    if mode != "copy":
+        raise ValueError("Only independent copies are supported; links would alter the protected bundle's link counts")
     if output_dir == ROOT or output_dir.is_relative_to(ROOT):
         raise ValueError("Raw verification inputs must remain outside the source repository")
     if output_dir == data_root or output_dir.is_relative_to(data_root) or data_root.is_relative_to(output_dir):
@@ -94,11 +93,8 @@ def materialize(data_root: Path, output_dir: Path, manifest_path: Path, mode="co
         dest = contained(output_dir, row["relative_path"])
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest = contained(output_dir, row["relative_path"])
-        if mode == "hardlink":
-            os.link(source, dest)
-        else:
-            with source.open("rb") as incoming, dest.open("xb") as outgoing:
-                shutil.copyfileobj(incoming, outgoing, 8 * 1024 * 1024)
+        with source.open("rb") as incoming, dest.open("xb") as outgoing:
+            shutil.copyfileobj(incoming, outgoing, 8 * 1024 * 1024)
         if dest.stat().st_size != row["bytes"] or digest(dest) != row["sha256"]:
             raise ValueError("Copied input failed integrity check; preserve output for inspection")
     receipt = {
@@ -108,7 +104,6 @@ def materialize(data_root: Path, output_dir: Path, manifest_path: Path, mode="co
         "artifact_manifest_sha256": digest(manifest_path),
         "verification_scope": "Offline installed-bundle bytes matched the committed registry; no new server hash observation.",
         "remote_verification_performed": False,
-        "hardlink_warning": "Hardlinks share source bytes; do not edit generated inputs." if mode == "hardlink" else None,
         "files": rows,
     }
     receipt_path = contained(output_dir, "materialization_receipt.json")
@@ -121,7 +116,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--mode", choices=("copy", "hardlink"), default="copy")
+    parser.add_argument("--mode", choices=("copy",), default="copy")
     args = parser.parse_args()
     try:
         receipt = materialize(args.data_root, args.output_dir, ROOT / "provenance/artifact_manifest.json", args.mode)

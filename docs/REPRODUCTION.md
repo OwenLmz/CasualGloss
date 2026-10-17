@@ -1,153 +1,225 @@
 # Reproducing the submitted paper
 
-This repository targets the submitted PDF whose SHA-256 is
-`5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`.
-It is not a collection of every historical experiment. Source locations and
-original checksums are recorded in `provenance/source_manifest.json`.
+**Status: validation in progress, not complete reproduction.** Read
+[VERIFICATION.md](VERIFICATION.md) and the current
+[status record](../results/reproduction_status.json). Frozen-output scoring,
+checkpoint inference and new training are different verification levels.
 
-## 1. Start without a GPU
+Paper SHA-256: `5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`.
+Run from the repository root. Use absolute PRIVATE paths outside the checkout;
+all new output directories below must not already exist. The installed asset
+root corresponds to old `SN_Research`, not its `data/` child.
 
-Run from the repository root:
+## 1. Inspect without executing a model
 
 ```bash
 python scripts/check_release.py
 python -m unittest discover -s tests -v
 python -m unittest discover -s tests/verification -v
-python scripts/paper.py list
-python scripts/paper.py run --dry-run rollout -- --help
+python scripts/reproduction/run_checkpoint_suite.py --list
+python scripts/reproduction/run_training_plan.py --list
 ```
 
-These checks validate source integrity, syntax and dispatcher isolation. They
-do not run a language model and do not establish a training reproduction.
-`check_git_snapshot.py` additionally checks the *staged Git blobs* after files
-are staged; it is a maintainer check, not a required inference step.
+Tests require NumPy (`requirements/analysis.txt`). Passing source checks and
+tests does not establish model execution, metric equality or training success.
 
-## 2. Data and checkpoints are separate from source code
+## 2. Install frozen private assets
 
-Obtain the exact recorded manifests and selected adapters according to
-`docs/DATA_AND_MODELS.md` and `provenance/artifact_manifest.json`. A remote
-path in an inventory does not mean its content has been uploaded to GitHub.
-Check licenses/access terms before redistributing source transcripts, CLERC
-records, audio, video or model weights. Keep raw data and checkpoints outside
-the tracked source tree.
-
-Do not regenerate splits opportunistically. The locked 500-parent test set,
-development/confirmation partition, source-video identities, reference
-normalization and checkpoint identities are part of the experiment.
-
-## 3. Read and run the real entrypoints
-
-`scripts/paper.py` forwards arguments unchanged and sets only task-specific
-first-party import paths. It does not rewrite a configuration, model prompt,
-data file, seed, decoding rule or selected checkpoint. Options before the entry
-name belong to the dispatcher; options after `--` belong to the selected file.
+Git clone downloads source and the catalog, not large data/weights. The private
+`OwenLmz/CasualGloss` Release `paper-reproduction-20261016` requires repository
+access and upstream data terms; see [DATA_AND_MODELS.md](DATA_AND_MODELS.md) and
+[THIRD_PARTY.md](../THIRD_PARTY.md). Release validation is still in progress;
+catalog/attachment availability must be checked before claiming installation.
 
 ```bash
-python scripts/paper.py run rollout -- --help
-python scripts/paper.py run train-policy -- --help
-python scripts/paper.py run build-burst -- --help
-python scripts/paper.py run build-recovery -- --help
-python scripts/paper.py run train-learned -- --help
-python scripts/paper.py run eval-epee-action -- --help
-python scripts/paper.py run speech-cascade -- --help
+python scripts/reproduction/release_assets.py list
+python scripts/reproduction/release_assets.py install \
+  --destination /private/paper_assets --accept-data-terms
+python scripts/reproduction/release_assets.py verify \
+  --destination /private/paper_assets
 ```
 
-These underlying scripts import their ML dependencies even for `--help`.
-Use `--dry-run` to inspect a command without loading those dependencies.
+Online installation uses authenticated `gh` or the existing Git credential
+helper without printing credentials. For predownloaded attachments, add
+`--asset-dir /private/release_downloads` to `install`; that mode is offline.
+Assets/cache and destination must be separate external trees. Matching files
+can resume; mismatches, unrelated content and link/path escapes are rejected.
 
-Configure data/model paths for the machine where the job will run. Historical
-configuration paths identify provenance, not portable defaults. Record any
-path-only changes in a separate run configuration. Do not substitute model
-revisions or reference files silently.
+Default groups are `data,adapters,audio`. `--groups data,adapters` suffices for
+the CPU/checkpoint-policy routes below, not full waveform reconstruction; pass
+the same groups to `verify` when only a subset is installed. Original JSONL
+bytes, historical paths, splits and results remain unchanged. The installer
+does not make old absolute audio paths valid on a different machine.
 
-## 4. Main model: preserve the two-stage dependency
+### Rebuild and verify CPU-only data products
 
-The required model chain is:
-
-1. Upstream weak-gloss LoRA, trained on 27,079 paired examples.
-2. Stage A confidence/burst Treebank action training: 534,877 actions from
-   18,632 parents, initialized from the upstream LoRA.
-3. Stage B state-recovery training: 439,103 actions comprising 367,267 balanced
-   aligned actions and 71,836 recovery actions, initialized from the selected
-   Stage A adapter.
-
-The three final CausalGloss seeds are 20260829, 20260904 and 20260905. Their
-paper adapters are all `adapter_final`. In particular, the first seed's
-`adapter_best` was its unchanged initialization at step zero and is **not** the
-paper's selected model. Preserve selection metadata, not just a filename.
-
-Example of the *real argument interface*, with explicit external paths:
+After installing all groups, use an environment with NumPy and soundfile for
+waveform QC/finalization. The recovery builder can use the policy interpreter.
+No model is loaded and no audio is synthesized by this command:
 
 ```bash
-python scripts/paper.py run --nproc 2 train-policy -- \
-  --config /work/configs/recovery_seed20260829.json \
-  --train-manifest /work/data/train_actions_full.jsonl \
-  --validation-manifest /work/data/development_actions.jsonl \
-  --test-manifest /work/data/confirmation_actions.jsonl \
-  --source-adapter-dir /work/checkpoints/stage_a/adapter_best \
-  --output-dir /work/runs/recovery_seed20260829
-
-python scripts/paper.py run rollout -- \
-  --config /work/configs/recovery_seed20260829.json \
-  --parent-splits /work/data/parent_splits_full.jsonl \
-  --causal-pairs /work/data/causal_aligned_pairs_full.jsonl \
-  --adapter-dir /work/checkpoints/recovery_seed20260829/adapter_final \
-  --output-dir /work/results/locked500/seed20260829 \
-  --stage causalgloss_seed20260829_locked500 \
-  --split test --device cuda:0 --generation-batch-size 32
+python scripts/reproduction/validate_data_builders.py \
+  --data-root /private/paper_assets --output-root /private/data_builder_run1 \
+  --policy-python /absolute/path/to/policy/python
 ```
 
-The two trainer invocations for Stage A and Stage B use the same implementation
-but different recorded configurations, action manifests and source adapters.
-Do not train Stage B directly from the upstream weak-gloss model.
+The default runs original waveform QC, corpus finalization and recovery-manifest
+production. Repeated `--check waveform-qc`, `--check finalizer`, `--check recovery`
+select subsets. Recovery-only needs no audio group. Checks verify producer/input
+hashes before execution, compare stable QC/summary fields, and require byte/order
+equality for rebuilt cleaned and recovery manifests. The 71,836-row recovery
+intermediate is regenerated and checked by its recorded SHA, not stored twice.
+Read `cpu_validation_report.json`; new timestamps/path metadata are not claimed
+to be byte-identical to historical reports.
 
-## 5. Baselines, ablations and external references
+## 3. Independently rescore saved predictions on CPU
 
-- Fixed Wait-k uses schedule-specific training at k=1,3,5,7, not an
-  inference-only constraint on the CausalGloss model. The paper has one seed
-  for k=1,3 and three seeds for k=5,7. k=3 uses its recovered finite run.
-- The final learned adaptive baseline is the independently trained
-  **20260918 TransLLaMA-style SimAlign workflow**. It is not the earlier
-  professor-feedback learned-baseline attempt. Decode k=1,...,8 using each
-  selected final seed. `train-learned` is single-process; the dispatcher rejects
-  `--nproc 2` because the implementation does not implement DDP.
-- `ablations/` keeps its own trainer/common/evaluator. The dispatcher isolates
-  these same-named modules from `method/causalgloss/`. Do not combine their
-  `PYTHONPATH`s. The six Table 2 contrasts include recovery and the five
-  component removals, using the frozen diagnostic set.
-- CLERC Epee uses the pinned v0.3 revision, best-reference normalization and
-  the final FP16 evaluators in `evaluation/clerc/`. The completed-only analysis
-  is post-hoc and conditional on baseline completion, not a replacement for
-  the primary all-prompts comparison.
+Materialize exactly 83 inputs: 82 historical predictions (35,535 records) and
+one CLERC reference manifest. Both output directories must be new.
 
-## 6. Speech cascade and complete corpus
+```bash
+python scripts/reproduction/materialize_verification_inputs.py \
+  --data-root /private/paper_assets --output-dir /private/verification_inputs
+python scripts/verification/verify_paper_results.py \
+  --input-root /private/verification_inputs --output-dir /private/frozen_scores_run1
+```
 
-`speech/frontend/` contains the recorded SeamlessStreaming-to-action cascade,
-not alternative unreported speech frontends. Reuse its recorded **320-ms input
-read increment** and synthetic locked500 audio. The paper's "1.2-s chunks"
-description is an unresolved reporting discrepancy, not a justified replacement
-parameter; see `docs/VERIFICATION.md`. Do not change 320 to 1200 merely to match
-that wording. Adaptive text release and an audio read increment are distinct.
-Report both raw and computation-aware latency; hardware and batching affect
-the latter. The shell wrapper requires explicit `TASK_ROOT`, `PYTHON_ENV`,
-`INPUT_TSV`, `OUTPUT_DIR` and `END_INDEX`, so it cannot silently use old pilot
-inputs or a one-item default.
+Materialization copies checked bytes and writes an offline receipt; it does
+not invent a new remote-server checksum observation. Read the generated
+`verification_report.json`: it independently scores predictions, checks input
+counts, displayed values and selected bootstrap CIs. Keep default 20,000 draws
+for the reported 20,000-draw checks. This route loads no checkpoint and produces
+no new prediction; historical numerical agreement is not fresh inference.
 
-The speech lexical control is the historical `fine_tuning_v2_causal_full_seed2`
-adapter. It must not be conflated with other lexical controls. Evaluate all
-three selected CausalGloss seeds for the multi-seed speech summary.
+## 4. Obtain the pinned model and check the environment
 
-`speech/corpus/` builds the full synthetic ChineseSpeech-ASLGloss-v1 corpus.
-The paper corpus is the **cleaned 19,924-item** version (18,924/500/500,
-36.54 hours), not the uncleaned 19,947-item intermediate version.
+Official backbone: `Qwen/Qwen2.5-7B-Instruct`, revision
+`a09a35458c702b33eeacc393d103063234e8bc28`. This is separate from private adapters.
+In an environment with `huggingface_hub`:
 
-## 7. What has actually been validated
+```bash
+python scripts/reproduction/download_policy_model.py \
+  --models-root /private/hf_home --accept-upstream-terms
+python scripts/reproduction/setup_nltk.py --destination /private/nltk_data
+python scripts/reproduction/preflight.py \
+  --data-root /private/paper_assets --models-root /private/hf_home \
+  --nltk-data /private/nltk_data --environment policy --verify-data-hashes
+```
 
-Read `docs/VERIFICATION.md` for the achieved verification level and known
-differences. Historical saved-prediction reaggregation, a checkpoint inference
-rerun and training from scratch are different claims. The release does not
-claim that full multi-seed training was rerun from scratch.
+Add `--local-only` to the downloader to check an existing cache offline. It
+requests the fixed snapshot and checks required config/tokenizer files and
+four weight shards. `--models-root` accepts HF_HOME containing `hub/`, a
+compatible model cache, or the exact pinned snapshot.
 
-Additional audit runs that are not results in the submitted paper are not
-bundled in this paper-only repository. A passed dispatcher/source check alone
-says nothing about scientific accuracy or from-scratch reproducibility.
+[Environment guidance](../requirements/README.md) separates policy, TTS and
+Seamless runtimes. Locks record the **current inspected server**, not a proven
+historical environment or tested clean installation. Do not merge incompatible
+CUDA/PyTorch environments. Preflight installs nothing; it checks packages,
+CUDA, model/input identities and NLTK resources. Use `--nltk-data /private/nltk_data`
+if resources are elsewhere; `--require-recorded-versions` makes policy version
+differences errors instead of warnings. A pass is not numerical reproduction.
+`setup_nltk.py` verifies the original official `punkt_tab` ZIP and all four
+English model files by SHA/size; `--verify-only` checks without network access.
+Keep NLTK resources outside the installed paper-data tree. Legacy Punkt and
+WordNet are not required by the inspected retained policy runtime.
+
+## 5. Rerun selected checkpoints: 82 outputs, 40 invocations
+
+[experiments.json](../configs/reproduction/experiments.json) contains 35
+locked500, 35 CLERC401, eight diagnostic250 and four speech500 outputs. Default
+coalescing retains six learned k=1,...,8 sweeps: **40 model invocations** produce
+**82 outputs**. Inspect the no-write plan first:
+
+```bash
+python scripts/reproduction/run_checkpoint_suite.py --dry-run \
+  --data-root /private/paper_assets --models-root /private/hf_home \
+  --output-root /private/checkpoint_rerun1
+```
+
+To execute, remove `--dry-run`: unlike the training runner, this runner then
+executes after input checks. `--family locked500`, `clerc401`, `diagnostic250`
+or `speech500` selects a subset; `--id` selects a listed entry. `--python`
+chooses the policy interpreter; `CUDA_VISIBLE_DEVICES` selects the physical GPU.
+Do not use `--separate-k` as an exact historical grouped-sweep substitute.
+
+The runner verifies inputs/adapters, preserves historical precision, batches,
+order and caps, and changes only the local `model_id` path in new runtime
+configs. It writes logs, `receipt.json` and `checkpoint_output_index_*.json`
+without replacing archived predictions. A completed receipt proves exit status
+and record count, **not metric equality**. Independently rescore fresh outputs
+and record actual exact/approximate differences. Cross-hardware low-precision
+execution need not be bit-identical.
+
+The 2026-10-17 audit exercised all 82 outputs and independently checked their
+inputs, receipts and metrics. It found actual numerical differences, not exact
+paper-number reproduction; see
+[checkpoint_reinference_20261017.json](../results/checkpoint_reinference_20261017.json).
+No tolerance or expected value was changed to turn that result into a pass.
+
+To rescore a newly completed full suite rather than archived predictions:
+
+```bash
+python scripts/reproduction/materialize_checkpoint_outputs.py \
+  --checkpoint-root /private/checkpoint_rerun1 \
+  --data-root /private/paper_assets --output-dir /private/fresh_verifier_inputs
+python scripts/verification/verify_paper_results.py \
+  --input-root /private/fresh_verifier_inputs --output-dir /private/fresh_scores_run1
+```
+
+Repeat `--checkpoint-root` if the 82 outputs are split across GPU directories.
+The materializer requires all 82 unique matrix entries with valid completed
+runner receipts, output hashes/counts and the registered 401-prompt reference.
+It copies independently, never links files or claims new outputs match old
+prediction hashes. The original numerical verifier may fail on real differences;
+that failure must be reported, not suppressed or relaxed.
+
+The four speech500 jobs rerun **only the policy on recorded shared frontend
+events**. They do not resynthesize TTS, rerun Seamless, or reproduce historical
+frontend wall time. Full waveform/QC/frontend regeneration is a separate level.
+The retained Seamless launcher reads 320-ms increments; do not change it to
+1200 to fit the paper wording.
+
+## 6. Inspect training before explicitly executing it
+
+[training.json](../configs/reproduction/training.json) records 30 invocations:
+upstream (1), main policy (4), fixed Wait-k (8), speech lexical control (1),
+independent learned baseline (6, including validation-only LR screens), and
+five two-stage component ablations (10).
+
+```bash
+python scripts/reproduction/run_training_plan.py --dry-run \
+  --data-root /private/paper_assets --models-root /private/hf_home \
+  --output-root /private/new_training1
+```
+
+Dry-run is also the default: no model load or output writes. Only after
+reviewing compute cost, replace `--dry-run` with **`--execute`** to train.
+`--id`/`--family` restrict selection; `--with-dependencies` includes required
+new upstream jobs. Default `--initialization-source new` follows new adapters
+and validation selection; `archived` retrains individual stages from archived
+initializers and is not whole-chain retraining. Single-GPU DDP still uses torchrun.
+
+Main dependency: weak-gloss LoRA → Stage A (534,877 actions) → Stage B (439,103
+actions). Published Stage B seeds select `adapter_final`; S1's unchanged
+step-zero `adapter_best` is not the paper checkpoint. New validation-only
+selection stops if its chosen LR differs rather than silently changing paper
+settings. Read each `training_receipt.json`.
+
+Training uses frozen weak labels, alignments and action manifests; it does not
+automatically regenerate these or train Qwen from random weights. After real
+new training, checkpoint inference can use `--training-root /private/new_training1`
+to validate new receipts/hashes instead of archived adapters. Full new training
+has not been demonstrated; runnable plans alone are not reproduced results.
+
+## Lower-level study and interpretation
+
+`python scripts/paper.py list` exposes historical implementations;
+`run --dry-run ENTRY -- --help` inspects dispatch without ML imports. Actual
+implementation `--help` may require ML dependencies. The dispatcher isolates
+main/ablation modules and forwards arguments unchanged. See
+[PAPER_TO_CODE.md](PAPER_TO_CODE.md).
+
+Keep every caveat in [VERIFICATION.md](VERIFICATION.md), particularly upstream
+test exposure, weak-target lineage, reference-length generation caps,
+320-ms/1.2-s wording and native no-recovery completion. Byte checks and matching
+scores do not resolve those scientific/reporting limitations.

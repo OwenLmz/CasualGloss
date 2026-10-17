@@ -1,4 +1,4 @@
-# Versions recorded in the selected historical policy runs.
+# Direct package versions recorded in the currently inspected reproduction environment.
 # Install a hardware-compatible PyTorch wheel separately; do not blindly install
 # a CUDA-specific wheel from PyPI on an incompatible driver/device.
 transformers==4.57.6
@@ -9,4 +9,4 @@ simalign==0.4
 numpy==2.2.6
 safetensors==0.8.0
 huggingface_hub==0.36.2
-# Historical torch: 2.11.0+cu128. See docs/REPRODUCTION.md for caveats.
+# Currently inspected torch: 2.11.0+cu128; not proof of the historical environment.

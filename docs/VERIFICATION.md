@@ -1,12 +1,39 @@
 # 最终论文结果复核 / Final-paper verification
 
-本工具只验证最终提交 PDF 中呈现的实验，不是全部服务器实验的归档，也不包含 gloss→pose/video 扩展。本次新增 checkpoint smoke / 500 条重推理结果不属于论文实验，未收入本仓库。
+**当前状态：验证进行中，尚未宣称完整复现。** 以 [reproduction_status.json](../results/reproduction_status.json) 的逐项实测记录为准。本工具只验证最终提交 PDF 中呈现的实验，不是全部服务器实验的归档。新增检查不是原论文结果；新逐样本输出应留在独立私有运行目录，不能冒充历史预测。
 
 论文锚点为 `20260923032900_403947_8500 (1).pdf`，SHA-256：
 
 `5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`
 
 原始 PDF、服务器源码、训练 checkpoint 和历史逐样本输出均未修改。
+
+## 三种“复现”必须分开
+
+| 层级 | 当前能够成立的结论 | 不能由此推出 |
+|---|---|---|
+| 冻结预测重新计分 | 83 项输入、35,535 条预测已独立重算；已核对的论文显示值/CI 无数值差异。下面保留 CI 方法范围说明。 | 没有重新生成预测，不等于权重推理或训练通过。 |
+| 选定 checkpoint 重新推理 | 40 次调用、82 份输出、35,535 条记录已实际完成；输入与指标完整性通过，但新结果与论文并非逐项精确一致。 | 不能把运行成功或主要均值接近称为所有纸面数字复现。 |
+| 新训练 | 30 项训练计划可检查，执行必须明确加 `--execute`；完整新训练尚未运行。 | 配置齐全、dry-run 通过、复用旧 adapter 都不能称为从头训练复现。 |
+
+私有 Release 安装、原始波形 QC、语料清洗及干净环境安装各有独立状态。环境锁只是当前服务器记录，不是历史环境逐包证明，也不是新环境安装成功的保证。操作命令见 [REPRODUCTION.md](REPRODUCTION.md)。
+
+## 2026-10-17 实际重新推理结果
+
+完整记录见 [checkpoint_reinference_20261017.json](../results/checkpoint_reinference_20261017.json)。独立验证了全部 40 个 receipt、82 份输出、130 份原始输入/adapter/参考文件及 161 个执行源码核心文件。ID 顺序、输入/参考和存储指标重算无错误。
+
+| 指标 | 论文显示值 | 本次重新推理 |
+|---|---:|---:|
+| Locked500 CausalGloss F1 均值 | 0.7047 | 0.70386672 |
+| Locked500 CausalGloss LAAL 均值 | 1.7823 | 1.77919386 |
+| CLERC CausalGloss F1 均值 | 约 0.649 | 0.64871802 |
+| completed-only F1 差 | 0.0357 | 0.03471956 |
+| completed-only 各种子样本数 | 349 / 344 / 353 | 349 / 343 / 352 |
+| Speech 三种子 F1 均值 | 0.3944 | 0.39248431 |
+
+32,912/35,535 条预测 token 完全相同（92.6185%），但仅 1/82 份 rollout 的全部确定性输出一致。未设置事后近似通过阈值。原始纸面 verifier 因 completed-only 样本数变化拒绝通过；分节重算还记录了显示值及 CI 差异，不能掩盖为成功。**结论是推理工作流已完整执行和核验，不是所有论文数字的精确复现。** 数值漂移的原因尚未被完全隔离，硬件/精度/环境差异只是合理候选，不能断言已证明原因。
+
+历史冻结结果重计分仍可精确复得原论文显示值。这两类结果必须分别保留；不得用新预测替换历史文件、改 expected 或调整科学参数来制造一致。
 
 ## 验证范围
 
@@ -28,7 +55,7 @@ CLERC lexical control、LocalAgreement、旧 learned baseline、筛选后未选�
 - 根据原始数据顺序和 RNG 复算论文报告的关键 bootstrap CI。locked learned 和 CLERC 默认 20,000 次；fixed locked500、Table 2 及 speech 原方法 10,000 次。
 - 已保存输入 SHA-256 和与远端原件的匹配状态；只检查实际使用的 83 项，即使本地私有缓存另有历史文件，也不将其纳入。
 - `tests/verification` 的 19 项单元测试检查指标、重复 ID 拒绝、sample SD、纯论文 allowlist、连接参数、私有下载目录和逐文件符号链接约束；安全测试不发起网络连接。根 `tests` 另覆盖 Release 安装、单卡 torchrun、去除未报告分支、语料清洗、83项物化及82项推理矩阵。通过单元测试不代表模型执行通过。
-- **没有从头重训，没有在本验证中重新推理，没有新增 ASL 专家可理解性验证。** “历史输出重新计分一致”不能称为完整训练复现。
+- **上述数值复核本身没有从头重训或重新推理，也没有新增 ASL 专家可理解性验证。** 本轮新增 checkpoint 执行范围另记，不能用历史重计分报告替代其结果。“历史输出重新计分一致”不能称为完整训练复现。
 
 完整安全聚合结果见 [recomputed_paper_results.json](../results/recomputed_paper_results.json)，PDF 显示值及输入数量约束见 [expected_paper_results.json](../results/expected_paper_results.json)。显示值按论文实际小数位比较，不要求四位小数等于完整双精度数值。
 
@@ -55,18 +82,30 @@ CLERC lexical control、LocalAgreement、旧 learned baseline、筛选后未选�
 
 ## 修复后的验证层级
 
-`scripts/reproduction/materialize_verification_inputs.py` 从已安装的冻结附件产生严格 83 项本地输入别名，不重新序列化 JSONL、不伪造当前远端校验清单。
+`scripts/reproduction/release_assets.py install/verify` 校验私有 Release 分块、外部文件 manifest 和逐文件 SHA/大小；安装位置必须在仓库外。它不修改原始 JSONL，也不证明波形合格或模型数值正确。
 
-`scripts/reproduction/run_checkpoint_suite.py` 按 82 项矩阵重新生成输出，只允许全新输出目录。它保留历史批大小、精度和预算；TransLLaMA 默认按原 k-sweep 批处理，不应用 `--separate-k` 冒充精确历史运行。speech 项仅重新运行 policy，使用已录制共同前端；重新合成音频/运行 Seamless 不是这四项所证明的结果。
+`scripts/reproduction/download_policy_model.py` 获取固定 Qwen revision，或以 `--local-only` 检查缓存；`preflight.py` 只读检查依赖、CUDA、模型和输入，不安装、不执行评测。
+
+`scripts/reproduction/materialize_verification_inputs.py` 从已安装附件产生严格 83 项本地输入别名，不重新序列化 JSONL、不伪造当前远端校验清单；随后运行 CPU verifier 才是数值复核。
+
+`scripts/reproduction/run_checkpoint_suite.py` 按 82 项矩阵生成新输出，默认完整选择是 **40 次模型调用，其中六次 learned k-sweep**，产生 82 份预测。它保留历史批大小、精度和预算；不应用 `--separate-k` 冒充精确历史运行。`--dry-run` 不执行，去掉它会启动模型。receipt 只证明退出状态/样本数量，数值仍须重算比较。
+
+四项 speech checkpoint 只重运行 policy，使用已录制共同前端；**不重新合成 TTS、不重新运行 Seamless，也不重新测量其历史时延**。这四项通过也不能称为完整语音链重新生成。
+
+`scripts/reproduction/run_training_plan.py` 默认 dry-run，明确 `--execute` 才执行 30 项训练计划或其子集。`new` 初始化遵循新训练依赖，`archived` 使用历史上游 adapter，后者不是整链重训。没有执行的项目必须明确为未运行。
 
 原始波形 QC、corpus finalizer、保存预测重新计分、选定权重推理、从头训练，是五项不同证据。最终状态由 `results/reproduction_status.json` 中逐项实际记录决定；缺少、未执行、近似匹配和精确匹配不得合并写为“全部复现”。
 
 ## 自己运行
 
-需要 Python ≥3.10 和 NumPy，CPU 即可，无须加载 7B 模型。在仓库根目录执行：
+以下是冻结结果的 CPU 路线，需要 Python ≥3.10 和 NumPy，无须加载 7B 模型。先合法取得 Release 数据；所有输入/输出目录在仓库外，两个输出目录此前均不能存在。在仓库根目录执行：
 
 ```bash
 python -m unittest discover -s tests/verification -v
+
+python scripts/reproduction/materialize_verification_inputs.py \
+  --data-root /absolute/path/to/installed_paper_assets \
+  --output-dir /absolute/path/to/private_artifacts
 
 python scripts/verification/verify_paper_results.py \
   --input-root /absolute/path/to/private_artifacts \
@@ -75,7 +114,7 @@ python scripts/verification/verify_paper_results.py \
 
 `--output-dir` 必须是此前不存在的新目录，以免覆盖审计。标准输出只给状态；完整数值、输入数量、校验和和任何差异写入 `verification_report.json`。默认进行 20,000 次相关重采样；其他次数可用于调试，但不能据此声称已重新验证论文 CI。
 
-拥有原服务器访问权限时，可先查看 allowlist，再明确下载：
+推荐通过 [REPRODUCTION.md](REPRODUCTION.md) 的私有 Release 安装器取得数据。拥有原服务器访问权限时，也可查看同一 83 项 allowlist，再明确下载：
 
 ```bash
 python scripts/verification/fetch_verification_inputs.py \
