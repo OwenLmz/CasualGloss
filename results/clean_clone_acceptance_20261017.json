@@ -1,0 +1,94 @@
+{
+  "acceptance_date": "2026-10-17",
+  "scope": "Final-paper source/data availability and clean CPU execution, not complete exact model/training reproduction",
+  "technical_checks_passed": true,
+  "executed_source_commit": "0f78590df8eccc8d040c966f35b8904811e43ec2",
+  "later_closeout_changes": "Documentation and aggregate audit metadata only; no scientific implementation or private asset changes",
+  "source_route": "Independent GitHub clone, transferred as verified git bundle to a new clean server checkout",
+  "source_worktree_clean_before_and_after": true,
+  "private_assets": {
+    "release": "https://github.com/OwenLmz/CasualGloss/releases/tag/paper-reproduction-20261016",
+    "all_attachments_actually_redownloaded": true,
+    "attachment_count": 14,
+    "archive_parts": 13,
+    "downloaded_bytes": 9094849010,
+    "installed_files": 40134,
+    "installed_bytes": 25487764612,
+    "unregistered_installed_files": 0,
+    "all_file_SHA256_and_sizes_verified_before_and_after_consumers": true,
+    "catalog_sha256": "57a55c23ee4c5f2fae7af9297723bb14bf9ea4395a4bf36f056527a0f941c8d3",
+    "file_manifest_sha256": "f1014986ac72af4f5dae99de3fd491de926f121c1d89b6a51dd2e11569c68c3b"
+  },
+  "CPU_environment": {
+    "new_isolated_venv": true,
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "soundfile": "0.13.1",
+    "nltk": "3.9.2",
+    "system_and_user_site_packages_enabled": false,
+    "torch_installed": false,
+    "clean_GPU_installation_claimed": false
+  },
+  "completed_steps": [
+    "source_integrity",
+    "root_unit_tests",
+    "metric_unit_tests",
+    "full_asset_install",
+    "full_asset_verify",
+    "materialize_frozen_83",
+    "frozen_paper_scores_clean_cpu",
+    "full_data_builders_clean_cpu",
+    "policy_preflight_installed_data_using_existing_GPU_environment",
+    "training_plan_dry_run_without_output_writes",
+    "assets_unchanged_after_consumers"
+  ],
+  "tests": {"root_passed": 146, "metric_passed": 19, "skipped": 0},
+  "frozen_scores": {
+    "input_files": 83,
+    "prediction_records": 35535,
+    "all_checked_numeric_values_pass": true,
+    "numeric_discrepancies": 0,
+    "default_20000_draw_checks_retained": true,
+    "report": "results/recomputed_paper_results.json"
+  },
+  "data_rebuilds": {
+    "original_producers_and_scientific_parameters_preserved": true,
+    "normalized_wavs_SHA_verified_and_QC_rerun": 19947,
+    "identical_flagged_exclusions": 23,
+    "cleaned_manifest_records": 19924,
+    "cleaned_manifest_bytes_and_order_identical": true,
+    "cleaned_manifest_sha256": "d6ef613ae4f2f81cc4c1c4ca7c94a0f8987bf54ad4bc2baa67aba64dac15c12f",
+    "recovery_output_files_byte_and_order_identical": 6,
+    "recovery_training_action_records": 439103,
+    "recovery_augmentation_records": 71836,
+    "timestamps_and_new_report_paths_claimed_identical": false
+  },
+  "separate_checkpoint_reinference": {
+    "invocations": 40,
+    "rollouts": 82,
+    "integrity_errors": 0,
+    "exact_paper_number_reproduction_pass": false,
+    "report": "results/checkpoint_reinference_20261017.json"
+  },
+  "not_executed": [
+    "Full 30-run new training chain",
+    "Full TTS synthesis and Seamless frontend regeneration",
+    "New isolated GPU-policy/TTS/Seamless environment installation"
+  ],
+  "audit_evidence_SHA256": {
+    "actual_GitHub_download_report": "e03efbb93474800426c89cc9f66f668e28cc532b0d842cfa372670821ea6c063",
+    "full_clean_install_and_execution_report": "39457b6fd94c99a7073f7c1e2dfe61a78c06db9270994f2b67a45289e02310f2",
+    "CPU_data_builder_report": "ad81210ad4f0d9c43aada4c7d22856da9ee105de54ed94121256842ef93a3085",
+    "CPU_frozen_score_report": "2b2eb58153019e633fc0e1b11c581983410f62b0324a93a359f099aef981ccfc",
+    "final_original_integrity_and_idle_state_report": "6664dc9e68490cb01f5ed810d39858a8a1b496ae135af18f8aef53d53e408ccc"
+  },
+  "original_server_final_integrity_audit": {
+    "unique_files_rehashed": 869,
+    "unique_bytes_rehashed": 14865746595,
+    "hash_mismatches": 0,
+    "own_compute_jobs_left_running": false
+  },
+  "submitted_PDF_sha256": "5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a",
+  "original_experiments_and_submitted_PDF_modified": false,
+  "full_exact_paper_reproduction_established": false
+}

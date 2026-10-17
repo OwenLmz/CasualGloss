@@ -1,9 +1,13 @@
 # Reproducing the submitted paper
 
-**Status: validation in progress, not complete reproduction.** Read
+**Status: repository/data and clean-CPU acceptance completed on 2026-10-17;
+not complete exact model/training reproduction.** Read
 [VERIFICATION.md](VERIFICATION.md) and the current
 [status record](../results/reproduction_status.json). Frozen-output scoring,
-checkpoint inference and new training are different verification levels.
+checkpoint inference and new training are different verification levels. The
+[clean-clone acceptance record](../results/clean_clone_acceptance_20261017.json)
+identifies the executed source commit; later closeout changes only documentation
+and aggregate audit metadata.
 
 Paper SHA-256: `5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`.
 Run from the repository root. Use absolute PRIVATE paths outside the checkout;
@@ -28,8 +32,11 @@ tests does not establish model execution, metric equality or training success.
 Git clone downloads source and the catalog, not large data/weights. The private
 `OwenLmz/CasualGloss` Release `paper-reproduction-20261016` requires repository
 access and upstream data terms; see [DATA_AND_MODELS.md](DATA_AND_MODELS.md) and
-[THIRD_PARTY.md](../THIRD_PARTY.md). Release validation is still in progress;
-catalog/attachment availability must be checked before claiming installation.
+[THIRD_PARTY.md](../THIRD_PARTY.md). All 14 attachments were actually downloaded
+again from GitHub, SHA/size checked, installed into a new external directory and
+verified there: 40,134 files, 25,487,764,612 uncompressed bytes. The new CPU
+environment then rebuilt waveform QC, cleaned and recovery manifests and
+recomputed frozen paper scores with zero checked numerical discrepancies.
 
 ```bash
 python scripts/reproduction/release_assets.py list
@@ -46,7 +53,8 @@ Assets/cache and destination must be separate external trees. Matching files
 can resume; mismatches, unrelated content and link/path escapes are rejected.
 
 Default groups are `data,adapters,audio`. `--groups data,adapters` suffices for
-the CPU/checkpoint-policy routes below, not full waveform reconstruction; pass
+saved-prediction rescoring and checkpoint-policy routes, not waveform QC or
+finalization (which require audio); pass
 the same groups to `verify` when only a subset is installed. Original JSONL
 bytes, historical paths, splits and results remain unchanged. The installer
 does not make old absolute audio paths valid on a different machine.
@@ -116,8 +124,11 @@ four weight shards. `--models-root` accepts HF_HOME containing `hub/`, a
 compatible model cache, or the exact pinned snapshot.
 
 [Environment guidance](../requirements/README.md) separates policy, TTS and
-Seamless runtimes. Locks record the **current inspected server**, not a proven
-historical environment or tested clean installation. Do not merge incompatible
+Seamless runtimes. The GPU/ML locks record the **current inspected server**, not
+a proven historical environment or tested clean GPU installation. A separate,
+new isolated Python 3.10 CPU environment with NumPy 2.2.6, SoundFile 0.13.1 and
+NLTK 3.9.2 passed the real-data and metric checks; no Torch was installed there.
+Do not merge incompatible
 CUDA/PyTorch environments. Preflight installs nothing; it checks packages,
 CUDA, model/input identities and NLTK resources. Use `--nltk-data /private/nltk_data`
 if resources are elsewhere; `--require-recorded-versions` makes policy version

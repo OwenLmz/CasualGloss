@@ -4,6 +4,13 @@
 
 `data-builders.txt` adds SoundFile and NLTK 3.9.2 to the analysis requirements for the original waveform QC/finalizer and recovery-manifest producer. These CPU data checks need no Torch, transformers or GPU. NLTK's Treebank detokenizer here does not need Punkt models; the TransLLaMA inference tokenizer is a separate dependency below.
 
+On 2026-10-17 a new isolated Python 3.10 environment (no system/user site
+packages, no Torch) with NumPy 2.2.6, SoundFile 0.13.1 and NLTK 3.9.2 passed
+146 root tests, 19 metric tests, full private-asset installation/verification,
+waveform/manifest rebuilds and frozen-prediction scoring. This is a tested CPU
+route, not a fresh GPU/ML environment installation. See
+[`clean_clone_acceptance_20261017.json`](../results/clean_clone_acceptance_20261017.json).
+
 `plots.txt` is for portable Fig.1 rendering. `metrics.txt` provides optional speech-frontend BLEU/chrF reporting; final Table 1 BLEU is calculated by the independent verifier, not the removed obsolete baseline script.
 
 Speech synthesis, SeamlessStreaming/fairseq2/SimulEval, and text-policy inference use separate environments. Do not merge incompatible CUDA/PyTorch requirements. `locks/` contains complete read-only recordings of the current three server environments and exact editable-source commits. Those recordings are evidence, not a claim that every listed transitive package is essential or that a clean installation was tested.
