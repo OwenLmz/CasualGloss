@@ -2143,10 +2143,11 @@
       "source_path": "D:/Infinisst/paper_revision_20260919_transllama/build_transllama_figure.py",
       "origin": "local_workspace_original",
       "modifications": [
-        "Portable same-content Fig.1 regeneration from verified final-paper report; remove machine-bound inputs and vendor QA dependency, add CLI/optional QA and readable typography; not pixel-identical to submitted PDF."
+        "Portable same-content Fig.1 regeneration from verified final-paper report; remove machine-bound inputs and vendor QA dependency, add CLI/optional QA and readable typography; not pixel-identical to submitted PDF.",
+        "Accept standalone original-paper aggregate inputs, checking the submitted paper anchor and rounded Table 1 values while retaining seed/SD and frontier validation."
       ],
-      "repository_sha256": "1a8db0ad384d0e446b9badc5a25f9da5e0cdcb679a4a07ed3a1f19711cab6fcd",
-      "repository_size_bytes": 14667
+      "repository_sha256": "9d69b39a45454ca8369aeac9ab8ced56583752585c73cde229d8d1ab51c4b0ca",
+      "repository_size_bytes": 15488
     },
     {
       "repository_path": "configs/speech/locked500_frontend.json",

@@ -15,9 +15,9 @@ Mingze Li · Satoshi Nakamura · ICASSP 2027 submission
 | 弱标签、词法/语义对齐、recovery 数据 | [data_preparation](data_preparation) | §3.2–3.3、§4 |
 | 固定 Wait-k、最终 TransLLaMA-style、语音 lexical control | [baselines](baselines) | §4、§5.1–5.2 |
 | 五个组件消融 | [ablations](ablations) | §5.3、Table 2 |
-| CLERC 与论文统计复核 | [evaluation/clerc](evaluation/clerc)、[scripts/verification](scripts/verification) | §5、Tables 1–2 |
+| CLERC 与论文指标计算 | [evaluation/clerc](evaluation/clerc)、[scripts/verification](scripts/verification) | §5、Tables 1–2 |
 | 最终语音链与完整合成语料构建 | [speech](speech) | §4、§5.2 |
-| 最终实验配置、图 1、已复核数值 | [configs](configs)、[figures](figures)、[results](results) | Fig. 1、Tables 1–2 |
+| 最终实验配置、图 1、论文数值 | [configs](configs)、[figures](figures)、[results](results) | Fig. 1、Tables 1–2 |
 
 **建议第一遍只看三个文件：**
 
@@ -25,7 +25,7 @@ Mingze Li · Satoshi Nakamura · ICASSP 2027 submission
 2. [causal_action_common.py](method/causalgloss/causal_action_common.py)：训练样本和 batch。
 3. [train_qwen_lora_causal_ddp.py](method/causalgloss/train_qwen_lora_causal_ddp.py)：模型、loss、训练和保存。
 
-进一步阅读：[中文学习路线](docs/LEARNING_GUIDE_ZH.md) · [论文—代码映射](docs/PAPER_TO_CODE.md) · [运行说明](docs/REPRODUCTION.md) · [保留/剔除标准](docs/SCOPE.md)。
+进一步阅读：[中文学习路线](docs/LEARNING_GUIDE_ZH.md) · [论文—代码映射](docs/PAPER_TO_CODE.md) · [运行说明](docs/REPRODUCTION.md) · [评估协议](docs/EVALUATION.md) · [仓库范围](docs/SCOPE.md)。
 
 ## 最轻量的检查
 
@@ -35,23 +35,19 @@ python scripts/check_release.py
 python -m unittest discover -s tests -v
 ```
 
-数值复核需 NumPy；训练/推理需相应 ML 依赖、冻结数据和正确 checkpoint：
+指标计算需 NumPy；训练/推理需相应 ML 依赖、冻结数据和正确 checkpoint：
 
 ```bash
 python -m unittest discover -s tests/verification -v
 python scripts/paper.py run --dry-run rollout -- --help
 ```
 
-**仓库与数据验收（2026-10-17）已完成：** 从独立 GitHub 克隆和实际重新下载的私有附件出发，在新建 CPU 环境中通过 146 项基础测试、19 项指标测试、全部文件校验、数据重建和历史预测计分。83 项计分输入、35,535 条预测的已检查论文数值差异为 0。这不等于重新训练或所有新推理数值完全一致。详见[验收记录](results/clean_clone_acceptance_20261017.json)、[逐项状态](results/reproduction_status.json)和[验证说明](docs/VERIFICATION.md)。
-
-**实际重推理验收（2026-10-17）：** 82/82 项已运行并通过输入、输出及指标完整性检查，但不是所有纸面数字的精确复现。例如 Locked500 F1 为 0.7039（论文 0.7047），CLERC F1 为 0.6487（论文约 0.649）；completed-only 样本数也有变化，严格纸面检查未通过。保留[完整差异报告](results/checkpoint_reinference_20261017.json)，不修改原结果或 expected 来制造一致。从头新训练及完整 TTS/Seamless 重新生成尚未执行。
+`results/paper_results.json` 保留原论文预测对应的聚合数值，供查表和绘图使用；`results/expected_paper_results.json` 保留论文显示值和计分输入约定。训练、推理及数据处理命令见[运行说明](docs/REPRODUCTION.md)。
 
 ## 数据、模型和边界
 
-冻结数据、逐样本结果、选定 LoRA 和必要合成音频放在同一私有仓库的 [Release](https://github.com/OwenLmz/CasualGloss/releases/tag/paper-reproduction-20261016)，不塞入 Git 历史。本次已实际重新下载并校验全部 14 个附件（13 个压缩分块＋文件清单，约 9.09 GB），全新安装后的 40,134 个文件均通过 SHA/大小校验，展开约 25.49 GB。`provenance/release_assets.json` 记录附件校验和；官方 Qwen 等基座按固定版本另行获取。见[数据与模型说明](docs/DATA_AND_MODELS.md)及[运行说明](docs/REPRODUCTION.md)。
+冻结数据、逐样本结果、选定 LoRA 和必要合成音频放在同一私有仓库的 [Release](https://github.com/OwenLmz/CasualGloss/releases/tag/paper-reproduction-20261016)，不塞入 Git 历史。`provenance/release_assets.json` 记录附件目录及校验和；官方 Qwen 等基座按固定版本另行获取。见[数据与模型说明](docs/DATA_AND_MODELS.md)及[运行说明](docs/REPRODUCTION.md)。
 
 弱 pseudo-gloss 不是专家 ASL 金标准；语音过度生成仍未解决；没有声称视频生成或专家可理解性验证。数据、模型和作者代码许可分开处理，见 [THIRD_PARTY.md](THIRD_PARTY.md)。
 
-数据血缘和既有报告边界已明确记录在[验证说明](docs/VERIFICATION.md)：上游已见 locked500 样本、弱目标实际生成器、参考长度参与预算、语音块描述及 native no-recovery 完成率范围。没有修改原目标、划分、预算或结果来掩盖这些事实。
-
-原始服务器代码、模型、数据及提交 PDF 未修改。必要路径适配和删除未报告输出分支均记录在 [source_manifest.json](provenance/source_manifest.json)，保留原始和当前校验和。旧实验已经从当前代码树移出，但之前 Git 提交仍可恢复；没有改写提交历史。
+代码来源和必要的可移植性适配见 [source_manifest.json](provenance/source_manifest.json)。实验的数据关系、生成预算及指标口径见[数据与模型说明](docs/DATA_AND_MODELS.md)和[评估协议](docs/EVALUATION.md)。

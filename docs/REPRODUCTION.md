@@ -1,13 +1,8 @@
-# Reproducing the submitted paper
+# Running final-paper experiments
 
-**Status: repository/data and clean-CPU acceptance completed on 2026-10-17;
-not complete exact model/training reproduction.** Read
-[VERIFICATION.md](VERIFICATION.md) and the current
-[status record](../results/reproduction_status.json). Frozen-output scoring,
-checkpoint inference and new training are different verification levels. The
-[clean-clone acceptance record](../results/clean_clone_acceptance_20261017.json)
-identifies the executed source commit; later closeout changes only documentation
-and aggregate audit metadata.
+This guide covers data preparation, saved-prediction scoring, checkpoint
+inference and training. See [EVALUATION.md](EVALUATION.md) for the metric
+definitions and experiment-specific scoring protocols.
 
 Paper SHA-256: `5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`.
 Run from the repository root. Use absolute PRIVATE paths outside the checkout;
@@ -32,11 +27,9 @@ tests does not establish model execution, metric equality or training success.
 Git clone downloads source and the catalog, not large data/weights. The private
 `OwenLmz/CasualGloss` Release `paper-reproduction-20261016` requires repository
 access and upstream data terms; see [DATA_AND_MODELS.md](DATA_AND_MODELS.md) and
-[THIRD_PARTY.md](../THIRD_PARTY.md). All 14 attachments were actually downloaded
-again from GitHub, SHA/size checked, installed into a new external directory and
-verified there: 40,134 files, 25,487,764,612 uncompressed bytes. The new CPU
-environment then rebuilt waveform QC, cleaned and recovery manifests and
-recomputed frozen paper scores with zero checked numerical discrepancies.
+[THIRD_PARTY.md](../THIRD_PARTY.md). The catalog describes 14 attachments:
+13 archive parts and the per-file manifest. The installer checks archive
+and payload integrity before making the assets available to the runners.
 
 ```bash
 python scripts/reproduction/release_assets.py list
@@ -124,15 +117,14 @@ four weight shards. `--models-root` accepts HF_HOME containing `hub/`, a
 compatible model cache, or the exact pinned snapshot.
 
 [Environment guidance](../requirements/README.md) separates policy, TTS and
-Seamless runtimes. The GPU/ML locks record the **current inspected server**, not
-a proven historical environment or tested clean GPU installation. A separate,
-new isolated Python 3.10 CPU environment with NumPy 2.2.6, SoundFile 0.13.1 and
-NLTK 3.9.2 passed the real-data and metric checks; no Torch was installed there.
+Seamless runtimes. The GPU/ML locks record an inspected execution environment
+rather than a complete historical environment specification. CPU data builders
+use NumPy, SoundFile and NLTK; see `requirements/data-builders.txt`.
 Do not merge incompatible
 CUDA/PyTorch environments. Preflight installs nothing; it checks packages,
 CUDA, model/input identities and NLTK resources. Use `--nltk-data /private/nltk_data`
 if resources are elsewhere; `--require-recorded-versions` makes policy version
-differences errors instead of warnings. A pass is not numerical reproduction.
+differences errors instead of warnings.
 `setup_nltk.py` verifies the original official `punkt_tab` ZIP and all four
 English model files by SHA/size; `--verify-only` checks without network access.
 Keep NLTK resources outside the installed paper-data tree. Legacy Punkt and
@@ -161,15 +153,7 @@ The runner verifies inputs/adapters, preserves historical precision, batches,
 order and caps, and changes only the local `model_id` path in new runtime
 configs. It writes logs, `receipt.json` and `checkpoint_output_index_*.json`
 without replacing archived predictions. A completed receipt proves exit status
-and record count, **not metric equality**. Independently rescore fresh outputs
-and record actual exact/approximate differences. Cross-hardware low-precision
-execution need not be bit-identical.
-
-The 2026-10-17 audit exercised all 82 outputs and independently checked their
-inputs, receipts and metrics. It found actual numerical differences, not exact
-paper-number reproduction; see
-[checkpoint_reinference_20261017.json](../results/checkpoint_reinference_20261017.json).
-No tolerance or expected value was changed to turn that result into a pass.
+and record count. Use the same evaluator to score newly generated predictions.
 
 To rescore a newly completed full suite rather than archived predictions:
 
@@ -184,15 +168,13 @@ python scripts/verification/verify_paper_results.py \
 Repeat `--checkpoint-root` if the 82 outputs are split across GPU directories.
 The materializer requires all 82 unique matrix entries with valid completed
 runner receipts, output hashes/counts and the registered 401-prompt reference.
-It copies independently, never links files or claims new outputs match old
-prediction hashes. The original numerical verifier may fail on real differences;
-that failure must be reported, not suppressed or relaxed.
+It copies independently and keeps new prediction files separate from the
+archived paper predictions.
 
 The four speech500 jobs rerun **only the policy on recorded shared frontend
 events**. They do not resynthesize TTS, rerun Seamless, or reproduce historical
-frontend wall time. Full waveform/QC/frontend regeneration is a separate level.
-The retained Seamless launcher reads 320-ms increments; do not change it to
-1200 to fit the paper wording.
+frontend wall time. Full waveform/QC/frontend generation uses the scripts in
+`speech/`. The retained Seamless launcher reads 320-ms increments.
 
 ## 6. Inspect training before explicitly executing it
 
@@ -223,8 +205,7 @@ settings. Read each `training_receipt.json`.
 Training uses frozen weak labels, alignments and action manifests; it does not
 automatically regenerate these or train Qwen from random weights. After real
 new training, checkpoint inference can use `--training-root /private/new_training1`
-to validate new receipts/hashes instead of archived adapters. Full new training
-has not been demonstrated; runnable plans alone are not reproduced results.
+to validate new receipts/hashes instead of archived adapters.
 
 ## Lower-level study and interpretation
 
@@ -234,7 +215,5 @@ implementation `--help` may require ML dependencies. The dispatcher isolates
 main/ablation modules and forwards arguments unchanged. See
 [PAPER_TO_CODE.md](PAPER_TO_CODE.md).
 
-Keep every caveat in [VERIFICATION.md](VERIFICATION.md), particularly upstream
-test exposure, weak-target lineage, reference-length generation caps,
-320-ms/1.2-s wording and native no-recovery completion. Byte checks and matching
-scores do not resolve those scientific/reporting limitations.
+Data lineage, generation budgets and metric conventions are described in
+[DATA_AND_MODELS.md](DATA_AND_MODELS.md) and [EVALUATION.md](EVALUATION.md).

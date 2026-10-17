@@ -12,14 +12,14 @@
 | §4 主模型训练与选择 | `method/causalgloss/`、`configs/method/` |
 | §4 固定 k=1,3,5,7 | `baselines/fixed_waitk/`、`configs/fixed_waitk/`，训练复用主 trainer |
 | §4 最终 TransLLaMA-style / LR选择 / k=1…8 | `baselines/transllama/`、`configs/transllama/` |
-| §5.1 Table 1 / Fig.1 | `scripts/verification/`、`figures/`；最终 BLEU 由独立 verifier 计算，旧 inference-only baseline 脚本已删除 |
+| §5.1 Table 1 / Fig.1 | `scripts/verification/`、`figures/`；指标定义见 `docs/EVALUATION.md` |
 | §5.2 CLERC / completed-only | `evaluation/clerc/`、`scripts/verification/` |
 | §5.2 语音链 / lexical-only 对照 | `speech/frontend/`、`baselines/lexical_control/` |
 | §4、Abstract 完整中文语料 | `speech/corpus/`、`configs/speech/` |
 | §5.3 Table 2 | `ablations/`、`configs/ablations/`；no-recovery / guard-only 复用主模型 evaluator 和 Stage A checkpoint |
 
-完整已选权重推理矩阵：`configs/reproduction/experiments.json`，严格对应 82 份论文 rollout（35 locked500、35 CLERC、8 diagnostic、4 speech）。每项记录确切 config/input/adapter SHA、种子、精度、批大小、原调用来源和结果别名；`scripts/reproduction/run_checkpoint_suite.py` 只写新输出。
+完整已选权重推理矩阵：`configs/reproduction/experiments.json`，对应 82 份论文 rollout（35 locked500、35 CLERC、8 diagnostic、4 speech）。每项记录 config/input/adapter SHA、种子、精度、批大小、原调用来源和结果别名；运行入口为 `scripts/reproduction/run_checkpoint_suite.py`，输出写入指定目录。论文数值汇总见 `results/paper_results.json`，评测协议见 [EVALUATION.md](EVALUATION.md)。
 
-原始语料质检源码一直保留在 `speech/frontend/validate_audio_manifest.py`。清洗构建所需的原始 QC 报告、人工翻译修正规格及应用报告，随冻结数据附件提供；不是新增实验。`configs/speech/locked500_frontend.json` 保留 locked500 的真实 20260726 种子，不能用完整语料的 20260905 替代。
+原始语料质检实现为 `speech/frontend/validate_audio_manifest.py`。清洗构建所需的原始 QC 报告、人工翻译修正规格及应用报告，随冻结数据附件提供。`configs/speech/locked500_frontend.json` 使用 locked500 的 20260726 种子，不能用完整语料的 20260905 替代。
 
-不在论文中的旧 learned-baseline、local-agreement、5K 模型试验和其他 speech frontends 不在当前代码树。必要预处理函数虽有旧版名称，保留理由是实际数据依赖，不是保留旧模型实验。
+范围定义见 [SCOPE.md](SCOPE.md)。预处理函数名中的版本号与最终模型配置版本分别管理，按实际调用关系阅读。

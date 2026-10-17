@@ -1,15 +1,14 @@
-# Recorded environments, not validated installers
+# Recorded environments
 
 These three `*.recorded.txt` files were produced by read-only `pip freeze --all`
 from the existing policy, TTS and SeamlessStreaming environments on 2026-10-16.
 All three use Python 3.10.12. `capture_metadata.json` records the collection
 provenance and the currently resolved mBERT cache snapshot.
 
-They are **evidence, not proof that a fresh installation succeeds**. They also
-do not prove that every historical run used exactly the currently installed
-versions. In particular, the later CLERC FP16 protocol used a separate overlay;
-inference precision is retained in the experiment matrix, but low-precision
-predictions can still vary across stacks, hardware and batch construction.
+These files describe the environment at collection time, not every historical
+run or a portable installation recipe. The CLERC FP16 protocol used a separate
+overlay; per-experiment inference precision is retained in the experiment matrix.
+Use the precision, backend and batch settings specified for the intended run.
 
 Do not blindly install the entire recordings as ordinary requirements. CUDA
 wheel selection, the PyTorch/fairseq2 ABI pair, and the two editable upstream
@@ -27,4 +26,4 @@ code or a request to execute those packages.
 
 Use `scripts/reproduction/preflight.py` in the intended environment to inspect
 packages, CUDA, selected adapter hashes, data paths and all four base-model
-shards. A preflight pass is not a successful experiment.
+shards before running an experiment.

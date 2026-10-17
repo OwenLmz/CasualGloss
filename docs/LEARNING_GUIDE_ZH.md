@@ -19,7 +19,7 @@
 
 ## 3. 标签与时序怎样生成
 
-按 `data_preparation/pseudo_gloss` → `lexical_alignment` → `semantic_alignment` 阅读。最终流程确实复用了两个较早写出的 helper：`score_prefix_semantics.py` 和 `finalize_semantic_alignment_v2_1.py`。它们现已放在同一个语义处理目录；保留它们不等于保留早期 v2.1 模型实验。
+按 `data_preparation/pseudo_gloss` → `lexical_alignment` → `semantic_alignment` 阅读。最终流程依赖语义处理目录中的 `score_prefix_semantics.py` 和 `finalize_semantic_alignment_v2_1.py`；文件名中的版本号不代表主模型版本。
 
 这些模块生成训练监督；不能理解为推理时可以读取未来句子或标准答案。
 
@@ -42,6 +42,6 @@
 
 最后读 `scripts/verification/verify_paper_results.py` 的 `overlap`、`laal`、`normalize_content`，再读三种 seed/parent bootstrap。Table 2 用 diagnostic 250，locked500 是另外的测试集。CLERC 的 1,200 参考不等于 1,200 个独立 source。
 
-正文的一个边界已保留在验证说明：native no-recovery 完成率是 249/250；不能把所有列出的控制都说成 100%。语音输出长度问题也不能因运行完成而忽略。
+各数据集、完成率、输出长度和 bootstrap 的具体口径见 [EVALUATION.md](EVALUATION.md)。区分不同实验和控制的统计对象；运行结束不等于满足完成或长度判据。
 
 根目录的 `scripts/paper.py` 是导航和运行入口；主方法本身在 `method/causalgloss`。先看真正实现，再使用入口，不需要在深层 archive 中找代码。

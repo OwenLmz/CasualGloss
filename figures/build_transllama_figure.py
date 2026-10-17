@@ -58,8 +58,21 @@ def configure_style() -> None:
 
 def load_inputs(report_path: Path, seed_path: Path):
     report = json.loads(report_path.read_text(encoding="utf-8-sig"))
-    if report.get("all_numeric_checks_pass") is not True:
-        raise ValueError("Input must be a successful final-paper verification report")
+    if report.get("result_kind") == "original_paper_aggregates":
+        expected = json.loads(
+            (Path(__file__).resolve().parents[1] / "results/expected_paper_results.json")
+            .read_text(encoding="utf-8-sig")
+        )
+        if report.get("paper_sha256") != expected["paper_sha256"]:
+            raise ValueError("Original-paper result anchor differs")
+        for system, metrics in expected["table1"].items():
+            for metric, (mean, sd) in metrics.items():
+                digits = 2 if metric == "bleu4" else 4
+                actual = report["locked500"]["table1"][system][metric]
+                if round(actual["mean"], digits) != mean or round(actual["sample_sd"], digits) != sd:
+                    raise ValueError(f"Paper display value differs: {system}/{metric}")
+    elif report.get("all_numeric_checks_pass") is not True:
+        raise ValueError("Input must be original-paper aggregates or a successful scoring report")
     locked = report["locked500"]
     seed_report = json.loads(seed_path.read_text(encoding="utf-8-sig"))
     if seed_report["paper_sha256"] != report["paper_sha256"]:

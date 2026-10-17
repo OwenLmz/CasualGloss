@@ -24,5 +24,5 @@
       "input_sha256": "6af1538af6d7f4f3b38e4db48e8c0e6ff9c970ec74136824b1428d9bcb2a1d15"
     }
   ],
-  "provenance": "same per-example records independently rescored by final-paper verification; recorded metrics agree with recomputation"
+  "provenance": "Per-seed numerical aggregates of the frozen predictions used for the submitted paper; input_sha256 identifies each source prediction file."
 }
