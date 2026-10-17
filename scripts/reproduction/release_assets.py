@@ -164,13 +164,15 @@ def verified_file(path: Path, entry: dict[str, Any]) -> None:
 
 def inventory_destination(destination: Path, files: dict[str, dict[str, Any]]) -> set[str]:
     """Reject unrelated content and preexisting mismatches before any extraction."""
+    from concurrent.futures import ThreadPoolExecutor
+
     no_link_ancestors(destination)
     if not destination.exists():
         return set()
     if not destination.is_dir():
         raise ValueError("Destination is not a directory")
     allowed_dirs = {str(parent) for path in files for parent in PurePosixPath(path).parents if str(parent) != "."}
-    found = set()
+    candidates = []
     pending = [destination]
     while pending:
         directory = pending.pop()
@@ -186,11 +188,30 @@ def inventory_destination(destination: Path, files: dict[str, dict[str, Any]]) -
                 if not path.is_file() or path.stat().st_nlink != 1:
                     raise ValueError("Installation metadata must be a regular file")
             elif relative in files:
-                verified_file(path, files[relative])
-                found.add(relative)
+                # Keep structural and link checks on the main thread before
+                # starting any parallel reads. verified_file repeats all of
+                # these checks, including ancestors, immediately before SHA.
+                value = path.lstat()
+                if not stat.S_ISREG(value.st_mode) or value.st_nlink != 1:
+                    raise ValueError("Asset must be a regular file, not a link")
+                candidates.append((relative, path, files[relative]))
             else:
                 raise ValueError("Unregistered file found in destination")
-    return found
+    if candidates:
+        first_error = None
+        with ThreadPoolExecutor(max_workers=8) as executor:
+            futures = [executor.submit(verified_file, path, entry) for _, path, entry in candidates]
+            # Consume every result and wait for every read even if one fails.
+            # Do not return a partially verified inventory or suppress errors.
+            for future in futures:
+                try:
+                    future.result()
+                except Exception as error:
+                    if first_error is None:
+                        first_error = error
+        if first_error is not None:
+            raise first_error
+    return {relative for relative, _, _ in candidates}
 
 
 def read_metadata(destination: Path, catalog: dict[str, Any]) -> dict[str, Any] | None:

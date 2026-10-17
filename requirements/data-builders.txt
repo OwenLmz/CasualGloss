@@ -1,0 +1,5 @@
+# CPU-only waveform QC/finalization and frozen recovery-manifest production.
+# No Torch, transformers, model weights or GPU needed for these producers.
+-r analysis.txt
+soundfile==0.13.1
+nltk==3.9.2

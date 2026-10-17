@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from contextlib import redirect_stderr, redirect_stdout
+from concurrent.futures import ThreadPoolExecutor as ActualThreadPoolExecutor
 import hashlib
 import importlib.util
 import io
@@ -9,8 +10,9 @@ import json
 from pathlib import Path
 import tarfile
 import tempfile
+import threading
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -246,6 +248,126 @@ class ReleaseAssetTests(unittest.TestCase):
     def test_manifest_file_directory_collision_is_rejected(self):
         self.fixture(files=[("a", b"file", "data"), ("a/b", b"nested", "data")])
         self.assertNotEqual(self.call()[0], 0)
+
+    def inventory_fixture(self, count):
+        entries = {}
+        for index in range(count):
+            relative = f"data/part{index % 3}/item{index:03}.bin"
+            content = f"immutable asset {index}".encode()
+            path = self.destination / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(content)
+            entries[relative] = {"sha256": checksum(content), "size_bytes": len(content), "group": "data"}
+        metadata = self.destination / release.METADATA_NAME
+        metadata.write_bytes(b"immutable installation metadata")
+        return entries
+
+    def inventory_bytes(self):
+        return {path.relative_to(self.destination).as_posix(): path.read_bytes()
+                for path in self.destination.rglob("*") if path.is_file()}
+
+    def test_inventory_verifies_every_registered_file_without_mutation(self):
+        entries = self.inventory_fixture(17)
+        before = self.inventory_bytes()
+        original = release.verified_file
+        checked = []
+        lock = threading.Lock()
+
+        def verify(path, entry):
+            original(path, entry)
+            with lock:
+                checked.append(path.relative_to(self.destination).as_posix())
+
+        with patch.object(release, "verified_file", side_effect=verify):
+            found = release.inventory_destination(self.destination, entries)
+        self.assertEqual(found, set(entries))
+        self.assertCountEqual(checked, entries)
+        self.assertEqual(before, self.inventory_bytes())
+        self.assertNotIn(release.METADATA_NAME, checked)
+
+    def test_inventory_failure_consumes_all_futures_and_preserves_assets(self):
+        entries = self.inventory_fixture(17)
+        before = self.inventory_bytes()
+        entries[next(iter(entries))]["sha256"] = "0" * 64
+        original = release.verified_file
+        completed = []
+        futures = []
+        configured_workers = []
+        lock = threading.Lock()
+
+        class RecordingExecutor:
+            def __init__(self, max_workers):
+                configured_workers.append(max_workers)
+                self.delegate = ActualThreadPoolExecutor(max_workers=max_workers)
+
+            def __enter__(self):
+                self.delegate.__enter__()
+                return self
+
+            def __exit__(self, *args):
+                return self.delegate.__exit__(*args)
+
+            def submit(self, *args):
+                future = self.delegate.submit(*args)
+                future.result = Mock(wraps=future.result)
+                futures.append(future)
+                return future
+
+        def verify(path, entry):
+            try:
+                original(path, entry)
+            finally:
+                with lock:
+                    completed.append(path.relative_to(self.destination).as_posix())
+
+        with (patch("concurrent.futures.ThreadPoolExecutor", RecordingExecutor),
+              patch.object(release, "verified_file", side_effect=verify)):
+            with self.assertRaisesRegex(ValueError, "Checksum or size mismatch"):
+                release.inventory_destination(self.destination, entries)
+        self.assertEqual(configured_workers, [8])
+        self.assertCountEqual(completed, entries)
+        self.assertEqual(len(futures), len(entries))
+        self.assertTrue(all(future.done() and future.result.call_count == 1 for future in futures))
+        self.assertEqual(before, self.inventory_bytes())
+
+    def test_inventory_hash_concurrency_is_bounded_at_eight(self):
+        entries = self.inventory_fixture(16)
+        original = release.verified_file
+        rendezvous = threading.Barrier(8)
+        lock = threading.Lock()
+        active = maximum = completed = 0
+
+        def verify(path, entry):
+            nonlocal active, maximum, completed
+            with lock:
+                active += 1
+                maximum = max(maximum, active)
+            try:
+                original(path, entry)
+                rendezvous.wait(timeout=10)
+            finally:
+                with lock:
+                    active -= 1
+                    completed += 1
+
+        with patch.object(release, "verified_file", side_effect=verify):
+            self.assertEqual(release.inventory_destination(self.destination, entries), set(entries))
+        self.assertEqual(maximum, 8)
+        self.assertEqual(active, 0)
+        self.assertEqual(completed, 16)
+
+    def test_inventory_rejects_unknown_structure_before_starting_workers(self):
+        entries = self.inventory_fixture(3)
+        unexpected = self.destination / "unregistered.bin"
+        unexpected.write_bytes(b"keep unknown file untouched")
+        before = self.inventory_bytes()
+        with (patch("concurrent.futures.ThreadPoolExecutor") as executor,
+              patch.object(release, "verified_file") as verify):
+            with self.assertRaisesRegex(ValueError, "Unregistered file"):
+                release.inventory_destination(self.destination, entries)
+            executor.assert_not_called()
+            verify.assert_not_called()
+        self.assertEqual(before, self.inventory_bytes())
 
 
 if __name__ == "__main__":

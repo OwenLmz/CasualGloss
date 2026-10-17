@@ -58,10 +58,14 @@ waveform QC/finalization. The recovery builder can use the policy interpreter.
 No model is loaded and no audio is synthesized by this command:
 
 ```bash
+python -m pip install -r requirements/data-builders.txt
 python scripts/reproduction/validate_data_builders.py \
-  --data-root /private/paper_assets --output-root /private/data_builder_run1 \
-  --policy-python /absolute/path/to/policy/python
+  --data-root /private/paper_assets --output-root /private/data_builder_run1
 ```
+
+The small CPU requirements include NLTK 3.9.2 for the original recovery
+builder's Treebank detokenizer. Both producer interpreters default to the
+current Python; `--tts-python` / `--policy-python` can select separate runtimes.
 
 The default runs original waveform QC, corpus finalization and recovery-manifest
 production. Repeated `--check waveform-qc`, `--check finalizer`, `--check recovery`
