@@ -67,8 +67,12 @@ class ReproductionMatrixTests(unittest.TestCase):
                 matrix.protected_output(output, data_root, models_root)
 
     def test_output_sibling_of_installed_data_is_allowed(self):
-        data_root, models_root = Path("D:/private/bundle"), Path("D:/private/models")
-        output = Path("D:/private/fresh_outputs")
+        # A Windows drive string is relative on Linux and would resolve inside
+        # the source checkout. Use an OS-native absolute temporary parent.
+        import tempfile
+        parent = Path(tempfile.gettempdir()).resolve()
+        data_root, models_root = parent / "paper_bundle", parent / "paper_models"
+        output = parent / "paper_fresh_outputs"
         self.assertEqual(output.resolve(), matrix.protected_output(output, data_root, models_root))
 
     def test_path_traversal_rejected(self):
