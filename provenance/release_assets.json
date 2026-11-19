@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "OwenLmz/CasualGloss",
   "tag": "paper-reproduction-20261016",
-  "private": true,
+  "private": false,
   "manifest": {
     "name": "bundle_file_manifest.json",
     "size_bytes": 12557756,
@@ -104,5 +104,6 @@
   "logical_root": "SN_Research; original absolute paths are never extraction destinations",
   "file_count": 40134,
   "uncompressed_bytes": 25487764612,
-  "base_models": "Official pinned pretrained models are obtained separately, not redistributed in these author-owned experiment bundles."
+  "base_models": "Official pinned pretrained models are obtained separately, not redistributed in these author-owned experiment bundles.",
+  "visibility_checked_on": "2026-11-19"
 }

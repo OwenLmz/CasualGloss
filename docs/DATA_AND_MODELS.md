@@ -44,7 +44,9 @@ between saved-frontend speech evaluation and processing new audio.
 
 ## Access
 
-The private repository's `paper-reproduction-20261016` Release holds frozen author-experiment data, selected adapters and required synthetic audio in checksummed archive parts. `provenance/release_assets.json` identifies the real parts and the checksum of an external per-file manifest; only those files may be installed. Ordinary `git clone` downloads source and the catalog, not the large assets. Repository read access is required for the Release as well.
+As of 19 November 2026, `OwenLmz/CasualGloss` and its `paper-reproduction-20261016` Release attachments are public. The release holds frozen author-experiment data, selected adapters and required synthetic audio in checksummed archive parts. `provenance/release_assets.json` identifies the parts and the checksum of an external per-file manifest; only those files may be installed. Ordinary `git clone` downloads source and the catalog, not the large assets. Historical release notes describing private access refer to the earlier repository state. Public availability does not override upstream data or model conditions.
+
+The existing online installer uses authenticated `gh` or a Git credential helper, even for this public repository. Alternatively, download the listed public attachments manually, keep them outside the checkout, and use `--asset-dir` for checksum-verified offline installation. This documentation update does not change the downloader's authentication behavior.
 
 ```bash
 python scripts/reproduction/release_assets.py list
@@ -64,7 +66,7 @@ python scripts/reproduction/download_policy_model.py \
   --models-root /private/hf_home --accept-upstream-terms
 ```
 
-This uses the official [Hugging Face snapshot download API](https://huggingface.co/docs/huggingface_hub/en/guides/download) and checks all model shards. Upstream access and conditions remain separate from access to this private experiment bundle.
+This uses the official [Hugging Face snapshot download API](https://huggingface.co/docs/huggingface_hub/en/guides/download) and checks all model shards. Upstream access and conditions remain separate from availability of the experiment bundle.
 
 Official sources: [How2Sign](https://how2sign.github.io/), [CLERC Epee](https://huggingface.co/datasets/CLERC-DATA/epee). Review upstream licenses separately from the author's code license; see [THIRD_PARTY.md](../THIRD_PARTY.md).
 
@@ -77,4 +79,4 @@ python scripts/artifacts.py list --category corpus_manifests
 
 Inspect the list first, then use the bounded `fetch` mode with your own SSH connection and a private destination outside the repository. The utility never displays key contents or overwrites a mismatching existing file. Raw verification inputs have a separate explicit 83-file allowlist in `scripts/verification/fetch_verification_inputs.py`.
 
-All registered non-directory assets now have measured SHA-256. The private attachment file manifest additionally covers each included waveform. Archive integrity does not prove acoustic correctness: original waveform QC, metadata cleaning, inference and retraining have separate validation statuses. The private Release is not a public data release and grants no new public redistribution license.
+All registered non-directory assets now have measured SHA-256. The attachment file manifest additionally covers each included waveform. Archive integrity does not prove acoustic correctness: original waveform QC, metadata cleaning, inference and retraining have separate validation statuses. Public hosting of the Release grants no new redistribution license. Third-party conditions still apply to downloaded data, trained adapters and synthetic audio.

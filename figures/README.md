@@ -30,3 +30,11 @@ For the optional external alignment gate, add
 `require_matplotlib_panel_alignment` before export (1.5-pt tolerance), preserving
 alignment JSON. No skill/helper code is bundled or needed for ordinary plotting.
 Without this option the script explicitly reports that alignment QA was not run.
+
+
+## System overview
+
+`system-overview.svg` is a structural overview for the English project README.
+It separates offline supervision from incremental inference and contains no measured results.
+The editable Mermaid counterpart is `system-overview.mmd`.
+Regenerate the SVG with `python figures/build_system_overview.py` using Matplotlib.

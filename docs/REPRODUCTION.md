@@ -5,7 +5,7 @@ inference and training. See [EVALUATION.md](EVALUATION.md) for the metric
 definitions and experiment-specific scoring protocols.
 
 Paper SHA-256: `5f7793358d54f9d754aa2fa3c8f1d5fbb723ed4506105c21ca886771e9856e1a`.
-Run from the repository root. Use absolute PRIVATE paths outside the checkout;
+Run from the repository root. Use absolute local paths outside the checkout;
 all new output directories below must not already exist. The installed asset
 root corresponds to old `SN_Research`, not its `data/` child.
 
@@ -22,11 +22,12 @@ python scripts/reproduction/run_training_plan.py --list
 Tests require NumPy (`requirements/analysis.txt`). Passing source checks and
 tests does not establish model execution, metric equality or training success.
 
-## 2. Install frozen private assets
+## 2. Install frozen experiment assets
 
-Git clone downloads source and the catalog, not large data/weights. The private
-`OwenLmz/CasualGloss` Release `paper-reproduction-20261016` requires repository
-access and upstream data terms; see [DATA_AND_MODELS.md](DATA_AND_MODELS.md) and
+Git clone downloads source and the catalog, not large data/weights. As of
+19 November 2026, the `OwenLmz/CasualGloss` repository and its existing Release
+`paper-reproduction-20261016` attachments are public. Upstream data and model
+conditions still apply; see [DATA_AND_MODELS.md](DATA_AND_MODELS.md) and
 [THIRD_PARTY.md](../THIRD_PARTY.md). The catalog describes 14 attachments:
 13 archive parts and the per-file manifest. The installer checks archive
 and payload integrity before making the assets available to the runners.
@@ -39,9 +40,13 @@ python scripts/reproduction/release_assets.py verify \
   --destination /private/paper_assets
 ```
 
-Online installation uses authenticated `gh` or the existing Git credential
-helper without printing credentials. For predownloaded attachments, add
-`--asset-dir /private/release_downloads` to `install`; that mode is offline.
+The existing online installer uses authenticated `gh` or a Git credential
+helper without printing credentials, even when the repository is public.
+For a route without installer authentication, manually download the public
+attachments and add `--asset-dir /private/release_downloads` to `install`;
+that mode verifies and installs the predownloaded files offline.
+The `/private/...` paths in these examples are local path placeholders,
+not statements about GitHub visibility.
 Assets/cache and destination must be separate external trees. Matching files
 can resume; mismatches, unrelated content and link/path escapes are rejected.
 
@@ -99,7 +104,7 @@ no new prediction; historical numerical agreement is not fresh inference.
 ## 4. Obtain the pinned model and check the environment
 
 Official backbone: `Qwen/Qwen2.5-7B-Instruct`, revision
-`a09a35458c702b33eeacc393d103063234e8bc28`. This is separate from private adapters.
+`a09a35458c702b33eeacc393d103063234e8bc28`. This is separate from the selected experiment adapters.
 In an environment with `huggingface_hub`:
 
 ```bash

@@ -1,53 +1,121 @@
-# CausalGloss — final-paper code
+# CausalGloss
 
-**CausalGloss: Multi-Evidence Action Control for a Simultaneous Mandarin Speech-to-ASL Gloss Cascade**
+**Multi-Evidence Action Control for a Simultaneous Mandarin Speech-to-ASL Gloss Cascade**
 
 Mingze Li · Satoshi Nakamura · ICASSP 2027 submission
 
-本仓库只保留最终提交论文的方法、必要的数据处理、正式基线、消融和评测，**不是全部实验历史归档**。仓库名 `CasualGloss` 沿用原名，方法名为 `CausalGloss`；不包含后续 gloss→pose/video 扩展。
+CausalGloss learns when to wait for more English input and when to commit a pseudo-ASL gloss.
+In the speech cascade, an existing streaming translation frontend converts Mandarin speech into incremental English prefixes.
+The policy uses the observed prefix and its own committed output history to select WAIT, WRITE, or END.
 
-## 代码直接从这里看
+The method constructs prefix-level action supervision from lexical and semantic evidence, then adds WAIT balancing and recovery from incomplete output histories.
+The implementation includes Qwen2.5-7B-Instruct LoRA training, fixed and learned baselines, component ablations, and text/speech evaluation.
 
-| 模块 | 位置 | 论文对应 |
-|---|---|---|
-| **主方法：数据加载、训练、自由推理** | [method/causalgloss](method/causalgloss) | §3、§4 |
-| 上游 weak-gloss 模型训练 | [training/upstream_gloss](training/upstream_gloss) | §4 |
-| 弱标签、词法/语义对齐、recovery 数据 | [data_preparation](data_preparation) | §3.2–3.3、§4 |
-| 固定 Wait-k、最终 TransLLaMA-style、语音 lexical control | [baselines](baselines) | §4、§5.1–5.2 |
-| 五个组件消融 | [ablations](ablations) | §5.3、Table 2 |
-| CLERC 与论文指标计算 | [evaluation/clerc](evaluation/clerc)、[scripts/verification](scripts/verification) | §5、Tables 1–2 |
-| 最终语音链与完整合成语料构建 | [speech](speech) | §4、§5.2 |
-| 最终实验配置、图 1、论文数值 | [configs](configs)、[figures](figures)、[results](results) | Fig. 1、Tables 1–2 |
+The method is named **CausalGloss**; the repository retains its original name, `CasualGloss`.
+This repository covers the submitted gloss paper and its required dependencies. It does not include later pose/video extensions.
 
-**建议第一遍只看三个文件：**
+## System overview
 
-1. [evaluate_free_running_rollout.py](method/causalgloss/evaluate_free_running_rollout.py)：怎样 WAIT、WRITE、END。
-2. [causal_action_common.py](method/causalgloss/causal_action_common.py)：训练样本和 batch。
-3. [train_qwen_lora_causal_ddp.py](method/causalgloss/train_qwen_lora_causal_ddp.py)：模型、loss、训练和保存。
+![CausalGloss pipeline: offline evidence-based action supervision trains a prefix-conditioned policy; at inference, streaming Mandarin-to-English translation supplies prefixes, WAIT reads more input, WRITE commits a gloss, and END stops generation.](figures/system-overview.svg)
 
-进一步阅读：[中文学习路线](docs/LEARNING_GUIDE_ZH.md) · [论文—代码映射](docs/PAPER_TO_CODE.md) · [运行说明](docs/REPRODUCTION.md) · [评估协议](docs/EVALUATION.md) · [仓库范围](docs/SCOPE.md)。
+Lexical and semantic alignment are used to construct training supervision. They are not future-source or reference inputs to the running policy.
+WRITE keeps the current source prefix, allowing several glosses to be emitted before another WAIT.
+See the [editable diagram source](figures/system-overview.mmd) and [paper-to-code map](docs/PAPER_TO_CODE.md).
 
-## 最轻量的检查
+## Reported results
+
+The table reproduces **Table 1 of the submitted paper**, using the frozen Locked500 English-to-pseudo-gloss evaluation.
+Values are means ± sample standard deviations over three training seeds. Higher is better for F1, sequence similarity and BLEU; lower is better for LAAL.
+
+| System | Token F1 ↑ | Sequence similarity ↑ | BLEU-4 ↑ (post-hoc) | LAAL ↓ (source tokens) |
+| --- | ---: | ---: | ---: | ---: |
+| Fixed Wait-k, k = 7 | 0.6457 ± 0.0010 | 0.6383 ± 0.0008 | 33.90 ± 0.19 | 4.3099 ± 0.0528 |
+| TransLLaMA-style, k = 5 | 0.7067 ± 0.0056 | 0.6955 ± 0.0051 | 28.35 ± 0.33 | 3.9061 ± 0.0458 |
+| **CausalGloss** | 0.7047 ± 0.0055 | 0.6957 ± 0.0060 | 37.31 ± 2.88 | 1.7823 ± 0.2031 |
+
+These are aggregates of the historical predictions used in the paper, not newly generated predictions.
+Source-token LAAL measures waiting for source input; it is not GPU inference time or end-to-end speech latency.
+The learned comparator is a task-adapted TransLLaMA-style baseline, not an exact reproduction of the original system.
+
+The displayed values are recorded in [expected_paper_results.json](results/expected_paper_results.json).
+The underlying aggregates, including CLERC human-reference evaluation, ablations and the synthetic-speech cascade, are in [paper_results.json](results/paper_results.json).
+See [evaluation protocols](docs/EVALUATION.md) for metrics and uncertainty estimates.
+
+## Input/output example
+
+The following is a **hand-constructed illustration of action semantics**, not a model prediction, benchmark example, or expert-validated ASL translation.
+Its English input and toy gloss tokens are invented for this explanation.
+
+English input: `The cat sleeps`
+
+| Observed English prefix before the action | Action | Committed toy pseudo-gloss after the action |
+| --- | --- | --- |
+| `The` | WAIT: read one more source token | empty |
+| `The cat` | WRITE `CAT` | `CAT` |
+| `The cat` | WAIT: read one more source token | `CAT` |
+| `The cat sleeps` | WRITE `SLEEP` | `CAT SLEEP` |
+| `The cat sleeps` | END | `CAT SLEEP` |
+
+The initial prefix contains one source token, as in the sentence-level evaluator.
+The action names above describe the state transitions; WRITE commits the predicted gloss token itself.
+See [the rollout implementation](method/causalgloss/evaluate_free_running_rollout.py).
+
+## Quick start
+
+For source inspection and CPU checks:
+
+```bash
+git clone https://github.com/OwenLmz/CasualGloss.git
+cd CasualGloss
+python -m pip install -r requirements/analysis.txt
+```
 
 ```bash
 python scripts/paper.py list
 python scripts/check_release.py
 python -m unittest discover -s tests -v
-```
-
-指标计算需 NumPy；训练/推理需相应 ML 依赖、冻结数据和正确 checkpoint：
-
-```bash
 python -m unittest discover -s tests/verification -v
-python scripts/paper.py run --dry-run rollout -- --help
 ```
 
-`results/paper_results.json` 保留原论文预测对应的聚合数值，供查表和绘图使用；`results/expected_paper_results.json` 保留论文显示值和计分输入约定。训练、推理及数据处理命令见[运行说明](docs/REPRODUCTION.md)。
+These checks do not run model training or reproduce benchmark predictions.
+Training and inference require the corresponding ML environment, frozen data and selected adapters.
+The [running guide](docs/REPRODUCTION.md) describes saved-prediction rescoring, the 82-output checkpoint matrix, and the 30-invocation training plan.
+Text-policy, TTS and SeamlessStreaming environments are documented separately in [requirements](requirements/README.md).
 
-## 数据、模型和边界
+## Code and documentation
 
-冻结数据、逐样本结果、选定 LoRA 和必要合成音频放在同一私有仓库的 [Release](https://github.com/OwenLmz/CasualGloss/releases/tag/paper-reproduction-20261016)，不塞入 Git 历史。`provenance/release_assets.json` 记录附件目录及校验和；官方 Qwen 等基座按固定版本另行获取。见[数据与模型说明](docs/DATA_AND_MODELS.md)及[运行说明](docs/REPRODUCTION.md)。
+| Component | Implementation |
+| --- | --- |
+| Main policy, training and free-running inference | [method/causalgloss](method/causalgloss) |
+| Weak pseudo-gloss targets, alignments and recovery examples | [data_preparation](data_preparation) |
+| Upstream weak-gloss model training | [training/upstream_gloss](training/upstream_gloss) |
+| Fixed Wait-k, TransLLaMA-style and speech lexical control | [baselines](baselines) |
+| Five component ablations | [ablations](ablations) |
+| CLERC evaluation and paper-result scoring | [evaluation/clerc](evaluation/clerc), [scripts/verification](scripts/verification) |
+| Synthetic corpus and speech cascade | [speech](speech) |
+| Configurations, figures and original-paper aggregates | [configs](configs), [figures](figures), [results](results) |
 
-弱 pseudo-gloss 不是专家 ASL 金标准；语音过度生成仍未解决；没有声称视频生成或专家可理解性验证。数据、模型和作者代码许可分开处理，见 [THIRD_PARTY.md](THIRD_PARTY.md)。
+Suggested entry points are [the rollout evaluator](method/causalgloss/evaluate_free_running_rollout.py),
+[action datasets and collation](method/causalgloss/causal_action_common.py),
+and [the policy trainer](method/causalgloss/train_qwen_lora_causal_ddp.py).
+Further documentation covers [data and models](docs/DATA_AND_MODELS.md),
+[evaluation](docs/EVALUATION.md), [running experiments](docs/REPRODUCTION.md),
+[repository scope](docs/SCOPE.md), and a [Chinese reading guide](docs/LEARNING_GUIDE_ZH.md).
 
-代码来源和必要的可移植性适配见 [source_manifest.json](provenance/source_manifest.json)。实验的数据关系、生成预算及指标口径见[数据与模型说明](docs/DATA_AND_MODELS.md)和[评估协议](docs/EVALUATION.md)。
+## Data, models and interpretation
+
+As of 19 November 2026, this repository and its existing [Release attachments](https://github.com/OwenLmz/CasualGloss/releases/tag/paper-reproduction-20261016) are public.
+The release contains frozen experiment data, selected LoRA adapters, saved predictions and required synthetic audio; ordinary `git clone` retrieves the source and catalogs only.
+Historical release notes may describe their earlier private-access status.
+Public availability does not grant new rights to redistribute upstream data, models, or their derivatives.
+Asset catalogs and checksums are in [release_assets.json](provenance/release_assets.json); access instructions and conditions are in [DATA_AND_MODELS.md](docs/DATA_AND_MODELS.md) and [THIRD_PARTY.md](THIRD_PARTY.md).
+
+Important interpretation boundaries:
+
+- Weak pseudo-gloss targets are not expert ASL gold annotations, and overlap scores do not establish ASL comprehensibility.
+- Locked500 separates the downstream policy partitions, but its examples occur in upstream weak-gloss training. Evaluation generation caps also depend on reference length; see [data lineage](docs/DATA_AND_MODELS.md) and [evaluation settings](docs/EVALUATION.md).
+- Speech evaluation uses synthetic Mandarin audio, and output over-generation remains unresolved. The system outputs gloss tokens, not sign-language poses or video.
+- Source checks and saved-prediction rescoring do not establish complete retraining or exact checkpoint reproduction. The [historical verification record](https://github.com/OwenLmz/CasualGloss/blob/paper-source-20261017/docs/VERIFICATION.md) reports differences in fresh checkpoint inference.
+
+No blanket open-source license has yet been selected for the authors' code.
+Data, model and code permissions remain separate; see [THIRD_PARTY.md](THIRD_PARTY.md).

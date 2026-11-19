@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1116pt" height="511.2pt" viewBox="0 0 1116 511.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>CausalGloss supervision and inference</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>CausalGloss supervision and inference</dc:title>
+    <dc:date>2026-11-19T15:33:33.015748</dc:date>
+    <dc:description>Offline evidence-based supervision trains a policy that reads incremental English and commits pseudo-ASL glosses.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 511.2 
+L 1116 511.2 
+L 1116 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 47.0808 203.076 
+L 166.3272 203.076 
+Q 173.3832 203.076 173.3832 196.056 
+L 173.3832 128.664 
+Q 173.3832 121.644 166.3272 121.644 
+L 47.0808 121.644 
+Q 40.0248 121.644 40.0248 128.664 
+L 40.0248 196.056 
+Q 40.0248 203.076 47.0808 203.076 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #edf4fc; stroke: #547da7; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 209.3688 203.076 
+L 385.0632 203.076 
+Q 392.1192 203.076 392.1192 196.056 
+L 392.1192 128.664 
+Q 392.1192 121.644 385.0632 121.644 
+L 209.3688 121.644 
+Q 202.3128 121.644 202.3128 128.664 
+L 202.3128 196.056 
+Q 202.3128 203.076 209.3688 203.076 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #edf4fc; stroke: #547da7; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 428.1048 203.076 
+L 579.1032 203.076 
+Q 586.1592 203.076 586.1592 196.056 
+L 586.1592 128.664 
+Q 586.1592 121.644 579.1032 121.644 
+L 428.1048 121.644 
+Q 421.0488 121.644 421.0488 128.664 
+L 421.0488 196.056 
+Q 421.0488 203.076 428.1048 203.076 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #edf4fc; stroke: #547da7; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 622.1448 210.798 
+L 833.1192 210.798 
+Q 840.1752 210.798 840.1752 203.778 
+L 840.1752 120.942 
+Q 840.1752 113.922 833.1192 113.922 
+L 622.1448 113.922 
+Q 615.0888 113.922 615.0888 120.942 
+L 615.0888 203.778 
+Q 615.0888 210.798 622.1448 210.798 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #eeeafa; stroke: #7b6baf; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 876.1608 203.076 
+L 1076.5512 203.076 
+Q 1083.6072 203.076 1083.6072 196.056 
+L 1083.6072 128.664 
+Q 1083.6072 121.644 1076.5512 121.644 
+L 876.1608 121.644 
+Q 869.1048 121.644 869.1048 128.664 
+L 869.1048 196.056 
+Q 869.1048 203.076 876.1608 203.076 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #e9f4ef; stroke: #608f79; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 174.96813 162.36 
+Q 187.845438 162.36 199.101597 162.36 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 193.501597 159.56 
+L 199.101597 162.36 
+L 193.501597 165.16 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #42526e; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 393.70413 162.36 
+Q 406.581438 162.36 417.837597 162.36 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 412.237597 159.56 
+L 417.837597 162.36 
+L 412.237597 165.16 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #42526e; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 587.74413 162.36 
+Q 600.621438 162.36 611.877597 162.36 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 606.277597 159.56 
+L 611.877597 162.36 
+L 606.277597 165.16 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #42526e; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 841.76013 162.36 
+Q 854.637438 162.36 865.893597 162.36 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 860.293597 159.56 
+L 865.893597 162.36 
+L 860.293597 165.16 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #42526e; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 653.325877 211.646368 
+Q 585.161188 288.019146 527.4055 205.472617 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke: #7b6baf; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 528.321685 211.666211 
+L 527.4055 205.472617 
+L 532.910086 208.455825 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #7b6baf; stroke: #7b6baf; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 47.0808 432.63 
+L 296.8632 432.63 
+Q 303.9192 432.63 303.9192 425.61 
+L 303.9192 349.092 
+Q 303.9192 342.072 296.8632 342.072 
+L 47.0808 342.072 
+Q 40.0248 342.072 40.0248 349.092 
+L 40.0248 425.61 
+Q 40.0248 432.63 47.0808 432.63 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #edf4fc; stroke: #547da7; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 354.0168 432.63 
+L 639.0792 432.63 
+Q 646.1352 432.63 646.1352 425.61 
+L 646.1352 349.092 
+Q 646.1352 342.072 639.0792 342.072 
+L 354.0168 342.072 
+Q 346.9608 342.072 346.9608 349.092 
+L 346.9608 425.61 
+Q 346.9608 432.63 354.0168 432.63 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #edf4fc; stroke: #547da7; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 696.2328 432.63 
+L 1076.5512 432.63 
+Q 1083.6072 432.63 1083.6072 425.61 
+L 1083.6072 349.092 
+Q 1083.6072 342.072 1076.5512 342.072 
+L 696.2328 342.072 
+Q 689.1768 342.072 689.1768 349.092 
+L 689.1768 425.61 
+Q 689.1768 432.63 696.2328 432.63 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #edf4fc; stroke: #547da7; stroke-width: 1.35; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 305.506068 387.702 
+Q 325.438569 387.702 343.749922 387.702 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 338.149922 384.902 
+L 343.749922 387.702 
+L 338.149922 390.502 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #42526e; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 647.722068 387.702 
+Q 667.654569 387.702 685.965922 387.702 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 680.365922 384.902 
+L 685.965922 387.702 
+L 680.365922 390.502 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #42526e; stroke: #42526e; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 789.372 340.476668 
+Q 789.372 276.433456 789.372 214.011393 
+" clip-path="url(#pee926c0d46)" style="fill: none; stroke-dasharray: 5.365,2.32; stroke-dashoffset: 0; stroke: #7b6baf; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 786.572 219.611393 
+L 789.372 214.011393 
+L 792.172 219.611393 
+z
+" clip-path="url(#pee926c0d46)" style="fill: #7b6baf; stroke-dasharray: 5.365,2.32; stroke-dashoffset: 0; stroke: #7b6baf; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="41.436" y="27.576" transform="rotate(-0 41.436 27.576)">CausalGloss</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #42526e" x="41.436" y="54.954" transform="rotate(-0 41.436 54.954)">Action control for a Mandarin-speech-to-pseudo-ASL-gloss cascade</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 10.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #476a92" x="41.436" y="92.862" transform="rotate(-0 41.436 92.862)">INCREMENTAL INFERENCE</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; fill: #172b4d" transform="translate(77.442281 158.19173)">Mandarin</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; fill: #172b4d" transform="translate(84.856969 172.598895)">speech</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="297.216" y="152.014344" transform="rotate(-0 297.216 152.014344)">Streaming translation</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #42526e" x="297.216" y="183.852625" transform="rotate(-0 297.216 183.852625)">Existing speech frontend</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="503.604" y="152.014344" transform="rotate(-0 503.604 152.014344)">English prefix</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #42526e" x="503.604" y="183.852625" transform="rotate(-0 503.604 183.852625)">Observed input only</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="727.632" y="152.014344" transform="rotate(-0 727.632 152.014344)">CausalGloss policy</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #42526e" transform="translate(681.210812 177.827811)">Qwen2.5-7B + LoRA</text>
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #42526e" transform="translate(649.064719 189.877439)">Prefix + committed output history</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="976.356" y="152.014344" transform="rotate(-0 976.356 152.014344)">Pseudo-ASL glosses</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #42526e" x="976.356" y="183.852625" transform="rotate(-0 976.356 183.852625)">Committed sequence</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="854.9928" y="103.392" transform="rotate(-0 854.9928 103.392)">WRITE</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #42526e" x="976.356" y="226.242" transform="rotate(-0 976.356 226.242)">END terminates generation</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #63518f" x="576.9864" y="266.256" transform="rotate(-0 576.9864 266.256)">WAIT: read more source</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 10.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #476a92" x="41.436" y="313.992" transform="rotate(-0 41.436 313.992)">OFFLINE SUPERVISION AND TRAINING</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="171.972" y="377.005344" transform="rotate(-0 171.972 377.005344)">English transcripts</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #42526e" x="171.972" y="408.843625" transform="rotate(-0 171.972 408.843625)">Weak pseudo-gloss targets</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="496.548" y="377.048312" transform="rotate(-0 496.548 377.048312)">Lexical / semantic evidence</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #42526e" x="496.548" y="408.843625" transform="rotate(-0 496.548 408.843625)">WAIT balancing + recovery</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b4d" x="886.392" y="377.048312" transform="rotate(-0 886.392 377.048312)">Prefix-level action supervision</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #42526e" x="886.392" y="408.843625" transform="rotate(-0 886.392 408.843625)">Two-stage LoRA training</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 9.3px; font-family: 'DejaVu Sans'; fill: #63518f" transform="translate(804.8952 276.88807)">Trained</text>
+    <text style="font-size: 9.3px; font-family: 'DejaVu Sans'; fill: #63518f" transform="translate(804.8952 289.422)">parameters</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #42526e" x="41.436" y="472.644" transform="rotate(-0 41.436 472.644)">Evidence constructs supervision offline. The running policy receives no future source or reference gloss history.</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 9.3px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #42526e" x="41.436" y="495.108" transform="rotate(-0 41.436 495.108)">Structural overview only. Gloss tokens are not sign-language poses or video.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pee926c0d46">
+   <rect x="16.74" y="5.112" width="1093.68" height="498.42"/>
+  </clipPath>
+ </defs>
+</svg>

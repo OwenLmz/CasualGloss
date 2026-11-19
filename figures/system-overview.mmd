@@ -1,0 +1,17 @@
+flowchart TB
+    accTitle: CausalGloss supervision and inference
+    accDescr: Offline lexical and semantic supervision with WAIT balancing and recovery trains the policy. At inference, Mandarin speech is translated into English prefixes; WAIT reads more input, WRITE appends a gloss, and END stops generation.
+
+    subgraph online["Incremental inference"]
+        speech["Mandarin speech"] --> frontend["Existing streaming translation frontend"]
+        frontend --> prefix["Observed English prefix"]
+        prefix --> policy["Qwen2.5-7B + LoRA policy<br/>Prefix and committed output history<br/>END stops generation"]
+        policy -->|"WRITE one gloss"| output["Committed pseudo-ASL gloss sequence"]
+        policy -->|"WAIT reads more source"| prefix
+    end
+
+    subgraph offline["Offline supervision and training"]
+        targets["English transcripts and weak pseudo-gloss targets"] --> evidence["Lexical and semantic evidence<br/>WAIT balancing and recovery"]
+        evidence --> training["Prefix-level action supervision<br/>Two-stage LoRA training"]
+    end
+    training -.->|"trained parameters"| policy
